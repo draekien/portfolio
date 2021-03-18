@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
+import { Text } from "@theme-ui/components";
 import Head from "next/head";
-import Loading from "../components/loading/loading";
 
 const HomePage: React.FC = () => {
   return (
@@ -8,8 +8,10 @@ const HomePage: React.FC = () => {
       <Head>
         <title>FullStack Developer | William Pei</title>
       </Head>
-      <Loading />
-      <main></main>
+      <main>
+        <Text sx={{ variant: "text.heading" }}>William Pei</Text>
+        <Text sx={{ variant: "text.body" }}>.NET DEVELOPER</Text>
+      </main>
     </div>
   );
 };
