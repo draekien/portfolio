@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 import Head from "next/head";
+import Link from "next/link";
 import Introduction from "../components/introduction/introduction";
 
 const HomePage: React.FC = () => {
@@ -10,6 +11,9 @@ const HomePage: React.FC = () => {
       </Head>
       <main>
         <Introduction />
+        <Link href="/demo">
+          <a>DEMO</a>
+        </Link>
       </main>
     </div>
   );

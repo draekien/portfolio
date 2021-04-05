@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.1.5",
+    "framer-motion": "^4.1.2",
     "next": "10.0.8",
     "nprogress": "^0.2.0",
     "react": "17.0.1",

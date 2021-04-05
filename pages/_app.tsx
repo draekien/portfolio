@@ -5,19 +5,18 @@ import { useRouter } from "next/router";
 import "../styles/globals.css";
 import * as React from "react";
 import ProfileTheme from "../components/theme/theme";
-import Loading from "../components/loading/loading";
 import NProgress from "nprogress";
+import { motion } from "framer-motion";
+import Navbar from "../components/navbar/navbar";
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const router = useRouter();
-  const [pageLoading, setPageLoading] = React.useState<boolean>(false);
+
   React.useEffect(() => {
     const handleStart = () => {
-      setPageLoading(true);
       NProgress.start();
     };
     const handleComplete = () => {
-      setPageLoading(false);
       NProgress.done();
     };
 
@@ -26,7 +25,20 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
     router.events.on("routeChangeError", handleComplete);
   }, [router]);
 
-  return <ThemeProvider theme={ProfileTheme}>{pageLoading ? <Loading /> : <Component {...pageProps} />}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={ProfileTheme}>
+      <motion.div
+        initial="pageInitial"
+        animate="pageAnimate"
+        variants={{
+          pageInitial: { opacity: 0 },
+          pageAnimate: { opacity: 1 },
+        }}>
+        <Navbar />
+        <Component {...pageProps} />
+      </motion.div>
+    </ThemeProvider>
+  );
 };
 
 export default App;
