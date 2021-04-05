@@ -6,7 +6,7 @@ export const Typography = {
     mark: '"Arizonia", cursive',
   },
   fontSizes: {
-    small: "0.5rem",
+    small: "0.75rem",
     p: "1rem",
     h4: "1.5rem",
     h3: "2rem",
