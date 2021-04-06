@@ -19,7 +19,7 @@ const ShowcaseCarousel: React.FC<ShowcaseCarouselProps> = ({ images, interval = 
       <Image sx={{ width: "100%" }} src="/showcase-header.svg" />
       <Carousel autoplayInterval={interval} autoplay>
         {images.map((image, index) => (
-          <Image key={index} src={image.src} alt={image.alt} />
+          <Image key={index} src={image.src} sx={{ width: "60rem", height: "29rem" }} alt={image.alt} />
         ))}
       </Carousel>
     </Flex>

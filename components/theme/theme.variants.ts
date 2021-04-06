@@ -18,6 +18,8 @@ export const Variants: Record<string, ThemeUIStyleObject> = {
       lineHeight: "heading",
     },
     caps: {
+      fontFamily: "body",
+      fontWeight: "body",
       textTransform: "uppercase",
       letterSpacing: "0.1rem",
     },
