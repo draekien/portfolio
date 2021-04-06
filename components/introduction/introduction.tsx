@@ -3,20 +3,18 @@ import { Flex, Image, Text } from "@theme-ui/components";
 
 const Introduction: React.FC = () => {
   return (
-    <Flex>
-      <Flex sx={{ flexFlow: "column", m: "lg" }}>
-        <Text sx={{ variant: "text.heading", fontSize: "h4", mb: "xs", fontWeight: "normal" }}>William Pei</Text>
-        <Text sx={{ fontWeight: "thin", mb: "md" }}>/ˈwɪljəm/ /peɪ/</Text>
-        <Text as="em" sx={{ fontStyle: "italic", fontWeight: "thin", mb: "xs" }}>
-          noun
-        </Text>
-        <Text sx={{ variant: "text.body", ml: "md" }}>
-          A fullstack developer for{" "}
-          <a href="https://www.infotrack.com.au" target="_blank">
-            InfoTrack AU
-          </a>{" "}
-          in Sydney, Australia. Regularly dabbles in UI/UX for sheer enjoyment. Currently creating a themed component library for React JS.
-        </Text>
+    <Flex sx={{ flexFlow: "column", m: "xl" }}>
+      <Flex>
+        <Text sx={{ variant: "text.heading", fontSize: "hero", lineHeight: "hero", pr: "lg" }}>.NET DEVELOPER</Text>
+        <Text sx={{ variant: "text.heading", fontSize: "hero", lineHeight: "hero", color: "muted" }}>AT</Text>
+      </Flex>
+      <Flex>
+        <Text sx={{ variant: "text.heading", fontSize: "hero", lineHeight: "hero", pr: "lg" }}>INFOTRACK</Text>
+        <Text sx={{ variant: "text.heading", fontSize: "hero", lineHeight: "hero", color: "muted" }}>IN</Text>
+      </Flex>
+      <Flex>
+        <Text sx={{ variant: "text.heading", fontSize: "hero", lineHeight: "hero", pr: "lg" }}>SYDNEY</Text>
+        <Text sx={{ variant: "text.heading", fontSize: "hero", lineHeight: "hero", color: "muted" }}>AUSTRALIA</Text>
       </Flex>
     </Flex>
   );

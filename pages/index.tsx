@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import Head from "next/head";
-import Link from "next/link";
 import Introduction from "../components/introduction/introduction";
+import MailDivider from "../components/mail-divider/mailDivider";
 
 const HomePage: React.FC = () => {
   return (
@@ -10,10 +10,8 @@ const HomePage: React.FC = () => {
         <title>FullStack Developer | William Pei</title>
       </Head>
       <main>
+        <MailDivider />
         <Introduction />
-        <Link href="/demo">
-          <a>DEMO</a>
-        </Link>
       </main>
     </div>
   );

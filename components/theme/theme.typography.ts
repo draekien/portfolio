@@ -1,9 +1,8 @@
 export const Typography = {
   fonts: {
-    body: '"Montserrat", sans-serif',
-    heading: '"Montserrat", sans-serif',
+    body: '"Barlow", sans-serif',
+    heading: '"Barlow", sans-serif',
     monospace: '"Fira Code", monospace',
-    mark: '"Arizonia", cursive',
   },
   fontSizes: {
     small: "0.75rem",
@@ -11,7 +10,8 @@ export const Typography = {
     h4: "1.5rem",
     h3: "2rem",
     h2: "2.5rem",
-    h1: "3rem",
+    h1: "4rem",
+    hero: "6rem",
   },
   fontWeights: {
     thin: 200,
@@ -23,5 +23,6 @@ export const Typography = {
   lineHeights: {
     body: 1.5,
     heading: 1.125,
+    hero: 1.5,
   },
 };

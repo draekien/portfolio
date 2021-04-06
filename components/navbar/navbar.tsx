@@ -1,11 +1,16 @@
 /** @jsxImportSource theme-ui */
-import { Flex } from "@theme-ui/components";
+import { Flex, Text } from "@theme-ui/components";
 import * as React from "react";
 import Logo from "../logo/logo";
 
 const Navbar: React.FC = () => {
   return (
-    <Flex sx={{ px: "xl", py: "md" }}>
+    <Flex sx={{ px: "xl", py: "md", justifyContent: "space-between" }}>
+      <Text sx={{ variant: "text.heading", fontSize: "h1", lineHeight: "heading" }}>
+        WILLIAM
+        <br />
+        PEI
+      </Text>
       <Logo />
     </Flex>
   );
