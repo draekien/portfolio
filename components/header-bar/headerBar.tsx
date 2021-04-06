@@ -1,12 +1,13 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Text } from "@theme-ui/components";
 import * as React from "react";
+import * as styles from "./headerBar.styles";
 import Logo from "../logo/logo";
 
 const HeaderBar: React.FC = () => {
   return (
-    <Flex sx={{ px: "xl", py: "md", justifyContent: "space-between" }}>
-      <Text sx={{ variant: "text.heading", fontSize: "h1", lineHeight: "heading" }}>
+    <Flex sx={styles.headerBarContainerCss}>
+      <Text sx={styles.nameCss}>
         WILLIAM
         <br />
         PEI
