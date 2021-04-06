@@ -27,10 +27,10 @@ class ProfileDocument extends Document {
           <meta property="og:image" content="https://i.imgur.com/M1jIKLm.png" />
           <meta property="og:title" content=".NET Developer | William Pei" />
           <meta property="og:description" content="The portfolio website for William Pei where he showcases personal projects." />
-          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content="@wpei" />
           <meta name="twitter:creator" content="@draekien" />
-          <meta name="twitter:title" content=".NET Deverloper | William Pei" />
+          <meta name="twitter:title" content=".NET Developer | William Pei" />
           <meta name="twitter:description" content="The portfolio website for William Pei where he showcases personal projects." />
           <meta name="twitter:image" content="https://i.imgur.com/M1jIKLm.png" />
           <meta name="twitter:image:alt" content="A preview of the landing page of the wpei website." />
