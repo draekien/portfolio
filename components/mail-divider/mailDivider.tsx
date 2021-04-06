@@ -7,7 +7,7 @@ import { MdEmail } from "react-icons/md";
 const MailDivider: React.FC = () => {
   return (
     <Flex sx={styles.mailDividerContainerCss}>
-      <a sx={styles.mailLinkCss} href="mailto:hellowp@mailinator.com" target="_blank">
+      <a sx={styles.mailLinkCss} href="mailto:hellowp@mailinator.com" target="_blank" title="Email William Pei">
         <MdEmail sx={styles.mailIconCss} />
       </a>
       <hr sx={styles.hrCss} />

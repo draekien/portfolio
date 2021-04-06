@@ -7,6 +7,11 @@ export const Variants: Record<string, ThemeUIStyleObject> = {
       fontWeight: "body",
       lineHeight: "body",
     },
+    mono: {
+      fontFamily: "monospace",
+      fontWeight: "body",
+      lineHeight: "body",
+    },
     heading: {
       fontFamily: "heading",
       fontWeight: "heading",

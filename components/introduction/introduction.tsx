@@ -3,7 +3,7 @@ import { Flex, Image, Text } from "@theme-ui/components";
 
 const Introduction: React.FC = () => {
   return (
-    <Flex sx={{ flexFlow: "column", m: "xl" }}>
+    <Flex sx={{ flexFlow: "column", m: "xl", height: "40rem", justifyContent: "center" }}>
       <Flex>
         <Text sx={{ variant: "text.heading", fontSize: "hero", lineHeight: "hero", pr: "lg" }}>.NET DEVELOPER</Text>
         <Text sx={{ variant: "text.heading", fontSize: "hero", lineHeight: "hero", color: "muted" }}>AT</Text>
