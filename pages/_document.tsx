@@ -22,6 +22,13 @@ class ProfileDocument extends Document {
           <meta name="msapplication-TileColor" content="#2d89ef" />
           <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
           <meta name="theme-color" content="#ffffff" />
+          <meta property="og:site_name" content="William Pei's Portfolio" />
+          <meta property="og:url" content="https://www.wpei.me" />
+          <meta property="og:image" content="https://i.imgur.com/M1jIKLm.png" />
+          <meta property="og:image:width" content="600" />
+          <meta property="og:image:height" content="297.31" />
+          <meta property="og:title" content=".NET Developer | William Pei" />
+          <meta property="og:description" content="The portfolio website for William Pei where he showcases personal projects." />
         </Head>
         <body>
           <Main />
