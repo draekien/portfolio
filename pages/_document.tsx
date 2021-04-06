@@ -24,7 +24,7 @@ class ProfileDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
           <meta property="og:site_name" content="wpei" />
           <meta property="og:url" content="https://www.wpei.me" />
-          <meta property="og:image" content="https://i.imgur.com/M1jIKLm.png" />
+          <meta property="og:image" content="https://i.imgur.com/L4VIf86.png" />
           <meta property="og:title" content=".NET Developer | William Pei" />
           <meta property="og:description" content="The portfolio website for William Pei where he showcases personal projects." />
           <meta name="twitter:card" content="summary" />
@@ -32,7 +32,7 @@ class ProfileDocument extends Document {
           <meta name="twitter:creator" content="@draekien" />
           <meta name="twitter:title" content=".NET Developer | William Pei" />
           <meta name="twitter:description" content="The portfolio website for William Pei where he showcases personal projects." />
-          <meta name="twitter:image" content="https://i.imgur.com/M1jIKLm.png" />
+          <meta name="twitter:image" content="https://i.imgur.com/L4VIf86.png" />
           <meta name="twitter:image:alt" content="A preview of the landing page of the wpei website." />
         </Head>
         <body>
