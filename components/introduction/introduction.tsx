@@ -1,20 +1,21 @@
 /** @jsxImportSource theme-ui */
-import { Flex, Image, Text } from "@theme-ui/components";
+import { Flex, Text } from "@theme-ui/components";
+import * as styles from "./introduction.styles";
 
 const Introduction: React.FC = () => {
   return (
-    <Flex sx={{ flexFlow: "column", m: "xl", height: "40rem", justifyContent: "center" }}>
+    <Flex sx={styles.introductionContainerCss}>
       <Flex>
-        <Text sx={{ variant: "text.heading", fontSize: "hero", lineHeight: "hero", pr: "lg" }}>.NET DEVELOPER</Text>
-        <Text sx={{ variant: "text.heading", fontSize: "hero", lineHeight: "hero", color: "muted" }}>AT</Text>
+        <Text sx={styles.headingTextCss}>.NET DEVELOPER</Text>
+        <Text sx={styles.headingTextMutedCss}>AT</Text>
       </Flex>
       <Flex>
-        <Text sx={{ variant: "text.heading", fontSize: "hero", lineHeight: "hero", pr: "lg" }}>INFOTRACK</Text>
-        <Text sx={{ variant: "text.heading", fontSize: "hero", lineHeight: "hero", color: "muted" }}>IN</Text>
+        <Text sx={styles.headingTextCss}>INFOTRACK</Text>
+        <Text sx={styles.headingTextMutedCss}>IN</Text>
       </Flex>
       <Flex>
-        <Text sx={{ variant: "text.heading", fontSize: "hero", lineHeight: "hero", pr: "lg" }}>SYDNEY</Text>
-        <Text sx={{ variant: "text.heading", fontSize: "hero", lineHeight: "hero", color: "muted" }}>AUSTRALIA</Text>
+        <Text sx={styles.headingTextCss}>SYDNEY</Text>
+        <Text sx={styles.headingTextMutedCss}>AUSTRALIA</Text>
       </Flex>
     </Flex>
   );

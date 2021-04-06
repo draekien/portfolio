@@ -1,11 +1,11 @@
 /** @jsxImportSource theme-ui */
 import { Box } from "@theme-ui/components";
-import * as React from "react";
+import * as styles from "./logo.styles";
 
 const Logo: React.FC = () => {
   return (
-    <Box sx={{ height: "4rem", width: "4rem" }}>
-      <img sx={{ width: "100%", height: "100%" }} src="/mark.svg" alt="The logo of William Pei" />
+    <Box sx={styles.logoContainerCss}>
+      <img sx={styles.logoSvgCss} src="/mark.svg" alt="The logo of William Pei" />
     </Box>
   );
 };

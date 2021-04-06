@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Text } from "@theme-ui/components";
-import * as React from "react";
 import { MdOpenInNew } from "react-icons/md";
+import * as styles from "./showcaseDescription.styles";
 
 export type label = {
   key: string;
@@ -17,48 +17,30 @@ export interface ShowcaseDescriptionProps {
 
 const ShowcaseDescription: React.FC<ShowcaseDescriptionProps> = ({ heading, href, labels, children }) => {
   return (
-    <Flex sx={{ flexFlow: "column", width: "30rem", m: "xl" }}>
-      <Flex as="h1" sx={{ mb: "lg" }}>
-        <Text sx={{ variant: "text.heading", color: "secondary", mr: "md" }}>\\</Text>
-        <a
-          href={href}
-          target="_blank"
-          sx={{
-            textDecoration: "none",
-            variant: "text.heading",
-            color: "primary",
-            transition: "all 300ms",
-            ":hover, :active, :focus": {
-              color: "s-000",
-            },
-            ":focus": {
-              outline: "0.125rem solid",
-              outlineColor: "muted",
-              outlineOffset: "0.25rem",
-            },
-          }}
-          rel="noopener noreferrer">
-          {heading} {href && <MdOpenInNew sx={{ width: "1rem", height: "1rem", verticalAlign: "top", mt: "xs" }} />}
+    <Flex sx={styles.showcaseDescriptionContainerCss}>
+      <Flex as="h1" sx={styles.showcaseHeadingContainerCss}>
+        <Text sx={styles.showcaseHeadingPreCss}>\\</Text>
+        <a href={href} target="_blank" sx={styles.showcaseHeadingLinkCss} rel="noopener noreferrer">
+          {heading} {href && <MdOpenInNew sx={styles.showcaseHeadingLinkIconCss} />}
         </a>
       </Flex>
-
-      <Flex sx={{ mb: "xl" }}>
-        <Flex sx={{ flexFlow: "column", mr: "md" }}>
+      <Flex sx={styles.showcaseLabelsContainerCss}>
+        <Flex sx={styles.labelKeyContainerCss}>
           {labels.map(({ key }, index) => (
-            <Text key={index} sx={{ variant: "text.mono", color: "secondary" }}>
+            <Text key={index} sx={styles.labelKeyCss}>
               @{key}
             </Text>
           ))}
         </Flex>
-        <Flex sx={{ flexFlow: "column" }}>
+        <Flex sx={styles.labelValueContainerCss}>
           {labels.map(({ value }, index) => (
-            <Text key={index} sx={{ variant: "text.body" }}>
+            <Text key={index} sx={styles.labelValueCss}>
               {value}
             </Text>
           ))}
         </Flex>
       </Flex>
-      <Flex sx={{ flexFlow: "column", mt: "lg" }}>{children}</Flex>
+      <Flex sx={styles.showcaseChildrenContainerCss}>{children}</Flex>
     </Flex>
   );
 };

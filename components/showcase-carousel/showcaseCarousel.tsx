@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Image } from "@theme-ui/components";
 import Carousel from "nuka-carousel";
-import * as React from "react";
+import * as styles from "./showcaseCarousel.styles";
 
 export type ImageWithAlt = {
   src: string;
@@ -15,8 +15,8 @@ export interface ShowcaseCarouselProps {
 
 const ShowcaseCarousel: React.FC<ShowcaseCarouselProps> = ({ images, interval = 5000 }) => {
   return (
-    <Flex sx={{ flexFlow: "column", position: "relative", borderRadius: "xl", overflow: "hidden", width: "60rem", m: "xl" }}>
-      <Image sx={{ width: "100%" }} src="/showcase-header.svg" />
+    <Flex sx={styles.showcaseCarouselContainerCss}>
+      <Image sx={styles.showcaseCarouselHeaderCss} src="/showcase-header.svg" alt="A mock up of a browser window." />
       <Carousel autoplayInterval={interval} autoplay>
         {images.map((image, index) => (
           <Image key={index} src={image.src} sx={{ width: "60rem", height: "29rem" }} alt={image.alt} />
