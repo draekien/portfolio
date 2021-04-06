@@ -6,7 +6,12 @@ import HeaderBar from "../components/header-bar/headerBar";
 import Showcase from "../components/showcase/showcase";
 import { Text } from "@theme-ui/components";
 import Footer from "../components/footer/footer";
-import * as styles from "./index.styles";
+import { ThemeUIStyleObject } from "theme-ui";
+
+const showcaseDescriptionBodyCss: ThemeUIStyleObject = {
+  variant: "text.body",
+  mb: "md",
+};
 
 const HomePage: React.FC = () => {
   return (
@@ -30,10 +35,10 @@ const HomePage: React.FC = () => {
               { key: "Deployed", value: "Vercel" },
             ],
           }}>
-          <Text sx={styles.showcaseDescriptionBodyCss}>
+          <Text sx={showcaseDescriptionBodyCss}>
             Jiggle Pudding wanted a very simple website to showcase the different flavours available, where they could be found, and how they could be contacted.
           </Text>
-          <Text sx={styles.showcaseDescriptionBodyCss}>
+          <Text sx={showcaseDescriptionBodyCss}>
             I used the colours from the provided logo as the colour palette of the website, took some photos of the product, ate some delicious Purin, and put together the design.
           </Text>
         </Showcase>
@@ -56,11 +61,11 @@ const HomePage: React.FC = () => {
               { key: "Deployed", value: "Heroku" },
             ],
           }}>
-          <Text sx={styles.showcaseDescriptionBodyCss}>
+          <Text sx={showcaseDescriptionBodyCss}>
             Macquarie University Advanced Web Development final end of course group project. We were instructed to create an MVP for a website that allowed user registration and
             user interactions.
           </Text>
-          <Text sx={styles.showcaseDescriptionBodyCss}>
+          <Text sx={showcaseDescriptionBodyCss}>
             I was responsible for the creation of the designs as well as the backend API using Express JS. I also assisted heavily in the creation of the frontend application and
             setup of our MongoDB.
           </Text>
