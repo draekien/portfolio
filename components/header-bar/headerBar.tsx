@@ -3,7 +3,7 @@ import { Flex, Text } from "@theme-ui/components";
 import * as React from "react";
 import Logo from "../logo/logo";
 
-const Navbar: React.FC = () => {
+const HeaderBar: React.FC = () => {
   return (
     <Flex sx={{ px: "xl", py: "md", justifyContent: "space-between" }}>
       <Text sx={{ variant: "text.heading", fontSize: "h1", lineHeight: "heading" }}>
@@ -16,4 +16,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+export default HeaderBar;

@@ -2,14 +2,16 @@
 import Head from "next/head";
 import Introduction from "../components/introduction/introduction";
 import MailDivider from "../components/mail-divider/mailDivider";
+import HeaderBar from "../components/header-bar/headerBar";
 
 const HomePage: React.FC = () => {
   return (
     <div>
       <Head>
-        <title>FullStack Developer | William Pei</title>
+        <title>.NET Developer | William Pei</title>
       </Head>
       <main>
+        <HeaderBar />
         <MailDivider />
         <Introduction />
       </main>
