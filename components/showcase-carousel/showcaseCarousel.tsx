@@ -24,7 +24,7 @@ const ShowcaseCarousel: React.FC<ShowcaseCarouselProps> = ({ images }) => {
   return (
     <Flex sx={styles.showcaseCarouselContainerCss}>
       {!isMobile && <DesktopCarouselHeader />}
-      <Carousel autoGenerateStyleTag>
+      <Carousel autoGenerateStyleTag wrapAround={images.length > 1}>
         {images.map(({ src, mobileSrc, alt }, index) => (
           <Image key={index} src={isMobile ? mobileSrc : src} sx={{ width: "60rem" }} alt={alt} loading="eager" />
         ))}
