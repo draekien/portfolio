@@ -19,25 +19,14 @@ const MobileSize = 481;
 const ShowcaseCarousel: React.FC<ShowcaseCarouselProps> = ({ images }) => {
   const isMobile = useMediaQuery(MobileSize);
 
-  const DesktopCarouselHeader = () => (
-    <Image
-      sx={styles.showcaseCarouselHeaderCss}
-      src="/showcase-header.svg"
-      alt="A mock up of a browser window."
-    />
-  );
+  const DesktopCarouselHeader = () => <Image sx={styles.showcaseCarouselHeaderCss} src="/showcase-header.svg" alt="A mock up of a browser window." />;
 
   return (
     <Flex sx={styles.showcaseCarouselContainerCss}>
       {!isMobile && <DesktopCarouselHeader />}
       <Carousel autoGenerateStyleTag>
         {images.map(({ src, mobileSrc, alt }, index) => (
-          <Image
-            key={index}
-            src={isMobile ? mobileSrc : src}
-            sx={{ width: "60rem" }}
-            alt={alt}
-          />
+          <Image key={index} src={isMobile ? mobileSrc : src} sx={{ width: "60rem" }} alt={alt} loading="eager" />
         ))}
       </Carousel>
     </Flex>
