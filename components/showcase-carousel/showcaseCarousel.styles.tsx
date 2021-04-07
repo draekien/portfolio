@@ -5,8 +5,9 @@ export const showcaseCarouselContainerCss: ThemeUIStyleObject = {
   position: "relative",
   borderRadius: "xl",
   overflow: "hidden",
-  width: "60rem",
-  m: "xl",
+  width: ["20rem", "40rem", "60rem"],
+  mx: ["0", "lg", "xl"],
+  my: "xl",
 };
 
 export const showcaseCarouselHeaderCss: ThemeUIStyleObject = {

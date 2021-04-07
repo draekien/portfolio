@@ -1,8 +1,8 @@
 import { ThemeUIStyleObject } from "@theme-ui/css";
 
 export const logoContainerCss: ThemeUIStyleObject = {
-  height: "4rem",
-  width: "4rem",
+  height: ["2rem", "3rem", "4rem"],
+  width: ["2rem", "3rem", "4rem"],
 };
 
 export const logoSvgCss: ThemeUIStyleObject = {

@@ -3,7 +3,7 @@ import { ThemeUIStyleObject } from "@theme-ui/css";
 export const showcaseDescriptionContainerCss: ThemeUIStyleObject = {
   flexFlow: "column",
   width: "30rem",
-  m: "xl",
+  m: [0, 0, "xl"],
 };
 
 export const showcaseHeadingContainerCss: ThemeUIStyleObject = {

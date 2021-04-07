@@ -2,24 +2,42 @@
 import { Flex, Image } from "@theme-ui/components";
 import Carousel from "nuka-carousel";
 import * as styles from "./showcaseCarousel.styles";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export type ImageWithAlt = {
   src: string;
+  mobileSrc: string;
   alt: string;
 };
 
 export interface ShowcaseCarouselProps {
   images: ImageWithAlt[];
-  interval?: number;
 }
 
-const ShowcaseCarousel: React.FC<ShowcaseCarouselProps> = ({ images, interval = 5000 }) => {
+const MobileSize = 481;
+
+const ShowcaseCarousel: React.FC<ShowcaseCarouselProps> = ({ images }) => {
+  const isMobile = useMediaQuery(MobileSize);
+
+  const DesktopCarouselHeader = () => (
+    <Image
+      sx={styles.showcaseCarouselHeaderCss}
+      src="/showcase-header.svg"
+      alt="A mock up of a browser window."
+    />
+  );
+
   return (
     <Flex sx={styles.showcaseCarouselContainerCss}>
-      <Image sx={styles.showcaseCarouselHeaderCss} src="/showcase-header.svg" alt="A mock up of a browser window." />
-      <Carousel autoplayInterval={interval} autoplay>
-        {images.map((image, index) => (
-          <Image key={index} src={image.src} sx={{ width: "60rem", height: "29rem" }} alt={image.alt} />
+      {!isMobile && <DesktopCarouselHeader />}
+      <Carousel autoGenerateStyleTag>
+        {images.map(({ src, mobileSrc, alt }, index) => (
+          <Image
+            key={index}
+            src={isMobile ? mobileSrc : src}
+            sx={{ width: "60rem" }}
+            alt={alt}
+          />
         ))}
       </Carousel>
     </Flex>

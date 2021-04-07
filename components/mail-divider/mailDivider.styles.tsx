@@ -3,7 +3,7 @@ import { ThemeUIStyleObject } from "@theme-ui/css";
 export const mailDividerContainerCss: ThemeUIStyleObject = {
   mt: "sm",
   mb: "xl",
-  mx: "xl",
+  mx: ["lg", "lg", "xl"],
   justifyContent: "flex-start",
   alignItems: "center",
 };
