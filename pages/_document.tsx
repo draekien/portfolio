@@ -13,7 +13,12 @@ class ProfileDocument extends Document {
       <Html lang="en-AU">
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Fira+Code&display=swap"
+            rel="stylesheet"
+            integrity="sha256-gZbI4+wrLYCTHUHbSevc5Cb937hgztYDHphgjt5Rauw= sha384-sYrJJNij21redvh+GnbWykpTMerBpGdWJ5ZPF/yD8lr0FZjTDZ2xoATsTAyqhIEB sha512-I5G0wuTOBiyqImBG+4rPspK0A9ruasyBzzLc172bo8KGb5FOjJ4C6/OnecMQdIcPcEmWT0KUjLLrGG/6/QIm8g=="
+            crossOrigin="anonymous"
+          />
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
