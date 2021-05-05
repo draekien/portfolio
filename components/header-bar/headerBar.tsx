@@ -4,14 +4,15 @@ import * as React from "react";
 import * as styles from "./headerBar.styles";
 import Logo from "../logo/logo";
 
-const HeaderBar: React.FC = () => {
+export interface HeaderBarProps {
+  /** The title of the page to display */
+  title: React.ReactNode;
+}
+
+const HeaderBar: React.FC<HeaderBarProps> = ({ title }) => {
   return (
     <Flex sx={styles.headerBarContainerCss}>
-      <Text sx={styles.nameCss}>
-        WILLIAM
-        <br />
-        PEI
-      </Text>
+      <Text sx={styles.nameCss}>{title}</Text>
       <Logo />
     </Flex>
   );

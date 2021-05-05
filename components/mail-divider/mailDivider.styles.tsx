@@ -8,13 +8,14 @@ export const mailDividerContainerCss: ThemeUIStyleObject = {
   alignItems: "center",
 };
 
-export const mailLinkCss: ThemeUIStyleObject = {
+export const iconLinkCss: ThemeUIStyleObject = {
   height: "1.5rem",
   width: "1.5rem",
   color: "primary",
   mr: "md",
   outline: "none",
   borderRadius: "sm",
+  cursor: "pointer",
   transition: "all 300ms",
   ":hover, :active, :focus": {
     color: "secondary",
@@ -26,7 +27,7 @@ export const mailLinkCss: ThemeUIStyleObject = {
   },
 };
 
-export const mailIconCss: ThemeUIStyleObject = {
+export const iconCss: ThemeUIStyleObject = {
   width: "100%",
   height: "100%",
 };

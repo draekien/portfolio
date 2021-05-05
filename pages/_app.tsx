@@ -6,7 +6,9 @@ import "../styles/globals.css";
 import * as React from "react";
 import ProfileTheme from "../components/theme/theme";
 import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 import { motion } from "framer-motion";
+import * as gtag from "../lib/gtag";
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const router = useRouter();
@@ -23,6 +25,18 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
     router.events.on("routeChangeComplete", handleComplete);
     router.events.on("routeChangeError", handleComplete);
   }, [router]);
+
+  React.useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url);
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
     <ThemeProvider theme={ProfileTheme}>

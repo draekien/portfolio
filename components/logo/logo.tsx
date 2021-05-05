@@ -1,11 +1,14 @@
 /** @jsxImportSource theme-ui */
 import { Box } from "@theme-ui/components";
+import Link from "next/link";
 import * as styles from "./logo.styles";
 
 const Logo: React.FC = () => {
   return (
     <Box sx={styles.logoContainerCss}>
-      <img sx={styles.logoSvgCss} src="/mark.svg" alt="The logo of William Pei" />
+      <Link href="/">
+        <img sx={styles.logoSvgCss} src="/mark.svg" alt="The logo of William Pei" title="Go to Home Page" />
+      </Link>
     </Box>
   );
 };

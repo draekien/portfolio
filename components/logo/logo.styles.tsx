@@ -6,6 +6,7 @@ export const logoContainerCss: ThemeUIStyleObject = {
 };
 
 export const logoSvgCss: ThemeUIStyleObject = {
+  cursor: "pointer",
   width: "100%",
   height: "100%",
 };

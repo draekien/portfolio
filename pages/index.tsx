@@ -15,7 +15,15 @@ const HomePage: React.FC = () => {
         <title>.NET Developer | William Pei</title>
       </Head>
       <main>
-        <HeaderBar />
+        <HeaderBar
+          title={
+            <span>
+              WILLIAM
+              <br />
+              PEI
+            </span>
+          }
+        />
         <MailDivider />
         <Introduction />
         <DraekienUiShowcase />

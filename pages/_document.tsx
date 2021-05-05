@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
+import { GA_TRACKING_ID } from "../lib/gtag";
 
 class ProfileDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -34,6 +35,20 @@ class ProfileDocument extends Document {
           <meta name="twitter:description" content="The portfolio website for William Pei where he showcases personal projects." />
           <meta name="twitter:image" content="https://i.imgur.com/L4VIf86.png" />
           <meta name="twitter:image:alt" content="A preview of the landing page of the wpei website." />
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname
+            });
+            `,
+            }}
+          />
         </Head>
         <body>
           <Main />
