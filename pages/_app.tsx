@@ -27,7 +27,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   }, [router]);
 
   React.useEffect(() => {
-    const handleRouteChange = (url) => {
+    const handleRouteChange = (url: any) => {
       gtag.pageview(url);
     };
 
