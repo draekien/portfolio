@@ -24,7 +24,7 @@ const Article: React.FC<ArticleProps> = ({ title, author, published, coverPhoto,
         <section sx={{ width: "100%" }}>
           <Heading variant="h2">{title}</Heading>
           <sub sx={{ variant: "text.heading", fontSize: "small" }}>
-            {author} <span sx={{ color: "secondary" }}>\\</span> {published}
+            {author} <span sx={{ color: "secondary", px: "sm" }}>\\</span> {published}
           </sub>
         </section>
         {children}
