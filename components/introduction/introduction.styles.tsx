@@ -11,7 +11,7 @@ export const headingTextCss: ThemeUIStyleObject = {
   variant: "text.heading",
   fontSize: ["h3", "h1", "hero"],
   lineHeight: "hero",
-  pr: ["sm", "md", "lg"],
+  pr: "xs",
 };
 
 export const headingTextMutedCss: ThemeUIStyleObject = {
