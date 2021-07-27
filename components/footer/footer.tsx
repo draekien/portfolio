@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
       <Flex>
         <Text sx={styles.bodyTextLeftCss}>&copy; William Pei</Text>
         <Text sx={styles.bodyTextDividerCss}>\\</Text>
-        <Text sx={styles.bodyTextRightCss}>last updated 21.04.07</Text>
+        <Text sx={styles.bodyTextRightCss}>last updated 21.06.28</Text>
       </Flex>
     </Flex>
   );
