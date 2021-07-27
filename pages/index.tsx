@@ -7,6 +7,7 @@ import Footer from "../components/footer/footer";
 import JigglePuddingShowcase from "../features/jiggle-pudding/jigglePuddingShowcase";
 import BookMqShowcase from "../features/book-mq/bookMqShowcase";
 import DraekienUiShowcase from "../features/draekien-ui/draekienUiShowcase";
+import FluentConstructorAssertionsShowcase from "../features/fluent-constructor-assertions/fluentConstructorAssertionsShowcase";
 
 const HomePage: React.FC = () => {
   return (
@@ -26,6 +27,7 @@ const HomePage: React.FC = () => {
         />
         <MailDivider />
         <Introduction />
+        <FluentConstructorAssertionsShowcase />
         <DraekienUiShowcase />
         <JigglePuddingShowcase />
         <BookMqShowcase />

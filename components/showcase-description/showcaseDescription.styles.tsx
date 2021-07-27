@@ -40,6 +40,7 @@ export const showcaseHeadingLinkIconCss: ThemeUIStyleObject = {
 
 export const showcaseLabelsContainerCss: ThemeUIStyleObject = {
   mb: "xl",
+  flexFlow: "row nowrap",
 };
 
 export const labelKeyContainerCss: ThemeUIStyleObject = {
@@ -58,6 +59,7 @@ export const labelValueContainerCss: ThemeUIStyleObject = {
 
 export const labelValueCss: ThemeUIStyleObject = {
   variant: "text.body",
+  width: "fit-content",
 };
 
 export const showcaseChildrenContainerCss: ThemeUIStyleObject = {
