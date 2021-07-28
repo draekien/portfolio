@@ -21,8 +21,10 @@ const Article: React.FC<ArticleProps> = ({ title, author, published, coverPhoto,
         </div>
       </div>
       <article sx={{ display: "flex", flexFlow: "column", width: "100%", maxWidth: ["20rem", "40rem", "60rem"], variant: "text.body" }}>
-        <section sx={{ width: "100%" }}>
-          <Heading variant="h2">{title}</Heading>
+        <section sx={{ width: "100%", mb: "xl" }}>
+          <div sx={{ mt: "xl", mb: "sm" }}>
+            <Heading variant="h2">{title}</Heading>
+          </div>
           <sub sx={{ variant: "text.heading", fontSize: "small" }}>
             {author} <span sx={{ color: "secondary", px: "sm" }}>\\</span> {published}
           </sub>

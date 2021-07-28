@@ -2,7 +2,7 @@ import { ThemeUIStyleObject } from "@theme-ui/css";
 
 export const headerBarContainerCss: ThemeUIStyleObject = {
   px: ["lg", "lg", "xl"],
-  pt: ["lg", "lg", "xl"],
+  pt: "md",
   pb: "md",
   justifyContent: "space-between",
 };
