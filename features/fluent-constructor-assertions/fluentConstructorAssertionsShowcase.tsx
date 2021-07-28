@@ -3,6 +3,7 @@ import React from "react";
 import Showcase from "../../components/showcase/showcase";
 import { Text } from "theme-ui";
 import { showcaseDescriptionBodyCss } from "../common/common.styles";
+import InlineLink from "../../components/inline-link/inlineLink";
 
 const images = [
   {
@@ -20,6 +21,14 @@ const labels = [
   { key: "Language", value: "C#" },
   { key: "Built", value: ".NET Standard 2.0" },
   { key: "Used", value: "Unit Testing" },
+  {
+    key: "Blog",
+    value: (
+      <InlineLink href="http://localhost:3000/blog/csharp/unitTestingConstructors" hideTooltip internal>
+        Code With Me
+      </InlineLink>
+    ),
+  },
 ];
 const carousel = { images };
 const headers = {

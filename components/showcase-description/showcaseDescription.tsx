@@ -5,7 +5,7 @@ import * as styles from "./showcaseDescription.styles";
 
 export type label = {
   key: string;
-  value: string;
+  value: React.ReactNode;
 };
 
 export interface ShowcaseDescriptionProps {

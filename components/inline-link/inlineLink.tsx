@@ -5,14 +5,15 @@ export interface InlineLinkProps {
   href: string;
   children: React.ReactNode;
   hideTooltip?: boolean;
+  internal?: boolean;
 }
 
-const InlineLink: React.FC<InlineLinkProps> = ({ href, children, hideTooltip = false }) => {
+const InlineLink: React.FC<InlineLinkProps> = ({ href, children, hideTooltip = false, internal = false }) => {
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      target={internal ? "" : "_blank"}
+      rel={internal ? "" : "noopener noreferrer"}
       sx={{
         textDecoration: "none",
         borderBottom: "1px solid",
