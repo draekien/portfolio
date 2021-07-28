@@ -24,6 +24,7 @@ const InlineLink: React.FC<InlineLinkProps> = ({ href, children, hideTooltip = f
             fontFamily: "inherit",
             fontWeight: "inherit",
             fontSize: "inherit",
+            cursor: "pointer",
             ":hover, :focus": {
               backgroundColor: "b-300",
               borderTopLeftRadius: "md",
@@ -52,6 +53,7 @@ const InlineLink: React.FC<InlineLinkProps> = ({ href, children, hideTooltip = f
         fontFamily: "inherit",
         fontWeight: "inherit",
         fontSize: "inherit",
+        cursor: "pointer",
         ":hover, :focus": {
           backgroundColor: "b-300",
           borderTopLeftRadius: "md",

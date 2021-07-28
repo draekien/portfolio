@@ -6,6 +6,7 @@ import CodeBlock from "../../../components/code-block/codeBlock";
 import Code from "../../../components/code/code";
 import HeaderBar from "../../../components/header-bar/headerBar";
 import InlineLink from "../../../components/inline-link/inlineLink";
+import Footer from "../../../components/footer/footer";
 
 const exampleCtor = `public class TransportHandler : ICommandHandler
 {
@@ -160,6 +161,7 @@ const UnitTestingConstructorsBlog: React.FC = () => {
           </Text>
         </Article>
       </main>
+      <Footer />
     </div>
   );
 };
