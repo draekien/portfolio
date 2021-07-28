@@ -24,7 +24,7 @@ const labels = [
   {
     key: "Blog",
     value: (
-      <InlineLink href="http://localhost:3000/blog/csharp/unitTestingConstructors" hideTooltip internal>
+      <InlineLink href="/blog/csharp/unitTestingConstructors" hideTooltip internal>
         Code With Me
       </InlineLink>
     ),
