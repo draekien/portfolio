@@ -4,7 +4,7 @@ import { Flex } from "@theme-ui/components";
 import { Heading } from "../heading/heading";
 
 export interface ArticleProps {
-  title: string;
+  title: React.ReactNode;
   author: string;
   published: string;
   coverPhoto: string;
