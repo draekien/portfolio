@@ -13,7 +13,7 @@ export const showcaseHeadingContainerCss: ThemeUIStyleObject = {
 export const showcaseHeadingPreCss: ThemeUIStyleObject = {
   variant: "text.heading",
   color: "secondary",
-  mr: "md",
+  mr: "sm",
 };
 
 export const showcaseHeadingLinkCss: ThemeUIStyleObject = {
@@ -35,7 +35,7 @@ export const showcaseHeadingLinkIconCss: ThemeUIStyleObject = {
   width: "1rem",
   height: "1rem",
   verticalAlign: "top",
-  mt: "xs",
+  mt: "0.2em",
 };
 
 export const showcaseLabelsContainerCss: ThemeUIStyleObject = {
