@@ -107,10 +107,9 @@ const UnitTestingConstructorsBlog: React.FC = () => {
             {exampleCtor}
           </CodeBlock>
           <Text as="p" sx={bodyCss}>
-            To unit test something like this to 100% branch coverage, you would have to write multiple actions and then assert that they thrown an{" "}
-            <Code>ArgumentNullException</Code> when each action is executed. You would also have to write a test to make sure that no exceptions are thrown when both arguments are
-            valid. For instance, we can use <InlineLink href="https://xunit.net/">XUnit</InlineLink> and{" "}
-            <InlineLink href="https://fluentassertions.com/">FluentAssertions</InlineLink> to do the below:
+            To unit test something like this to 100% branch coverage, you would have to write multiple actions and then assert that they throw an <Code>ArgumentNullException</Code>{" "}
+            when each action is executed. You would also have to write a test to make sure that no exceptions are thrown when both arguments are valid. For instance, we can use{" "}
+            <InlineLink href="https://xunit.net/">XUnit</InlineLink> and <InlineLink href="https://fluentassertions.com/">FluentAssertions</InlineLink> to do the below:
           </Text>
           <CodeBlock language="csharp" showLineNumbers>
             {exampleXunitTests}

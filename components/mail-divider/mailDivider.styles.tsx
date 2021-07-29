@@ -9,6 +9,7 @@ export const mailDividerContainerCss: ThemeUIStyleObject = {
 };
 
 export const iconLinkCss: ThemeUIStyleObject = {
+  display: "inline-block",
   height: "1.5rem",
   width: "1.5rem",
   color: "primary",
@@ -16,6 +17,7 @@ export const iconLinkCss: ThemeUIStyleObject = {
   outline: "none",
   borderRadius: "sm",
   cursor: "pointer",
+  verticalAlign: "middle",
   transition: "all 300ms",
   ":hover, :active, :focus": {
     color: "secondary",

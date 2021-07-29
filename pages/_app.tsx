@@ -9,8 +9,6 @@ import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { motion } from "framer-motion";
 import * as gtag from "../lib/gtag";
-import ReactTooltip from "react-tooltip";
-import { ThemeColors } from "../components/theme/theme.colors";
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const router = useRouter();
@@ -51,7 +49,6 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
         }}>
         <Component {...pageProps} />
       </motion.div>
-      <ReactTooltip backgroundColor={ThemeColors["b-400"]} textColor={ThemeColors.secondary} />
     </ThemeProvider>
   );
 };
