@@ -2,6 +2,7 @@
 import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { tomorrowNight } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import * as styles from "./codeBlock.styles";
 
 export interface CodeBlockProps {
   children: React.ReactNode;
@@ -12,16 +13,16 @@ export interface CodeBlockProps {
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ language, wrapLongLines, showLineNumbers, children }) => {
   return (
-    <div sx={{ backgroundColor: "b-500", px: "md", mb: "lg", mx: "md", borderRadius: "md", variant: "text.mono" }}>
+    <span sx={styles.codeBlockContainerCss}>
       <SyntaxHighlighter
         wrapLongLines={wrapLongLines}
         showLineNumbers={showLineNumbers}
         language={language}
         style={tomorrowNight}
-        customStyle={{ background: "none", fontFamily: "inherit", fontWeight: "inherit", lineHeight: "inherit" }}>
+        customStyle={{ backgroundColor: "inherit", fontFamily: "inherit", fontWeight: "inherit", lineHeight: "inherit" }}>
         {children}
       </SyntaxHighlighter>
-    </div>
+    </span>
   );
 };
 

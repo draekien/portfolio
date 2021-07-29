@@ -86,7 +86,7 @@ const UnitTestingConstructorsBlog: React.FC = () => {
             <div>
               Unit Testing Constructors in C# with{" "}
               <InlineLink href="https://github.com/draekien/FluentConstructorAssertions" hideTooltip>
-                FluentConstructorAssertions
+                Fluent Constructor Assertions
               </InlineLink>
             </div>
           }
@@ -128,29 +128,27 @@ const UnitTestingConstructorsBlog: React.FC = () => {
             {exampleFcaTests}
           </CodeBlock>
           <Text as="h4">Whoa what was that!</Text>
-          <Text as="p" sx={bodyCss}>
-            Lets break it down into blocks and explain what just happened.
-            <dl>
-              <dt>Step 1: define the constructor we want to test</dt>
-              <dd>
-                <Code>Lines 9 - 10</Code>: here, we are creating a test context for the class <Code>TransportHandler</Code> which has a constructor that accepts two arguments:{" "}
-                <Code>ITransportService</Code> and <Code>{`ILogger<TransportHandler>`}</Code>.
-              </dd>
-              <dt>Step 2: define the first test case</dt>
-              <dd>
-                <Code>Lines 11 - 12</Code>: in this case, we are checking that the constructor will throw an <Code>ArgumentNullException</Code> when the first parameter is{" "}
-                <Code>null</Code> because a <Code>"Null transport service should throw an exception"</Code>
-              </dd>
-              <dt>Step 3: add some more test cases</dt>
-              <dd>
-                We are able to chain additional test cases by using the <Code>And</Code> keyword. You can see examples of this on <Code>Lines 13 and 14</Code>. We can also use the{" "}
-                <Code>Succeeds()</Code> method to define that test case that should not throw an exception.
-              </dd>
-              <dt>Step 4: lets execute the test!</dt>
-              <dd>
-                <Code>Line 17</Code>: we can tell the test context to execute the configured test cases with the <Code>Should.BeTrue()</Code> method.
-              </dd>
-            </dl>
+          <Text as="dl" sx={bodyCss}>
+            <span sx={{ mb: "lg", display: "block" }}>Lets break it down into blocks and explain what just happened.</span>
+            <dt>Step 1: define the constructor we want to test</dt>
+            <dd>
+              <Code>Lines 9 - 10</Code>: here, we are creating a test context for the class <Code>TransportHandler</Code> which has a constructor that accepts two arguments:{" "}
+              <Code>ITransportService</Code> and <Code>{`ILogger<TransportHandler>`}</Code>.
+            </dd>
+            <dt>Step 2: define the first test case</dt>
+            <dd>
+              <Code>Lines 11 - 12</Code>: in this case, we are checking that the constructor will throw an <Code>ArgumentNullException</Code> when the first parameter is{" "}
+              <Code>null</Code> because a <Code>"Null transport service should throw an exception"</Code>
+            </dd>
+            <dt>Step 3: add some more test cases</dt>
+            <dd>
+              We are able to chain additional test cases by using the <Code>And</Code> keyword. You can see examples of this on <Code>Lines 13 and 14</Code>. We can also use the{" "}
+              <Code>Succeeds()</Code> method to define that test case that should not throw an exception.
+            </dd>
+            <dt>Step 4: lets execute the test!</dt>
+            <dd>
+              <Code>Line 17</Code>: we can tell the test context to execute the configured test cases with the <Code>Should.BeTrue()</Code> method.
+            </dd>
           </Text>
           <Text as="h3">Check out the code!</Text>
           <Text as="p" sx={bodyCss}>

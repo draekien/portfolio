@@ -14,6 +14,7 @@ export const showcaseHeadingPreCss: ThemeUIStyleObject = {
   variant: "text.heading",
   color: "secondary",
   mr: "sm",
+  width: "1.2em",
 };
 
 export const showcaseHeadingLinkCss: ThemeUIStyleObject = {
@@ -21,6 +22,7 @@ export const showcaseHeadingLinkCss: ThemeUIStyleObject = {
   variant: "text.heading",
   color: "primary",
   transition: "all 300ms",
+  width: "max-content",
   ":hover, :active, :focus": {
     color: "s-000",
   },

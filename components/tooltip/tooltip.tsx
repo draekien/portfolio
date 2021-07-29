@@ -20,7 +20,7 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
       )}
       followCursor={true}
       plugins={[followCursor]}>
-      <div sx={{ display: "inline" }}>{children}</div>
+      <span>{children}</span>
     </Tippy>
   );
 };
