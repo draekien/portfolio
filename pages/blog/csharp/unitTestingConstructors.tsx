@@ -59,9 +59,9 @@ public void WhenInstantiatingTransportHandler_ThenHandleAllScenariosAppropriatel
   // ACT + ASSERT
   ForConstructorOf<TransportHandler>
     .WithArgTypes(typeof(ITransportService), typeof(ILogger<TransportHandler>))
-    .Throws<ArgumentNullException>("Null transport service should throw an exception")
+    .Throws<ArgumentNullException>("Value cannot be null. (Parameter 'transportService')")
     .ForArgs(null, logger)
-    .And.Throws<ArgumentNullException>("Null logger should throw an exception")
+    .And.Throws<ArgumentNullException>("Value cannot be null. (Parameter 'logger')")
     .ForArgs(transportService, null)
     .And.Succeeds("Both arguments are not null")
     .ForArgs(transportService, logger)
@@ -138,7 +138,9 @@ const UnitTestingConstructorsBlog: React.FC = () => {
             <dt>Step 2: define the first test case</dt>
             <dd>
               <Code>Lines 11 - 12</Code>: in this case, we are checking that the constructor will throw an <Code>ArgumentNullException</Code> when the first parameter is{" "}
-              <Code>null</Code> because a <Code>"Null transport service should throw an exception"</Code>
+              <Code>null</Code>. We also define the expected exception message <Code>"Value cannot be null. (Parameter 'transportService')"</Code>. This expected exception message
+              helps the test runner identify whether the exception was thrown for the correct parameter. If you do not specify this message, the runner will assume any exception of
+              the specified type is a valid exception.
             </dd>
             <dt>Step 3: add some more test cases</dt>
             <dd>
