@@ -1,34 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+  <img src="docs/wpei-logo.svg" alt="the logo of wpei.me">
+</p>
 
-## Getting Started
+<h1 align="center">Portfolio</h1>
 
-First, run the development server:
+- [Introduction](#introduction)
+- [Getting started](#getting-started)
+  - [Project structure](#project-structure)
+  - [CI/CD](#cicd)
+- [Technologies used](#technologies-used)
 
-```bash
-npm run dev
-# or
-yarn dev
+## Introduction
+
+Welcome to the repository for my [portfolio website](https://wpei.me), where I showcase
+other projects I have worked on, as well as publish articles in a blog format.
+
+## Getting started
+
+Follow the steps below to get started with local development:
+
+1. Clone or fork this repository
+2. Run `yarn` to install packages
+3. Run `yarn dev` to start the project
+
+### Project structure
+
+```text
+|-components -> the building block components
+|-features   -> the showcased (featured) projects
+|-hooks      -> custom react hooks
+|-lib        -> third party javascript functions
+|-pages      -> the pages of the website
+|-public     -> the public assets for the website
+|-styles     -> the css files
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### CI/CD
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+This project uses mainline deployment for CI/CD. This is handled by
+Vercel as this is a next js project.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Technologies used
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+This project was built using [NextJS](https://nextjs.org/) and uses the following
+technologies:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Theme-UI](https://theme-ui.com/) - for creating the design system
+- [Typescript](https://www.typescriptlang.org/) - for strongly typed javascript
+- [Yarn](https://yarnpkg.com/) - for dependency management
+- [Vercel](https://vercel.com) - for deployment and hosting

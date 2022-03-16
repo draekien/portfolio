@@ -36,6 +36,16 @@ const cardLinkCss: (fullWidth: boolean) => ThemeUIStyleObject = (fullWidth) => (
   },
 });
 
+/**
+ * A card that links to another resource.
+ * @param props - the {@link CardLinkProps}
+ * @param props.href - the url to link to
+ * @param props.title - the title of the card
+ * @param props.children - the body of the card
+ * @param [props.external=false] - is the href provided an external link
+ * @param [props.fullWidth=false] - should the card take up the full width of the parent container
+ * @returns The card link component
+ */
 export const CardLink: React.FC<CardLinkProps> = ({ href, title, children, external = false, fullWidth = false }) => {
   if (!external) {
     return (
