@@ -1,12 +1,7 @@
 /** @jsxImportSource theme-ui */
 import Head from "next/head";
 import { Text, ThemeUICSSObject } from "theme-ui";
-import Article from "../../../components/article/article";
-import CodeBlock from "../../../components/code-block/codeBlock";
-import Code from "../../../components/code/code";
-import HeaderBar from "../../../components/header-bar/headerBar";
-import InlineLink from "../../../components/inline-link/inlineLink";
-import Footer from "../../../components/footer/footer";
+import { Breadcrumbs, Article, CodeBlock, Code, HeaderBar, InlineLink, Footer } from "../../../components";
 
 const exampleCtor = `public class TransportHandler : ICommandHandler
 {
@@ -81,6 +76,13 @@ const UnitTestingConstructorsBlog: React.FC = () => {
       </Head>
       <main sx={{ pb: "xl" }}>
         <HeaderBar title={<span>CODE WITH ME</span>} />
+        <Breadcrumbs
+          crumbs={[
+            { title: "Home", href: "/" },
+            { title: "Code with me", href: "/blog" },
+            { title: "CSharp", href: "/blog/csharp" },
+          ]}
+        />
         <Article
           title={
             <div>

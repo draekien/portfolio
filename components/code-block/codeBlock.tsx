@@ -11,7 +11,7 @@ export interface CodeBlockProps {
   showLineNumbers?: boolean;
 }
 
-const CodeBlock: React.FC<CodeBlockProps> = ({ language, wrapLongLines, showLineNumbers, children }) => {
+export const CodeBlock: React.FC<CodeBlockProps> = ({ language, wrapLongLines, showLineNumbers, children }) => {
   return (
     <span sx={styles.codeBlockContainerCss}>
       <SyntaxHighlighter

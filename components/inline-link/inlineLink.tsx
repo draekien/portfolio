@@ -10,7 +10,7 @@ export interface InlineLinkProps {
   internal?: boolean;
 }
 
-const InlineLink: React.FC<InlineLinkProps> = ({ href, children, hideTooltip = false, internal = false }) => {
+export const InlineLink: React.FC<InlineLinkProps> = ({ href, children, hideTooltip = false, internal = false }) => {
   if (internal) {
     return (
       <Tooltip text={hideTooltip ? "" : href}>

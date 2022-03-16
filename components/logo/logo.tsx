@@ -3,7 +3,7 @@ import { Box } from "@theme-ui/components";
 import Link from "next/link";
 import * as styles from "./logo.styles";
 
-const Logo: React.FC = () => {
+export const Logo: React.FC = () => {
   return (
     <Box sx={styles.logoContainerCss}>
       <Link href="/">

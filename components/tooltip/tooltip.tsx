@@ -8,7 +8,7 @@ export interface TooltipProps {
   children: React.ReactNode;
 }
 
-const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
+export const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
   if (text === "") return <React.Fragment>{children}</React.Fragment>;
 
   return (

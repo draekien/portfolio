@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import React from "react";
-import Showcase from "../../components/showcase/showcase";
+import { Showcase } from "../../components";
 import { Text } from "theme-ui";
 import { showcaseDescriptionBodyCss } from "../common/common.styles";
 
@@ -31,7 +31,7 @@ const labels = [
   { key: "Designed", value: "Adobe XD" },
   { key: "Built", value: "React, Theme-UI" },
   { key: "Deployed", value: "Chromatic" },
-  { key: "Installed", value: "npm install draekien-ui" },
+  { key: "Installed", value: "npm install draekien-ui (obsolete)" },
 ];
 
 const carousel = { images };
@@ -41,7 +41,7 @@ const headers = {
   labels,
 };
 
-const DraekienUiShowcase: React.FC = () => {
+export const DraekienUiShowcase: React.FC = () => {
   return (
     <Showcase carousel={carousel} headers={headers}>
       <Text sx={showcaseDescriptionBodyCss}>

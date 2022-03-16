@@ -6,7 +6,7 @@ import { Flex } from "@theme-ui/components";
 import { MdEmail, MdCode } from "react-icons/md";
 import Tooltip from "../tooltip/tooltip";
 
-const MailDivider: React.FC = () => {
+export const MailDivider: React.FC = () => {
   return (
     <Flex as="nav" sx={styles.mailDividerContainerCss}>
       <Tooltip text="Say hello!">

@@ -9,7 +9,7 @@ export interface HeaderBarProps {
   title: React.ReactNode;
 }
 
-const HeaderBar: React.FC<HeaderBarProps> = ({ title }) => {
+export const HeaderBar: React.FC<HeaderBarProps> = ({ title }) => {
   return (
     <Flex sx={styles.headerBarContainerCss}>
       <Text sx={styles.nameCss}>{title}</Text>

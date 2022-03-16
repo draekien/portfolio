@@ -2,7 +2,7 @@
 import { Flex, Text } from "@theme-ui/components";
 import * as styles from "./introduction.styles";
 
-const Introduction: React.FC = () => {
+export const Introduction: React.FC = () => {
   return (
     <Flex sx={styles.introductionContainerCss}>
       <Flex>

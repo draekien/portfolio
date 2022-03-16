@@ -4,7 +4,7 @@ import { ThemeColors } from "./theme.colors";
 import { Layouts } from "./theme.layouts";
 import { Variants } from "./theme.variants";
 
-const ProfileTheme: Theme = {
+export const ProfileTheme: Theme = {
   breakpoints: ["40em", "56em", "64em"],
   colors: ThemeColors,
   ...Typography,

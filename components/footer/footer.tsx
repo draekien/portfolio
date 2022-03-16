@@ -3,7 +3,7 @@ import { Flex, Text } from "@theme-ui/components";
 import * as React from "react";
 import * as styles from "./footer.styles";
 
-const Footer: React.FC = () => {
+export const Footer: React.FC = () => {
   return (
     <Flex as="footer" sx={styles.footerContainerCss}>
       <Text sx={styles.capsTextCss}>DESIGNED IN ADOBE XD & BUILT WITH NEXT JS</Text>

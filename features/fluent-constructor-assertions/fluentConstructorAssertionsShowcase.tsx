@@ -1,9 +1,8 @@
 /** @jsxImportSource theme-ui */
 import React from "react";
-import Showcase from "../../components/showcase/showcase";
+import { Showcase, InlineLink } from "../../components";
 import { Text } from "theme-ui";
 import { showcaseDescriptionBodyCss } from "../common/common.styles";
-import InlineLink from "../../components/inline-link/inlineLink";
 
 const images = [
   {
@@ -37,7 +36,7 @@ const headers = {
   labels,
 };
 
-const FluentConstructorAssertionsShowcase: React.FC = () => {
+export const FluentConstructorAssertionsShowcase: React.FC = () => {
   return (
     <Showcase carousel={carousel} headers={headers}>
       <Text sx={showcaseDescriptionBodyCss}>

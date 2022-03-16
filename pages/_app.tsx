@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import "../styles/globals.css";
 import * as React from "react";
-import ProfileTheme from "../components/theme/theme";
+import { ProfileTheme } from "../components";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { motion } from "framer-motion";

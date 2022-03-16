@@ -16,7 +16,7 @@ export interface ShowcaseCarouselProps {
 
 const MobileSize = 481;
 
-const ShowcaseCarousel: React.FC<ShowcaseCarouselProps> = ({ images }) => {
+export const ShowcaseCarousel: React.FC<ShowcaseCarouselProps> = ({ images }) => {
   const isMobile = useMediaQuery(MobileSize);
 
   const DesktopCarouselHeader = () => <Image sx={styles.showcaseCarouselHeaderCss} src="/showcase-header.svg" alt="A mock up of a browser window." />;

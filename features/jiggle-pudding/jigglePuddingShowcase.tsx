@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import React from "react";
-import Showcase from "../../components/showcase/showcase";
+import { Showcase } from "../../components";
 import { Text } from "theme-ui";
 import { showcaseDescriptionBodyCss } from "../common/common.styles";
 
@@ -26,7 +26,7 @@ const headers = {
   labels,
 };
 
-const JigglePuddingShowcase: React.FC = () => {
+export const JigglePuddingShowcase: React.FC = () => {
   return (
     <Showcase carousel={carousel} headers={headers}>
       <Text sx={showcaseDescriptionBodyCss}>

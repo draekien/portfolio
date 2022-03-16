@@ -7,7 +7,6 @@ import { Text } from "@theme-ui/components";
 export interface CardLinkProps {
   href: string;
   title: string;
-  children: React.ReactNode;
   external?: boolean;
   fullWidth?: boolean;
 }

@@ -15,7 +15,7 @@ export interface ShowcaseDescriptionProps {
   children?: React.ReactNode;
 }
 
-const ShowcaseDescription: React.FC<ShowcaseDescriptionProps> = ({ heading, href, labels, children }) => {
+export const ShowcaseDescription: React.FC<ShowcaseDescriptionProps> = ({ heading, href, labels, children }) => {
   return (
     <Flex sx={styles.showcaseDescriptionContainerCss}>
       <Flex as="h1" sx={styles.showcaseHeadingContainerCss}>
