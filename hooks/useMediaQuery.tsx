@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from 'react';
 
 export const useMediaQuery = (width: number): boolean => {
   const [targetReached, setTargetReached] = useState(false);
@@ -13,13 +13,13 @@ export const useMediaQuery = (width: number): boolean => {
 
   useEffect(() => {
     const media = window.matchMedia(`(max-width: ${width}px)`);
-    media.addEventListener("change", (e) => updateTarget(e));
+    media.addEventListener('change', (e) => updateTarget(e));
 
     if (media.matches) {
       setTargetReached(true);
     }
 
-    return () => media.removeEventListener("change", (e) => updateTarget(e));
+    return () => media.removeEventListener('change', (e) => updateTarget(e));
   }, []);
 
   return targetReached;

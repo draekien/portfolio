@@ -1,8 +1,8 @@
 /** @jsxImportSource theme-ui */
-import { Flex, Text } from "@theme-ui/components";
-import * as React from "react";
-import * as styles from "./headerBar.styles";
-import Logo from "../logo/logo";
+import { Flex, Text } from '@theme-ui/components';
+import * as React from 'react';
+import * as styles from './headerBar.styles';
+import Logo from '../logo/logo';
 
 export interface HeaderBarProps {
   /** The title of the page to display */

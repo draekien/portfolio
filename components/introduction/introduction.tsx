@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
-import { Flex, Text } from "@theme-ui/components";
-import * as styles from "./introduction.styles";
+import { Flex, Text } from '@theme-ui/components';
+import * as styles from './introduction.styles';
 
 export const Introduction: React.FC = () => {
   return (

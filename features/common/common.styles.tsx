@@ -1,6 +1,6 @@
-import { ThemeUIStyleObject } from "theme-ui";
+import { ThemeUIStyleObject } from 'theme-ui';
 
 export const showcaseDescriptionBodyCss: ThemeUIStyleObject = {
-  variant: "text.body",
-  mb: "md",
+  variant: 'text.body',
+  mb: 'md',
 };

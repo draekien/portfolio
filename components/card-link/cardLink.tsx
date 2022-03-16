@@ -1,8 +1,8 @@
 /** @jsxImportSource theme-ui */
-import React from "react";
-import Link from "next/link";
-import { ThemeUIStyleObject } from "@theme-ui/css";
-import { Text } from "@theme-ui/components";
+import React from 'react';
+import Link from 'next/link';
+import { ThemeUIStyleObject } from '@theme-ui/css';
+import { Text } from '@theme-ui/components';
 
 export interface CardLinkProps {
   href: string;
@@ -12,27 +12,27 @@ export interface CardLinkProps {
 }
 
 const cardLinkCss: (fullWidth: boolean) => ThemeUIStyleObject = (fullWidth) => ({
-  display: fullWidth ? "block" : "inline-block",
-  textAlign: "left",
-  color: "primary",
-  borderRadius: "lg",
-  border: "1px solid",
-  borderColor: "muted",
-  backgroundColor: "muted",
-  boxShadow: "md",
-  paddingX: "md",
-  paddingY: "lg",
-  width: fullWidth && "100%",
-  maxWidth: !fullWidth && "20rem",
-  cursor: "pointer",
-  transition: "all 200ms",
-  ":hover, :focus": {
-    boxShadow: "lg",
-    borderColor: "p-200",
+  display: fullWidth ? 'block' : 'inline-block',
+  textAlign: 'left',
+  color: 'primary',
+  borderRadius: 'lg',
+  border: '1px solid',
+  borderColor: 'muted',
+  backgroundColor: 'muted',
+  boxShadow: 'md',
+  paddingX: 'md',
+  paddingY: 'lg',
+  width: fullWidth && '100%',
+  maxWidth: !fullWidth && '20rem',
+  cursor: 'pointer',
+  transition: 'all 200ms',
+  ':hover, :focus': {
+    boxShadow: 'lg',
+    borderColor: 'p-200',
   },
-  ":active": {
-    borderColor: "p-300",
-    boxShadow: "md",
+  ':active': {
+    borderColor: 'p-300',
+    boxShadow: 'md',
   },
 });
 
@@ -46,12 +46,21 @@ const cardLinkCss: (fullWidth: boolean) => ThemeUIStyleObject = (fullWidth) => (
  * @param [props.fullWidth=false] - should the card take up the full width of the parent container
  * @returns The card link component
  */
-export const CardLink: React.FC<CardLinkProps> = ({ href, title, children, external = false, fullWidth = false }) => {
+export const CardLink: React.FC<CardLinkProps> = ({
+  href,
+  title,
+  children,
+  external = false,
+  fullWidth = false,
+}) => {
   if (!external) {
     return (
-      <Link href={href}>
+      <Link href={href} passHref>
         <button sx={cardLinkCss(fullWidth)}>
-          <Text as="h4" variant="text.heading" sx={{ fontSize: "h4", marginBottom: "sm" }}>
+          <Text
+            as="h4"
+            variant="text.heading"
+            sx={{ fontSize: 'h4', marginBottom: 'sm' }}>
             {title}
           </Text>
           {children}
@@ -62,7 +71,7 @@ export const CardLink: React.FC<CardLinkProps> = ({ href, title, children, exter
 
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" sx={cardLinkCss(fullWidth)}>
-      <Text as="h4" variant="text.heading" sx={{ fontSize: "h4", marginBottom: "sm" }}>
+      <Text as="h4" variant="text.heading" sx={{ fontSize: 'h4', marginBottom: 'sm' }}>
         {title}
       </Text>
       {children}

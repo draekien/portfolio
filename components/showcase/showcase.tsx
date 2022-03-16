@@ -1,8 +1,12 @@
 /** @jsxImportSource theme-ui */
-import { Flex } from "@theme-ui/components";
-import ShowcaseCarousel, { ShowcaseCarouselProps } from "../showcase-carousel/showcaseCarousel";
-import ShowcaseDescription, { ShowcaseDescriptionProps } from "../showcase-description/showcaseDescription";
-import * as styles from "./showcase.styles";
+import { Flex } from '@theme-ui/components';
+import ShowcaseCarousel, {
+  ShowcaseCarouselProps,
+} from '../showcase-carousel/showcaseCarousel';
+import ShowcaseDescription, {
+  ShowcaseDescriptionProps,
+} from '../showcase-description/showcaseDescription';
+import * as styles from './showcase.styles';
 
 export interface ShowcaseProps {
   carousel: ShowcaseCarouselProps;

@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
-import { Flex } from "@theme-ui/components";
-import { Heading } from "../heading/heading";
-import CoverPhoto from "../cover-photo/coverPhoto";
+import { Flex } from '@theme-ui/components';
+import { Heading } from '../heading/heading';
+import CoverPhoto from '../cover-photo/coverPhoto';
 
 /** Props for the {@link Article} component */
 export interface ArticleProps {
@@ -27,18 +27,41 @@ export interface ArticleProps {
  * @param props.coverAlt - the alt text to display when the cover photo fails to load
  * @returns the article component
  */
-export const Article: React.FC<ArticleProps> = ({ title, author, published, coverPhoto, coverAlt, children }) => {
+export const Article: React.FC<ArticleProps> = ({
+  title,
+  author,
+  published,
+  coverPhoto,
+  coverAlt,
+  children,
+}) => {
   return (
-    <Flex sx={{ width: "100%", justifyContent: "center", mt: "sm", alignItems: "center", flexFlow: "column" }}>
+    <Flex
+      sx={{
+        width: '100%',
+        justifyContent: 'center',
+        mt: 'sm',
+        alignItems: 'center',
+        flexFlow: 'column',
+      }}
+    >
       <CoverPhoto src={coverPhoto} alt={coverAlt} />
-      <article sx={{ display: "flex", flexFlow: "column", width: "100%", maxWidth: ["20rem", "40rem", "60rem"], variant: "text.body" }}>
-        <section sx={{ width: "100%", mb: "xl" }}>
-          <div sx={{ mt: "xl", mb: "sm" }}>
+      <article
+        sx={{
+          display: 'flex',
+          flexFlow: 'column',
+          width: '100%',
+          maxWidth: ['20rem', '40rem', '60rem'],
+          variant: 'text.body',
+        }}
+      >
+        <section sx={{ width: '100%', mb: 'xl' }}>
+          <div sx={{ mt: 'xl', mb: 'sm' }}>
             <Heading variant="h2">{title}</Heading>
           </div>
           {(author || published) && (
-            <sub sx={{ variant: "text.heading", fontSize: "small" }}>
-              {author} <span sx={{ color: "secondary", px: "sm" }}>\\</span> {published}
+            <sub sx={{ variant: 'text.heading', fontSize: 'small' }}>
+              {author} <span sx={{ color: 'secondary', px: 'sm' }}>\\</span> {published}
             </sub>
           )}
         </section>

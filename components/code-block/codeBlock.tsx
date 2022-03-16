@@ -1,8 +1,8 @@
 /** @jsxImportSource theme-ui */
-import React from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { tomorrowNight } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import * as styles from "./codeBlock.styles";
+import React from 'react';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { tomorrowNight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import * as styles from './codeBlock.styles';
 
 export interface CodeBlockProps {
   language?: string;
@@ -19,7 +19,12 @@ export interface CodeBlockProps {
  * @param props.children - the code to render
  * @returns the code block
  */
-export const CodeBlock: React.FC<CodeBlockProps> = ({ language, wrapLongLines, showLineNumbers, children }) => {
+export const CodeBlock: React.FC<CodeBlockProps> = ({
+  language,
+  wrapLongLines,
+  showLineNumbers,
+  children,
+}) => {
   return (
     <span sx={styles.codeBlockContainerCss}>
       <SyntaxHighlighter
@@ -27,7 +32,13 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ language, wrapLongLines, s
         showLineNumbers={showLineNumbers}
         language={language}
         style={tomorrowNight}
-        customStyle={{ backgroundColor: "inherit", fontFamily: "inherit", fontWeight: "inherit", lineHeight: "inherit" }}>
+        customStyle={{
+          backgroundColor: 'inherit',
+          fontFamily: 'inherit',
+          fontWeight: 'inherit',
+          lineHeight: 'inherit',
+        }}
+      >
         {children}
       </SyntaxHighlighter>
     </span>

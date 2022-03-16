@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import React from "react";
+import React from 'react';
 
 /**
  * Renders the provided children with the correct styling of an inline piece of code
@@ -8,7 +8,19 @@ import React from "react";
  * @returns the code component
  */
 export const Code: React.FC = ({ children }) => {
-  return <code sx={{ variant: "text.mono", backgroundColor: "b-500", borderRadius: "sm", px: "xs", color: "secondary" }}>{children}</code>;
+  return (
+    <code
+      sx={{
+        variant: 'text.mono',
+        backgroundColor: 'b-500',
+        borderRadius: 'sm',
+        px: 'xs',
+        color: 'secondary',
+      }}
+    >
+      {children}
+    </code>
+  );
 };
 
 export default Code;

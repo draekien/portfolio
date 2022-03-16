@@ -1,14 +1,14 @@
 /** @jsxImportSource theme-ui */
-import { ThemeProvider } from "theme-ui";
-import type { AppProps } from "next/app";
-import { useRouter } from "next/router";
-import "../styles/globals.css";
-import * as React from "react";
-import { ProfileTheme } from "../components";
-import NProgress from "nprogress";
-import "nprogress/nprogress.css";
-import { motion } from "framer-motion";
-import * as gtag from "../lib/gtag";
+import { ThemeProvider } from 'theme-ui';
+import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
+import '../styles/globals.css';
+import * as React from 'react';
+import { ProfileTheme } from '../components';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
+import { motion } from 'framer-motion';
+import * as gtag from '../lib/gtag';
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const router = useRouter();
@@ -21,9 +21,9 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       NProgress.done();
     };
 
-    router.events.on("routeChangeStart", handleStart);
-    router.events.on("routeChangeComplete", handleComplete);
-    router.events.on("routeChangeError", handleComplete);
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleComplete);
+    router.events.on('routeChangeError', handleComplete);
   }, [router]);
 
   React.useEffect(() => {
@@ -31,10 +31,10 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       gtag.pageview(url);
     };
 
-    router.events.on("routeChangeComplete", handleRouteChange);
+    router.events.on('routeChangeComplete', handleRouteChange);
 
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
+      router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
 
@@ -46,7 +46,8 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
         variants={{
           pageInitial: { opacity: 0 },
           pageAnimate: { opacity: 1 },
-        }}>
+        }}
+      >
         <Component {...pageProps} />
       </motion.div>
     </ThemeProvider>

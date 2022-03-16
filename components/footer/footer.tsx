@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
-import { Flex, Text } from "@theme-ui/components";
-import * as React from "react";
-import * as styles from "./footer.styles";
+import { Flex, Text } from '@theme-ui/components';
+import * as React from 'react';
+import * as styles from './footer.styles';
 
 export const Footer: React.FC = () => {
   return (

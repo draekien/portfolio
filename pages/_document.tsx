@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
-import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
-import { GA_TRACKING_ID } from "../lib/gtag";
+import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
+import { GA_TRACKING_ID } from '../lib/gtag';
 
 class ProfileDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -14,7 +14,11 @@ class ProfileDocument extends Document {
       <Html lang="en-AU">
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet" crossOrigin="anonymous" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Fira+Code&display=swap"
+            rel="stylesheet"
+            crossOrigin="anonymous"
+          />
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -27,15 +31,27 @@ class ProfileDocument extends Document {
           <meta property="og:url" content="https://www.wpei.me" />
           <meta property="og:image" content="https://i.imgur.com/L4VIf86.png" />
           <meta property="og:title" content=".NET Developer | William Pei" />
-          <meta property="og:description" content="The portfolio website for William Pei where he showcases personal projects." />
+          <meta
+            property="og:description"
+            content="The portfolio website for William Pei where he showcases personal projects."
+          />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@wpei" />
           <meta name="twitter:creator" content="@draekien" />
           <meta name="twitter:title" content=".NET Developer | William Pei" />
-          <meta name="twitter:description" content="The portfolio website for William Pei where he showcases personal projects." />
+          <meta
+            name="twitter:description"
+            content="The portfolio website for William Pei where he showcases personal projects."
+          />
           <meta name="twitter:image" content="https://i.imgur.com/L4VIf86.png" />
-          <meta name="twitter:image:alt" content="A preview of the landing page of the wpei website." />
-          <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+          <meta
+            name="twitter:image:alt"
+            content="A preview of the landing page of the wpei website."
+          />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
           <script
             dangerouslySetInnerHTML={{
               __html: `

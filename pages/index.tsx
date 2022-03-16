@@ -1,7 +1,12 @@
 /** @jsxImportSource theme-ui */
-import Head from "next/head";
-import { Introduction, MailDivider, HeaderBar, Footer } from "../components";
-import { JigglePuddingShowcase, BookMqShowcase, DraekienUiShowcase, FluentConstructorAssertionsShowcase } from "../features";
+import Head from 'next/head';
+import { Introduction, MailDivider, HeaderBar, Footer } from '../components';
+import {
+  JigglePuddingShowcase,
+  BookMqShowcase,
+  DraekienUiShowcase,
+  FluentConstructorAssertionsShowcase,
+} from '../features';
 
 const HomePage: React.FC = () => {
   return (

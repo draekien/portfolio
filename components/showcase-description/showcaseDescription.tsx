@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
-import { Flex, Text } from "@theme-ui/components";
-import { MdOpenInNew } from "react-icons/md";
-import * as styles from "./showcaseDescription.styles";
+import { Flex, Text } from '@theme-ui/components';
+import { MdOpenInNew } from 'react-icons/md';
+import * as styles from './showcaseDescription.styles';
 
 export type label = {
   key: string;
@@ -15,12 +15,22 @@ export interface ShowcaseDescriptionProps {
   children?: React.ReactNode;
 }
 
-export const ShowcaseDescription: React.FC<ShowcaseDescriptionProps> = ({ heading, href, labels, children }) => {
+export const ShowcaseDescription: React.FC<ShowcaseDescriptionProps> = ({
+  heading,
+  href,
+  labels,
+  children,
+}) => {
   return (
     <Flex sx={styles.showcaseDescriptionContainerCss}>
       <Flex as="h1" sx={styles.showcaseHeadingContainerCss}>
         <Text sx={styles.showcaseHeadingPreCss}>\\</Text>
-        <a href={href} target="_blank" sx={styles.showcaseHeadingLinkCss} rel="noopener noreferrer">
+        <a
+          href={href}
+          target="_blank"
+          sx={styles.showcaseHeadingLinkCss}
+          rel="noopener noreferrer"
+        >
           {heading} {href && <MdOpenInNew sx={styles.showcaseHeadingLinkIconCss} />}
         </a>
       </Flex>
