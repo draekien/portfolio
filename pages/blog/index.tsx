@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
-import { Text } from "@theme-ui/components";
+import { Flex, Text } from "@theme-ui/components";
 import Head from "next/head";
+import { CardLink } from "../../components";
 import HeaderBar from "../../components/header-bar/headerBar";
 
 const BlogPage: React.FC = () => {
@@ -11,10 +12,13 @@ const BlogPage: React.FC = () => {
       </Head>
       <main>
         <HeaderBar title={<span>CODE WITH ME</span>} />
-        <div sx={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", flexFlow: "column" }}>
-          <img sx={{ width: ["75%", "50%"], my: "xl" }} src="/illustrations/under-construction.svg" />
-          <Text sx={{ variant: "text.caps" }}>UNDER CONSTRUCTION</Text>
-        </div>
+        <Flex>
+          <CardLink href="/blog/csharp" title="C#">
+            <Text as="p" variant="text.body" sx={{ fontSize: "p" }}>
+              Explore C# with me as I delve into the world of .NET Core Web APIs.
+            </Text>
+          </CardLink>
+        </Flex>
       </main>
     </div>
   );

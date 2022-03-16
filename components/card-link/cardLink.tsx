@@ -1,0 +1,64 @@
+/** @jsxImportSource theme-ui */
+import React from "react";
+import Link from "next/link";
+import { ThemeUIStyleObject } from "@theme-ui/css";
+import { Text } from "@theme-ui/components";
+
+export interface CardLinkProps {
+  href: string;
+  title: string;
+  children: React.ReactNode;
+  external?: boolean;
+  fullWidth?: boolean;
+}
+
+const cardLinkCss: (fullWidth: boolean) => ThemeUIStyleObject = (fullWidth) => ({
+  display: fullWidth ? "block" : "inline-block",
+  textAlign: "left",
+  color: "primary",
+  borderRadius: "lg",
+  border: "1px solid",
+  borderColor: "muted",
+  backgroundColor: "muted",
+  boxShadow: "md",
+  paddingX: "md",
+  paddingY: "lg",
+  width: fullWidth && "100%",
+  maxWidth: !fullWidth && "20rem",
+  cursor: "pointer",
+  transition: "all 200ms",
+  ":hover, :focus": {
+    boxShadow: "lg",
+    borderColor: "p-200",
+  },
+  ":active": {
+    borderColor: "p-300",
+    boxShadow: "md",
+  },
+});
+
+export const CardLink: React.FC<CardLinkProps> = ({ href, title, children, external = false, fullWidth = false }) => {
+  if (!external) {
+    return (
+      <Link href={href}>
+        <button sx={cardLinkCss(fullWidth)}>
+          <Text as="h4" variant="text.heading" sx={{ fontSize: "h4", marginBottom: "sm" }}>
+            {title}
+          </Text>
+          {children}
+        </button>
+      </Link>
+    );
+  }
+
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" sx={cardLinkCss(fullWidth)}>
+      <Text as="h4" variant="text.heading" sx={{ fontSize: "h4", marginBottom: "sm" }}>
+        {title}
+      </Text>
+      {children}
+    </a>
+  );
+};
+
+export default CardLink;
