@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
       <Flex>
         <Text sx={styles.bodyTextLeftCss}>&copy; William Pei</Text>
         <Text sx={styles.bodyTextDividerCss}>\\</Text>
-        <Text sx={styles.bodyTextRightCss}>last updated 21.06.28</Text>
+        <Text sx={styles.bodyTextRightCss}>last updated 22.03.16</Text>
       </Flex>
     </Flex>
   );
