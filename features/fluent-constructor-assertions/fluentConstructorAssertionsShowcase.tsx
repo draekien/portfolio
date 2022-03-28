@@ -3,19 +3,22 @@ import React from 'react';
 import { Showcase, InlineLink } from '../../components';
 import { Text } from 'theme-ui';
 import { showcaseDescriptionBodyCss } from '../common/common.styles';
+import desktop1 from '../../public/fluent-constructor/desktop-1.png';
+import desktop2 from '../../public/fluent-constructor/desktop-2.png';
 
 const images = [
   {
-    src: '/fluent-constructor/desktop-1.png',
-    mobileSrc: '/fluent-constructor/desktop-1.png',
+    src: desktop1,
+    mobileSrc: desktop1,
     alt: 'Complex usage of Fluent Constructor Assertions',
   },
   {
-    src: '/fluent-constructor/desktop-2.png',
-    mobileSrc: '/fluent-constructor/desktop-2.png',
+    src: desktop2,
+    mobileSrc: desktop2,
     alt: 'Simple usage of Fluent Constructor Assertions',
   },
 ];
+
 const labels = [
   { key: 'Language', value: 'C#' },
   { key: 'Built', value: '.NET Standard 2.0' },
@@ -29,6 +32,7 @@ const labels = [
     ),
   },
 ];
+
 const carousel = { images };
 const headers = {
   heading: 'FLUENT CONSTRUCTOR ASSERTIONS',

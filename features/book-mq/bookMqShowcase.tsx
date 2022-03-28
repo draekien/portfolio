@@ -3,31 +3,39 @@ import React from 'react';
 import { Showcase } from '../../components';
 import { Text } from 'theme-ui';
 import { showcaseDescriptionBodyCss } from '../common/common.styles';
+import desktop1 from '../../public/book-mq/desktop-1.png';
+import desktop2 from '../../public/book-mq/desktop-2.png';
+import desktop3 from '../../public/book-mq/desktop-3.png';
+import desktop4 from '../../public/book-mq/desktop-4.png';
+import desktop5 from '../../public/book-mq/desktop-5.png';
+import mobile1 from '../../public/book-mq/mobile-1.png';
+import mobile2 from '../../public/book-mq/mobile-2.png';
+import mobile3 from '../../public/book-mq/mobile-3.png';
+import mobile4 from '../../public/book-mq/mobile-4.png';
 
 const images = [
   {
-    src: '/book-mq/desktop-1.png',
-    mobileSrc: '/book-mq/mobile-1.png',
+    src: desktop1,
+    mobileSrc: mobile1,
     alt: 'The landing page of Book MQ',
   },
   {
-    src: '/book-mq/desktop-2.png',
-    mobileSrc: '/book-mq/mobile-2.png',
+    src: desktop2,
+    mobileSrc: mobile2,
     alt: 'The marketing page for Book MQ that explains how Book MQ works',
   },
   {
-    src: '/book-mq/desktop-3.png',
-    mobileSrc: '/book-mq/mobile-3.png',
+    src: desktop3,
+    mobileSrc: mobile3,
     alt: 'The login page for Book MQ',
   },
   {
-    src: '/book-mq/desktop-4.png',
-    mobileSrc: '/book-mq/mobile-4.png',
+    src: desktop4,
+    mobileSrc: mobile4,
     alt: 'The events page of Book MQ where you would see events created by other users',
   },
   {
-    src: '/book-mq/desktop-5.png',
-    mobileSrc: '',
+    src: desktop5,
     alt: 'The profile page of Book MQ where you can view your own events',
   },
 ];

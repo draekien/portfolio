@@ -3,26 +3,34 @@ import React from 'react';
 import { Showcase } from '../../components';
 import { Text } from 'theme-ui';
 import { showcaseDescriptionBodyCss } from '../common/common.styles';
+import desktop1 from '../../public/draekien-ui/desktop-1.png';
+import desktop2 from '../../public/draekien-ui/desktop-2.png';
+import desktop3 from '../../public/draekien-ui/desktop-3.png';
+import desktop4 from '../../public/draekien-ui/desktop-4.png';
+import mobile1 from '../../public/draekien-ui/mobile-1.png';
+import mobile2 from '../../public/draekien-ui/mobile-2.png';
+import mobile3 from '../../public/draekien-ui/mobile-3.png';
+import mobile4 from '../../public/draekien-ui/mobile-4.png';
 
 const images = [
   {
-    src: '/draekien-ui/desktop-1.png',
-    mobileSrc: '/draekien-ui/mobile-1.png',
+    src: desktop1,
+    mobileSrc: mobile1,
     alt: 'An example website made using Draekien UI',
   },
   {
-    src: '/draekien-ui/desktop-2.png',
-    mobileSrc: '/draekien-ui/mobile-2.png',
+    src: desktop2,
+    mobileSrc: mobile2,
     alt: 'The datepicker input component in the Draekien UI Storybook',
   },
   {
-    src: '/draekien-ui/desktop-3.png',
-    mobileSrc: '/draekien-ui/mobile-3.png',
+    src: desktop3,
+    mobileSrc: mobile3,
     alt: 'The card component in the Draekien UI Storybook',
   },
   {
-    src: '/draekien-ui/desktop-4.png',
-    mobileSrc: '/draekien-ui/mobile-4.png',
+    src: desktop4,
+    mobileSrc: mobile4,
     alt: 'The button component in the Draekien UI Storybook',
   },
 ];

@@ -3,16 +3,20 @@ import React from 'react';
 import { Showcase } from '../../components';
 import { Text } from 'theme-ui';
 import { showcaseDescriptionBodyCss } from '../common/common.styles';
+import desktop1 from '../../public/jiggle-pudding/desktop-1.png';
+import desktop2 from '../../public/jiggle-pudding/desktop-2.png';
+import mobile1 from '../../public/jiggle-pudding/mobile-1.png';
+import mobile2 from '../../public/jiggle-pudding/mobile-2.png';
 
 const images = [
   {
-    src: '/jiggle-pudding/desktop-1.png',
-    mobileSrc: '/jiggle-pudding/mobile-1.png',
+    src: desktop1,
+    mobileSrc: mobile1,
     alt: 'The landing page of Jiggle Pudding',
   },
   {
-    src: '/jiggle-pudding/desktop-2.png',
-    mobileSrc: '/jiggle-pudding/mobile-2.png',
+    src: desktop2,
+    mobileSrc: mobile2,
     alt: 'The menu of Jiggle Pudding',
   },
 ];

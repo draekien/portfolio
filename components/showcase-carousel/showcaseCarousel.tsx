@@ -1,12 +1,14 @@
 /** @jsxImportSource theme-ui */
-import { Flex, Image } from '@theme-ui/components';
+import { Flex } from '@theme-ui/components';
 import Carousel from 'nuka-carousel';
 import * as styles from './showcaseCarousel.styles';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
+import Image from 'next/image';
+import showcaseHeader from '../../public/showcase-header.svg';
 
 export type ImageWithAlt = {
-  src: string;
-  mobileSrc: string;
+  src: StaticImageData;
+  mobileSrc?: StaticImageData;
   alt: string;
 };
 
@@ -22,8 +24,9 @@ export const ShowcaseCarousel: React.FC<ShowcaseCarouselProps> = ({ images }) =>
   const DesktopCarouselHeader = () => (
     <Image
       sx={styles.showcaseCarouselHeaderCss}
-      src="/showcase-header.svg"
+      src={showcaseHeader}
       alt="A mock up of a browser window."
+      width="60rem"
     />
   );
 
@@ -37,9 +40,9 @@ export const ShowcaseCarousel: React.FC<ShowcaseCarouselProps> = ({ images }) =>
           return (
             <Image
               key={index}
-              src={isMobile ? mobileSrc : src}
-              sx={{ width: '60rem' }}
+              src={isMobile ? mobileSrc! : src}
               alt={alt}
+              priority={index === 0}
             />
           );
         })}
