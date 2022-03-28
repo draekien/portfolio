@@ -6,9 +6,14 @@ import { showcaseDescriptionBodyCss } from '../common/common.styles';
 
 const images = [
   {
-    src: 'https://i.imgur.com/FoayxKa.png',
-    mobileSrc: 'https://i.imgur.com/kWS2sBY.png',
+    src: '/jiggle-pudding/desktop-1.png',
+    mobileSrc: '/jiggle-pudding/mobile-1.png',
     alt: 'The landing page of Jiggle Pudding',
+  },
+  {
+    src: '/jiggle-pudding/desktop-2.png',
+    mobileSrc: '/jiggle-pudding/mobile-2.png',
+    alt: 'The menu of Jiggle Pudding',
   },
 ];
 

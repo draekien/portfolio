@@ -6,28 +6,28 @@ import { showcaseDescriptionBodyCss } from '../common/common.styles';
 
 const images = [
   {
-    src: 'https://i.imgur.com/7v76QNZ.png',
-    mobileSrc: 'https://i.imgur.com/frGowru.png',
+    src: '/book-mq/desktop-1.png',
+    mobileSrc: '/book-mq/mobile-1.png',
     alt: 'The landing page of Book MQ',
   },
   {
-    src: 'https://i.imgur.com/ABjOGOa.png',
-    mobileSrc: 'https://i.imgur.com/AnF8fKm.png',
+    src: '/book-mq/desktop-2.png',
+    mobileSrc: '/book-mq/mobile-2.png',
     alt: 'The marketing page for Book MQ that explains how Book MQ works',
   },
   {
-    src: 'https://i.imgur.com/nExTnSt.png',
-    mobileSrc: 'https://i.imgur.com/QXuLMlk.png',
+    src: '/book-mq/desktop-3.png',
+    mobileSrc: '/book-mq/mobile-3.png',
     alt: 'The login page for Book MQ',
   },
   {
-    src: 'https://i.imgur.com/WrRtfik.png',
-    mobileSrc: 'https://i.imgur.com/lXxyiTB.png',
+    src: '/book-mq/desktop-4.png',
+    mobileSrc: '/book-mq/mobile-4.png',
     alt: 'The events page of Book MQ where you would see events created by other users',
   },
   {
-    src: 'https://i.imgur.com/f4sBIAR.png',
-    mobileSrc: 'https://i.imgur.com/frGowru.png',
+    src: '/book-mq/desktop-5.png',
+    mobileSrc: '',
     alt: 'The profile page of Book MQ where you can view your own events',
   },
 ];

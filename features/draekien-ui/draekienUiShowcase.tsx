@@ -6,23 +6,23 @@ import { showcaseDescriptionBodyCss } from '../common/common.styles';
 
 const images = [
   {
-    src: 'https://i.imgur.com/Zn6Vpze.png',
-    mobileSrc: 'https://i.imgur.com/ZaQXP5o.png',
+    src: '/draekien-ui/desktop-1.png',
+    mobileSrc: '/draekien-ui/mobile-1.png',
     alt: 'An example website made using Draekien UI',
   },
   {
-    src: 'https://i.imgur.com/swSt1yN.png',
-    mobileSrc: 'https://i.imgur.com/D0cy9oL.png',
+    src: '/draekien-ui/desktop-2.png',
+    mobileSrc: '/draekien-ui/mobile-2.png',
     alt: 'The datepicker input component in the Draekien UI Storybook',
   },
   {
-    src: 'https://i.imgur.com/ZDqUj4R.png',
-    mobileSrc: 'https://i.imgur.com/QiN5DeF.png',
+    src: '/draekien-ui/desktop-3.png',
+    mobileSrc: '/draekien-ui/mobile-3.png',
     alt: 'The card component in the Draekien UI Storybook',
   },
   {
-    src: 'https://i.imgur.com/br1Ir7c.png',
-    mobileSrc: 'https://i.imgur.com/chZzojk.png',
+    src: '/draekien-ui/desktop-4.png',
+    mobileSrc: '/draekien-ui/mobile-4.png',
     alt: 'The button component in the Draekien UI Storybook',
   },
 ];

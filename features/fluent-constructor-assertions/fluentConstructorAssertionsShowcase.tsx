@@ -6,13 +6,13 @@ import { showcaseDescriptionBodyCss } from '../common/common.styles';
 
 const images = [
   {
-    src: 'https://i.imgur.com/j7Eofgt.png',
-    mobileSrc: 'https://i.imgur.com/j7Eofgt.png',
+    src: '/fluent-constructor/desktop-1.png',
+    mobileSrc: '/fluent-constructor/desktop-1.png',
     alt: 'Complex usage of Fluent Constructor Assertions',
   },
   {
-    src: 'https://i.imgur.com/6f9oop0.png',
-    mobileSrc: 'https://i.imgur.com/6f9oop0.png',
+    src: '/fluent-constructor/desktop-2.png',
+    mobileSrc: '/fluent-constructor/desktop-2.png',
     alt: 'Simple usage of Fluent Constructor Assertions',
   },
 ];

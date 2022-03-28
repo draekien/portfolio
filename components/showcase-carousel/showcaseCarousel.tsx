@@ -31,15 +31,18 @@ export const ShowcaseCarousel: React.FC<ShowcaseCarouselProps> = ({ images }) =>
     <Flex sx={styles.showcaseCarouselContainerCss}>
       {!isMobile && <DesktopCarouselHeader />}
       <Carousel autoGenerateStyleTag wrapAround={images.length > 1}>
-        {images.map(({ src, mobileSrc, alt }, index) => (
-          <Image
-            key={index}
-            src={isMobile ? mobileSrc : src}
-            sx={{ width: '60rem' }}
-            alt={alt}
-            loading="eager"
-          />
-        ))}
+        {images.map(({ src, mobileSrc, alt }, index) => {
+          if (isMobile && !mobileSrc) return null;
+
+          return (
+            <Image
+              key={index}
+              src={isMobile ? mobileSrc : src}
+              sx={{ width: '60rem' }}
+              alt={alt}
+            />
+          );
+        })}
       </Carousel>
     </Flex>
   );
