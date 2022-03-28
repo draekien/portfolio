@@ -21,8 +21,12 @@ export const MailDivider: React.FC = () => {
       </Tooltip>
 
       <Tooltip text="Blog">
-        <Link href="/blog">
-          <a sx={styles.iconLinkCss} aria-label="Code With Me">
+        <Link href="/blog" passHref>
+          <a
+            sx={styles.iconLinkCss}
+            aria-label="Code With Me"
+            aria-roledescription="Clicking this link will take you to the blog page"
+            role="link">
             <MdCode sx={styles.iconCss} />
           </a>
         </Link>

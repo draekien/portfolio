@@ -13,6 +13,10 @@ const HomePage: React.FC = () => {
     <div>
       <Head>
         <title>.NET Developer | William Pei</title>
+        <meta
+          name="description"
+          content="A portfolio showcasing some of William Pei's personal projects."
+        />
       </Head>
       <main>
         <HeaderBar

@@ -4,7 +4,7 @@ import * as styles from './introduction.styles';
 
 export const Introduction: React.FC = () => {
   return (
-    <Flex sx={styles.introductionContainerCss}>
+    <Flex as="h1" sx={styles.introductionContainerCss}>
       <Flex>
         <Text sx={styles.headingTextCss}>.NET DEVELOPER</Text>
         <Text sx={styles.headingTextMutedCss}>AT</Text>

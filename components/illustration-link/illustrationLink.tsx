@@ -62,7 +62,7 @@ export const IllustrationLink: React.FC<IllustrationLinkProps> = ({
   if (!external) {
     return (
       <Link href={href} passHref>
-        <button sx={illustrationLinkContainerCss(fullWidth)}>{linkContents}</button>
+        <a sx={illustrationLinkContainerCss(fullWidth)}>{linkContents}</a>
       </Link>
     );
   }

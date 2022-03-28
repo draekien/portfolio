@@ -23,14 +23,13 @@ export const ShowcaseDescription: React.FC<ShowcaseDescriptionProps> = ({
 }) => {
   return (
     <Flex sx={styles.showcaseDescriptionContainerCss}>
-      <Flex as="h1" sx={styles.showcaseHeadingContainerCss}>
+      <Flex as="h2" sx={styles.showcaseHeadingContainerCss}>
         <Text sx={styles.showcaseHeadingPreCss}>\\</Text>
         <a
           href={href}
           target="_blank"
           sx={styles.showcaseHeadingLinkCss}
-          rel="noopener noreferrer"
-        >
+          rel="noopener noreferrer">
           {heading} {href && <MdOpenInNew sx={styles.showcaseHeadingLinkIconCss} />}
         </a>
       </Flex>

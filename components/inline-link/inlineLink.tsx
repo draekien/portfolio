@@ -19,7 +19,7 @@ export const InlineLink: React.FC<InlineLinkProps> = ({
   if (internal) {
     return (
       <Tooltip text={hideTooltip ? '' : href}>
-        <Link href={href}>
+        <Link href={href} passHref>
           <a
             sx={{
               textDecoration: 'none',
