@@ -1,13 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Text } from '@theme-ui/components';
 import Head from 'next/head';
-import {
-  Article,
-  Breadcrumbs,
-  CardLink,
-  CoverPhoto,
-  HeaderBar,
-} from '../../../components';
+import { Article, Breadcrumbs, CardLink, HeaderBar } from '../../../components';
 
 const CSharpPage: React.FC = () => {
   return (

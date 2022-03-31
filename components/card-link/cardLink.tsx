@@ -58,7 +58,7 @@ export const CardLink: React.FC<CardLinkProps> = ({
       <Link href={href} passHref>
         <button sx={cardLinkCss(fullWidth)}>
           <Text
-            as="h4"
+            as="h2"
             variant="text.heading"
             sx={{ fontSize: 'h4', marginBottom: 'sm' }}>
             {title}
@@ -71,7 +71,7 @@ export const CardLink: React.FC<CardLinkProps> = ({
 
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" sx={cardLinkCss(fullWidth)}>
-      <Text as="h4" variant="text.heading" sx={{ fontSize: 'h4', marginBottom: 'sm' }}>
+      <Text as="h2" variant="text.heading" sx={{ fontSize: 'h4', marginBottom: 'sm' }}>
         {title}
       </Text>
       {children}

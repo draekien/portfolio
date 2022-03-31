@@ -5,14 +5,19 @@ export type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4';
 
 export interface HeadingProps {
   variant?: HeadingVariant;
+  fontSize?: HeadingVariant;
   children: React.ReactNode;
 }
 
-export const Heading: React.FC<HeadingProps> = ({ variant = 'h1', children }) => {
-  const h1 = <h1 sx={styles.headingCss(variant)}>{children}</h1>;
-  const h2 = <h2 sx={styles.headingCss(variant)}>{children}</h2>;
-  const h3 = <h3 sx={styles.headingCss(variant)}>{children}</h3>;
-  const h4 = <h4 sx={styles.headingCss(variant)}>{children}</h4>;
+export const Heading: React.FC<HeadingProps> = ({
+  variant = 'h1',
+  fontSize,
+  children,
+}) => {
+  const h1 = <h1 sx={styles.headingCss(variant, fontSize)}>{children}</h1>;
+  const h2 = <h2 sx={styles.headingCss(variant, fontSize)}>{children}</h2>;
+  const h3 = <h3 sx={styles.headingCss(variant, fontSize)}>{children}</h3>;
+  const h4 = <h4 sx={styles.headingCss(variant, fontSize)}>{children}</h4>;
 
   switch (variant) {
     case 'h1':

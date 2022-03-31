@@ -43,8 +43,7 @@ export const Article: React.FC<ArticleProps> = ({
         mt: 'sm',
         alignItems: 'center',
         flexFlow: 'column',
-      }}
-    >
+      }}>
       <CoverPhoto src={coverPhoto} alt={coverAlt} />
       <article
         sx={{
@@ -53,11 +52,12 @@ export const Article: React.FC<ArticleProps> = ({
           width: '100%',
           maxWidth: ['20rem', '40rem', '60rem'],
           variant: 'text.body',
-        }}
-      >
+        }}>
         <section sx={{ width: '100%', mb: 'xl' }}>
           <div sx={{ mt: 'xl', mb: 'sm' }}>
-            <Heading variant="h2">{title}</Heading>
+            <Heading variant="h1" fontSize="h2">
+              {title}
+            </Heading>
           </div>
           {(author || published) && (
             <sub sx={{ variant: 'text.heading', fontSize: 'small' }}>

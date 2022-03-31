@@ -106,7 +106,7 @@ const UnitTestingConstructorsBlog: React.FC = () => {
           published="21.06.28"
           coverPhoto="/blogs/fluent-constructor-assertions/cover.svg"
           coverAlt="Illustration of a person looking at some code">
-          <Text as="h3">The Problem</Text>
+          <Text as="h2">The Problem</Text>
           <Text as="p" sx={bodyCss}>
             In my day to day interactions with writing C# code, I&apos;ve found that
             constructors are surprisingly clunky to unit test. Since the best practice in
@@ -139,7 +139,7 @@ const UnitTestingConstructorsBlog: React.FC = () => {
             more than 4 or 5 arguments. What about for classes that have multiple ways of
             being instantiated?
           </Text>
-          <Text as="h3">The Solution</Text>
+          <Text as="h2">The Solution</Text>
           <Text as="p" sx={bodyCss}>
             This is the reason behind the creation of{' '}
             <InlineLink href="https://github.com/draekien/FluentConstructorAssertions">
@@ -153,7 +153,7 @@ const UnitTestingConstructorsBlog: React.FC = () => {
           <CodeBlock language="csharp" showLineNumbers>
             {exampleFcaTests}
           </CodeBlock>
-          <Text as="h4">Whoa what was that!</Text>
+          <Text as="h3">Whoa what was that!</Text>
           <Text as="dl" sx={bodyCss}>
             <span sx={{ mb: 'lg', display: 'block' }}>
               Lets break it down into blocks and explain what just happened.
@@ -192,7 +192,7 @@ const UnitTestingConstructorsBlog: React.FC = () => {
               test cases with the <Code>Should.BeTrue()</Code> method.
             </dd>
           </Text>
-          <Text as="h3">Check out the code!</Text>
+          <Text as="h2">Check out the code!</Text>
           <Text as="p" sx={bodyCss}>
             If you found this interesting, feel free to check out the{' '}
             <InlineLink href="https://github.com/draekien/FluentConstructorAssertions">

@@ -50,7 +50,7 @@ export const IllustrationLink: React.FC<IllustrationLinkProps> = ({
   const linkContents = (
     <Flex sx={{ alignItems: 'center' }}>
       <Flex sx={{ padding: 'md', flexFlow: 'column' }}>
-        <Text as="h4" variant="text.heading" sx={linkTitleCss}>
+        <Text as="h2" variant="text.heading" sx={linkTitleCss}>
           {title}
         </Text>
         {children}
