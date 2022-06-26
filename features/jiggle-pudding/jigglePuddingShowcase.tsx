@@ -31,7 +31,7 @@ const labels = [
 const carousel = { images };
 const headers = {
   heading: 'JIGGLE PUDDING',
-  href: 'https://jiggle-pudding-web.vercel.app/',
+  href: 'https://github.com/draekien/jiggle.pudding.web',
   labels,
 };
 
