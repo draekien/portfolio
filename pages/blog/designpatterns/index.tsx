@@ -3,11 +3,11 @@ import { Text } from '@theme-ui/components';
 import Head from 'next/head';
 import { Article, Breadcrumbs, CardLink, HeaderBar } from '../../../components';
 
-const CSharpPage: React.FC = () => {
+const DesignPatternsPage: React.FC = () => {
   return (
     <div sx={{ mb: 'xl' }}>
       <Head>
-        <title>C# | Code With Me | William Pei</title>
+        <title>Design Patterns | Code With Me | William Pei</title>
       </Head>
       <main sx={{ pb: 'xl' }}>
         <HeaderBar title={<span>CODE WITH ME</span>} />
@@ -15,20 +15,17 @@ const CSharpPage: React.FC = () => {
           crumbs={[
             { title: 'Home', href: '/' },
             { title: 'Code with me', href: '/blog' },
-            { title: 'C#' },
+            { title: 'Design Patterns' },
           ]}
         />
-        <Article
-          title="CSharp Articles"
-          coverPhoto="/blogs/blog-content.svg"
-          coverAlt="A blogging illustration">
+        <Article title="Design Patterns" coverPhoto="/blogs/design.svg" coverAlt="">
           <CardLink
-            href="/blog/csharp/unitTestingConstructors"
-            title="Fluent Constructor Assertions"
+            href="/blog/designpatterns/factoryPattern"
+            title="Factory Pattern"
             fullWidth>
             <Text as="p" variant="text.body" sx={{ fontSize: 'p' }}>
-              A unit testing library for testing constructors on your way to 100% test
-              coverage.
+              A pattern that allows you to create objects without having to specify the
+              exact class of the object that will be created.
             </Text>
           </CardLink>
         </Article>
@@ -37,4 +34,4 @@ const CSharpPage: React.FC = () => {
   );
 };
 
-export default CSharpPage;
+export default DesignPatternsPage;
