@@ -16,21 +16,19 @@ export const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
       render={(attrs) => (
         <div
           sx={{
-            backgroundColor: 'b-300',
+            backgroundColor: 'muted',
             px: 'sm',
             py: 'xs',
             borderRadius: 'sm',
             color: 'secondary',
             fontSize: 'small',
           }}
-          {...attrs}
-        >
+          {...attrs}>
           {text}
         </div>
       )}
       followCursor={true}
-      plugins={[followCursor]}
-    >
+      plugins={[followCursor]}>
       <span>{children}</span>
     </Tippy>
   );

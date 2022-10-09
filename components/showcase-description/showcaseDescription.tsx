@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Text } from '@theme-ui/components';
+import { Anchor } from '@waystone/components';
 import { MdOpenInNew } from 'react-icons/md';
 import * as styles from './showcaseDescription.styles';
 

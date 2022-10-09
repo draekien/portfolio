@@ -5,6 +5,7 @@ import { Flex, Text } from '@theme-ui/components';
 import { CardLinkProps } from '../card-link/cardLink';
 import CoverPhoto, { CoverPhotoProps } from '../cover-photo/coverPhoto';
 import { ThemeUIStyleObject } from 'theme-ui';
+import { Anchor } from '@waystone/components';
 
 export interface IllustrationLinkProps extends CardLinkProps, CoverPhotoProps {}
 
@@ -59,22 +60,12 @@ export const IllustrationLink: React.FC<IllustrationLinkProps> = ({
     </Flex>
   );
 
-  if (!external) {
-    return (
-      <Link href={href} passHref>
-        <a sx={illustrationLinkContainerCss(fullWidth)}>{linkContents}</a>
-      </Link>
-    );
-  }
-
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      sx={illustrationLinkContainerCss(fullWidth)}>
-      {linkContents}
-    </a>
+    <Link href={href} passHref>
+      <Anchor sx={illustrationLinkContainerCss(fullWidth)} external={external}>
+        {linkContents}
+      </Anchor>
+    </Link>
   );
 };
 
