@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Flex } from '@theme-ui/components';
-import { Heading } from '../heading/heading';
+import { Text } from '@waystone/components';
 import CoverPhoto from '../cover-photo/coverPhoto';
 
 /** Props for the {@link Article} component */
@@ -55,15 +55,27 @@ export const Article: React.FC<ArticleProps> = ({
         }}>
         <section sx={{ width: '100%', mb: 'xl' }}>
           <div sx={{ mt: 'xl', mb: 'sm' }}>
-            <Heading variant="h1" fontSize="h2">
+            <Text as="h1" variant="heading">
               {title}
-            </Heading>
+            </Text>
           </div>
-          {(author || published) && (
-            <sub sx={{ variant: 'text.heading', fontSize: 'small' }}>
-              {author} <span sx={{ color: 'secondary', px: 'sm' }}>\\</span> {published}
-            </sub>
-          )}
+          <sub>
+            {author && (
+              <Text variant="subtitle" inline>
+                {author}
+              </Text>
+            )}
+            {published && (
+              <Text variant="subtitle" color="secondary" sx={{ px: 'sm' }} inline>
+                \\
+              </Text>
+            )}
+            {published && (
+              <Text variant="subtitle" inline>
+                {published}
+              </Text>
+            )}
+          </sub>
         </section>
         {children}
       </article>

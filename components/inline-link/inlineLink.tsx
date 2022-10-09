@@ -2,6 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Tooltip from '../tooltip/tooltip';
+import { Anchor } from '@waystone/components';
 
 export interface InlineLinkProps {
   href: string;
@@ -16,60 +17,11 @@ export const InlineLink: React.FC<InlineLinkProps> = ({
   hideTooltip = false,
   internal = false,
 }) => {
-  if (internal) {
-    return (
-      <Tooltip text={hideTooltip ? '' : href}>
-        <Link href={href} passHref>
-          <a
-            sx={{
-              textDecoration: 'none',
-              borderBottom: '1px solid',
-              borderBottomColor: 'secondary',
-              color: 'inherit',
-              transition: 'all 100ms',
-              outline: 'none',
-              fontFamily: 'inherit',
-              fontWeight: 'inherit',
-              fontSize: 'inherit',
-              cursor: 'pointer',
-              ':hover, :focus': {
-                backgroundColor: 'b-300',
-                borderTopLeftRadius: 'md',
-                borderTopRightRadius: 'md',
-              },
-            }}>
-            {children}
-          </a>
-        </Link>
-      </Tooltip>
-    );
-  }
-
   return (
     <Tooltip text={hideTooltip ? '' : href}>
-      <a
-        href={href}
-        target={internal ? '' : '_blank'}
-        rel="noopener noreferrer"
-        sx={{
-          textDecoration: 'none',
-          borderBottom: '1px solid',
-          borderBottomColor: 'secondary',
-          color: 'inherit',
-          transition: 'all 100ms',
-          outline: 'none',
-          fontFamily: 'inherit',
-          fontWeight: 'inherit',
-          fontSize: 'inherit',
-          cursor: 'pointer',
-          ':hover, :focus': {
-            backgroundColor: 'b-300',
-            borderTopLeftRadius: 'md',
-            borderTopRightRadius: 'md',
-          },
-        }}>
-        {children}
-      </a>
+      <Link href={href} passHref>
+        <Anchor external={!internal}>{children}</Anchor>
+      </Link>
     </Tooltip>
   );
 };

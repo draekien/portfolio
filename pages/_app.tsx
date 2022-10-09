@@ -1,14 +1,12 @@
-/** @jsxImportSource theme-ui */
-import { ThemeProvider } from 'theme-ui';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import '../styles/globals.css';
 import * as React from 'react';
-import { ProfileTheme } from '../components';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { motion } from 'framer-motion';
 import * as gtag from '../lib/gtag';
+import { Waystone } from '@waystone/components';
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const router = useRouter();
@@ -39,18 +37,17 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   }, [router.events]);
 
   return (
-    <ThemeProvider theme={ProfileTheme}>
+    <Waystone>
       <motion.div
         initial="pageInitial"
         animate="pageAnimate"
         variants={{
           pageInitial: { opacity: 0 },
           pageAnimate: { opacity: 1 },
-        }}
-      >
+        }}>
         <Component {...pageProps} />
       </motion.div>
-    </ThemeProvider>
+    </Waystone>
   );
 };
 

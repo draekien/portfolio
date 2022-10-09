@@ -1,13 +1,12 @@
 /** @jsxImportSource theme-ui */
 import React from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { tomorrowNight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
-import * as styles from './codeBlock.styles';
+import { CodeBlock as WaystoneCodeBlock } from '@waystone/components';
 
 export interface CodeBlockProps {
   language?: string;
   wrapLongLines?: boolean;
   showLineNumbers?: boolean;
+  children: string;
 }
 
 /**
@@ -26,22 +25,12 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   children,
 }) => {
   return (
-    <span sx={styles.codeBlockContainerCss}>
-      <SyntaxHighlighter
-        wrapLongLines={wrapLongLines}
-        showLineNumbers={showLineNumbers}
-        language={language}
-        style={tomorrowNight}
-        customStyle={{
-          backgroundColor: 'inherit',
-          fontFamily: 'inherit',
-          fontWeight: 'inherit',
-          lineHeight: 'inherit',
-        }}
-      >
-        {children}
-      </SyntaxHighlighter>
-    </span>
+    <WaystoneCodeBlock
+      language={language}
+      wordWrap={wrapLongLines}
+      hideLineNumbers={!showLineNumbers}>
+      {children}
+    </WaystoneCodeBlock>
   );
 };
 

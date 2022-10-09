@@ -1,15 +1,16 @@
 /** @jsxImportSource theme-ui */
 import React from 'react';
 import { MdChevronRight } from 'react-icons/md';
-import { Flex, Text } from 'theme-ui';
+import { Flex } from 'theme-ui';
 import InlineLink from '../inline-link/inlineLink';
+import { Text } from '@waystone/components';
 
 /** The shape of data required to render a breadcrumb */
 export type Breadcrumb = {
   /** The text that will be shown on the page for this link */
   title: string;
   /** The relative path the link will navigate to */
-  href: string;
+  href?: string;
 };
 
 /** The props required to render the breadcrumbs component */
@@ -26,12 +27,16 @@ export interface BreadcrumbsProps {
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ crumbs }) => {
   return (
     <Flex sx={{ alignItems: 'center', px: ['lg', 'lg', 'xl'], pb: 'sm' }}>
-      {crumbs.map(({ href, title }, index) => (
-        <React.Fragment key={index}>
+      {crumbs.map(({ href, title }) => (
+        <React.Fragment key={title}>
           <MdChevronRight sx={{ pt: 'xxs' }} />
-          <InlineLink href={href} internal hideTooltip>
-            <Text variant="text.body">{title}</Text>
-          </InlineLink>
+          {href ? (
+            <InlineLink href={href} internal hideTooltip>
+              <Text variant="body">{title}</Text>
+            </InlineLink>
+          ) : (
+            <Text variant="body">{title}</Text>
+          )}
         </React.Fragment>
       ))}
     </Flex>

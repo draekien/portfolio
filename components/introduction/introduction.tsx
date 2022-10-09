@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
-import { Flex, Text } from '@theme-ui/components';
+import { Flex } from '@theme-ui/components';
+import { Text } from '@waystone/components';
 import * as styles from './introduction.styles';
 
 export const Introduction: React.FC = () => {

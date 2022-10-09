@@ -3,7 +3,7 @@ import { Flex } from '@theme-ui/components';
 import Carousel from 'nuka-carousel';
 import * as styles from './showcaseCarousel.styles';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import showcaseHeader from '../../public/showcase-header.svg';
 
 export type ImageWithAlt = {
@@ -33,7 +33,7 @@ export const ShowcaseCarousel: React.FC<ShowcaseCarouselProps> = ({ images }) =>
   return (
     <Flex sx={styles.showcaseCarouselContainerCss}>
       {!isMobile && <DesktopCarouselHeader />}
-      <Carousel autoGenerateStyleTag wrapAround={images.length > 1}>
+      <Carousel wrapAround={images.length > 1}>
         {images.map(({ src, mobileSrc, alt }, index) => {
           if (isMobile && !mobileSrc) return null;
 

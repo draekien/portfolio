@@ -1,16 +1,29 @@
 /** @jsxImportSource theme-ui */
-import { Flex, Text } from '@theme-ui/components';
+import { Flex } from '@theme-ui/components';
+import { Text } from '@waystone/components';
 import * as React from 'react';
 import * as styles from './footer.styles';
 
 export const Footer: React.FC = () => {
   return (
     <Flex as="footer" sx={styles.footerContainerCss}>
-      <Text sx={styles.capsTextCss}>DESIGNED IN ADOBE XD & BUILT WITH NEXT JS</Text>
-      <Flex>
-        <Text sx={styles.bodyTextLeftCss}>&copy; William Pei</Text>
-        <Text sx={styles.bodyTextDividerCss}>\\</Text>
-        <Text sx={styles.bodyTextRightCss}>last updated 22.03.16</Text>
+      <Flex sx={{ gap: 'sm' }}>
+        <Text variant="eyebrow" inline>
+          DESIGNED IN ADOBE XD
+        </Text>
+        <Text variant="eyebrow" color="secondary" inline>
+          \\
+        </Text>
+        <Text variant="eyebrow" inline>
+          BUILT WITH NEXT JS
+        </Text>
+      </Flex>
+      <Flex sx={{ gap: 'sm' }}>
+        <Text inline>&copy; William Pei</Text>
+        <Text color="secondary" inline>
+          \\
+        </Text>
+        <Text inline>last updated 22.10.10</Text>
       </Flex>
     </Flex>
   );
