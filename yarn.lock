@@ -713,10 +713,28 @@
   resolved "https://registry.yarnpkg.com/@waystone/core/-/core-2.0.0.tgz#f8b0262866129298c3501c5aeb99cedf2d0943d7"
   integrity sha512-G9WxwMcIo4hjsQV/Uo75pUZ9OpDlnAZAu407FUbkAaUm8ySDdbFai1xJlNS/xOCiGaU68EqJOLxvS9ZTYuzjfw==
 
+"@waystone/core@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@waystone/core/-/core-3.0.0.tgz#39d0690eecb3d08026811f44498341cb2d0daf00"
+  integrity sha512-cvrYIiEN85gGcea4rS3r66KQ8d+8nIEzQ6VoAvahHgR+mfrgYzcJx8aJMs0PyyJk7c0J0/r8rnWFdBuBCyQsuQ==
+  dependencies:
+    "@emotion/react" "*"
+    react "*"
+    react-dom "*"
+    theme-ui "*"
+    type-fest "*"
+
 "@waystone/utils@*":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@waystone/utils/-/utils-2.0.0.tgz#f474eb43311480e0b379833a2ba4229f2eb18b65"
   integrity sha512-ePkpXE03QGhiQ9k6jP48FiawPAj88hHhwc+yFtDOQy/AkJ9kiF7+iuUTwTbgIsW7nXLA7+NI/X/zL5cZYLBsAQ==
+
+"@waystone/utils@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@waystone/utils/-/utils-3.0.0.tgz#e45d1cf9bbe366e934fc9e10be51766b0f3e3f2f"
+  integrity sha512-OKWDYWmgLIeh86kMSFFrJnaGwEsKM7+0EpPe+dTAjWv+/IgM53cKTr+bgpfajBcEDDl5EVxsh9iac4Hejls8AA==
+  dependencies:
+    react "*"
 
 acorn-jsx@^5.3.2:
   version "5.3.2"
