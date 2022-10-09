@@ -1,7 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Flex } from '@theme-ui/components';
 import { Text } from '@waystone/components';
-import { Heading } from '../heading/heading';
 import CoverPhoto from '../cover-photo/coverPhoto';
 
 /** Props for the {@link Article} component */
