@@ -6,7 +6,6 @@ export * from './code-block/codeBlock';
 export * from './cover-photo/coverPhoto';
 export * from './footer/footer';
 export * from './header-bar/headerBar';
-export * from './heading/heading';
 export * from './illustration-link/illustrationLink';
 export * from './inline-link/inlineLink';
 export * from './introduction/introduction';

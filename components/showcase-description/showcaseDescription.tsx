@@ -1,7 +1,6 @@
 /** @jsxImportSource theme-ui */
-import { Flex, Text } from '@theme-ui/components';
-import { Anchor } from '@waystone/components';
-import { MdOpenInNew } from 'react-icons/md';
+import { Flex } from '@theme-ui/components';
+import { Anchor, Text } from '@waystone/components';
 import * as styles from './showcaseDescription.styles';
 
 export type label = {
@@ -25,28 +24,24 @@ export const ShowcaseDescription: React.FC<ShowcaseDescriptionProps> = ({
   return (
     <Flex sx={styles.showcaseDescriptionContainerCss}>
       <Flex as="h2" sx={styles.showcaseHeadingContainerCss}>
-        <Text sx={styles.showcaseHeadingPreCss}>\\</Text>
-        <a
-          href={href}
-          target="_blank"
-          sx={styles.showcaseHeadingLinkCss}
-          rel="noopener noreferrer">
-          {heading} {href && <MdOpenInNew sx={styles.showcaseHeadingLinkIconCss} />}
-        </a>
+        <Anchor href={href} external>
+          <Text variant="heading" color="secondary" sx={{ mr: 'sm' }} inline>
+            \\
+          </Text>
+          {heading}
+        </Anchor>
       </Flex>
       <Flex sx={styles.showcaseLabelsContainerCss}>
         <Flex sx={styles.labelKeyContainerCss}>
-          {labels.map(({ key }, index) => (
-            <Text key={index} sx={styles.labelKeyCss}>
+          {labels.map(({ key }) => (
+            <Text key={key} color="secondary">
               @{key}
             </Text>
           ))}
         </Flex>
         <Flex sx={styles.labelValueContainerCss}>
-          {labels.map(({ value }, index) => (
-            <Text key={index} sx={styles.labelValueCss}>
-              {value}
-            </Text>
+          {labels.map(({ key, value }) => (
+            <Text key={key}>{value}</Text>
           ))}
         </Flex>
       </Flex>
