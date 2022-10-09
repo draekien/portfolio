@@ -31,6 +31,8 @@
     "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.3",
     "@types/react-syntax-highlighter": "^13.5.2",
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
     "eslint-config-prettier": "^8.5.0",
@@ -42,5 +44,10 @@
   "lint-staged": {
     "*.js": "eslint --cache --fix",
     "*.{js,css,md}": "prettier --write"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
