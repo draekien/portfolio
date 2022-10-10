@@ -12,8 +12,6 @@ export const IllustrationLink: React.FC<IllustrationLinkProps> = ({
   href,
   title,
   children,
-  external = false,
-  fullWidth = true,
   src,
   alt,
 }) => {

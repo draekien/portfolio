@@ -23,15 +23,6 @@ const BlogPage: React.FC = () => {
               Explore C# with me as I delve into the world of .NET Core Web APIs.
             </Text>
           </IllustrationLink>
-          {/* <IllustrationLink
-            href="/blog/designpatterns"
-            title="Design Patterns"
-            src="/blogs/design.svg"
-            alt="">
-            <Text as="p" variant="body" sx={{ fontSize: 'p' }}>
-              A series on design patterns and when to use them.
-            </Text>
-          </IllustrationLink> */}
         </Flex>
       </main>
     </div>
