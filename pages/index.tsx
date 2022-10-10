@@ -28,7 +28,6 @@ const HomePage: React.FC = () => {
             </span>
           }
         />
-        <MailDivider />
         <Introduction />
         <FluentConstructorAssertionsShowcase />
         <DraekienUiShowcase />

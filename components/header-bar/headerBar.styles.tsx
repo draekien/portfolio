@@ -6,9 +6,11 @@ export const headerBarContainerCss: ThemeUIStyleObject = {
   pb: 'md',
   justifyContent: 'space-between',
   alignItems: 'center',
+  gap: ['sm', 'md', 'lg'],
 };
 
-export const nameCss: ThemeUIStyleObject = {
-  variant: 'text.heading',
-  lineHeight: 'heading',
+export const navCss: ThemeUIStyleObject = {
+  gap: 'sm',
+  justifyContent: 'flex-end',
+  flexGrow: 1,
 };

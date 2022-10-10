@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ThemeUIStyleObject } from '@theme-ui/css';
-import { Text } from '@theme-ui/components';
+import { CardButton, Text } from '@waystone/components';
 
 export interface CardLinkProps {
   href: string;
@@ -56,15 +56,12 @@ export const CardLink: React.FC<CardLinkProps> = ({
   if (!external) {
     return (
       <Link href={href} passHref>
-        <button sx={cardLinkCss(fullWidth)}>
-          <Text
-            as="h2"
-            variant="text.heading"
-            sx={{ fontSize: 'h4', marginBottom: 'sm' }}>
+        <CardButton fullWidth>
+          <Text as="h2" variant="title">
             {title}
           </Text>
           {children}
-        </button>
+        </CardButton>
       </Link>
     );
   }

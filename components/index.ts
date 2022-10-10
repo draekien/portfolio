@@ -10,7 +10,6 @@ export * from './illustration-link/illustrationLink';
 export * from './inline-link/inlineLink';
 export * from './introduction/introduction';
 export * from './logo/logo';
-export * from './mail-divider/mailDivider';
 export * from './showcase/showcase';
 export * from './showcase-carousel/showcaseCarousel';
 export * from './showcase-description/showcaseDescription';
