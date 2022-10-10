@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import Head from 'next/head';
-import { Introduction, MailDivider, HeaderBar, Footer } from '../components';
+import { Introduction, HeaderBar, Footer } from '../components';
 import {
   JigglePuddingShowcase,
   BookMqShowcase,
