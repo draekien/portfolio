@@ -676,10 +676,10 @@
     "@typescript-eslint/types" "5.39.0"
     eslint-visitor-keys "^3.3.0"
 
-"@waystone/components@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@waystone/components/-/components-3.1.0.tgz#b6598f8a2594cf05618746a3f2f3421de4cd635c"
-  integrity sha512-+XfTCzD9aWzVieMitFcqmiiMX8pEW2DPp1TLWqhxyZtpROuhtRFEDKp0YdXuIhB2PT+mRqDwVjYisLTo2kULng==
+"@waystone/components@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@waystone/components/-/components-4.0.0.tgz#e4ed90766331d80ab72c341fa5e2736e47cf8bcf"
+  integrity sha512-c5xISc1eR6aXs/0kQbxEyPpQxpk4qEruyQuos2vdRhzFOyA8gwajmg3box2U/KTbGFXyF6cS8xU3mimWf2kiUQ==
   dependencies:
     "@emotion/react" "*"
     "@theme-ui/color" "*"
@@ -697,10 +697,10 @@
   resolved "https://registry.yarnpkg.com/@waystone/core/-/core-2.0.0.tgz#f8b0262866129298c3501c5aeb99cedf2d0943d7"
   integrity sha512-G9WxwMcIo4hjsQV/Uo75pUZ9OpDlnAZAu407FUbkAaUm8ySDdbFai1xJlNS/xOCiGaU68EqJOLxvS9ZTYuzjfw==
 
-"@waystone/core@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@waystone/core/-/core-3.0.0.tgz#39d0690eecb3d08026811f44498341cb2d0daf00"
-  integrity sha512-cvrYIiEN85gGcea4rS3r66KQ8d+8nIEzQ6VoAvahHgR+mfrgYzcJx8aJMs0PyyJk7c0J0/r8rnWFdBuBCyQsuQ==
+"@waystone/core@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@waystone/core/-/core-4.0.0.tgz#07e562d0fd137472802d976ca8bc4694454b62d4"
+  integrity sha512-dh9LtRS74ZPaS1Le3OO/ygGT28q3EAbsAxE9VYMnPE0s09MUwiyqOy5+yZJoZGftftMpCZItS8cwXNSLOG1IKw==
   dependencies:
     "@emotion/react" "*"
     react "*"
