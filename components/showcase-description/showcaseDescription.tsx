@@ -34,14 +34,16 @@ export const ShowcaseDescription: React.FC<ShowcaseDescriptionProps> = ({
       <Flex sx={styles.showcaseLabelsContainerCss}>
         <Flex sx={styles.labelKeyContainerCss}>
           {labels.map(({ key }) => (
-            <Text key={key} color="secondary">
+            <Text key={key} variant="monospace" color="secondary" inline>
               @{key}
             </Text>
           ))}
         </Flex>
         <Flex sx={styles.labelValueContainerCss}>
           {labels.map(({ key, value }) => (
-            <Text key={key}>{value}</Text>
+            <Text key={key} variant="monospace" inline>
+              {value}
+            </Text>
           ))}
         </Flex>
       </Flex>

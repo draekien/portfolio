@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import Head from 'next/head';
-import { Introduction, MailDivider, HeaderBar, Footer } from '../components';
+import { Introduction, HeaderBar, Footer } from '../components';
 import {
   JigglePuddingShowcase,
   BookMqShowcase,
@@ -28,7 +28,6 @@ const HomePage: React.FC = () => {
             </span>
           }
         />
-        <MailDivider />
         <Introduction />
         <FluentConstructorAssertionsShowcase />
         <DraekienUiShowcase />

@@ -11,13 +11,7 @@ const BlogPage: React.FC = () => {
         <title>Blog | Code With Me | William Pei</title>
       </Head>
       <main>
-        <HeaderBar
-          title={
-            <Text as="h1" variant="heading">
-              CODE WITH ME
-            </Text>
-          }
-        />
+        <HeaderBar title="Code With Me" />
         <Breadcrumbs crumbs={[{ title: 'Home', href: '/' }, { title: 'Code with me' }]} />
         <Flex sx={{ padding: ['sm', 'md', 'xl'], gap: ['sm', 'md', 'xl'] }}>
           <IllustrationLink
