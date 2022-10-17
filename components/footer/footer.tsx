@@ -9,13 +9,19 @@ export const Footer: React.FC = () => {
     <Flex as="footer" sx={styles.footerContainerCss}>
       <Flex sx={{ gap: 'sm' }}>
         <Text variant="eyebrow" inline>
-          DESIGNED IN ADOBE XD
+          Designed in Adobe XD
         </Text>
         <Text variant="eyebrow" color="secondary" inline>
           \\
         </Text>
         <Text variant="eyebrow" inline>
-          BUILT WITH NEXT JS
+          Built with NextJS
+        </Text>
+        <Text variant="eyebrow" color="secondary" inline>
+          \\
+        </Text>
+        <Text variant="eyebrow" inline>
+          Powered by Waystone-UI
         </Text>
       </Flex>
       <Flex sx={{ gap: 'sm' }}>
@@ -23,7 +29,7 @@ export const Footer: React.FC = () => {
         <Text color="secondary" inline>
           \\
         </Text>
-        <Text inline>last updated 22.10.10</Text>
+        <Text inline>last updated 22.10.17</Text>
       </Flex>
     </Flex>
   );
