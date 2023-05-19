@@ -7,6 +7,7 @@ import 'nprogress/nprogress.css';
 import { motion } from 'framer-motion';
 import * as gtag from '../lib/gtag';
 import { Waystone } from '@waystone/components';
+import { Analytics } from '@vercel/analytics/react';
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const router = useRouter();
@@ -46,6 +47,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
           pageAnimate: { opacity: 1 },
         }}>
         <Component {...pageProps} />
+        <Analytics />
       </motion.div>
     </Waystone>
   );
