@@ -3,6 +3,7 @@ import { Box } from '@theme-ui/components';
 import Image from 'next/image';
 import Tooltip from '../tooltip/tooltip';
 import * as styles from './logo.styles';
+import logo from '../../public/mark.svg';
 
 export const Logo: React.FC = () => {
   return (
@@ -13,10 +14,9 @@ export const Logo: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer">
           <Image
-            width="100%"
-            height="100%"
-            src="/mark.svg"
+            src={logo}
             alt="The logo of William Pei"
+            style={{ width: '100%', height: '100%' }}
           />
         </a>
       </Tooltip>

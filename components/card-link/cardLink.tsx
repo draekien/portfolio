@@ -24,7 +24,7 @@ export const CardLink: React.FC<CardLinkProps> = ({
   fullWidth,
 }) => {
   return (
-    <Link href={href} passHref>
+    <Link style={{ width: '100%' }} href={href} passHref legacyBehavior>
       <CardButton fullWidth={fullWidth}>
         <Text as="h2" variant="title">
           {title}

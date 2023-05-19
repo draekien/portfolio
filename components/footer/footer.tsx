@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
           \\
         </Text>
         <Text variant="eyebrow" inline>
-          Built with NextJS
+          Built with NextJS 13
         </Text>
         <Text variant="eyebrow" color="secondary" inline>
           \\
@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
         <Text color="secondary" inline>
           \\
         </Text>
-        <Text inline>last updated 22.10.17</Text>
+        <Text inline>last updated 23.05.19</Text>
       </Flex>
     </Flex>
   );

@@ -19,7 +19,7 @@ export const InlineLink: React.FC<InlineLinkProps> = ({
 }) => {
   return (
     <Tooltip text={hideTooltip ? '' : href}>
-      <Link href={href} passHref>
+      <Link href={href} passHref legacyBehavior>
         <Anchor external={!internal}>{children}</Anchor>
       </Link>
     </Tooltip>

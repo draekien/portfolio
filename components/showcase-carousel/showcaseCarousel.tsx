@@ -26,7 +26,7 @@ export const ShowcaseCarousel: React.FC<ShowcaseCarouselProps> = ({ images }) =>
       sx={styles.showcaseCarouselHeaderCss}
       src={showcaseHeader}
       alt="A mock up of a browser window."
-      width="60rem"
+      style={{ width: '60rem', height: 'fit-content', objectFit: 'contain' }}
     />
   );
 
@@ -43,6 +43,7 @@ export const ShowcaseCarousel: React.FC<ShowcaseCarouselProps> = ({ images }) =>
               src={isMobile ? mobileSrc! : src}
               alt={alt}
               priority={index === 0}
+              style={{ objectFit: 'contain', width: '60rem', height: 'fit-content' }}
             />
           );
         })}

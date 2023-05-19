@@ -28,7 +28,7 @@ export const IllustrationLink: React.FC<IllustrationLinkProps> = ({
   );
 
   return (
-    <Link href={href} passHref>
+    <Link style={{ width: '100%' }} href={href} passHref legacyBehavior>
       <CardButton fullWidth>{linkContents}</CardButton>
     </Link>
   );

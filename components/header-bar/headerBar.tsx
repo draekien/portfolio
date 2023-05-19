@@ -21,10 +21,10 @@ export const HeaderBar: React.FC<HeaderBarProps> = ({ title }) => {
     <Flex sx={styles.headerBarContainerCss}>
       <Text variant={isMobile ? 'eyebrow' : 'heading'}>{title}</Text>
       <Flex as="nav" sx={styles.navCss}>
-        <Link href="/blog" passHref>
+        <Link href="/blog" passHref legacyBehavior>
           <Anchor>{isMobile ? <Icon name="code" /> : 'Code With Me'}</Anchor>
         </Link>
-        <Link href="mailto:hello@wpei.me" passHref>
+        <Link href="mailto:hello@wpei.me" passHref legacyBehavior>
           <Anchor>{isMobile ? <Icon name="mail_outline" /> : 'Say Hello'}</Anchor>
         </Link>
       </Flex>
