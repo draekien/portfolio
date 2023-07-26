@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as styles from './headerBar.styles';
 import Logo from '../logo/logo';
 import Link from 'next/link';
-import { Anchor, ButtonGroup, Icon, Text } from '@waystone/components';
+import { Anchor, ButtonGroup, Icon, Text } from '@waystone/ui';
 import { useColorMode } from 'theme-ui';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 
