@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import React from 'react';
-import { Code as WaystoneCode } from '@waystone/components';
+import { Code as WaystoneCode } from '@waystone/ui';
 
 /**
  * Renders the provided children with the correct styling of an inline piece of code

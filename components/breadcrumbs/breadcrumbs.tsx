@@ -3,7 +3,7 @@ import React from 'react';
 import { MdChevronRight } from 'react-icons/md';
 import { Flex } from 'theme-ui';
 import InlineLink from '../inline-link/inlineLink';
-import { Text } from '@waystone/components';
+import { Text } from '@waystone/ui';
 
 /** The shape of data required to render a breadcrumb */
 export type Breadcrumb = {

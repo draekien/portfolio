@@ -6,7 +6,7 @@ import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { motion } from 'framer-motion';
 import * as gtag from '../lib/gtag';
-import { Waystone } from '@waystone/components';
+import { Waystone } from '@waystone/ui';
 import { Analytics } from '@vercel/analytics/react';
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {

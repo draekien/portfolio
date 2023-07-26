@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import Head from 'next/head';
 import { ThemeUICSSObject } from 'theme-ui';
-import { Text } from '@waystone/components';
+import { Text } from '@waystone/ui';
 import {
   Breadcrumbs,
   Article,

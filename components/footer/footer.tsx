@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Flex } from '@theme-ui/components';
-import { Text } from '@waystone/components';
+import { Text } from '@waystone/ui';
 import * as React from 'react';
 import * as styles from './footer.styles';
 
@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
         <Text color="secondary" inline>
           \\
         </Text>
-        <Text inline>last updated 23.05.19</Text>
+        <Text inline>last updated 23.07.26</Text>
       </Flex>
     </Flex>
   );
