@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Flex } from '@theme-ui/components';
-import { Text } from '@waystone/ui';
+import { Text } from '@waystone/components';
 import Head from 'next/head';
 import { Breadcrumbs, IllustrationLink, HeaderBar } from '../../components';
 

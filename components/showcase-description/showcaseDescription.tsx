@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Flex } from '@theme-ui/components';
-import { Anchor, Text } from '@waystone/ui';
+import { Anchor, Text } from '@waystone/components';
 import * as styles from './showcaseDescription.styles';
 
 export type label = {

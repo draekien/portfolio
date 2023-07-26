@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Flex } from '@theme-ui/components';
 import { CardLinkProps } from '../card-link/cardLink';
 import CoverPhoto, { CoverPhotoProps } from '../cover-photo/coverPhoto';
-import { CardButton, Text } from '@waystone/ui';
+import { CardButton, Text } from '@waystone/components';
 
 export interface IllustrationLinkProps extends CardLinkProps, CoverPhotoProps {}
 

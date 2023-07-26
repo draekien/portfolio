@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ThemeUIStyleObject } from '@theme-ui/css';
-import { CardButton, Text } from '@waystone/ui';
+import { CardButton, Text } from '@waystone/components';
 
 export interface CardLinkProps {
   href: string;

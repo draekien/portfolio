@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import React from 'react';
-import { CodeBlock as WaystoneCodeBlock } from '@waystone/ui';
+import { CodeBlock as WaystoneCodeBlock } from '@waystone/components';
 
 export interface CodeBlockProps {
   language?: string;

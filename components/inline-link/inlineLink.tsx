@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Tooltip from '../tooltip/tooltip';
-import { Anchor } from '@waystone/ui';
+import { Anchor } from '@waystone/components';
 
 export interface InlineLinkProps {
   href: string;
