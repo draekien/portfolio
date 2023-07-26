@@ -4,7 +4,7 @@ import { Text } from '@waystone/ui';
 import Head from 'next/head';
 import { Breadcrumbs, IllustrationLink, HeaderBar } from '../../components';
 
-const BlogPage: React.FC = () => {
+const BlogPage = () => {
   return (
     <div>
       <Head>

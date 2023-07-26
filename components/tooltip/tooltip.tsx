@@ -2,13 +2,13 @@
 import React from 'react';
 import Tippy from '@tippyjs/react/headless';
 import { followCursor } from 'tippy.js';
+import { PropsWithChildren } from 'react';
 
 export interface TooltipProps {
   text: string;
-  children: React.ReactNode;
 }
 
-export const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
+export const Tooltip = ({ text, children }: PropsWithChildren<TooltipProps>) => {
   if (text === '') return <React.Fragment>{children}</React.Fragment>;
 
   return (

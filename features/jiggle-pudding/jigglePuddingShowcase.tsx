@@ -35,7 +35,7 @@ const headers = {
   labels,
 };
 
-export const JigglePuddingShowcase: React.FC = () => {
+export const JigglePuddingShowcase = () => {
   return (
     <Showcase carousel={carousel} headers={headers}>
       <Text sx={showcaseDescriptionBodyCss}>

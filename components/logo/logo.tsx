@@ -5,7 +5,7 @@ import Tooltip from '../tooltip/tooltip';
 import * as styles from './logo.styles';
 import logo from '../../public/mark.svg';
 
-export const Logo: React.FC = () => {
+export const Logo = () => {
   return (
     <Box sx={styles.logoContainerCss}>
       <Tooltip text="View the source code for this portfolio">

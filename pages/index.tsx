@@ -8,7 +8,7 @@ import {
   FluentConstructorAssertionsShowcase,
 } from '../features';
 
-const HomePage: React.FC = () => {
+const HomePage = () => {
   return (
     <div>
       <Head>

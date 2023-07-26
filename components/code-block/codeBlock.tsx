@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-import React from 'react';
 import { CodeBlock as WaystoneCodeBlock } from '@waystone/ui';
 
 export interface CodeBlockProps {
@@ -18,12 +17,12 @@ export interface CodeBlockProps {
  * @param props.children - the code to render
  * @returns the code block
  */
-export const CodeBlock: React.FC<CodeBlockProps> = ({
+export const CodeBlock = ({
   language,
   wrapLongLines,
   showLineNumbers,
   children,
-}) => {
+}: CodeBlockProps) => {
   return (
     <WaystoneCodeBlock
       language={language}

@@ -3,7 +3,7 @@ import { Text } from '@theme-ui/components';
 import Head from 'next/head';
 import { Article, Breadcrumbs, CardLink, HeaderBar } from '../../../components';
 
-const CSharpPage: React.FC = () => {
+const CSharpPage = () => {
   return (
     <div sx={{ mb: 'xl' }}>
       <Head>

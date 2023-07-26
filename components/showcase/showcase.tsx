@@ -7,14 +7,14 @@ import ShowcaseDescription, {
   ShowcaseDescriptionProps,
 } from '../showcase-description/showcaseDescription';
 import * as styles from './showcase.styles';
+import { PropsWithChildren } from 'react';
 
 export interface ShowcaseProps {
   carousel: ShowcaseCarouselProps;
   headers: ShowcaseDescriptionProps;
-  children?: React.ReactNode;
 }
 
-export const Showcase: React.FC<ShowcaseProps> = ({ carousel, headers, children }) => {
+export const Showcase = ({ carousel, headers, children }: PropsWithChildren<ShowcaseProps>) => {
   return (
     <Flex sx={styles.showcaseContainerCss}>
       <ShowcaseDescription {...headers}>{children}</ShowcaseDescription>

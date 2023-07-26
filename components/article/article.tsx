@@ -2,6 +2,7 @@
 import { Flex } from '@theme-ui/components';
 import { Text } from '@waystone/ui';
 import CoverPhoto from '../cover-photo/coverPhoto';
+import { PropsWithChildren } from 'react';
 
 /** Props for the {@link Article} component */
 export interface ArticleProps {
@@ -27,14 +28,14 @@ export interface ArticleProps {
  * @param props.coverAlt - the alt text to display when the cover photo fails to load
  * @returns the article component
  */
-export const Article: React.FC<ArticleProps> = ({
+export const Article = ({
   title,
   author,
   published,
   coverPhoto,
   coverAlt,
   children,
-}) => {
+}: PropsWithChildren<ArticleProps>) => {
   return (
     <Flex
       sx={{

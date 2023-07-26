@@ -24,7 +24,7 @@ export interface BreadcrumbsProps {
  * @param props.crumbs - the array of {@link Breadcrumb} data
  * @returns the breadcrumbs component
  */
-export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ crumbs }) => {
+export const Breadcrumbs = ({ crumbs }: BreadcrumbsProps) => {
   return (
     <Flex sx={{ alignItems: 'center', px: ['lg', 'lg', 'xl'], pb: 'sm' }}>
       {crumbs.map(({ href, title }) => (

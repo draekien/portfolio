@@ -2,6 +2,7 @@
 import { Flex } from '@theme-ui/components';
 import { Anchor, Text } from '@waystone/ui';
 import * as styles from './showcaseDescription.styles';
+import { PropsWithChildren } from 'react';
 
 export type label = {
   key: string;
@@ -12,15 +13,14 @@ export interface ShowcaseDescriptionProps {
   heading: string;
   href?: string;
   labels: label[];
-  children?: React.ReactNode;
 }
 
-export const ShowcaseDescription: React.FC<ShowcaseDescriptionProps> = ({
+export const ShowcaseDescription = ({
   heading,
   href,
   labels,
   children,
-}) => {
+}: PropsWithChildren<ShowcaseDescriptionProps>) => {
   return (
     <Flex sx={styles.showcaseDescriptionContainerCss}>
       <Flex as="h2" sx={styles.showcaseHeadingContainerCss}>

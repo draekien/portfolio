@@ -6,7 +6,7 @@ export interface CoverPhotoProps {
   alt: string;
 }
 
-export const CoverPhoto: React.FC<CoverPhotoProps> = ({ src, alt }) => {
+export const CoverPhoto = ({ src, alt }: CoverPhotoProps) => {
   return (
     <div
       sx={{ height: ['10em', '15em', '20em'], width: '100%', backgroundColor: 'p-300' }}

@@ -54,7 +54,7 @@ const headers = {
 };
 const carousel = { images };
 
-export const BookMqShowcase: React.FC = () => {
+export const BookMqShowcase = () => {
   return (
     <Showcase carousel={carousel} headers={headers}>
       <Text sx={showcaseDescriptionBodyCss}>

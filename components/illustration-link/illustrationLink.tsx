@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import React from 'react';
+import { PropsWithChildren } from 'react';
 import Link from 'next/link';
 import { Flex } from '@theme-ui/components';
 import { CardLinkProps } from '../card-link/cardLink';
@@ -8,13 +8,13 @@ import { CardButton, Text } from '@waystone/ui';
 
 export interface IllustrationLinkProps extends CardLinkProps, CoverPhotoProps {}
 
-export const IllustrationLink: React.FC<IllustrationLinkProps> = ({
+export const IllustrationLink = ({
   href,
   title,
   children,
   src,
   alt,
-}) => {
+}: PropsWithChildren<IllustrationLinkProps>) => {
   const linkContents = (
     <Flex sx={{ alignItems: 'center' }}>
       <Flex sx={{ padding: 'md', flexFlow: 'column' }}>

@@ -1,8 +1,7 @@
 /** @jsxImportSource theme-ui */
-import React from 'react';
 import Link from 'next/link';
-import { ThemeUIStyleObject } from '@theme-ui/css';
 import { CardButton, Text } from '@waystone/ui';
+import { PropsWithChildren } from 'react';
 
 export interface CardLinkProps {
   href: string;
@@ -11,18 +10,17 @@ export interface CardLinkProps {
   fullWidth?: boolean;
 }
 
-
 /**
  * A card that links to another resource.
  * @param props - the {@link CardLinkProps}
  * @returns The card link component
  */
-export const CardLink: React.FC<CardLinkProps> = ({
+export const CardLink = ({
   href,
   title,
   children,
   fullWidth,
-}) => {
+}: PropsWithChildren<CardLinkProps>) => {
   return (
     <Link style={{ width: '100%' }} href={href} passHref legacyBehavior>
       <CardButton fullWidth={fullWidth}>

@@ -4,7 +4,7 @@ import { Text } from '@waystone/ui';
 import * as React from 'react';
 import * as styles from './footer.styles';
 
-export const Footer: React.FC = () => {
+export const Footer = () => {
   return (
     <Flex as="footer" sx={styles.footerContainerCss}>
       <Flex sx={{ gap: 'sm' }}>

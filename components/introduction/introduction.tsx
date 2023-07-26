@@ -3,7 +3,7 @@ import { Flex } from '@theme-ui/components';
 import { Text } from '@waystone/ui';
 import * as styles from './introduction.styles';
 
-export const Introduction: React.FC = () => {
+export const Introduction = () => {
   return (
     <Flex as="h1" sx={styles.introductionContainerCss}>
       <Flex>

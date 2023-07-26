@@ -13,7 +13,7 @@ export interface HeaderBarProps {
   title: React.ReactNode;
 }
 
-export const HeaderBar: React.FC<HeaderBarProps> = ({ title }) => {
+export const HeaderBar = ({ title }: HeaderBarProps) => {
   const [colorMode, setColorMode] = useColorMode();
   const isMobile = useMediaQuery(560);
 

@@ -40,7 +40,7 @@ const headers = {
   labels,
 };
 
-export const FluentConstructorAssertionsShowcase: React.FC = () => {
+export const FluentConstructorAssertionsShowcase = () => {
   return (
     <Showcase carousel={carousel} headers={headers}>
       <Text sx={showcaseDescriptionBodyCss}>

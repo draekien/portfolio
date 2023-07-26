@@ -77,7 +77,7 @@ const bodyCss: ThemeUICSSObject = {
   mb: 'lg',
 };
 
-const UnitTestingConstructorsBlog: React.FC = () => {
+const UnitTestingConstructorsBlog = () => {
   return (
     <div sx={{ mb: 'xl' }}>
       <Head>
