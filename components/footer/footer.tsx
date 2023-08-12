@@ -29,7 +29,7 @@ export const Footer = () => {
         <Text color="secondary" inline>
           \\
         </Text>
-        <Text inline>last updated 23.07.26</Text>
+        <Text inline>last updated 23.07.12</Text>
       </Flex>
     </Flex>
   );

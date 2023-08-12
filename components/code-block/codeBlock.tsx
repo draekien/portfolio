@@ -1,10 +1,9 @@
 /** @jsxImportSource theme-ui */
-import { CodeBlock as WaystoneCodeBlock } from '@waystone/ui';
+import { CodeBlock as WaystoneCodeBlock, SupportedLanguage } from '@waystone/ui';
 
 export interface CodeBlockProps {
-  language?: string;
+  language?: SupportedLanguage;
   wrapLongLines?: boolean;
-  showLineNumbers?: boolean;
   children: string;
 }
 
@@ -17,17 +16,12 @@ export interface CodeBlockProps {
  * @param props.children - the code to render
  * @returns the code block
  */
-export const CodeBlock = ({
-  language,
-  wrapLongLines,
-  showLineNumbers,
-  children,
-}: CodeBlockProps) => {
+export const CodeBlock = ({ language, wrapLongLines, children }: CodeBlockProps) => {
   return (
     <WaystoneCodeBlock
       language={language}
       wordWrap={wrapLongLines}
-      hideLineNumbers={!showLineNumbers}>
+      styleName="githubDarkDimmed">
       {children}
     </WaystoneCodeBlock>
   );

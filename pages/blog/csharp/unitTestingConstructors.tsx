@@ -122,9 +122,7 @@ const UnitTestingConstructorsBlog = () => {
           <Text as="p" sx={bodyCss}>
             You may have encountered constructors such as this example below:
           </Text>
-          <CodeBlock language="csharp" showLineNumbers>
-            {exampleCtor}
-          </CodeBlock>
+          <CodeBlock language="csharp">{exampleCtor}</CodeBlock>
           <Text as="p" sx={bodyCss}>
             To unit test something like this to 100% branch coverage, you would have to
             write multiple actions and then assert that they throw an{' '}
@@ -135,9 +133,7 @@ const UnitTestingConstructorsBlog = () => {
             <InlineLink href="https://fluentassertions.com/">FluentAssertions</InlineLink>{' '}
             to do the below:
           </Text>
-          <CodeBlock language="csharp" showLineNumbers>
-            {exampleXunitTests}
-          </CodeBlock>
+          <CodeBlock language="csharp">{exampleXunitTests}</CodeBlock>
           <Text as="p" sx={bodyCss}>
             As you might imagine, this is not very scallable for constructors that make
             more than 4 or 5 arguments. What about for classes that have multiple ways of
@@ -156,9 +152,7 @@ const UnitTestingConstructorsBlog = () => {
             attributes or <Code>MemberData</Code> attributes! Defining tests for the
             example <Code>TransportHandler</Code> becomes as simple as:
           </Text>
-          <CodeBlock language="csharp" showLineNumbers>
-            {exampleFcaTests}
-          </CodeBlock>
+          <CodeBlock language="csharp">{exampleFcaTests}</CodeBlock>
           <Text as="h3" variant="subtitle">
             Whoa what was that!
           </Text>
