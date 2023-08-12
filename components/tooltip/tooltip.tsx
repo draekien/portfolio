@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import React from 'react';
-import Tippy from '@tippyjs/react/headless';
+import Tippy, { TippyProps } from '@tippyjs/react/headless';
 import { followCursor } from 'tippy.js';
 import { PropsWithChildren } from 'react';
 
@@ -13,7 +13,7 @@ export const Tooltip = ({ text, children }: PropsWithChildren<TooltipProps>) => 
 
   return (
     <Tippy
-      render={(attrs) => (
+      render={(attrs: TippyProps['render']) => (
         <div
           sx={{
             backgroundColor: 'muted',
