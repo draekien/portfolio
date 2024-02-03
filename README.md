@@ -4,6 +4,8 @@
 
 <h1 align="center">Portfolio</h1>
 
+![checkly](https://api.checklyhq.com/v1/badges/checks/ed419004-6723-4a8c-8e60-2ddf2bc64c6a?style=flat&theme=default)
+
 - [Introduction](#introduction)
 - [Getting started](#getting-started)
   - [Project structure](#project-structure)
