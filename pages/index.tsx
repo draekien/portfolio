@@ -3,6 +3,7 @@ import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import { Footer, HeaderBar, Introduction } from '../components';
 import { FluentConstructorAssertionsShowcase } from '../features';
+import ArchivedProjectsLink from '../features/archive/archive';
 import { getSharedServerSideProps } from '../utils/getSharedServerSideProps';
 
 export const getServerSideProps = async () => {
@@ -37,6 +38,7 @@ const HomePage = ({
         </HeaderBar>
         <Introduction />
         <FluentConstructorAssertionsShowcase />
+        <ArchivedProjectsLink />
       </main>
       <Footer lastUpdatedOn={lastUpdatedOn} />
     </div>

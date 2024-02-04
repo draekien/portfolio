@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
-import { Flex } from '@theme-ui/components';
 import { Text } from '@waystone/ui';
+import { Flex } from 'theme-ui';
 import InlineLink from '../inline-link/inlineLink';
 import * as styles from './footer.styles';
 
@@ -32,7 +32,7 @@ export function Footer({ lastUpdatedOn }: FooterProps) {
       </Flex>
       <Flex sx={{ gap: 'sm', marginTop: 'md' }}>
         <Text variant="caption" inline>
-          &copy; William Pei
+          &copy; William Pei {new Date().getFullYear()}
         </Text>
         <Text variant="caption" color="secondary" inline>
           \\
@@ -43,6 +43,6 @@ export function Footer({ lastUpdatedOn }: FooterProps) {
       </Flex>
     </Flex>
   );
-};
+}
 
 export default Footer;

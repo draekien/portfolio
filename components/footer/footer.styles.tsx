@@ -4,7 +4,7 @@ export const footerContainerCss: ThemeUIStyleObject = {
   alignItems: 'center',
   flexFlow: 'column',
   mx: ['lg', 'lg', 'xl'],
-  mt: 'xl',
+  mt: '20vmin',
   mb: 'md',
 };
 
