@@ -1,12 +1,24 @@
 /** @jsxImportSource theme-ui */
 import { Flex } from '@theme-ui/components';
 import { Text } from '@waystone/ui';
+import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
-import { Breadcrumbs, HeaderBar, IllustrationLink } from '../../components';
+import { Breadcrumbs, Footer, HeaderBar, IllustrationLink } from '../../components';
+import { getSharedServerSideProps } from '../../utils/getSharedServerSideProps';
 
-const BlogPage = () => {
+export const getServerSideProps = async () => {
+  const sharedProps = await getSharedServerSideProps();
+
+  return {
+    props: {
+      ...sharedProps,
+    },
+  };
+};
+
+const BlogPage = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
-    <div>
+    <>
       <Head>
         <title>Blog | Code With Me | William Pei</title>
       </Head>
@@ -23,18 +35,10 @@ const BlogPage = () => {
               Explore C# with me as I delve into the world of .NET Core Web APIs.
             </Text>
           </IllustrationLink>
-          {/* <IllustrationLink
-            href="/blog/designpatterns"
-            title="Design Patterns"
-            src="/blogs/design.svg"
-            alt="">
-            <Text as="p" variant="body" sx={{ fontSize: 'p' }}>
-              A series on design patterns and when to use them.
-            </Text>
-          </IllustrationLink> */}
         </Flex>
       </main>
-    </div>
+      <Footer {...props} />
+    </>
   );
 };
 

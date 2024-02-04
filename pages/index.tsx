@@ -1,9 +1,23 @@
 /** @jsxImportSource theme-ui */
+import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
-import { HeaderBar, Introduction } from '../components';
+import { Footer, HeaderBar, Introduction } from '../components';
 import { FluentConstructorAssertionsShowcase } from '../features';
+import { getSharedServerSideProps } from '../utils/getSharedServerSideProps';
 
-const HomePage = () => {
+export const getServerSideProps = async () => {
+  const sharedProps = await getSharedServerSideProps();
+
+  return {
+    props: {
+      ...sharedProps,
+    },
+  };
+};
+
+const HomePage = ({
+  lastUpdatedOn,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <div>
       <Head>
@@ -24,6 +38,7 @@ const HomePage = () => {
         <Introduction />
         <FluentConstructorAssertionsShowcase />
       </main>
+      <Footer lastUpdatedOn={lastUpdatedOn} />
     </div>
   );
 };

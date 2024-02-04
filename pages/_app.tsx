@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import * as React from 'react';
-import { Footer } from '../components';
 import * as gtag from '../lib/gtag';
 import '../styles/globals.css';
 
@@ -49,7 +48,6 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
           pageAnimate: { opacity: 1 },
         }}>
         <Component {...pageProps} />
-        <Footer />
         <Analytics />
       </motion.div>
     </Waystone>

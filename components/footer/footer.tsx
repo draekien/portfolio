@@ -4,7 +4,11 @@ import { Text } from '@waystone/ui';
 import InlineLink from '../inline-link/inlineLink';
 import * as styles from './footer.styles';
 
-export const Footer = () => {
+export type FooterProps = {
+  lastUpdatedOn: string;
+};
+
+export function Footer({ lastUpdatedOn }: FooterProps) {
   return (
     <Flex as="footer" sx={styles.footerContainerCss}>
       <Flex
@@ -34,7 +38,7 @@ export const Footer = () => {
           \\
         </Text>
         <Text variant="caption" inline>
-          last updated 23.07.12
+          last updated {new Date(lastUpdatedOn).toISOString().substring(0, 10)}
         </Text>
       </Flex>
     </Flex>

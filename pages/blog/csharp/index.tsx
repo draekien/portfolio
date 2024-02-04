@@ -1,9 +1,23 @@
 /** @jsxImportSource theme-ui */
 import { Text } from '@theme-ui/components';
+import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
-import { Article, Breadcrumbs, CardLink, HeaderBar } from '../../../components';
+import { Article, Breadcrumbs, CardLink, Footer, HeaderBar } from '../../../components';
+import { getSharedServerSideProps } from '../../../utils/getSharedServerSideProps';
 
-const CSharpPage = () => {
+export const getServerSideProps = async () => {
+  const sharedProps = await getSharedServerSideProps();
+
+  return {
+    props: {
+      ...sharedProps,
+    },
+  };
+};
+
+const CSharpPage = ({
+  lastUpdatedOn,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <div sx={{ mb: 'xl' }}>
       <Head>
@@ -33,6 +47,7 @@ const CSharpPage = () => {
           </CardLink>
         </Article>
       </main>
+      <Footer lastUpdatedOn={lastUpdatedOn} />
     </div>
   );
 };
