@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import Head from 'next/head';
-import { Footer, HeaderBar, Introduction } from '../components';
+import { HeaderBar, Introduction } from '../components';
 import { FluentConstructorAssertionsShowcase } from '../features';
 
 const HomePage = () => {
@@ -24,7 +24,6 @@ const HomePage = () => {
         <Introduction />
         <FluentConstructorAssertionsShowcase />
       </main>
-      <Footer />
     </div>
   );
 };

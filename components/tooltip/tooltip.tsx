@@ -13,7 +13,7 @@ const tooltipCss: ThemeUIStyleObject = {
   px: 'sm',
   py: 'xs',
   borderRadius: 'sm',
-  color: 'secondary',
+  color: 'text',
   fontSize: 'small',
 };
 

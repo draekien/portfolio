@@ -3,7 +3,9 @@ import { ThemeUIStyleObject } from '@theme-ui/css';
 export const footerContainerCss: ThemeUIStyleObject = {
   alignItems: 'center',
   flexFlow: 'column',
-  m: ['lg', 'lg', 'xl'],
+  mx: ['lg', 'lg', 'xl'],
+  mt: 'xl',
+  mb: 'md',
 };
 
 export const capsTextCss: ThemeUIStyleObject = {
