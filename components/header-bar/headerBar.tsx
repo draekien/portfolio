@@ -1,19 +1,19 @@
 /** @jsxImportSource theme-ui */
 import { Flex } from '@theme-ui/components';
-import * as React from 'react';
-import * as styles from './headerBar.styles';
-import Logo from '../logo/logo';
-import Link from 'next/link';
 import { Anchor, ButtonGroup, Icon, Text, onClickProps } from '@waystone/ui';
+import Link from 'next/link';
+import * as React from 'react';
 import { useColorMode } from 'theme-ui';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
+import Logo from '../logo/logo';
+import * as styles from './headerBar.styles';
 
 export interface HeaderBarProps {
   /** The title of the page to display */
-  title: React.ReactNode;
+  children: React.ReactNode;
 }
 
-export const HeaderBar = ({ title }: HeaderBarProps) => {
+export const HeaderBar = ({ children: title }: HeaderBarProps) => {
   const [colorMode, setColorMode] = useColorMode();
   const isMobile = useMediaQuery(560);
 

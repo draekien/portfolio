@@ -2,7 +2,7 @@
 import { Flex } from '@theme-ui/components';
 import { Text } from '@waystone/ui';
 import Head from 'next/head';
-import { Breadcrumbs, IllustrationLink, HeaderBar } from '../../components';
+import { Breadcrumbs, HeaderBar, IllustrationLink } from '../../components';
 
 const BlogPage = () => {
   return (
@@ -11,7 +11,7 @@ const BlogPage = () => {
         <title>Blog | Code With Me | William Pei</title>
       </Head>
       <main>
-        <HeaderBar title="Code With Me" />
+        <HeaderBar>Code With Me</HeaderBar>
         <Breadcrumbs crumbs={[{ title: 'Home', href: '/' }, { title: 'Code with me' }]} />
         <Flex sx={{ padding: ['sm', 'md', 'xl'], gap: ['sm', 'md', 'xl'] }}>
           <IllustrationLink

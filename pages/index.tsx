@@ -1,12 +1,7 @@
 /** @jsxImportSource theme-ui */
 import Head from 'next/head';
-import { Introduction, HeaderBar, Footer } from '../components';
-import {
-  JigglePuddingShowcase,
-  BookMqShowcase,
-  DraekienUiShowcase,
-  FluentConstructorAssertionsShowcase,
-} from '../features';
+import { Footer, HeaderBar, Introduction } from '../components';
+import { FluentConstructorAssertionsShowcase } from '../features';
 
 const HomePage = () => {
   return (
@@ -19,20 +14,15 @@ const HomePage = () => {
         />
       </Head>
       <main>
-        <HeaderBar
-          title={
-            <span>
-              WILLIAM
-              <br />
-              PEI
-            </span>
-          }
-        />
+        <HeaderBar>
+          <span>
+            WILLIAM
+            <br />
+            PEI
+          </span>
+        </HeaderBar>
         <Introduction />
         <FluentConstructorAssertionsShowcase />
-        <DraekienUiShowcase />
-        <JigglePuddingShowcase />
-        <BookMqShowcase />
       </main>
       <Footer />
     </div>

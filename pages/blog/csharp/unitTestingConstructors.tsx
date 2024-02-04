@@ -1,15 +1,15 @@
 /** @jsxImportSource theme-ui */
+import { Text } from '@waystone/ui';
 import Head from 'next/head';
 import { ThemeUICSSObject } from 'theme-ui';
-import { Text } from '@waystone/ui';
 import {
-  Breadcrumbs,
   Article,
-  CodeBlock,
+  Breadcrumbs,
   Code,
+  CodeBlock,
+  Footer,
   HeaderBar,
   InlineLink,
-  Footer,
 } from '../../../components';
 
 const exampleCtor = `public class TransportHandler : ICommandHandler
@@ -84,7 +84,7 @@ const UnitTestingConstructorsBlog = () => {
         <title>Unit testing constructors | C# | Code With Me | William Pei</title>
       </Head>
       <main sx={{ pb: 'xl' }}>
-        <HeaderBar title={<span>CODE WITH ME</span>} />
+        <HeaderBar>CODE WITH ME</HeaderBar>
         <Breadcrumbs
           crumbs={[
             { title: 'Home', href: '/' },

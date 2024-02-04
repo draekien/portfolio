@@ -10,7 +10,7 @@ const CSharpPage = () => {
         <title>C# | Code With Me | William Pei</title>
       </Head>
       <main sx={{ pb: 'xl' }}>
-        <HeaderBar title={<span>CODE WITH ME</span>} />
+        <HeaderBar>CODE WITH ME</HeaderBar>
         <Breadcrumbs
           crumbs={[
             { title: 'Home', href: '/' },
