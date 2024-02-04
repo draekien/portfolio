@@ -1,16 +1,18 @@
 /** @jsxImportSource theme-ui */
+import { Text } from '@waystone/ui';
+import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import { ThemeUICSSObject } from 'theme-ui';
-import { Text } from '@waystone/ui';
 import {
-  Breadcrumbs,
   Article,
-  CodeBlock,
+  Breadcrumbs,
   Code,
+  CodeBlock,
+  Footer,
   HeaderBar,
   InlineLink,
-  Footer,
 } from '../../../components';
+import { getSharedServerSideProps } from '../../../utils/getSharedServerSideProps';
 
 const exampleCtor = `public class TransportHandler : ICommandHandler
 {
@@ -77,14 +79,26 @@ const bodyCss: ThemeUICSSObject = {
   mb: 'lg',
 };
 
-const UnitTestingConstructorsBlog = () => {
+export const getServerSideProps = async () => {
+  const sharedProps = await getSharedServerSideProps();
+
+  return {
+    props: {
+      ...sharedProps,
+    },
+  };
+};
+
+const UnitTestingConstructorsBlog = ({
+  lastUpdatedOn,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <div sx={{ mb: 'xl' }}>
       <Head>
         <title>Unit testing constructors | C# | Code With Me | William Pei</title>
       </Head>
       <main sx={{ pb: 'xl' }}>
-        <HeaderBar title={<span>CODE WITH ME</span>} />
+        <HeaderBar>CODE WITH ME</HeaderBar>
         <Breadcrumbs
           crumbs={[
             { title: 'Home', href: '/' },
@@ -207,7 +221,7 @@ const UnitTestingConstructorsBlog = () => {
           </Text>
         </Article>
       </main>
-      <Footer />
+      <Footer lastUpdatedOn={lastUpdatedOn} />
     </div>
   );
 };

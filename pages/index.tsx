@@ -1,14 +1,24 @@
 /** @jsxImportSource theme-ui */
+import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
-import { Introduction, HeaderBar, Footer } from '../components';
-import {
-  JigglePuddingShowcase,
-  BookMqShowcase,
-  DraekienUiShowcase,
-  FluentConstructorAssertionsShowcase,
-} from '../features';
+import { Footer, HeaderBar, Introduction } from '../components';
+import { FluentConstructorAssertionsShowcase } from '../features';
+import ArchivedProjectsLink from '../features/archive/archive';
+import { getSharedServerSideProps } from '../utils/getSharedServerSideProps';
 
-const HomePage = () => {
+export const getServerSideProps = async () => {
+  const sharedProps = await getSharedServerSideProps();
+
+  return {
+    props: {
+      ...sharedProps,
+    },
+  };
+};
+
+const HomePage = ({
+  lastUpdatedOn,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <div>
       <Head>
@@ -19,22 +29,18 @@ const HomePage = () => {
         />
       </Head>
       <main>
-        <HeaderBar
-          title={
-            <span>
-              WILLIAM
-              <br />
-              PEI
-            </span>
-          }
-        />
+        <HeaderBar>
+          <span>
+            WILLIAM
+            <br />
+            PEI
+          </span>
+        </HeaderBar>
         <Introduction />
         <FluentConstructorAssertionsShowcase />
-        <DraekienUiShowcase />
-        <JigglePuddingShowcase />
-        <BookMqShowcase />
+        <ArchivedProjectsLink />
       </main>
-      <Footer />
+      <Footer lastUpdatedOn={lastUpdatedOn} />
     </div>
   );
 };

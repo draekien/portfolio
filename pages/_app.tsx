@@ -1,14 +1,14 @@
 /** @jsxImportSource theme-ui */
-import type { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
-import '../styles/globals.css';
-import * as React from 'react';
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
-import { motion } from 'framer-motion';
-import * as gtag from '../lib/gtag';
 import { Analytics } from '@vercel/analytics/react';
 import { Waystone } from '@waystone/ui';
+import { motion } from 'framer-motion';
+import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
+import * as React from 'react';
+import * as gtag from '../lib/gtag';
+import '../styles/globals.css';
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const router = useRouter();

@@ -1,10 +1,11 @@
 /** @jsxImportSource theme-ui */
 import { Flex } from '@theme-ui/components';
+import type { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Carousel from 'nuka-carousel';
-import * as styles from './showcaseCarousel.styles';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import Image, { StaticImageData } from 'next/image';
 import showcaseHeader from '../../public/showcase-header.svg';
+import * as styles from './showcaseCarousel.styles';
 
 export type ImageWithAlt = {
   src: StaticImageData;

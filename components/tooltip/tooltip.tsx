@@ -1,29 +1,29 @@
 /** @jsxImportSource theme-ui */
-import React from 'react';
-import Tippy, { TippyProps } from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react/headless';
+import React, { PropsWithChildren } from 'react';
+import { ThemeUIStyleObject } from 'theme-ui';
 import { followCursor } from 'tippy.js';
-import { PropsWithChildren } from 'react';
 
 export interface TooltipProps {
   text: string;
 }
+
+const tooltipCss: ThemeUIStyleObject = {
+  backgroundColor: 'muted',
+  px: 'sm',
+  py: 'xs',
+  borderRadius: 'sm',
+  color: 'text',
+  fontSize: 'small',
+};
 
 export const Tooltip = ({ text, children }: PropsWithChildren<TooltipProps>) => {
   if (text === '') return <React.Fragment>{children}</React.Fragment>;
 
   return (
     <Tippy
-      render={(attrs: TippyProps['render']) => (
-        <div
-          sx={{
-            backgroundColor: 'muted',
-            px: 'sm',
-            py: 'xs',
-            borderRadius: 'sm',
-            color: 'secondary',
-            fontSize: 'small',
-          }}
-          {...attrs}>
+      render={(attrs) => (
+        <div sx={tooltipCss} role="tooltip" {...attrs}>
           {text}
         </div>
       )}

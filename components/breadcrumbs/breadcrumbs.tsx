@@ -1,9 +1,9 @@
 /** @jsxImportSource theme-ui */
+import { Text } from '@waystone/ui';
 import React from 'react';
 import { MdChevronRight } from 'react-icons/md';
 import { Flex } from 'theme-ui';
 import InlineLink from '../inline-link/inlineLink';
-import { Text } from '@waystone/ui';
 
 /** The shape of data required to render a breadcrumb */
 export type Breadcrumb = {
@@ -32,10 +32,10 @@ export const Breadcrumbs = ({ crumbs }: BreadcrumbsProps) => {
           <MdChevronRight sx={{ pt: 'xxs' }} />
           {href ? (
             <InlineLink href={href} internal hideTooltip>
-              <Text variant="body">{title}</Text>
+              <Text inline>{title}</Text>
             </InlineLink>
           ) : (
-            <Text variant="body">{title}</Text>
+            <Text inline>{title}</Text>
           )}
         </React.Fragment>
       ))}
