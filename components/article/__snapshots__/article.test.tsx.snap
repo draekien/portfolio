@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Article should match snapshot 1`] = `
+<div>
+  <div
+    class="css-y1zty-Article"
+  >
+    <div
+      class="css-1b8axx8-CoverPhoto"
+    >
+      <div
+        class="css-1b5c3rh-CoverPhoto"
+      >
+        <img
+          alt="example"
+          data-nimg="fill"
+          decoding="async"
+          fetchpriority="high"
+          sizes="100vw"
+          src="/_next/image?url=https%3A%2F%2Fexample.com&w=3840&q=75"
+          srcset="/_next/image?url=https%3A%2F%2Fexample.com&w=640&q=75 640w, /_next/image?url=https%3A%2F%2Fexample.com&w=750&q=75 750w, /_next/image?url=https%3A%2F%2Fexample.com&w=828&q=75 828w, /_next/image?url=https%3A%2F%2Fexample.com&w=1080&q=75 1080w, /_next/image?url=https%3A%2F%2Fexample.com&w=1200&q=75 1200w, /_next/image?url=https%3A%2F%2Fexample.com&w=1920&q=75 1920w, /_next/image?url=https%3A%2F%2Fexample.com&w=2048&q=75 2048w, /_next/image?url=https%3A%2F%2Fexample.com&w=3840&q=75 3840w"
+          style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; object-fit: none; object-position: 50% 0%; color: transparent;"
+        />
+      </div>
+    </div>
+    <article
+      class="css-1nc62f5-Article"
+    >
+      <section
+        class="css-5544bw-Article"
+      >
+        <div
+          class="css-14fkb9a-Article"
+        >
+          <h1
+            class="css-6nfnyy-Text"
+          >
+            test
+          </h1>
+        </div>
+        <sub>
+          <span
+            class="css-1blypf8-Text"
+          >
+            John Doe
+          </span>
+          <span
+            class="css-140g827-Article"
+          >
+            \\\\
+          </span>
+          <span
+            class="css-1blypf8-Text"
+          >
+            2024-01-01
+          </span>
+        </sub>
+      </section>
+    </article>
+  </div>
+</div>
+`;
