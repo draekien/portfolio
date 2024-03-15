@@ -18,7 +18,7 @@ export const CoverPhoto = ({ src, alt }: CoverPhotoProps) => {
           }}
           src={src}
           alt={alt}
-          layout="fill"
+          fill
           priority
         />
       </div>
