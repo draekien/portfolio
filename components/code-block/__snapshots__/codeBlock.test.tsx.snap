@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CodeBlock should match snapshot 1`] = `
+<div>
+  <div
+    class="css-pj65mv-CodeBlock"
+  >
+    <div
+      class="css-1ff8p5s-CodeBlock"
+    >
+      bash
+    </div>
+    <button
+      class="css-oscljg-CodeBlock"
+      type="button"
+    >
+      <i
+        class="material-icons css-1h9809z-Icon"
+      >
+        content_copy
+      </i>
+    </button>
+    <pre
+      class="css-be12ww-SyntaxHighlighter"
+    >
+      <code
+        class="language-bash css-dytyo9-SyntaxHighlighter"
+      >
+        <span
+          class="css-g89m8z-Box"
+        >
+          <span>
+            npm i
+          </span>
+        </span>
+      </code>
+    </pre>
+  </div>
+</div>
+`;

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CoverPhoto should match snapshot 1`] = `
+<div>
+  <div
+    class="css-hz73ym-CoverPhoto"
+  >
+    <div
+      class="css-1p96nn1-CoverPhoto"
+    >
+      <img
+        alt="example"
+        data-nimg="fill"
+        decoding="async"
+        fetchpriority="high"
+        sizes="100vw"
+        src="/_next/image?url=https%3A%2F%2Fexample.com&w=3840&q=75"
+        srcset="/_next/image?url=https%3A%2F%2Fexample.com&w=640&q=75 640w, /_next/image?url=https%3A%2F%2Fexample.com&w=750&q=75 750w, /_next/image?url=https%3A%2F%2Fexample.com&w=828&q=75 828w, /_next/image?url=https%3A%2F%2Fexample.com&w=1080&q=75 1080w, /_next/image?url=https%3A%2F%2Fexample.com&w=1200&q=75 1200w, /_next/image?url=https%3A%2F%2Fexample.com&w=1920&q=75 1920w, /_next/image?url=https%3A%2F%2Fexample.com&w=2048&q=75 2048w, /_next/image?url=https%3A%2F%2Fexample.com&w=3840&q=75 3840w"
+        style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; object-fit: none; object-position: 50% 0%; color: transparent;"
+      />
+    </div>
+  </div>
+</div>
+`;

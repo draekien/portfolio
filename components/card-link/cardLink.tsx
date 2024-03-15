@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
-import Link from 'next/link';
 import { CardButton, Text } from '@waystone/ui';
+import Link from 'next/link';
 import { PropsWithChildren } from 'react';
 
 export interface CardLinkProps {
@@ -22,7 +22,7 @@ export const CardLink = ({
   fullWidth,
 }: PropsWithChildren<CardLinkProps>) => {
   return (
-    <Link style={{ width: '100%' }} href={href} passHref legacyBehavior>
+    <Link style={{ width: '100%' }} href={href} passHref>
       <CardButton fullWidth={fullWidth}>
         <Text as="h2" variant="title">
           {title}
