@@ -10,6 +10,3 @@ export const showcaseCarouselContainerCss: ThemeUIStyleObject = {
   my: 'xl',
 };
 
-export const showcaseCarouselHeaderCss: ThemeUIStyleObject = {
-  width: '100%',
-};

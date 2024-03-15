@@ -1,5 +1,5 @@
-/** @jsxImportSource theme-ui */
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Waystone } from '@waystone/ui';
 import { motion } from 'framer-motion';
 import type { AppProps } from 'next/app';
@@ -39,18 +39,21 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   }, [router.events]);
 
   return (
-    <Waystone>
-      <motion.div
-        initial="pageInitial"
-        animate="pageAnimate"
-        variants={{
-          pageInitial: { opacity: 0 },
-          pageAnimate: { opacity: 1 },
-        }}>
-        <Component {...pageProps} />
-        <Analytics />
-      </motion.div>
-    </Waystone>
+    <>
+      <Waystone>
+        <motion.div
+          initial="pageInitial"
+          animate="pageAnimate"
+          variants={{
+            pageInitial: { opacity: 0 },
+            pageAnimate: { opacity: 1 },
+          }}>
+          <Component {...pageProps} />
+        </motion.div>
+      </Waystone>
+      <Analytics />
+      <SpeedInsights />
+    </>
   );
 };
 

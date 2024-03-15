@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Code should match snapshot 1`] = `
+<div>
+  <code
+    class="css-1wi22pg-Code"
+  >
+    npm i
+  </code>
+</div>
+`;
