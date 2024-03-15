@@ -1,9 +1,9 @@
 /** @jsxImportSource theme-ui */
 import { Box } from '@theme-ui/components';
 import Image from 'next/image';
+import logo from '../../public/mark.svg';
 import Tooltip from '../tooltip/tooltip';
 import * as styles from './logo.styles';
-import logo from '../../public/mark.svg';
 
 export const Logo = () => {
   return (

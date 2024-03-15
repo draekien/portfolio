@@ -1,24 +1,20 @@
 /** @jsxImportSource theme-ui */
-import { InferGetServerSidePropsType } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import { Footer, HeaderBar, Introduction } from '../components';
 import { FluentConstructorAssertionsShowcase } from '../features';
 import ArchivedProjectsLink from '../features/archive/archive';
-import { getSharedServerSideProps } from '../utils/getSharedServerSideProps';
+import { getSharedStaticProps } from '../utils/getSharedStaticProps';
 
-export const getServerSideProps = async () => {
-  const sharedProps = await getSharedServerSideProps();
+export const getStaticProps = async () => {
+  const sharedProps = await getSharedStaticProps();
 
   return {
-    props: {
-      ...sharedProps,
-    },
+    ...sharedProps,
   };
 };
 
-const HomePage = ({
-  lastUpdatedOn,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const HomePage = ({ lastUpdatedOn }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div>
       <Head>

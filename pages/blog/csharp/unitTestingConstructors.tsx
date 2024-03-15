@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Text } from '@waystone/ui';
-import { InferGetServerSidePropsType } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import { ThemeUICSSObject } from 'theme-ui';
 import {
@@ -12,7 +12,7 @@ import {
   HeaderBar,
   InlineLink,
 } from '../../../components';
-import { getSharedServerSideProps } from '../../../utils/getSharedServerSideProps';
+import { getSharedStaticProps } from '../../../utils/getSharedStaticProps';
 
 const exampleCtor = `public class TransportHandler : ICommandHandler
 {
@@ -79,19 +79,17 @@ const bodyCss: ThemeUICSSObject = {
   mb: 'lg',
 };
 
-export const getServerSideProps = async () => {
-  const sharedProps = await getSharedServerSideProps();
+export const getStaticProps = async () => {
+  const sharedProps = await getSharedStaticProps();
 
   return {
-    props: {
-      ...sharedProps,
-    },
+    ...sharedProps,
   };
 };
 
 const UnitTestingConstructorsBlog = ({
   lastUpdatedOn,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div sx={{ mb: 'xl' }}>
       <Head>

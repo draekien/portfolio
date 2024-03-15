@@ -1,23 +1,21 @@
 /** @jsxImportSource theme-ui */
 import { Text } from '@theme-ui/components';
-import { InferGetServerSidePropsType } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
+import { getSharedStaticProps } from 'utils/getSharedStaticProps';
 import { Article, Breadcrumbs, CardLink, Footer, HeaderBar } from '../../../components';
-import { getSharedServerSideProps } from '../../../utils/getSharedServerSideProps';
 
-export const getServerSideProps = async () => {
-  const sharedProps = await getSharedServerSideProps();
+export const getStaticProps = async () => {
+  const sharedProps = await getSharedStaticProps();
 
   return {
-    props: {
-      ...sharedProps,
-    },
+    ...sharedProps,
   };
 };
 
 const CSharpPage = ({
   lastUpdatedOn,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div sx={{ mb: 'xl' }}>
       <Head>

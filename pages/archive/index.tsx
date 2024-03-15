@@ -1,4 +1,4 @@
-import { InferGetServerSidePropsType } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import { Breadcrumb, Breadcrumbs, Footer, HeaderBar } from '../../components';
 import {
@@ -6,21 +6,19 @@ import {
   DraekienUiShowcase,
   JigglePuddingShowcase,
 } from '../../features';
-import { getSharedServerSideProps } from '../../utils/getSharedServerSideProps';
+import { getSharedStaticProps } from '../../utils/getSharedStaticProps';
 
 const crumbs: Breadcrumb[] = [{ title: 'Home', href: '/' }, { title: 'Archive' }];
 
-export const getServerSideProps = async () => {
-  const sharedProps = await getSharedServerSideProps();
+export const getStaticProps = async () => {
+  const sharedProps = await getSharedStaticProps();
 
   return {
-    props: {
-      ...sharedProps,
-    },
+    ...sharedProps,
   };
 };
 
-const ArchivePage = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const ArchivePage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>

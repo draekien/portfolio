@@ -1,22 +1,20 @@
 /** @jsxImportSource theme-ui */
 import { Flex } from '@theme-ui/components';
 import { Text } from '@waystone/ui';
-import { InferGetServerSidePropsType } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import { Breadcrumbs, Footer, HeaderBar, IllustrationLink } from '../../components';
-import { getSharedServerSideProps } from '../../utils/getSharedServerSideProps';
+import { getSharedStaticProps } from '../../utils/getSharedStaticProps';
 
-export const getServerSideProps = async () => {
-  const sharedProps = await getSharedServerSideProps();
+export const getStaticProps = async () => {
+  const sharedProps = await getSharedStaticProps();
 
   return {
-    props: {
-      ...sharedProps,
-    },
+    ...sharedProps,
   };
 };
 
-const BlogPage = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const BlogPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>
