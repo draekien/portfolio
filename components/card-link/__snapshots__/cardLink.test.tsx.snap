@@ -7,7 +7,7 @@ exports[`CardLink should match snapshot 1`] = `
     style="width: 100%;"
   >
     <button
-      class="css-5143ny-CardButton"
+      class="css-1budesj-CardButton"
       type="button"
     >
       <h2
