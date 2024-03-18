@@ -37,7 +37,7 @@
     "@types/jest": "^29.5.12",
     "@types/node": "^20.11.28",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "^18.2.66",
+    "@types/react": "^18.2.67",
     "@types/react-dom": "^18.2.22",
     "commitizen": "^4.2.5",
     "cz-conventional-changelog": "^3.3.0",
