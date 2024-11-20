@@ -1,4 +1,23 @@
 @tailwind base;
+
+@layer base {
+  *, *::before, *::after {    
+    @apply box-border
+  }
+
+  body {
+    @apply leading-normal antialiased
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply break-words text-balance
+  }
+  p {
+    @apply break-words text-pretty
+  }
+}
+
+
 @tailwind components;
 @tailwind utilities;
 
