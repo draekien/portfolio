@@ -5,8 +5,12 @@
     @apply box-border
   }
 
+  html {
+    @apply scroll-smooth
+  }
+
   body {
-    @apply leading-normal antialiased
+    @apply leading-normal antialiased overscroll-none
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -22,13 +26,32 @@
 @tailwind utilities;
 
 :root {
+  --color-primary-10: #e1d4eb;
+  --color-primary-20: #c3aad6;
+  --color-primary-30: #a582c2;
+  --color-primary-40: #865aae;
+  --color-primary-50: #663399;
+  --color-primary-60: #522b79;
+  --color-primary-70: #3e225a;
+  --color-primary-80: #2c1a3c;
+  --color-primary-90: #1a1121;
+  --color-secondary-10: #eddfd3;
+  --color-secondary-20: #d9bfa9;
+  --color-secondary-30: #c5a180;
+  --color-secondary-40: #af8359;
+  --color-secondary-50: #996633;
+  --color-secondary-60: #79512a;
+  --color-secondary-70: #5a3d22;
+  --color-secondary-80: #3d2b19;
+  --color-secondary-90: #221910;
+
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1121;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #1a1121;
     --foreground: #ededed;
   }
 }
