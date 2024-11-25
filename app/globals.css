@@ -10,14 +10,14 @@
   }
 
   body {
-    @apply leading-normal antialiased overscroll-none
+    @apply antialiased overscroll-none
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply break-words text-balance
   }
   p {
-    @apply break-words text-pretty
+    @apply leading-normal break-words text-pretty
   }
 }
 
@@ -35,15 +35,7 @@
   --color-primary-70: #3e225a;
   --color-primary-80: #2c1a3c;
   --color-primary-90: #1a1121;
-  --color-secondary-10: #eddfd3;
-  --color-secondary-20: #d9bfa9;
-  --color-secondary-30: #c5a180;
-  --color-secondary-40: #af8359;
-  --color-secondary-50: #996633;
-  --color-secondary-60: #79512a;
-  --color-secondary-70: #5a3d22;
-  --color-secondary-80: #3d2b19;
-  --color-secondary-90: #221910;
+  --color-secondary: #EF802F;
 
   --background: #ffffff;
   --foreground: #1a1121;
@@ -59,5 +51,5 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--barlow), Arial, Helvetica, sans-serif;
 }
