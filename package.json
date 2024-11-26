@@ -31,5 +31,5 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@9.14.1+sha256.9978d5f40d4f376b054cf8c000cf8c326284344281e3c9bbf4e3d6f153b0e8de"
+  "packageManager": "pnpm@9.14.2+sha256.06e65a4965baff6d6097f9c8f75c35f6d420974dbc03d775009056a69edfd271"
 }
