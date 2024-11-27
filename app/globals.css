@@ -1,23 +1,48 @@
 @tailwind base;
 
 @layer base {
+  :root {
+    --color-ring: 274 35% 74%;
+    --color-primary: 270 50% 40%;
+    --color-primary-foreground: 0 0% 93%;
+    --color-secondary: 25 86% 56%;
+    --color-secondary-foreground: 0 0% 93%;
+    --color-destructive: 7 64% 52%;
+    --color-destructive-foreground: 0 0% 93%;
+  
+    --background: 0 0% 100%;
+    --foreground: 274 32% 10%;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: 274 32% 10%;
+      --foreground: 0 0% 93%;
+    }
+  }
+}
+
+@layer base {
   *, *::before, *::after {    
-    @apply box-border
+    @apply box-border;
   }
 
   html {
-    @apply scroll-smooth
+    @apply scroll-smooth;
   }
 
   body {
-    @apply antialiased overscroll-none
+    @apply antialiased overscroll-none bg-background text-foreground;
+    font-family: var(--barlow), Arial, Helvetica, sans-serif;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply break-words text-balance
+    @apply break-words text-balance;
   }
   p {
-    @apply leading-normal break-words text-pretty
+    @apply leading-normal break-words text-pretty;
   }
 }
 
@@ -25,31 +50,4 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-primary-10: #e1d4eb;
-  --color-primary-20: #c3aad6;
-  --color-primary-30: #a582c2;
-  --color-primary-40: #865aae;
-  --color-primary-50: #663399;
-  --color-primary-60: #522b79;
-  --color-primary-70: #3e225a;
-  --color-primary-80: #2c1a3c;
-  --color-primary-90: #1a1121;
-  --color-secondary: #EF802F;
 
-  --background: #ffffff;
-  --foreground: #1a1121;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1a1121;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: var(--barlow), Arial, Helvetica, sans-serif;
-}

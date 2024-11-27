@@ -8,20 +8,30 @@ export default {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1536px',
+      },
+    },
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-        'primary-10': 'var(--color-primary-10)',
-        'primary-20': 'var(--color-primary-20)',
-        'primary-30': 'var(--color-primary-30)',
-        'primary-40': 'var(--color-primary-40)',
-        'primary-50': 'var(--color-primary-50)',
-        'primary-60': 'var(--color-primary-60)',
-        'primary-70': 'var(--color-primary-70)',
-        'primary-80': 'var(--color-primary-80)',
-        'primary-90': 'var(--color-primary-90)',
-        secondary: 'var(--color-secondary)',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        ring: 'hsl(var(--color-ring))',
+        primary: {
+          DEFAULT: 'hsl(var(--color-primary) / <alpha-value>)',
+          foreground: 'hsl(var(--color-primary-foreground) / <alpha-value>)',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--color-secondary) / <alpha-value>)',
+          foreground: 'hsl(var(--color-secondary-foreground) / <alpha-value>)',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--color-destructive) / <alpha-value>)',
+          foreground: 'hsl(var(--color-destructive-foreground) / <alpha-value>)',
+        },
       },
     },
   },
