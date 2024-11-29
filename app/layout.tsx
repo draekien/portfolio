@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import Header from '@/components/header';
+import type { Metadata } from 'next';
 import { Barlow } from 'next/font/google';
 import './globals.css';
 
@@ -20,7 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${barlow.variable} min-h-dvh`}>{children}</body>
+      <body className={`${barlow.variable} min-h-dvh`}>
+        <Header />
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

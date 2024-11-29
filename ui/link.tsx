@@ -1,22 +1,29 @@
-import Link from 'next/link';
+import { cn } from '@/utils/cn';
+import NextLink from 'next/link';
 import { forwardRef } from 'react';
-import Button, { type ButtonProps } from './button';
+import { buttonVariants, type ButtonProps } from './button';
 
-export type LinkProps = React.ComponentPropsWithoutRef<typeof Link> &
-  Pick<ButtonProps, 'variant' | 'size'>;
+export type LinkProps = React.ComponentPropsWithoutRef<typeof NextLink> &
+  Pick<ButtonProps, 'variant' | 'size' | 'disabled'>;
 
-const CustomLink = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ children, variant, size, className, ...props }, ref) => {
+const Link = forwardRef<HTMLAnchorElement, LinkProps>(
+  ({ children, variant, size, className, disabled, ...props }, ref) => {
     return (
-      <Button variant={variant} size={size} className={className} asChild>
-        <Link ref={ref} {...props}>
-          {children}
-        </Link>
-      </Button>
+      <NextLink
+        ref={ref}
+        className={cn(
+          buttonVariants({ variant, size, className }),
+          'aria-disabled:pointer-events-none'
+        )}
+        aria-disabled={disabled}
+        tabIndex={disabled ? -1 : undefined}
+        {...props}>
+        {children}
+      </NextLink>
     );
   }
 );
 
-CustomLink.displayName = 'Link';
+Link.displayName = 'Link';
 
-export default CustomLink;
+export default Link;

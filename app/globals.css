@@ -44,6 +44,14 @@
   p {
     @apply leading-normal break-words text-pretty;
   }
+
+  button {
+    @apply whitespace-nowrap ring-offset-background rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0;
+  }
+
+  a {
+    @apply whitespace-nowrap ring-offset-background rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
 }
 
 
