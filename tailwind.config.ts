@@ -32,8 +32,12 @@ export default {
           DEFAULT: 'hsl(var(--color-destructive) / <alpha-value>)',
           foreground: 'hsl(var(--color-destructive-foreground) / <alpha-value>)',
         },
+        popover: {
+          DEFAULT: 'hsl(var(--color-popover) / <alpha-value>)',
+          foreground: 'hsl(var(--color-popover-foreground) / <alpha-value>)',
+        },
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography'), require('tailwindcss-animate')],
 } satisfies Config;

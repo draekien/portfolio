@@ -9,6 +9,8 @@
     --color-secondary-foreground: 0 0% 93%;
     --color-destructive: 7 64% 52%;
     --color-destructive-foreground: 0 0% 93%;
+    --color-popover: 0 0% 100%;
+    --color-popover-foreground: 274 32% 10%;
   
     --background: 0 0% 100%;
     --foreground: 274 32% 10%;
@@ -18,6 +20,9 @@
     :root {
       --background: 274 32% 10%;
       --foreground: 0 0% 93%;
+
+      --color-popover: 274 32% 10%;
+      --color-popover-foreground: 0 0% 93%;
     }
   }
 }
