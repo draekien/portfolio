@@ -127,7 +127,11 @@ const NavigationMenuItem = forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Item>
 >(({ children, className, ...props }, ref) => {
-  return <NavigationMenuPrimitive.Item {...props} ref={ref} className={cn(className)} />;
+  return (
+    <NavigationMenuPrimitive.Item {...props} ref={ref} className={cn(className)}>
+      {children}
+    </NavigationMenuPrimitive.Item>
+  );
 });
 
 NavigationMenuItem.displayName = NavigationMenuPrimitive.Item.displayName;
@@ -143,3 +147,4 @@ export {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 };
+

@@ -10,7 +10,7 @@ import { GitHubLogoIcon } from '@radix-ui/react-icons';
 export default function Nav() {
   return (
     <NavigationMenu>
-      <NavigationMenuList className="flex list-none justify-center gap-2">
+      <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuItemLink href="/code-with-me" variant="ghost">
             Code With Me
