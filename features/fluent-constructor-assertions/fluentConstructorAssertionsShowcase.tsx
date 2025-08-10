@@ -1,10 +1,9 @@
 /** @jsxImportSource theme-ui */
-import React from 'react';
-import { Showcase, InlineLink } from '../../components';
 import { Text } from 'theme-ui';
-import { showcaseDescriptionBodyCss } from '../common/common.styles';
+import { InlineLink, Showcase } from '../../components';
 import desktop1 from '../../public/fluent-constructor/desktop-1.png';
 import desktop2 from '../../public/fluent-constructor/desktop-2.png';
+import { showcaseDescriptionBodyCss } from '../common/common.styles';
 
 const images = [
   {
@@ -22,7 +21,7 @@ const images = [
 const labels = [
   { key: 'Language', value: 'C#' },
   { key: 'Built', value: '.NET Standard 2.0' },
-  { key: 'Used', value: 'Unit Testing' },
+  { key: 'Usage', value: 'Unit Testing' },
   {
     key: 'Blog',
     value: (

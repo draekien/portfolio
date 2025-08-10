@@ -7,7 +7,7 @@ export const Introduction = () => {
   return (
     <Flex as="h1" sx={styles.introductionContainerCss}>
       <Flex>
-        <Text sx={styles.headingTextCss}>SENIOR .NET DEVELOPER</Text>
+        <Text sx={styles.headingTextCss}>TECHNICAL LEAD</Text>
         <Text sx={styles.headingTextMutedCss}>AT</Text>
       </Flex>
       <Flex>

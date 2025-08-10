@@ -64,7 +64,11 @@ const DesktopCarousel = ({ images }: ShowcaseCarouselProps) => {
             src={src}
             alt={alt}
             priority={index === 0}
-            style={{ objectFit: 'contain', height: 'auto', width: imageWidths.desktop }}
+            style={{
+              objectFit: 'contain',
+              height: 'auto',
+              width: imageWidths.desktop,
+            }}
             width={imageWidths.desktop}
             placeholder={createShimmer(imageWidths.desktop, 540)}
           />

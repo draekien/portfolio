@@ -2,7 +2,7 @@
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import { Footer, HeaderBar, Introduction } from '../components';
-import { FluentConstructorAssertionsShowcase } from '../features';
+import { FluentConstructorAssertionsShowcase, WaystoneMonadsShowcase } from '../features';
 import ArchivedProjectsLink from '../features/archive/archive';
 import { getSharedStaticProps } from '../utils/getSharedStaticProps';
 
@@ -33,6 +33,7 @@ const HomePage = ({ lastUpdatedOn }: InferGetStaticPropsType<typeof getStaticPro
           </span>
         </HeaderBar>
         <Introduction />
+        <WaystoneMonadsShowcase />
         <FluentConstructorAssertionsShowcase />
         <ArchivedProjectsLink />
       </main>
