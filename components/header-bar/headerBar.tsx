@@ -24,9 +24,6 @@ export const HeaderBar = ({ children: title }: HeaderBarProps) => {
         <Link href="/blog" passHref legacyBehavior>
           <Anchor>{isMobile ? <Icon name="code" /> : 'Code With Me'}</Anchor>
         </Link>
-        <Link href="mailto:hello@wpei.me" passHref legacyBehavior>
-          <Anchor>{isMobile ? <Icon name="mail_outline" /> : 'Say Hello'}</Anchor>
-        </Link>
       </Flex>
       <ButtonGroup
         buttons={[
