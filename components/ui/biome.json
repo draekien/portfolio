@@ -1,0 +1,17 @@
+{
+	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+	"root": false,
+	"extends": ["../../biome.json"],
+	"linter": {
+		"rules": {
+			"a11y": {
+				"noLabelWithoutControl": "info",
+				"useSemanticElements": "info",
+				"useKeyWithClickEvents": "info"
+			},
+			"suspicious": {
+				"noArrayIndexKey": "info"
+			}
+		}
+	}
+}
