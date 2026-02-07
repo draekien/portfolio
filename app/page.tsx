@@ -1,3 +1,10 @@
+import { ThemeToggle } from "@/components/theme-toggle";
+
 export default function Page() {
-	return <h1>Hello!</h1>;
+	return (
+		<div>
+			<h1>Hello!</h1>
+			<ThemeToggle />
+		</div>
+	);
 }
