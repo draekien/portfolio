@@ -1,8 +1,0 @@
-**/node_modules/*
-**/__snapshots__/*
-**/build/*
-**/coverage/*
-**/*.ico
-**/*.png
-
-.next/*
