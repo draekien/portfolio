@@ -1,7 +1,18 @@
 import type { Metadata } from "next";
 import { Figtree, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { GithubLogoIcon } from "@phosphor-icons/react/dist/ssr";
+import Link from "next/link";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
+import { ButtonGroup } from "@/components/ui/button-group";
+import { SrOnly } from "@/components/ui/sr-only";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -30,7 +41,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header></header>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -39,7 +49,40 @@ export default function RootLayout({
           disableTransitionOnChange
           enableColorScheme
         >
-          {children}
+          <header className="flex justify-between p-4">
+            <Link
+              href="/"
+              className="text-xl md:text-2xl lg:text-3xl font-bold uppercase"
+            >
+              <span>William</span>
+              <br />
+              <span>Pei</span>
+            </Link>
+            <ButtonGroup>
+              <ButtonGroup>
+                <Tooltip>
+                  <TooltipTrigger render={<ThemeToggle variant="ghost" />} />
+                  <TooltipContent>Change theme</TooltipContent>
+                </Tooltip>
+              </ButtonGroup>
+              <ButtonGroup>
+                <Tooltip>
+                  <a
+                    href="https://github.com/draekien/portfolio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <TooltipTrigger render={<Button variant="ghost" />}>
+                      <GithubLogoIcon />
+                      <SrOnly>View Repository</SrOnly>
+                    </TooltipTrigger>
+                  </a>
+                  <TooltipContent>View repository on GitHub</TooltipContent>
+                </Tooltip>
+              </ButtonGroup>
+            </ButtonGroup>
+          </header>
+          <main className="p-4">{children}</main>
         </ThemeProvider>
       </body>
     </html>
