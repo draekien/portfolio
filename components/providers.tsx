@@ -1,4 +1,5 @@
 import type { PropsWithChildren } from "react";
+import { QueryClientProvider } from "./query-client-provider";
 import { ThemeProvider } from "./theme-provider";
 
 export function Providers({ children }: PropsWithChildren) {
@@ -11,7 +12,7 @@ export function Providers({ children }: PropsWithChildren) {
       disableTransitionOnChange
       enableColorScheme
     >
-      {children}
+      <QueryClientProvider>{children}</QueryClientProvider>
     </ThemeProvider>
   );
 }
