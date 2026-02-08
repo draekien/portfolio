@@ -1,4 +1,4 @@
-import { GithubLogoIcon } from "@phosphor-icons/react";
+import { GithubLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
