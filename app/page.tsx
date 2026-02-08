@@ -1,23 +1,25 @@
-import { BrowserWindow } from "@/components/ui/browser-window";
-import { Button } from "@/components/ui/button";
+import { TextLoop, TextLoopRotatingText } from "@/components/text-loop";
 
 export default function Page() {
   return (
-    <div>
-      <h1>Hello!</h1>
-      <Button variant="default">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="destructive">Destructive</Button>
-      <Button variant="ghost">Ghost</Button>
-      <div className="flex p-8 bg-muted/30 rounded-xl border max-w-prose">
-        <BrowserWindow variant="chrome" size="lg" className="w-full">
-          <div className="p-8">
-            <h1 className="text-2xl font-bold">Dashboard</h1>
-            <p className="text-muted-foreground">Welcome to your dashboard</p>
-          </div>
-        </BrowserWindow>
-      </div>
-    </div>
+    <section className="flex flex-col justify-center h-[70dvh]">
+      <TextLoop className="select-none">
+        <span>Technical Lead</span>
+        <span className="text-primary tracking-tighter ">\\</span>
+        <TextLoopRotatingText
+          className="col-span-2 w-full"
+          rotatingTexts={[
+            "Designing Systems",
+            "Architecting Products",
+            "Leading Change",
+            "Setting Standards",
+            "Pushing Boundaries",
+            "Advocating Innovation",
+            "Optimizing Outcomes",
+            "Solving Challenges",
+          ]}
+        />
+      </TextLoop>
+    </section>
   );
 }
