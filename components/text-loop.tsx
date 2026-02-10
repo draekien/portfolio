@@ -54,7 +54,7 @@ export function TextLoopRotatingText({
           <div
             className={cn(
               "absolute inset-0",
-              "bg-gradient-to-r from-transparent via-purple-200/30 to-purple-200",
+              "bg-linear-to-r from-transparent via-purple-200/30 to-purple-200",
               "dark:from-transparent dark:via-violet-950/30 dark:to-violet-950/60",
               backgroundClassName,
             )}
@@ -63,8 +63,8 @@ export function TextLoopRotatingText({
           <span
             className={cn(
               "relative bg-clip-text text-transparent",
-              "bg-gradient-to-r from-violet-400 to-violet-800",
-              "dark:bg-gradient-to-r from-violet-400 to-violet-600 pr-1",
+              "bg-linear-to-r from-violet-400 to-violet-800",
+              "dark:bg-linear-to-r from-violet-400 to-violet-600 pr-1",
               rotatingTextClassName,
             )}
           >
@@ -76,7 +76,7 @@ export function TextLoopRotatingText({
       {/* Cursor Line */}
       <motion.div
         className={cn(
-          "w-[3px] md:w-[4px] bg-violet-500 h-[1.10em] sm:h-[1em]",
+          "w-0.75 md:w-1 bg-violet-500 h-[1.10em] sm:h-[1em]",
           cursorClassName,
         )}
         animate={{ opacity: [1, 0.5] }}
