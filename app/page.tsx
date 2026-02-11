@@ -3,7 +3,10 @@ import { TextLoop, TextLoopRotatingText } from "@/components/text-loop";
 
 export default function Page() {
   return (
-    <section className="flex flex-col justify-center h-[70dvh]">
+    <section
+      id="hero"
+      className="flex flex-col justify-center h-[70dvh] container mx-auto"
+    >
       <TextLoop className="select-none">
         <h1 className="font-mono">
           <span>Technical Lead</span>{" "}
