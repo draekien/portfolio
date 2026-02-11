@@ -1,3 +1,4 @@
+import Mark from "@/components/mark";
 import { TextLoop, TextLoopRotatingText } from "@/components/text-loop";
 
 export default function Page() {
@@ -7,21 +8,22 @@ export default function Page() {
         Hi, I&apos;m William
       </h1>
       <TextLoop className="select-none">
-        <span>Technical Lead</span>
-        <span className="text-primary tracking-tighter ">\\</span>
-        <TextLoopRotatingText
-          className="col-span-2 w-full"
-          rotatingTexts={[
-            "Designing Systems",
-            "Architecting Products",
-            "Leading Change",
-            "Setting Standards",
-            "Pushing Boundaries",
-            "Advocating Innovation",
-            "Optimizing Outcomes",
-            "Solving Challenges",
-          ]}
-        />
+        <span className="font-mono">Technical Lead</span>
+        <div className="flex items-center gap-4 font-mono  text-xl md:text-3xl lg:text-5xl">
+          <Mark className="h-5 md:h-7.5 lg:h-12 text-primary" />
+          <TextLoopRotatingText
+            rotatingTexts={[
+              "Designing Systems",
+              "Architecting Products",
+              "Leading Change",
+              "Setting Standards",
+              "Pushing Boundaries",
+              "Advocating Innovation",
+              "Optimizing Outcomes",
+              "Solving Challenges",
+            ]}
+          />
+        </div>
       </TextLoop>
     </section>
   );

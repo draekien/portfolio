@@ -76,7 +76,7 @@ export function TextLoopRotatingText({
       {/* Cursor Line */}
       <motion.div
         className={cn(
-          "w-0.75 md:w-1 bg-violet-500 h-[1.10em] sm:h-[1em]",
+          "w-0.75 md:w-1 bg-violet-500 h-[1.375em] sm:h-[1em]",
           cursorClassName,
         )}
         animate={{ opacity: [1, 0.5] }}
@@ -98,7 +98,7 @@ export function TextLoop({
   return (
     <div
       className={cn(
-        "grid grid-cols-[auto_1fr] gap-x-3 text-4xl md:text-7xl font-medium tracking-tight",
+        "text-4xl md:text-7xl font-medium tracking-tight leading-snug",
         className,
       )}
       {...props}
