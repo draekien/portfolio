@@ -16,14 +16,18 @@ export default function Page() {
           <Mark className="h-5 md:h-7.5 lg:h-12 text-primary" />
           <TextLoopRotatingText
             rotatingTexts={[
-              "Designing Systems",
-              "Architecting Products",
-              "Leading Change",
-              "Setting Standards",
-              "Pushing Boundaries",
-              "Advocating Innovation",
-              "Optimizing Outcomes",
-              "Solving Challenges",
+              "Elevating Quality",
+              "Improving Delivery",
+              "Raising Standards",
+              "Boosting Output",
+              "Mentoring Engineers",
+              "Coaching Growth",
+              "Building Leaders",
+              "Scaling Practices",
+              "Improving Reliability",
+              "Streamlining Delivery",
+              "Setting Best Practices",
+              "Growing Skills",
             ]}
           />
         </div>
