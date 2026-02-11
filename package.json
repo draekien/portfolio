@@ -8,7 +8,8 @@
     "start": "next start",
     "typegen": "next typegen",
     "lint": "biome check",
-    "format": "biome format"
+    "format": "biome format",
+    "gen:icons": "node scripts/generate-icons.js"
   },
   "dependencies": {
     "@base-ui/react": "^1.1.0",
@@ -33,6 +34,8 @@
     "@types/react": "^19.2.13",
     "@types/react-dom": "^19.2.3",
     "babel-plugin-react-compiler": "^1.0.0",
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
   },

@@ -43,7 +43,17 @@ try {
   process.exit(1);
 }
 try {
+  // `require` of some packages may return a namespace object with a `.default`
+  // property when transpiled/bundled. Accept either the function itself or
+  // the `.default` export so `pngToIco(...)` works regardless of how it was resolved.
   pngToIco = require("png-to-ico");
+  if (
+    pngToIco &&
+    typeof pngToIco === "object" &&
+    typeof pngToIco.default === "function"
+  ) {
+    pngToIco = pngToIco.default;
+  }
 } catch (err) {
   console.error(
     "Missing dependency `png-to-ico`. Install it with `npm install --save-dev png-to-ico` and try again.",
