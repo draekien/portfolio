@@ -9,7 +9,7 @@ export default function Page() {
       </h1>
       <TextLoop className="select-none">
         <span className="font-mono">Technical Lead</span>
-        <div className="flex items-center gap-4 font-mono  text-xl md:text-3xl lg:text-5xl">
+        <div className="flex items-center gap-2 md:gap-3 lg:gap-4 font-mono  text-xl md:text-3xl lg:text-5xl">
           <Mark className="h-5 md:h-7.5 lg:h-12 text-primary" />
           <TextLoopRotatingText
             rotatingTexts={[

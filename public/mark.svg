@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  v3/public/mark.svg
+
+  Static SVG export of the final Mark icon used for raster generation.
+  - Fills and strokes set to solid black (#000000) so rasterization produces
+    consistent results regardless of runtime CSS.
+  - Stroke width matches the visual weight used in the React component.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="79.838" height="54" viewBox="0 0 79.838 54" role="img" aria-label="William Pei's Logo">
+  <title>William Pei's Logo</title>
+
+  <!-- Left diagonal bar (extended slightly to avoid gaps at top/bottom) -->
+  <path
+    d="M2055.782,114.819h6.012l23.011,58h-6.112Z"
+    transform="translate(-2032.93 -114.819)"
+    fill="#f26f21"
+    stroke="#f26f21"
+    stroke-width="2.3"
+    stroke-linejoin="miter"
+    stroke-linecap="butt"
+  />
+
+  <!-- Middle zig-zag / polygon -->
+  <path
+    d="M0,27.771H0V21.239l13.175-7.353L0,6.532V0L24.877,13.886,0,27.771Z"
+    transform="translate(54.961 0)"
+    fill="#f26f21"
+    stroke="#f26f21"
+    stroke-width="2.3"
+    stroke-linejoin="miter"
+    stroke-linecap="butt"
+  />
+
+  <!-- Right diagonal bar (extended slightly to avoid gaps at top/bottom) -->
+  <path
+    d="M2055.782,114.819h6.012l23.011,58h-6.112Z"
+    transform="translate(-2055.782 -114.819)"
+    fill="#f26f21"
+    stroke="#f26f21"
+    stroke-width="2.3"
+    stroke-linejoin="miter"
+    stroke-linecap="butt"
+  />
+</svg>
