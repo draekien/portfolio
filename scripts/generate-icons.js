@@ -28,8 +28,8 @@
  *   with the desired solid color before running this script (or edit `public/mark.svg` to the color you want).
  */
 
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 
 // Try to require dependencies and provide helpful error messages if missing.
 let sharp;
@@ -39,6 +39,7 @@ try {
 } catch (err) {
   console.error(
     "Missing dependency `sharp`. Install it with `npm install --save-dev sharp` and try again.",
+    err,
   );
   process.exit(1);
 }
@@ -57,6 +58,7 @@ try {
 } catch (err) {
   console.error(
     "Missing dependency `png-to-ico`. Install it with `npm install --save-dev png-to-ico` and try again.",
+    err,
   );
   process.exit(1);
 }
@@ -110,7 +112,7 @@ async function generateIco() {
   const missing = pngPaths.filter((p) => !fs.existsSync(p));
   if (missing.length) {
     throw new Error(
-      "Missing PNG inputs for ico generation: " + missing.join(", "),
+      `Missing PNG inputs for ico generation: ${missing.join(", ")}`,
     );
   }
   console.log("Generating favicon.ico from PNGs:", pngPaths.join(", "));
