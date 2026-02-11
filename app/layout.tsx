@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Figtree, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { DevTools } from "@/components/dev-tools";
 import { LayoutHeader } from "@/components/layout-header";
 import { Providers } from "@/components/providers";
 
@@ -35,6 +36,7 @@ export default function RootLayout({
         <Providers>
           <LayoutHeader />
           <main className="p-4">{children}</main>
+          <DevTools />
         </Providers>
       </body>
     </html>
