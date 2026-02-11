@@ -4,11 +4,11 @@ import { TextLoop, TextLoopRotatingText } from "@/components/text-loop";
 export default function Page() {
   return (
     <section className="flex flex-col justify-center h-[70dvh]">
-      <h1 className="text-4xl md:text-7xl font-medium tracking-tight mb-4 md:mb-16">
-        Hi, I&apos;m William
-      </h1>
       <TextLoop className="select-none">
-        <span className="font-mono">Technical Lead</span>
+        <h1 className="font-mono">
+          <span>Technical Lead</span>{" "}
+          <span className="text-muted-foreground/70">at InfoTrack</span>
+        </h1>
         <div className="flex items-center gap-2 md:gap-3 lg:gap-4 font-mono  text-xl md:text-3xl lg:text-5xl">
           <Mark className="h-5 md:h-7.5 lg:h-12 text-primary" />
           <TextLoopRotatingText
