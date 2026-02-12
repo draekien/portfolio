@@ -4,7 +4,6 @@ import { CommandMenu } from "./command-menu";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
 import { ButtonGroup } from "./ui/button-group";
-import { Kbd, KbdGroup } from "./ui/kbd";
 import { SrOnly } from "./ui/sr-only";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 

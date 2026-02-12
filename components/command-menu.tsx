@@ -14,7 +14,7 @@ import {
   CommandList,
   CommandShortcut,
 } from "./ui/command";
-import { Kbd, KbdGroup } from "./ui/kbd";
+import { Kbd } from "./ui/kbd";
 import { SrOnly } from "./ui/sr-only";
 
 export function CommandMenu() {
