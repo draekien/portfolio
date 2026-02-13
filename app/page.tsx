@@ -1,4 +1,5 @@
 import { ButtonLink } from "@/components/button-link";
+import { FrameworkBadge } from "@/components/framework-badge";
 import Mark from "@/components/mark";
 import {
   ProjectSummary,
@@ -10,7 +11,6 @@ import {
   ProjectSummaryTitle,
 } from "@/components/project-summary";
 import { TextLoop, TextLoopRotatingText } from "@/components/text-loop";
-import { Button } from "@/components/ui/button";
 
 export default function Page() {
   return (
@@ -50,16 +50,66 @@ export default function Page() {
           <ProjectSummaryHeader>
             <ProjectSummaryTitle>Waystone.Monads</ProjectSummaryTitle>
             <ProjectSummaryDescription>
-              A C# library that provides an implementation of the{" "}
-              <code>Option</code> and <code>Result</code> monads. This library
-              was born out of a desire to bring the elegance and safety of
-              Rust's monadic types to the C# ecosystem.
+              A .NET implementation of functional programming patterns inspired
+              by Rust's standard library, specifically the{" "}
+              <code>{"Option<T>"}</code> and <code>{"Result<T, E>"}</code>{" "}
+              monads. This library brings powerful error handling and optional
+              value semantics to C#, enabling developers to write more
+              expressive, type-safe code that naturally guides error handling at
+              compile time.
             </ProjectSummaryDescription>
           </ProjectSummaryHeader>
           <ProjectSummaryAttributeList>
-            <ProjectSummaryAttribute>@framework</ProjectSummaryAttribute>
+            <ProjectSummaryAttribute>@frameworks</ProjectSummaryAttribute>
+            <ProjectSummaryAttributeValue className="flex gap-2">
+              <FrameworkBadge version="netstandard2.0" />
+            </ProjectSummaryAttributeValue>
+            <ProjectSummaryAttribute>@repository</ProjectSummaryAttribute>
             <ProjectSummaryAttributeValue>
-              netstandard2.0
+              <ButtonLink
+                link={{
+                  href: "https://github.com/draekien-industries/waystone-dotnet",
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                }}
+                external
+              >
+                github/waystone-dotnet
+              </ButtonLink>
+            </ProjectSummaryAttributeValue>
+            <ProjectSummaryAttribute>@documentation</ProjectSummaryAttribute>
+            <ProjectSummaryAttributeValue>
+              <ButtonLink
+                link={{
+                  href: "https://draekien-industries.wpei.me/",
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                }}
+                external
+              >
+                gitbook
+              </ButtonLink>
+            </ProjectSummaryAttributeValue>
+          </ProjectSummaryAttributeList>
+        </ProjectSummary>
+        <ProjectSummary id="waystone-wide-log-events">
+          <ProjectSummaryHeader>
+            <ProjectSummaryTitle>Waystone.WideLogEvents</ProjectSummaryTitle>
+            <ProjectSummaryDescription>
+              A sophisticated logging pattern implementation designed to solve a
+              fundamental challenge in modern distributed systems: context
+              correlation at scale. This library enables developers to
+              accumulate all relevant information throughout a logical operation
+              and emit it as a single, rich log event rather than fragmented
+              events across an application's lifecycle.
+            </ProjectSummaryDescription>
+          </ProjectSummaryHeader>
+          <ProjectSummaryAttributeList>
+            <ProjectSummaryAttribute>@frameworks</ProjectSummaryAttribute>
+            <ProjectSummaryAttributeValue>
+              <FrameworkBadge version="netstandard2.0" />
+              <FrameworkBadge version="net8.0" />
+              <FrameworkBadge version="net10.0" />
             </ProjectSummaryAttributeValue>
             <ProjectSummaryAttribute>@repository</ProjectSummaryAttribute>
             <ProjectSummaryAttributeValue>
