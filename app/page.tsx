@@ -53,10 +53,8 @@ export default function Page() {
               A .NET implementation of functional programming patterns inspired
               by Rust's standard library, specifically the{" "}
               <code>{"Option<T>"}</code> and <code>{"Result<T, E>"}</code>{" "}
-              monads. This library brings powerful error handling and optional
-              value semantics to C#, enabling developers to write more
-              expressive, type-safe code that naturally guides error handling at
-              compile time.
+              monads. This library provides a type-safe, composable approach to
+              handling nullable values and error cases.
             </ProjectSummaryDescription>
           </ProjectSummaryHeader>
           <ProjectSummaryAttributeList>
