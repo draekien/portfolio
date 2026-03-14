@@ -1,4 +1,5 @@
 import { ButtonLink } from "@/components/button-link";
+import { Code } from "@/components/code";
 import { FrameworkBadge } from "@/components/framework-badge";
 import Mark from "@/components/mark";
 import {
@@ -52,7 +53,7 @@ export default function Page() {
             <ProjectSummaryDescription>
               A .NET implementation of functional programming patterns inspired
               by Rust's standard library, specifically the{" "}
-              <code>{"Option<T>"}</code> and <code>{"Result<T, E>"}</code>{" "}
+              <Code>{"Option<T>"}</Code> and <Code>{"Result<T, E>"}</Code>{" "}
               monads. This library provides a type-safe, composable approach to
               handling nullable values and error cases.
             </ProjectSummaryDescription>
@@ -104,7 +105,7 @@ export default function Page() {
           </ProjectSummaryHeader>
           <ProjectSummaryAttributeList>
             <ProjectSummaryAttribute>@frameworks</ProjectSummaryAttribute>
-            <ProjectSummaryAttributeValue className="flex gap-2">
+            <ProjectSummaryAttributeValue className="flex gap-2 flex-wrap">
               <FrameworkBadge version="netstandard2.0" />
               <FrameworkBadge version="net8.0" />
               <FrameworkBadge version="net10.0" />
@@ -126,7 +127,7 @@ export default function Page() {
             <ProjectSummaryAttributeValue>
               <ButtonLink
                 link={{
-                  href: "https://draekien-industries.wpei.me/",
+                  href: "https://draekien-industries.wpei.me/waystone.widelogevents",
                   target: "_blank",
                   rel: "noopener noreferrer",
                 }}
