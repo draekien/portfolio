@@ -122,15 +122,16 @@
     @apply border-border outline-ring/50;
   }
   body {
+    color-scheme: dark light;
     @apply bg-background text-foreground min-h-dvh;
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
-    cursor: pointer;
+    @apply cursor-pointer;
   }
   button:disabled,
   [role="button"]:disabled {
-    cursor: not-allowed;
+    @apply cursor-pointer;
   }
 }
 
