@@ -9,10 +9,11 @@ type FrameworkBadgeProps = {
 export function FrameworkBadge({
   version,
   className,
+  variant = "outline",
   ...props
 }: FrameworkBadgeProps) {
   return (
-    <Badge className={cn("rounded-sm", className)} {...props}>
+    <Badge className={cn("rounded-sm", className)} variant={variant} {...props}>
       {version}
     </Badge>
   );

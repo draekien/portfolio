@@ -45,7 +45,7 @@ export default function Page() {
           </div>
         </TextLoop>
       </section>
-      <section className="container mx-auto">
+      <section className="container mx-auto space-y-16">
         <ProjectSummary id="waystone-monads">
           <ProjectSummaryHeader>
             <ProjectSummaryTitle>Waystone.Monads</ProjectSummaryTitle>
@@ -104,7 +104,7 @@ export default function Page() {
           </ProjectSummaryHeader>
           <ProjectSummaryAttributeList>
             <ProjectSummaryAttribute>@frameworks</ProjectSummaryAttribute>
-            <ProjectSummaryAttributeValue>
+            <ProjectSummaryAttributeValue className="flex gap-2">
               <FrameworkBadge version="netstandard2.0" />
               <FrameworkBadge version="net8.0" />
               <FrameworkBadge version="net10.0" />
