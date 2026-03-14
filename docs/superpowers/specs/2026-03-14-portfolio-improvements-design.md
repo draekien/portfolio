@@ -22,36 +22,71 @@ The hero leads with a job title ("Technical Lead at InfoTrack") and a rotating t
 
 The owner's name is already in the header — it does not need to appear in the hero.
 
+### Current structure (`app/page.tsx`)
+
+```tsx
+<TextLoop className="select-none">
+  <h1 className="font-mono">
+    <span>Technical Lead</span>{" "}
+    <span className="text-muted-foreground/70">at InfoTrack</span>
+  </h1>
+  <div className="flex items-center gap-2 ... font-mono text-xl md:text-3xl lg:text-5xl">
+    <Mark ... />
+    <TextLoopRotatingText rotatingTexts={[ ...12 generic phrases ]} />
+  </div>
+</TextLoop>
+```
+
+`TextLoop` is a wrapper `div` with `text-4xl md:text-7xl font-medium tracking-tight leading-snug`. Its children inherit that size unless they override it explicitly.
+
 ### Changes
 
 **1a. Add a static specialism statement**
 
-Insert a single static line that declares the owner's craft and domain. Positioned near the existing heading. No animation.
+Add a new `<p>` element inside `<TextLoop>`, between the `<h1>` and the rotating text `<div>`. The element should override the inherited typography with smaller classes so it reads as a supporting line, not a headline.
 
-Proposed copy:
-> I build open source .NET libraries for distributed systems.
+Placement in `app/page.tsx`:
+```tsx
+<TextLoop className="select-none">
+  <h1 className="font-mono">
+    <span>Technical Lead</span>{" "}
+    <span className="text-muted-foreground/70">at InfoTrack</span>
+  </h1>
+  {/* NEW — static specialism line */}
+  <p className="text-base md:text-xl text-muted-foreground font-sans">
+    I build open source .NET libraries for distributed systems.
+  </p>
+  <div className="flex items-center gap-2 ... font-mono text-xl md:text-3xl lg:text-5xl">
+    ...
+  </div>
+</TextLoop>
+```
 
-This line is the new primary message of the hero. It is short, specific, and attributable to a real body of work.
+Do not use the `staticText` prop — it is declared in `TextLoopProps` but is never destructured or rendered by `TextLoopRotatingText`. The static line is a plain JSX element in `page.tsx`.
 
 **1b. Replace the rotating text phrases**
 
-The animation mechanism stays. The 12 existing phrases are replaced with specific, technical phrases tied to the owner's actual projects and specialisms:
+Update the `rotatingTexts` array passed to `<TextLoopRotatingText>` in `page.tsx`. Replace all 12 existing strings with:
 
-- "Monadic error handling for .NET"
-- "Option&lt;T&gt; and Result&lt;T, E&gt; for C#"
-- "Type-safe railway-oriented programming"
-- "Wide log events for distributed systems"
-- "Structured logging at scale"
-- "Open source for the .NET ecosystem"
+```ts
+[
+  "Monadic error handling for .NET",
+  "Option<T> and Result<T, E> for C#",
+  "Type-safe railway-oriented programming",
+  "Wide log events for distributed systems",
+  "Structured logging at scale",
+  "Open source for the .NET ecosystem",
+]
+```
 
-Six phrases, all concrete. The visitor immediately understands the domain.
+The animation mechanism, cursor blink, gradient styling, and interval timing are unchanged.
 
 ### What does not change
 
-- Layout and positioning of the hero
-- The animation mechanism and cursor blink
-- Typography scale
-- The job title / company line
+- Layout and positioning of the hero section
+- The `TextLoop` wrapper and its typography classes
+- The `TextLoopRotatingText` component internals
+- The job title / company line in the `<h1>`
 
 ---
 
@@ -59,28 +94,44 @@ Six phrases, all concrete. The visitor immediately understands the domain.
 
 ### Problem
 
-Each project card has a one-sentence description that names the pattern but doesn't explain the problem it solves, who it's for, or how it works. A visitor skimming the page cannot evaluate whether the project is relevant to them.
+Each project card has a one-paragraph description that names the pattern but doesn't explain the problem it solves, who it's for, or how it works. A visitor skimming the page cannot evaluate whether the project is relevant to them.
 
 ### Changes
 
-**2a. Expand descriptions**
+**2a. Rewrite descriptions**
 
-Replace single-sentence descriptions with short paragraphs (3–4 sentences max) that cover:
-1. What problem the library solves
-2. The approach it takes
-3. Who it is for
+Replace the content of each `<ProjectSummaryDescription>` block. Type names (`Option<T>`, `Result<T, E>`) must be wrapped in `<Code>` components, consistent with the existing card content.
 
 *Waystone.Monads:*
-> Waystone.Monads brings functional error handling to .NET — `Option<T>` for values that may not exist, and `Result<T, E>` for operations that may fail. Eliminates null checks and exception-driven control flow, replacing them with composable, type-safe pipelines. Targets .NET Standard 2.0 and above.
+```tsx
+<ProjectSummaryDescription>
+  Waystone.Monads brings functional error handling to .NET —{" "}
+  <Code>{"Option<T>"}</Code> for values that may not exist, and{" "}
+  <Code>{"Result<T, E>"}</Code> for operations that may fail. Eliminates
+  null checks and exception-driven control flow, replacing them with
+  composable, type-safe pipelines.
+</ProjectSummaryDescription>
+```
 
 *Waystone.WideLogEvents:*
-> Waystone.WideLogEvents implements the wide event logging pattern for .NET — a single structured log entry per request that captures the full context of what happened, rather than a stream of fragmented messages. Built on Serilog with ASP.NET Core middleware integration. Designed for distributed systems where correlation and observability matter.
+```tsx
+<ProjectSummaryDescription>
+  Waystone.WideLogEvents implements the wide event logging pattern for
+  .NET — a single structured log entry per request that captures the full
+  context of what happened, rather than a stream of fragmented messages.
+  Built on Serilog with ASP.NET Core middleware. Designed for distributed
+  systems where correlation and observability matter.
+</ProjectSummaryDescription>
+```
 
-**2b. Add code snippet per project**
+**2b. Add a code snippet per project**
 
-Each card gets one inline code block showing the core API at a glance. This is more persuasive than prose for a technical audience.
+Add a `<CodeBlock>` component (see Section 3) inside `<ProjectSummaryHeader>`, immediately after `<ProjectSummaryDescription>`. (`ProjectSummaryHeader` is a `<header>` element; `ProjectSummaryAttributeList` is a sibling `<dl>` at the `<ProjectSummary>` level and is not affected.)
 
-The existing `<Code>` component handles inline code. A block variant is needed for multi-line snippets — this will be a new `<CodeBlock>` component using the same styling (JetBrains Mono, existing token colours). No syntax highlighting library is introduced; styling is CSS-only.
+Add the import to `page.tsx`:
+```tsx
+import { CodeBlock } from "@/components/code-block";
+```
 
 *Waystone.Monads snippet:*
 ```csharp
@@ -91,6 +142,8 @@ return user.Match(
     onNone: () => Results.NotFound()
 );
 ```
+
+Note: `Match<TResult>` is generic on return type. Both `Results.Ok(u)` and `Results.NotFound()` return `IResult`, so the type is inferred correctly. This matches the real public API.
 
 *Waystone.WideLogEvents snippet:*
 ```csharp
@@ -108,22 +161,43 @@ WideLogEventContext.PushProperty("action", "checkout");
 - The `\Project.Name` title convention
 - Framework badges
 - GitHub and Gitbook links
-- Overall card layout and structure
+- `ProjectSummaryAttributeList` structure
 
 ---
 
 ## 3. New Component: `<CodeBlock>`
 
-A multi-line code display component.
+A multi-line code display component for use in project cards.
 
-**Requirements:**
-- Renders a `<pre><code>` block using JetBrains Mono (already configured as `--font-mono`)
-- Matches the visual language of the existing `<Code>` inline component
-- Accepts a `language` prop (e.g. `"csharp"`) for future syntax highlighting, but rendering is plain text for now
-- Supports light and dark mode via existing CSS variables
-- No external syntax highlighting dependency
+**File:** `components/code-block.tsx` (alongside the existing `components/code.tsx`)
 
-**Placement:** `components/ui/code-block.tsx`
+**Props interface:**
+```ts
+interface CodeBlockProps {
+  children: string;        // the code string to display
+  language?: string;       // e.g. "csharp" — stored as data-language, not rendered
+  className?: string;
+}
+```
+
+**Rendering:**
+```tsx
+<pre
+  data-language={language}
+  className={cn("bg-muted rounded-md p-4 overflow-x-auto", className)}
+>
+  <code className="font-mono text-sm">{children}</code>
+</pre>
+```
+
+Tokens used:
+- `bg-muted` — same background as `<Code>`, works in light and dark mode via the existing CSS variable
+- `rounded-md` — consistent with the design system's base radius
+- `p-4` — comfortable padding for multi-line content
+- `overflow-x-auto` — prevents layout breakage on long lines
+- `font-mono text-sm` — matches `<Code>` exactly
+
+No external syntax highlighting library is introduced.
 
 ---
 
@@ -142,8 +216,9 @@ The following are noted for future phases but are explicitly excluded from this 
 
 ## Success Criteria
 
-1. A technical visitor landing on the page can identify within 5 seconds that this is a .NET open source portfolio
-2. Each project card communicates the problem it solves without requiring the visitor to click through to docs
-3. The code snippets are accurate — they reflect the real public API of each library
-4. No visual regressions in light or dark mode
-5. The hero animation continues to function with the new phrases
+1. The hero section contains a visible static `<p>` element that is not wrapped in `AnimatePresence` or any `motion.*` component, and includes the words ".NET" and "distributed systems"
+2. Each project card description communicates the problem the library solves without requiring the visitor to click through to docs
+3. The Monads snippet compiles: `Option<T>.Match` is called with two `Func<>` delegates returning the same type
+4. The WideLogEvents snippet matches the real `WideLogEventContext` API: `public static void PushProperty(string name, object? value)` and `public static IServiceCollection UseWideLogEventsContext(this IApplicationBuilder app)` are public surface from the library source
+5. No visual regressions in light or dark mode
+6. The hero animation continues to function with the six new phrases
