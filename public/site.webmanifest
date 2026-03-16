@@ -1,6 +1,6 @@
 {
-  "name": "wpei",
-  "short_name": "wpei",
+  "name": "William Pei",
+  "short_name": "William",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -8,12 +8,13 @@
       "type": "image/png"
     },
     {
-      "src": "/android-chrome-256x256.png",
-      "sizes": "256x256",
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
-  "theme_color": "#C7E9F4",
-  "background_color": "#212121",
-  "display": "standalone"
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#7c3aed"
 }
