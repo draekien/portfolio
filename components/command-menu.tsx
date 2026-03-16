@@ -1,6 +1,7 @@
 "use client";
 
 import { ListIcon } from "@phosphor-icons/react/dist/ssr";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useIsMobile } from "@/lib/hooks";
 import { Button } from "./ui/button";
@@ -20,6 +21,7 @@ import { SrOnly } from "./ui/sr-only";
 export function CommandMenu() {
   const [open, setOpen] = useState(false);
   const isMobile = useIsMobile();
+  const router = useRouter();
 
   useEffect(() => {
     const down = (e: {
@@ -28,15 +30,29 @@ export function CommandMenu() {
       ctrlKey: boolean;
       preventDefault: () => void;
     }) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+      const isMeta = e.metaKey || e.ctrlKey;
+
+      if (e.key === "k" && isMeta) {
         e.preventDefault();
         setOpen((open) => !open);
+        return;
+      }
+
+      if (e.key === "m" && isMeta) {
+        e.preventDefault();
+        router.push("/#waystone-monads");
+        return;
+      }
+
+      if (e.key === "l" && isMeta) {
+        e.preventDefault();
+        router.push("/#waystone-wide-log-events");
       }
     };
 
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, []);
+  }, [router]);
 
   return (
     <>
@@ -55,11 +71,13 @@ export function CommandMenu() {
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Projects">
-              <CommandItem>
+              <CommandItem onSelect={() => router.push("/#waystone-monads")}>
                 <span>Waystone.Monads</span>
                 <CommandShortcut>⌘M</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem
+                onSelect={() => router.push("/#waystone-wide-log-events")}
+              >
                 <span>Waystone.WideLogEvents</span>
                 <CommandShortcut>⌘L</CommandShortcut>
               </CommandItem>
