@@ -27,7 +27,7 @@ export default function Page() {
             <span>Technical Lead</span>{" "}
             <span className="text-muted-foreground/70">at InfoTrack</span>
           </h1>
-          <div className="flex items-center gap-2 md:gap-3 lg:gap-4 font-mono  text-xl md:text-3xl lg:text-5xl">
+          <div className="flex items-center gap-2 md:gap-3 lg:gap-4 font-mono  text-xl md:text-2xl lg:text-3xl">
             <Mark className="h-5 md:h-7.5 lg:h-12 text-primary" />
             <TextLoopRotatingText
               rotatingTexts={[
@@ -48,7 +48,7 @@ export default function Page() {
           </div>
         </TextLoop>
       </section>
-      <section className="container mx-auto space-y-16">
+      <section className="container mx-auto space-y-16 min-h-[80dvh]">
         <ProjectSummary
           id="waystone-monads"
           className="grid grid-cols-1 md:grid-cols-2 gap-2  items-start"
