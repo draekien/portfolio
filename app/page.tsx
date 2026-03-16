@@ -1,5 +1,6 @@
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
+import { CodeBlock } from "@/components/code-block";
 import { FrameworkBadge } from "@/components/framework-badge";
 import Mark from "@/components/mark";
 import {
@@ -7,6 +8,8 @@ import {
   ProjectSummaryAttribute,
   ProjectSummaryAttributeList,
   ProjectSummaryAttributeValue,
+  ProjectSummaryCodeBlock,
+  ProjectSummaryCodeBlockCaption,
   ProjectSummaryDescription,
   ProjectSummaryHeader,
   ProjectSummaryTitle,
@@ -47,7 +50,10 @@ export default function Page() {
         </TextLoop>
       </section>
       <section className="container mx-auto space-y-16">
-        <ProjectSummary id="waystone-monads">
+        <ProjectSummary
+          id="waystone-monads"
+          className="grid grid-cols-1 md:grid-cols-2 gap-2"
+        >
           <ProjectSummaryHeader>
             <ProjectSummaryTitle>Waystone.Monads</ProjectSummaryTitle>
             <ProjectSummaryDescription>
@@ -58,7 +64,7 @@ export default function Page() {
               handling nullable values and error cases.
             </ProjectSummaryDescription>
           </ProjectSummaryHeader>
-          <ProjectSummaryAttributeList>
+          <ProjectSummaryAttributeList className="row-start-2">
             <ProjectSummaryAttribute>@frameworks</ProjectSummaryAttribute>
             <ProjectSummaryAttributeValue className="flex gap-2">
               <FrameworkBadge version="netstandard2.0" />
@@ -90,8 +96,24 @@ export default function Page() {
               </ButtonLink>
             </ProjectSummaryAttributeValue>
           </ProjectSummaryAttributeList>
+          <ProjectSummaryCodeBlock className="md:col-start-2 md:row-span-2">
+            <CodeBlock
+              language="csharp"
+              code={`// A user may or may not exist for a given id
+Option<User> user = repository.Find(id);
+
+// If a user is found, return it; otherwise return a 404 Not Found response
+return user.Match(
+    onSome: u => Results.Ok(u),
+    onNone: () => Results.NotFound()
+);`}
+            />
+          </ProjectSummaryCodeBlock>
         </ProjectSummary>
-        <ProjectSummary id="waystone-wide-log-events">
+        <ProjectSummary
+          id="waystone-wide-log-events"
+          className="grid grid-cols-1 md:grid-cols-2 gap-2"
+        >
           <ProjectSummaryHeader>
             <ProjectSummaryTitle>Waystone.WideLogEvents</ProjectSummaryTitle>
             <ProjectSummaryDescription>
@@ -103,7 +125,7 @@ export default function Page() {
               events across an application's lifecycle.
             </ProjectSummaryDescription>
           </ProjectSummaryHeader>
-          <ProjectSummaryAttributeList>
+          <ProjectSummaryAttributeList className="row-start-2">
             <ProjectSummaryAttribute>@frameworks</ProjectSummaryAttribute>
             <ProjectSummaryAttributeValue className="flex gap-2 flex-wrap">
               <FrameworkBadge version="netstandard2.0" />
@@ -137,6 +159,18 @@ export default function Page() {
               </ButtonLink>
             </ProjectSummaryAttributeValue>
           </ProjectSummaryAttributeList>
+          <ProjectSummaryCodeBlock className="md:col-start-2 md:row-span-2">
+            <CodeBlock
+              language="csharp"
+              code={`// One structured log entry per request
+app.UseWideLogEventsContext();
+app.UseSerilogRequestLogging();
+
+// Push properties — all flush together at request end
+WideLogEventContext.PushProperty("userId", userId);
+WideLogEventContext.PushProperty("action", "checkout");`}
+            />
+          </ProjectSummaryCodeBlock>
         </ProjectSummary>
       </section>
     </>

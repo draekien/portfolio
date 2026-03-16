@@ -103,3 +103,27 @@ export function ProjectSummaryAttributeValue({
     </dd>
   );
 }
+
+export function ProjectSummaryCodeBlock({
+  className,
+  children,
+  ...rest
+}: ComponentProps<"figure">) {
+  return (
+    <figure className={className} {...rest}>
+      {children}
+    </figure>
+  );
+}
+
+export function ProjectSummaryCodeBlockCaption({
+  children,
+  className,
+  ...rest
+}: ComponentProps<"figcaption">) {
+  return (
+    <figcaption className={className} {...rest}>
+      {children}
+    </figcaption>
+  );
+}
