@@ -9,7 +9,6 @@ import {
   ProjectSummaryAttributeList,
   ProjectSummaryAttributeValue,
   ProjectSummaryCodeBlock,
-  ProjectSummaryCodeBlockCaption,
   ProjectSummaryDescription,
   ProjectSummaryHeader,
   ProjectSummaryTitle,
@@ -52,7 +51,7 @@ export default function Page() {
       <section className="container mx-auto space-y-16">
         <ProjectSummary
           id="waystone-monads"
-          className="grid grid-cols-1 md:grid-cols-2 gap-2"
+          className="grid grid-cols-1 md:grid-cols-2 gap-2  items-start"
         >
           <ProjectSummaryHeader>
             <ProjectSummaryTitle>Waystone.Monads</ProjectSummaryTitle>
@@ -112,7 +111,7 @@ return user.Match(
         </ProjectSummary>
         <ProjectSummary
           id="waystone-wide-log-events"
-          className="grid grid-cols-1 md:grid-cols-2 gap-2"
+          className="grid grid-cols-1 md:grid-cols-2 gap-2 items-start"
         >
           <ProjectSummaryHeader>
             <ProjectSummaryTitle>Waystone.WideLogEvents</ProjectSummaryTitle>
@@ -162,7 +161,13 @@ return user.Match(
           <ProjectSummaryCodeBlock className="md:col-start-2 md:row-span-2">
             <CodeBlock
               language="csharp"
-              code={`// One structured log entry per request
+              code={`// Configure Serilog to use WideLogEventsContext
+builder.Host.UseSerilog((context, config) => config
+    .Enrich.FromWideLogEventsContext()
+    .Filter.WithWideLogEventsSampling()
+    .ReadFrom.Configuration(context.Configuration));
+
+// One structured log entry per request
 app.UseWideLogEventsContext();
 app.UseSerilogRequestLogging();
 
