@@ -57,7 +57,7 @@ export default function Page() {
             <ProjectSummaryTitle>Waystone.Monads</ProjectSummaryTitle>
             <ProjectSummaryDescription>
               A .NET implementation of functional programming patterns inspired
-              by Rust's standard library, specifically the{" "}
+              by Rust&apos;s standard library, specifically the{" "}
               <Code>{"Option<T>"}</Code> and <Code>{"Result<T, E>"}</Code>{" "}
               monads. This library provides a type-safe, composable approach to
               handling nullable values and error cases.
@@ -121,7 +121,7 @@ return user.Match(
               correlation at scale. This library enables developers to
               accumulate all relevant information throughout a logical operation
               and emit it as a single, rich log event rather than fragmented
-              events across an application's lifecycle.
+              events across an application&apos;s lifecycle.
             </ProjectSummaryDescription>
           </ProjectSummaryHeader>
           <ProjectSummaryAttributeList className="row-start-2">

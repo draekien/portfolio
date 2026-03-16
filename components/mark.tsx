@@ -19,7 +19,7 @@ export default function Mark(props: ComponentProps<"svg">) {
       height="1em"
       {...props}
     >
-      <title>William Pei's Logo</title>
+      <title>William Pei&apos;s Logo</title>
       <path
         d="M2055.782,114.819h6.012l23.011,58h-6.112Z"
         transform="translate(-2032.93 -114.819)"
