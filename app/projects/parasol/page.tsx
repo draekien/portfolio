@@ -17,9 +17,8 @@ import {
 import {
   Carousel,
   CarouselContent,
+  CarouselControls,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 export const metadata: Metadata = {
@@ -31,7 +30,7 @@ export const metadata: Metadata = {
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <h2 className="text-xl font-semibold mb-6">
-      <BrandMark className="text-primary mr-2" />
+      <BrandMark className="text-primary mr-3" />
       {children}
     </h2>
   );
@@ -91,7 +90,7 @@ export default function ParasolPage() {
             <CarouselItem>
               <Image
                 src="/parasol-hero-dark-mobile.webp"
-                alt="Parasol — FIRE tracking dashboard"
+                alt="Parasol dashboard showing net worth target, progress toward financial independence, and portfolio allocation"
                 width={375}
                 height={812}
                 className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
@@ -99,7 +98,7 @@ export default function ParasolPage() {
               />
               <Image
                 src="/parasol-hero-light-mobile.webp"
-                alt="Parasol — FIRE tracking dashboard"
+                alt="Parasol dashboard showing net worth target, progress toward financial independence, and portfolio allocation"
                 width={375}
                 height={812}
                 className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
@@ -107,7 +106,7 @@ export default function ParasolPage() {
               />
               <Image
                 src="/parasol-hero-dark.webp"
-                alt="Parasol — FIRE tracking dashboard"
+                alt="Parasol dashboard showing net worth target, progress toward financial independence, and portfolio allocation"
                 width={2259}
                 height={1316}
                 className="hidden sm:dark:block w-full h-auto rounded-lg"
@@ -115,7 +114,7 @@ export default function ParasolPage() {
               />
               <Image
                 src="/parasol-hero-light.webp"
-                alt="Parasol — FIRE tracking dashboard"
+                alt="Parasol dashboard showing net worth target, progress toward financial independence, and portfolio allocation"
                 width={2259}
                 height={1316}
                 className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
@@ -125,36 +124,35 @@ export default function ParasolPage() {
             <CarouselItem>
               <Image
                 src="/parasol-feature-dark-mobile.webp"
-                alt="Parasol — portfolio and progress features"
+                alt="Parasol portfolio view showing transaction history with cost basis, market value, and unrealised gain columns"
                 width={375}
                 height={812}
                 className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
               />
               <Image
                 src="/parasol-feature-light-mobile.webp"
-                alt="Parasol — portfolio and progress features"
+                alt="Parasol portfolio view showing transaction history with cost basis, market value, and unrealised gain columns"
                 width={375}
                 height={812}
                 className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
               />
               <Image
                 src="/parasol-feature-dark.webp"
-                alt="Parasol — portfolio and progress features"
+                alt="Parasol portfolio view showing transaction history with cost basis, market value, and unrealised gain columns"
                 width={2259}
                 height={1316}
                 className="hidden sm:dark:block w-full h-auto rounded-lg"
               />
               <Image
                 src="/parasol-feature-light.webp"
-                alt="Parasol — portfolio and progress features"
+                alt="Parasol portfolio view showing transaction history with cost basis, market value, and unrealised gain columns"
                 width={2259}
                 height={1316}
                 className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
               />
             </CarouselItem>
           </CarouselContent>
-          <CarouselPrevious className="left-2" />
-          <CarouselNext className="right-2" />
+          <CarouselControls />
         </Carousel>
       </section>
 
@@ -228,6 +226,9 @@ export default function ParasolPage() {
       </section>
 
       <section>
+        <p className="font-mono text-xs text-secondary mb-4" aria-hidden="true">
+          <BrandMark className="text-primary mr-1.5" /> engineering depth
+        </p>
         <SectionHeading>Key decisions</SectionHeading>
         <div className="space-y-16 max-w-3xl">
           <div>
@@ -312,14 +313,16 @@ yield* Schema.decodeUnknown(InputSchema)(input).pipe(
               Transaction price is a snapshot, not a reference
             </h3>
             <p className="text-muted-foreground leading-relaxed max-w-prose">
+              In a trading context there are two distinct prices: what you paid
+              (cost basis) and what it&apos;s worth now (market close).
+              Conflating them silently corrupts unrealised gain calculations.{" "}
               <Code>transaction.pricePerUnit</Code> is the price the user paid at
               trade time — it never changes after recording.{" "}
               <Code>security_prices.adjustedClose</Code> is nightly market close
               data from Yahoo Finance. These serve different purposes and are
               never substituted: P&L uses cost basis from{" "}
               <Code>pricePerUnit</Code>; current portfolio value uses{" "}
-              <Code>adjustedClose</Code>. Conflating them silently corrupts
-              unrealised gain calculations.
+              <Code>adjustedClose</Code>.
             </p>
           </div>
         </div>
