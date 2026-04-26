@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <h2 className="text-xl font-semibold mb-6">
-      <BrandMark className="text-primary mr-2" />
+      <BrandMark className="text-primary mr-3" />
       {children}
     </h2>
   );

@@ -17,9 +17,8 @@ import {
 import {
   Carousel,
   CarouselContent,
+  CarouselControls,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 export const metadata: Metadata = {
@@ -31,7 +30,7 @@ export const metadata: Metadata = {
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <h2 className="text-xl font-semibold mb-6">
-      <BrandMark className="text-primary mr-2" />
+      <BrandMark className="text-primary mr-3" />
       {children}
     </h2>
   );
@@ -91,7 +90,7 @@ export default function NorthShoreMeditationPage() {
             <CarouselItem>
               <Image
                 src="/north-shore-meditation-hero-dark-mobile.webp"
-                alt="North Shore Meditation — homepage hero"
+                alt="North Shore Meditation homepage showing the hero section with navigation, headline, and call to action"
                 width={375}
                 height={812}
                 className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
@@ -99,7 +98,7 @@ export default function NorthShoreMeditationPage() {
               />
               <Image
                 src="/north-shore-meditation-hero-light-mobile.webp"
-                alt="North Shore Meditation — homepage hero"
+                alt="North Shore Meditation homepage showing the hero section with navigation, headline, and call to action"
                 width={375}
                 height={812}
                 className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
@@ -107,7 +106,7 @@ export default function NorthShoreMeditationPage() {
               />
               <Image
                 src="/north-shore-meditation-hero-dark.webp"
-                alt="North Shore Meditation — homepage hero"
+                alt="North Shore Meditation homepage showing the hero section with navigation, headline, and call to action"
                 width={2259}
                 height={1316}
                 className="hidden sm:dark:block w-full h-auto rounded-lg"
@@ -115,7 +114,7 @@ export default function NorthShoreMeditationPage() {
               />
               <Image
                 src="/north-shore-meditation-hero-light.webp"
-                alt="North Shore Meditation — homepage hero"
+                alt="North Shore Meditation homepage showing the hero section with navigation, headline, and call to action"
                 width={2259}
                 height={1316}
                 className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
@@ -153,8 +152,7 @@ export default function NorthShoreMeditationPage() {
               />
             </CarouselItem>
           </CarouselContent>
-          <CarouselPrevious className="left-2" />
-          <CarouselNext className="right-2" />
+          <CarouselControls />
         </Carousel>
       </section>
 
@@ -228,6 +226,9 @@ export default function NorthShoreMeditationPage() {
       </section>
 
       <section>
+        <p className="font-mono text-xs text-secondary mb-4" aria-hidden="true">
+          <BrandMark className="text-primary mr-1.5" /> engineering depth
+        </p>
         <SectionHeading>Key decisions</SectionHeading>
         <div className="space-y-16 max-w-3xl">
           <div>
