@@ -29,6 +29,14 @@ export const metadata: Metadata = {
   title: "North Shore Meditation | William Pei",
   description:
     "A CMS-driven marketing site built with Next.js and Contentful for a Sydney meditation centre.",
+  alternates: {
+    canonical: "/projects/north-shore-meditation",
+  },
+  openGraph: {
+    siteName: "William Pei",
+    url: "/projects/north-shore-meditation",
+    type: "website",
+  },
 };
 
 export default function NorthShoreMeditationPage() {

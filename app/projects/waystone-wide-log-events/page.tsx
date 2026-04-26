@@ -20,6 +20,14 @@ export const metadata: Metadata = {
   title: "Waystone.WideLogEvents | William Pei",
   description:
     "A .NET library for accumulating and emitting structured log events as a single wide event per request.",
+  alternates: {
+    canonical: "/projects/waystone-wide-log-events",
+  },
+  openGraph: {
+    siteName: "William Pei",
+    url: "/projects/waystone-wide-log-events",
+    type: "website",
+  },
 };
 
 export default async function WaystoneWideLogEventsPage() {

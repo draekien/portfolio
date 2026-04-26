@@ -19,6 +19,14 @@ export const metadata: Metadata = {
   title: "Waystone.Monads | William Pei",
   description:
     "A .NET library implementing Option<T> and Result<T,E> monads for type-safe null and error handling.",
+  alternates: {
+    canonical: "/projects/waystone-monads",
+  },
+  openGraph: {
+    siteName: "William Pei",
+    url: "/projects/waystone-monads",
+    type: "website",
+  },
 };
 
 function InstallCommand({ command }: { command: string }) {

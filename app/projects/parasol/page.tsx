@@ -29,6 +29,14 @@ export const metadata: Metadata = {
   title: "Parasol | William Pei",
   description:
     "A private FIRE tracking SaaS built with TanStack Start, Neon, and Clerk.",
+  alternates: {
+    canonical: "/projects/parasol",
+  },
+  openGraph: {
+    siteName: "William Pei",
+    url: "/projects/parasol",
+    type: "website",
+  },
 };
 
 export default function ParasolPage() {

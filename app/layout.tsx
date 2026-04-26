@@ -22,6 +22,15 @@ export const metadata: Metadata = {
   title: "Technical Lead | William Pei | Portfolio",
   description:
     "William Pei is a Technical Lead at InfoTrack. He sets technical direction and develops the engineers who execute it into the ones who define it next.",
+  openGraph: {
+    siteName: "William Pei",
+    locale: "en_AU",
+    type: "website",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
