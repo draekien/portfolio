@@ -14,6 +14,7 @@ import {
   ProjectSummaryHook,
   ProjectSummaryTitle,
 } from "@/components/project-summary";
+import { SectionNav } from "@/components/section-nav";
 import {
   Carousel,
   CarouselContent,
@@ -21,6 +22,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+
+function InstallCommand({ command }: { command: string }) {
+  return (
+    <div className="flex items-center gap-3 bg-muted rounded-md px-4 py-2.5 font-mono text-sm">
+      <span className="text-secondary select-none" aria-hidden="true">
+        $
+      </span>
+      <span className="text-foreground">{command}</span>
+    </div>
+  );
+}
 
 export default function Page() {
   return (
@@ -40,14 +52,17 @@ export default function Page() {
           </p>
         </div>
       </section>
-      <section className="container mx-auto min-h-[80dvh]">
+
+      <SectionNav />
+
+      <section id="applications" className="container mx-auto pt-16 pb-24">
         <p className="font-mono text-sm text-muted-foreground mb-16">
-          <span className="text-secondary" aria-hidden="true">
+          <span className="text-primary" aria-hidden="true">
             \\
           </span>{" "}
-          selected work
+          applications
         </p>
-        <div className="space-y-20">
+        <div className="space-y-24">
           <ProjectSummary
             id="parasol"
             className="grid grid-cols-1 md:grid-cols-2 gap-x-12 items-start"
@@ -90,6 +105,9 @@ export default function Page() {
                   </ButtonLink>
                 </ProjectSummaryAttributeValue>
               </ProjectSummaryAttributeList>
+              <ButtonLink internal link={{ href: "/projects/parasol" }}>
+                Read case study →
+              </ButtonLink>
             </div>
             <ProjectSummaryCodeBlock>
               <Carousel opts={{ loop: true }}>
@@ -134,6 +152,7 @@ export default function Page() {
               </Carousel>
             </ProjectSummaryCodeBlock>
           </ProjectSummary>
+
           <ProjectSummary
             id="north-shore-meditation"
             className="grid grid-cols-1 md:grid-cols-2 gap-x-12 items-start"
@@ -178,6 +197,12 @@ export default function Page() {
                   </ButtonLink>
                 </ProjectSummaryAttributeValue>
               </ProjectSummaryAttributeList>
+              <ButtonLink
+                internal
+                link={{ href: "/projects/north-shore-meditation" }}
+              >
+                Read case study →
+              </ButtonLink>
             </div>
             <ProjectSummaryCodeBlock>
               <Carousel opts={{ loop: true }}>
@@ -222,6 +247,17 @@ export default function Page() {
               </Carousel>
             </ProjectSummaryCodeBlock>
           </ProjectSummary>
+        </div>
+      </section>
+
+      <section id="libraries" className="container mx-auto pt-16 pb-24">
+        <p className="font-mono text-sm text-muted-foreground mb-16">
+          <span className="text-primary" aria-hidden="true">
+            \\
+          </span>{" "}
+          libraries
+        </p>
+        <div className="space-y-24">
           <ProjectSummary
             id="waystone-monads"
             className="grid grid-cols-1 md:grid-cols-2 gap-x-12 items-start"
@@ -242,8 +278,9 @@ export default function Page() {
                   to handling nullable values and error cases.
                 </ProjectSummaryDescription>
               </ProjectSummaryHeader>
+              <InstallCommand command="dotnet add package Waystone.Monads" />
               <ProjectSummaryAttributeList>
-                <ProjectSummaryAttribute>@frameworks</ProjectSummaryAttribute>
+                <ProjectSummaryAttribute>@targets</ProjectSummaryAttribute>
                 <ProjectSummaryAttributeValue className="flex gap-2">
                   <FrameworkBadge version="netstandard2.0" />
                 </ProjectSummaryAttributeValue>
@@ -276,6 +313,9 @@ export default function Page() {
                   </ButtonLink>
                 </ProjectSummaryAttributeValue>
               </ProjectSummaryAttributeList>
+              <ButtonLink internal link={{ href: "/projects/waystone-monads" }}>
+                View package docs →
+              </ButtonLink>
             </div>
             <ProjectSummaryCodeBlock>
               <CodeBlock
@@ -291,6 +331,7 @@ return user.Match(
               />
             </ProjectSummaryCodeBlock>
           </ProjectSummary>
+
           <ProjectSummary
             id="waystone-wide-log-events"
             className="grid grid-cols-1 md:grid-cols-2 gap-x-12 items-start"
@@ -315,8 +356,9 @@ return user.Match(
                   fragmented events across an application&apos;s lifecycle.
                 </ProjectSummaryDescription>
               </ProjectSummaryHeader>
+              <InstallCommand command="dotnet add package Waystone.WideLogEvents" />
               <ProjectSummaryAttributeList>
-                <ProjectSummaryAttribute>@frameworks</ProjectSummaryAttribute>
+                <ProjectSummaryAttribute>@targets</ProjectSummaryAttribute>
                 <ProjectSummaryAttributeValue className="flex gap-2 flex-wrap">
                   <FrameworkBadge version="netstandard2.0" />
                   <FrameworkBadge version="net8.0" />
@@ -351,6 +393,12 @@ return user.Match(
                   </ButtonLink>
                 </ProjectSummaryAttributeValue>
               </ProjectSummaryAttributeList>
+              <ButtonLink
+                internal
+                link={{ href: "/projects/waystone-wide-log-events" }}
+              >
+                View package docs →
+              </ButtonLink>
             </div>
             <ProjectSummaryCodeBlock>
               <CodeBlock
@@ -373,6 +421,7 @@ WideLogEventContext.PushProperty("action", "checkout");`}
           </ProjectSummary>
         </div>
       </section>
+
       <section
         id="contact"
         className="container mx-auto py-24 md:py-32 min-h-[40dvh] flex flex-col justify-center"
