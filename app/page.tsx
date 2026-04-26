@@ -20,12 +20,12 @@ export default function Page() {
         id="hero"
         className="flex flex-col justify-center h-[70dvh] container mx-auto"
       >
-        <div className="select-none space-y-4">
-          <h1 className="font-mono text-4xl md:text-7xl font-medium tracking-tight leading-snug">
+        <div className="space-y-8">
+          <h1 className="font-mono text-4xl md:text-7xl font-medium tracking-tight leading-tight">
             <span>Technical Lead</span>{" "}
             <span className="text-muted-foreground/70">at InfoTrack</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-prose">
+          <p className="text-lg md:text-xl">
             I set technical direction and develop the engineers who execute it
             into the ones who define it next.
           </p>
