@@ -49,6 +49,7 @@
 }
 
 :root {
+  --header-height: 5.5rem;
   --background: oklch(0.9911 0.0055 211.04);
   --foreground: oklch(0.2178 0 0);
   --card: oklch(0.9911 0.0055 211.04);
@@ -57,7 +58,7 @@
   --popover-foreground: oklch(0.2178 0 0);
   --primary: oklch(0.6823 0.176 46.72);
   --primary-foreground: oklch(0.98 0.016 73.684);
-  --secondary: oklch(0.7115 0.0909 318.07);
+  --secondary: oklch(0.38 0.09 318.07);
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.97 0.001 106.424);
   --muted-foreground: oklch(0.553 0.013 58.071);
@@ -84,7 +85,7 @@
 }
 
 .dark {
-  --background: oklch(0.2178 0 0);
+  --background: oklch(0.21 0.004 318);
   --foreground: oklch(0.8877 0.0288 218.97);
   --card: oklch(0.216 0.006 56.043);
   --card-foreground: oklch(0.8877 0.0288 218.97);
@@ -117,6 +118,18 @@
   --sidebar-ring: oklch(0.553 0.013 58.071);
 }
 
+@media (min-width: 768px) {
+  :root {
+    --header-height: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-height: 6.5rem;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -131,7 +144,7 @@
   }
   button:disabled,
   [role="button"]:disabled {
-    @apply cursor-pointer;
+    @apply cursor-not-allowed;
   }
 }
 
@@ -156,10 +169,14 @@
 
 html.dark .shiki,
 html.dark .shiki span {
+  /* biome-ignore lint/complexity/noImportantStyles: required to override shiki's inline styles for dark theme */
   color: var(--shiki-dark) !important;
+  /* biome-ignore lint/complexity/noImportantStyles: required to override shiki's inline styles for dark theme */
   background-color: var(--shiki-dark-bg) !important;
-  /* Optional, if you also want font styles */
+  /* biome-ignore lint/complexity/noImportantStyles: required to override shiki's inline styles for dark theme */
   font-style: var(--shiki-dark-font-style) !important;
+  /* biome-ignore lint/complexity/noImportantStyles: required to override shiki's inline styles for dark theme */
   font-weight: var(--shiki-dark-font-weight) !important;
+  /* biome-ignore lint/complexity/noImportantStyles: required to override shiki's inline styles for dark theme */
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }

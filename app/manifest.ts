@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    id: "https://wpei.me",
+    id: "https://www.wpei.me",
     name: "Portfolio - William Pei",
     short_name: "Portfolio",
     description:
