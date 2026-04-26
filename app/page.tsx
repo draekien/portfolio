@@ -65,7 +65,7 @@ export default function Page() {
         <div className="space-y-24">
           <ProjectSummary
             id="parasol"
-            className="grid grid-cols-1 md:grid-cols-2 gap-x-12 items-start"
+            className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-start"
           >
             <div className="space-y-6">
               <ProjectSummaryHeader>
@@ -185,7 +185,7 @@ export default function Page() {
 
           <ProjectSummary
             id="north-shore-meditation"
-            className="grid grid-cols-1 md:grid-cols-2 gap-x-12 items-start"
+            className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-start"
           >
             <div className="space-y-6">
               <ProjectSummaryHeader>
@@ -320,7 +320,7 @@ export default function Page() {
         <div className="space-y-24">
           <ProjectSummary
             id="waystone-monads"
-            className="grid grid-cols-1 md:grid-cols-2 gap-x-12 items-start"
+            className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-start"
           >
             <div className="space-y-6">
               <ProjectSummaryHeader>
@@ -394,7 +394,7 @@ return user.Match(
 
           <ProjectSummary
             id="waystone-wide-log-events"
-            className="grid grid-cols-1 md:grid-cols-2 gap-x-12 items-start"
+            className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-start"
           >
             <div className="space-y-6">
               <ProjectSummaryHeader>
