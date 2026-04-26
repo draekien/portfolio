@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
@@ -22,9 +23,7 @@ export const metadata: Metadata = {
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <h2 className="text-xl font-semibold mb-6">
-      <span className="font-mono text-primary mr-2" aria-hidden="true">
-        \\
-      </span>
+      <BrandMark className="text-primary mr-2" />
       {children}
     </h2>
   );
@@ -50,7 +49,7 @@ export default async function WaystoneMonadsPage() {
             <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
-            <span className="text-primary">\\</span>
+            <BrandMark className="text-primary" />
           </BreadcrumbSeparator>
           <BreadcrumbItem>
             <BreadcrumbPage>Waystone.Monads</BreadcrumbPage>
@@ -60,9 +59,7 @@ export default async function WaystoneMonadsPage() {
 
       <header className="mb-16 space-y-6 max-w-2xl">
         <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
-          <span className="font-mono text-primary mr-3" aria-hidden="true">
-            \\
-          </span>
+          <BrandMark className="text-primary mr-3" />
           Waystone.Monads
         </h1>
         <p className="text-lg md:text-xl text-foreground leading-relaxed">
@@ -130,7 +127,7 @@ export default async function WaystoneMonadsPage() {
         <div className="space-y-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground mb-3">
-              <span className="text-primary" aria-hidden="true">\\</span>{" "}
+              <BrandMark className="text-primary mr-1" />
               basic usage
             </p>
             <CodeBlock
@@ -147,7 +144,7 @@ return user.Match(
           </div>
           <div>
             <p className="font-mono text-sm text-muted-foreground mb-3">
-              <span className="text-primary" aria-hidden="true">\\</span>{" "}
+              <BrandMark className="text-primary mr-1" />
               chaining with Map and Bind
             </p>
             <CodeBlock
@@ -177,7 +174,7 @@ Option<Address> address = repository
         <div className="space-y-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground mb-3">
-              <span className="text-primary" aria-hidden="true">\\</span>{" "}
+              <BrandMark className="text-primary mr-1" />
               returning typed errors
             </p>
             <CodeBlock

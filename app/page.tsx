@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
@@ -59,9 +60,7 @@ export default function Page() {
 
       <section id="applications" className="container mx-auto pt-16 pb-24">
         <p className="font-mono text-sm text-muted-foreground mb-16">
-          <span className="text-primary" aria-hidden="true">
-            \\
-          </span>{" "}
+          <BrandMark className="text-primary mr-1" />
           applications
         </p>
         <div className="space-y-24">
@@ -314,9 +313,7 @@ export default function Page() {
 
       <section id="libraries" className="container mx-auto pt-16 pb-24">
         <p className="font-mono text-sm text-muted-foreground mb-16">
-          <span className="text-primary" aria-hidden="true">
-            \\
-          </span>{" "}
+          <BrandMark className="text-primary mr-1" />
           libraries
         </p>
         <div className="space-y-24">

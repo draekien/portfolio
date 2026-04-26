@@ -1,5 +1,6 @@
 "use client";
 
+import { BrandMark } from "@/components/brand-mark";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
@@ -58,9 +59,7 @@ export function SectionNav() {
             )}
           >
             {active === id && (
-              <span className="text-primary mr-1" aria-hidden="true">
-                \\
-              </span>
+              <BrandMark className="text-primary mr-1" />
             )}
             {label}
           </button>

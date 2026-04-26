@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { FrameworkBadge } from "@/components/framework-badge";
 import {
@@ -28,9 +29,7 @@ export const metadata: Metadata = {
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <h2 className="text-xl font-semibold mb-6">
-      <span className="font-mono text-primary mr-2" aria-hidden="true">
-        \\
-      </span>
+      <BrandMark className="text-primary mr-2" />
       {children}
     </h2>
   );
@@ -45,7 +44,7 @@ export default function NorthShoreMeditationPage() {
             <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
-            <span className="text-primary">\\</span>
+            <BrandMark className="text-primary" />
           </BreadcrumbSeparator>
           <BreadcrumbItem>
             <BreadcrumbPage>North Shore Meditation</BreadcrumbPage>
@@ -55,9 +54,7 @@ export default function NorthShoreMeditationPage() {
 
       <header className="mb-16 space-y-6 max-w-2xl">
         <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
-          <span className="font-mono text-primary mr-3" aria-hidden="true">
-            \\
-          </span>
+          <BrandMark className="text-primary mr-3" />
           North Shore Meditation
         </h1>
         <p className="text-lg md:text-xl text-foreground leading-relaxed">

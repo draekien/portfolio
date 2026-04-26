@@ -1,4 +1,5 @@
 import type { ComponentProps } from "react";
+import { BrandMark } from "@/components/brand-mark";
 import { cn } from "@/lib/utils";
 
 export function ProjectSummary({
@@ -47,7 +48,7 @@ export function ProjectSummaryTitle({
       className={cn("text-2xl font-semibold text-secondary", className)}
       {...rest}
     >
-      <span className="text-primary mr-1 font-mono text-xl whitespace-nowrap">\\</span>
+      <BrandMark className="text-primary mr-1" />
       {children}
     </h2>
   );

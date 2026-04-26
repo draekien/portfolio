@@ -6,15 +6,15 @@ import { cn } from "@/lib/utils";
 
 const variants = [
   {
-    label: "core",
+    label: "# core",
     command: "dotnet add package Waystone.WideLogEvents",
   },
   {
-    label: "serilog",
+    label: "# serilog",
     command: "dotnet add package Serilog.Enrichers.Waystone.WideLogEvents",
   },
   {
-    label: "aspnetcore",
+    label: "# serilog + aspnetcore",
     command:
       "dotnet add package Serilog.Enrichers.Waystone.WideLogEvents.AspNetCore",
   },
@@ -55,15 +55,20 @@ export function ExpandableInstallCommand() {
           {variants.slice(1).map((v) => (
             <div
               key={v.label}
-              className="flex items-center gap-3 bg-muted rounded-md px-4 py-2.5 font-mono text-sm"
+              className="flex flex-col bg-muted rounded-md px-4 py-2.5 font-mono text-sm gap-1"
             >
-              <span
-                className="text-secondary select-none w-[5.5ch] shrink-0"
-                aria-hidden="true"
-              >
+              <span className="text-secondary select-none" aria-hidden="true">
                 {v.label}
               </span>
-              <span className="text-foreground">{v.command}</span>
+              <div className="flex items-center gap-3">
+                <span
+                  className="text-secondary select-none"
+                  aria-hidden="true"
+                >
+                  $
+                </span>
+                <span className="text-foreground">{v.command}</span>
+              </div>
             </div>
           ))}
         </div>

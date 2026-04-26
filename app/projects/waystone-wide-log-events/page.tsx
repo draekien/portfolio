@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
@@ -23,9 +24,7 @@ export const metadata: Metadata = {
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <h2 className="text-xl font-semibold mb-6">
-      <span className="font-mono text-primary mr-2" aria-hidden="true">
-        \\
-      </span>
+      <BrandMark className="text-primary mr-2" />
       {children}
     </h2>
   );
@@ -40,7 +39,7 @@ export default async function WaystoneWideLogEventsPage() {
             <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
-            <span className="text-primary">\\</span>
+            <BrandMark className="text-primary" />
           </BreadcrumbSeparator>
           <BreadcrumbItem>
             <BreadcrumbPage>Waystone.WideLogEvents</BreadcrumbPage>
@@ -50,9 +49,7 @@ export default async function WaystoneWideLogEventsPage() {
 
       <header className="mb-16 space-y-6 max-w-2xl">
         <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
-          <span className="font-mono text-primary mr-3" aria-hidden="true">
-            \\
-          </span>
+          <BrandMark className="text-primary mr-3" />
           Waystone.WideLogEvents
         </h1>
         <p className="text-lg md:text-xl text-foreground leading-relaxed">
@@ -146,7 +143,7 @@ app.UseSerilogRequestLogging();`}
         <div className="space-y-6">
           <div>
             <p className="font-mono text-sm text-secondary mb-3">
-              \\ pushing properties
+              <BrandMark className="text-primary mr-1" /> pushing properties
             </p>
             <CodeBlock
               language="csharp"
@@ -170,7 +167,7 @@ WideLogEventContext.PushProperty("totalValue", cart.Total);
           </div>
           <div>
             <p className="font-mono text-sm text-secondary mb-3">
-              \\ sampling by log level
+              <BrandMark className="text-primary mr-1" /> sampling by log level
             </p>
             <CodeBlock
               language="csharp"
