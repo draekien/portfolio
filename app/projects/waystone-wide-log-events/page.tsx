@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
+import { ExpandableInstallCommand } from "@/components/expandable-install-command";
 import { FrameworkBadge } from "@/components/framework-badge";
 import {
   Breadcrumb,
@@ -27,17 +28,6 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
       </span>
       {children}
     </h2>
-  );
-}
-
-function InstallCommand({ command }: { command: string }) {
-  return (
-    <div className="flex items-center gap-3 bg-muted rounded-md px-4 py-2.5 font-mono text-sm">
-      <span className="text-secondary select-none" aria-hidden="true">
-        $
-      </span>
-      <span className="text-foreground">{command}</span>
-    </div>
   );
 }
 
@@ -74,7 +64,7 @@ export default async function WaystoneWideLogEventsPage() {
           <FrameworkBadge version="net8.0" />
           <FrameworkBadge version="net10.0" />
         </div>
-        <InstallCommand command="dotnet add package Waystone.WideLogEvents" />
+        <ExpandableInstallCommand />
         <div className="flex gap-4">
           <ButtonLink
             link={{
@@ -180,20 +170,32 @@ WideLogEventContext.PushProperty("totalValue", cart.Total);
           </div>
           <div>
             <p className="font-mono text-sm text-secondary mb-3">
-              \\ sampling for high-volume endpoints
+              \\ sampling by log level
             </p>
             <CodeBlock
               language="csharp"
-              code={`// Configure sampling in appsettings.json to reduce log volume
-// on health checks and other noisy endpoints
-{
-  "WideLogEvents": {
-    "Sampling": {
-      "/health": 0.01,
-      "/metrics": 0.0
-    }
-  }
-}`}
+              code={`// Tune per-level sample rates — errors and fatals always emit
+builder.Host.UseSerilog((context, config) => config
+    .Enrich.FromWideLogEventsContext()
+    .Filter.WithWideLogEventsSampling(options =>
+    {
+        options.VerboseSampleRate     = 0.01; // 1%  (default)
+        options.DebugSampleRate       = 0.01; // 1%  (default)
+        options.InformationSampleRate = 0.05; // 5%  (default)
+        options.WarningSampleRate     = 0.10; // 10% (default)
+        options.ErrorSampleRate       = 1.0;  // always (default)
+        options.FatalSampleRate       = 1.0;  // always (default)
+
+        // Override in development so nothing gets dropped
+        if (builder.Environment.IsDevelopment())
+        {
+            options.VerboseSampleRate     = 1.0;
+            options.DebugSampleRate       = 1.0;
+            options.InformationSampleRate = 1.0;
+            options.WarningSampleRate     = 1.0;
+        }
+    })
+    .ReadFrom.Configuration(context.Configuration));`}
             />
           </div>
         </div>

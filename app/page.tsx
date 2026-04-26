@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
+import { ExpandableInstallCommand } from "@/components/expandable-install-command";
 import { FrameworkBadge } from "@/components/framework-badge";
 import {
   ProjectSummary,
@@ -33,6 +34,7 @@ function InstallCommand({ command }: { command: string }) {
     </div>
   );
 }
+
 
 export default function Page() {
   return (
@@ -357,21 +359,6 @@ export default function Page() {
                     github/waystone-dotnet
                   </ButtonLink>
                 </ProjectSummaryAttributeValue>
-                <ProjectSummaryAttribute>
-                  @documentation
-                </ProjectSummaryAttribute>
-                <ProjectSummaryAttributeValue>
-                  <ButtonLink
-                    link={{
-                      href: "https://draekien-industries.wpei.me/",
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                    }}
-                    external
-                  >
-                    gitbook
-                  </ButtonLink>
-                </ProjectSummaryAttributeValue>
               </ProjectSummaryAttributeList>
               <ButtonLink internal link={{ href: "/projects/waystone-monads" }}>
                 View package docs →
@@ -416,7 +403,7 @@ return user.Match(
                   fragmented events across an application&apos;s lifecycle.
                 </ProjectSummaryDescription>
               </ProjectSummaryHeader>
-              <InstallCommand command="dotnet add package Waystone.WideLogEvents" />
+              <ExpandableInstallCommand />
               <ProjectSummaryAttributeList>
                 <ProjectSummaryAttribute>@targets</ProjectSummaryAttribute>
                 <ProjectSummaryAttributeValue className="flex gap-2 flex-wrap">
@@ -435,21 +422,6 @@ return user.Match(
                     external
                   >
                     github/waystone-dotnet
-                  </ButtonLink>
-                </ProjectSummaryAttributeValue>
-                <ProjectSummaryAttribute>
-                  @documentation
-                </ProjectSummaryAttribute>
-                <ProjectSummaryAttributeValue>
-                  <ButtonLink
-                    link={{
-                      href: "https://draekien-industries.wpei.me/waystone.widelogevents",
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                    }}
-                    external
-                  >
-                    gitbook
                   </ButtonLink>
                 </ProjectSummaryAttributeValue>
               </ProjectSummaryAttributeList>
