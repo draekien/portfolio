@@ -62,11 +62,12 @@ export default function Page() {
 
       <section id="applications" className="container mx-auto pt-16 pb-24">
         <div className="flex items-center gap-4 mb-16">
+          <BrandMark className="text-primary shrink-0" />
+          <hr className="flex-1 border-border" />
           <p className="font-mono text-sm text-secondary tracking-wider shrink-0">
-            <BrandMark className="text-primary mr-1" />
             applications
           </p>
-          <hr className="flex-1 border-border" />
+          <BrandMark className="text-primary shrink-0" />
         </div>
         <div className="space-y-24">
           <ProjectSummary
@@ -316,11 +317,12 @@ export default function Page() {
 
       <section id="libraries" className="container mx-auto pt-16 pb-24">
         <div className="flex items-center gap-4 mb-16">
+          <BrandMark className="text-primary shrink-0" />
+          <hr className="flex-1 border-border" />
           <p className="font-mono text-sm text-secondary tracking-wider shrink-0">
-            <BrandMark className="text-primary mr-1" />
             libraries
           </p>
-          <hr className="flex-1 border-border" />
+          <BrandMark className="text-primary shrink-0" />
         </div>
         <div className="space-y-24">
           <ProjectSummary
