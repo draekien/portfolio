@@ -209,27 +209,23 @@ function CarouselControls({ className, ...props }: React.ComponentProps<"div">) 
       className={cn("flex items-center justify-between mt-3", className)}
       {...props}
     >
-      <Button
-        variant="outline"
-        size="icon-sm"
-        className="touch-manipulation rounded-full"
+      <button
+        className="font-mono text-sm text-muted-foreground hover:text-foreground transition-colors touch-manipulation disabled:opacity-30 disabled:pointer-events-none flex items-center gap-1 cursor-pointer"
         disabled={!canScrollPrev}
         onClick={scrollPrev}
       >
-        <CaretLeftIcon />
-        <span className="sr-only">Previous slide</span>
-      </Button>
+        <span aria-hidden="true">←</span>
+        <span>prev</span>
+      </button>
       <CarouselIndicator />
-      <Button
-        variant="outline"
-        size="icon-sm"
-        className="touch-manipulation rounded-full"
+      <button
+        className="font-mono text-sm text-muted-foreground hover:text-foreground transition-colors touch-manipulation disabled:opacity-30 disabled:pointer-events-none flex items-center gap-1 cursor-pointer"
         disabled={!canScrollNext}
         onClick={scrollNext}
       >
-        <CaretRightIcon />
-        <span className="sr-only">Next slide</span>
-      </Button>
+        <span>next</span>
+        <span aria-hidden="true">→</span>
+      </button>
     </div>
   )
 }
