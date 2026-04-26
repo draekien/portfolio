@@ -2,7 +2,6 @@ import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
 import { FrameworkBadge } from "@/components/framework-badge";
-import Mark from "@/components/mark";
 import {
   ProjectSummary,
   ProjectSummaryAttribute,
@@ -13,7 +12,6 @@ import {
   ProjectSummaryHeader,
   ProjectSummaryTitle,
 } from "@/components/project-summary";
-import { TextLoop, TextLoopRotatingText } from "@/components/text-loop";
 
 export default function Page() {
   return (
@@ -22,25 +20,16 @@ export default function Page() {
         id="hero"
         className="flex flex-col justify-center h-[70dvh] container mx-auto"
       >
-        <TextLoop className="select-none">
-          <h1 className="font-mono">
+        <div className="select-none space-y-4">
+          <h1 className="font-mono text-4xl md:text-7xl font-medium tracking-tight leading-snug">
             <span>Technical Lead</span>{" "}
             <span className="text-muted-foreground/70">at InfoTrack</span>
           </h1>
-          <div className="flex items-center gap-2 md:gap-3 lg:gap-4 font-mono  text-xl md:text-2xl lg:text-3xl">
-            <Mark className="h-5 md:h-7.5 lg:h-12 text-primary" />
-            <TextLoopRotatingText
-              rotatingTexts={[
-                "Elevating Quality",
-                "Accelerating Delivery",
-                "Mentoring Engineers",
-                "Building Leaders",
-                "Scaling Practices",
-                "Shaping Architecture",
-              ]}
-            />
-          </div>
-        </TextLoop>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-prose">
+            I set technical direction and develop the engineers who execute it
+            into the ones who define it next.
+          </p>
+        </div>
       </section>
       <section className="container mx-auto space-y-16 min-h-[80dvh]">
         <ProjectSummary
