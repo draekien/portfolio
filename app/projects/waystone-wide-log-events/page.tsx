@@ -42,9 +42,13 @@ export default async function WaystoneWideLogEventsPage() {
             <BreadcrumbItem>
               <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator>
-              <BrandMark className="text-primary" />
-            </BreadcrumbSeparator>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink render={<Link href="/#libraries" />}>
+                libraries
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbPage>Waystone.WideLogEvents</BreadcrumbPage>
             </BreadcrumbItem>
@@ -153,7 +157,7 @@ app.UseSerilogRequestLogging();`}
             </div>
             <div className="space-y-6 max-w-3xl">
               <div>
-                <p className="font-mono text-sm text-secondary mb-3">
+                <p className="font-mono text-sm text-muted-foreground mb-3">
                   <BrandMark className="text-primary mr-1" /> pushing properties
                 </p>
                 <CodeBlock
@@ -177,7 +181,7 @@ WideLogEventContext.PushProperty("totalValue", cart.Total);
                 />
               </div>
               <div>
-                <p className="font-mono text-sm text-secondary mb-3">
+                <p className="font-mono text-sm text-muted-foreground mb-3">
                   <BrandMark className="text-primary mr-1" /> sampling by log
                   level
                 </p>

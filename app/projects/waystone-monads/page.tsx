@@ -52,9 +52,13 @@ export default async function WaystoneMonadsPage() {
             <BreadcrumbItem>
               <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator>
-              <BrandMark className="text-primary" />
-            </BreadcrumbSeparator>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink render={<Link href="/#libraries" />}>
+                libraries
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbPage>Waystone.Monads</BreadcrumbPage>
             </BreadcrumbItem>

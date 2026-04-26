@@ -51,9 +51,13 @@ export default function ParasolPage() {
             <BreadcrumbItem>
               <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator>
-              <BrandMark className="text-primary" />
-            </BreadcrumbSeparator>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink render={<Link href="/#applications" />}>
+                applications
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbPage>Parasol</BreadcrumbPage>
             </BreadcrumbItem>
