@@ -41,15 +41,30 @@ export function ProjectSummaryTitle({
   children,
   className,
   ...rest
-}: ComponentProps<"h1">) {
+}: ComponentProps<"h2">) {
   return (
-    <h1
-      className={cn("text-2xl font-semibold text-secondary mb-4", className)}
+    <h2
+      className={cn("text-2xl font-semibold text-secondary mb-2", className)}
       {...rest}
     >
       <span className="text-primary mr-1 font-mono text-xl">\\</span>
       {children}
-    </h1>
+    </h2>
+  );
+}
+
+export function ProjectSummaryHook({
+  children,
+  className,
+  ...rest
+}: ComponentProps<"p">) {
+  return (
+    <p
+      className={cn("text-sm font-medium text-foreground/80 mb-3", className)}
+      {...rest}
+    >
+      {children}
+    </p>
   );
 }
 

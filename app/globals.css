@@ -57,7 +57,7 @@
   --popover-foreground: oklch(0.2178 0 0);
   --primary: oklch(0.6823 0.176 46.72);
   --primary-foreground: oklch(0.98 0.016 73.684);
-  --secondary: oklch(0.7115 0.0909 318.07);
+  --secondary: oklch(0.38 0.09 318.07);
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.97 0.001 106.424);
   --muted-foreground: oklch(0.553 0.013 58.071);
@@ -131,7 +131,7 @@
   }
   button:disabled,
   [role="button"]:disabled {
-    @apply cursor-pointer;
+    @apply cursor-not-allowed;
   }
 }
 
