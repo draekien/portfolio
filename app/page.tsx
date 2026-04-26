@@ -40,10 +40,15 @@ export default function Page() {
           </p>
         </div>
       </section>
-      <section className="container mx-auto space-y-16 min-h-[80dvh]">
+      <section className="container mx-auto min-h-[80dvh]">
+        <p className="font-mono text-sm text-muted-foreground mb-16">
+          <span className="text-secondary" aria-hidden="true">\\</span>{" "}
+          selected work
+        </p>
+        <div className="space-y-20">
         <ProjectSummary
           id="parasol"
-          className="grid grid-cols-1 md:grid-cols-2 gap-2 items-start"
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 items-start"
         >
           <ProjectSummaryHeader>
             <ProjectSummaryTitle>Parasol</ProjectSummaryTitle>
@@ -127,7 +132,7 @@ export default function Page() {
         </ProjectSummary>
         <ProjectSummary
           id="waystone-monads"
-          className="grid grid-cols-1 md:grid-cols-2 gap-2 items-start"
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 items-start"
         >
           <ProjectSummaryHeader>
             <ProjectSummaryTitle>Waystone.Monads</ProjectSummaryTitle>
@@ -192,7 +197,7 @@ return user.Match(
         </ProjectSummary>
         <ProjectSummary
           id="waystone-wide-log-events"
-          className="grid grid-cols-1 md:grid-cols-2 gap-2 items-start"
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 items-start"
         >
           <ProjectSummaryHeader>
             <ProjectSummaryTitle>Waystone.WideLogEvents</ProjectSummaryTitle>
@@ -264,6 +269,7 @@ WideLogEventContext.PushProperty("action", "checkout");`}
             />
           </ProjectSummaryCodeBlock>
         </ProjectSummary>
+        </div>
       </section>
       <section
         id="contact"

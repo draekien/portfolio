@@ -7,7 +7,7 @@ export function ProjectSummary({
   ...rest
 }: ComponentProps<"article">) {
   return (
-    <article className={cn("space-y-4", className)} {...rest}>
+    <article className={cn(className)} {...rest}>
       {children}
     </article>
   );
@@ -19,7 +19,7 @@ export function ProjectSummaryHeader({
   ...rest
 }: ComponentProps<"header">) {
   return (
-    <header className={className} {...rest}>
+    <header className={cn("space-y-3", className)} {...rest}>
       {children}
     </header>
   );
@@ -44,7 +44,7 @@ export function ProjectSummaryTitle({
 }: ComponentProps<"h2">) {
   return (
     <h2
-      className={cn("text-2xl font-semibold text-secondary mb-2", className)}
+      className={cn("text-2xl font-semibold text-secondary", className)}
       {...rest}
     >
       <span className="text-primary mr-1 font-mono text-xl">\\</span>
@@ -60,7 +60,7 @@ export function ProjectSummaryHook({
 }: ComponentProps<"p">) {
   return (
     <p
-      className={cn("text-sm font-medium text-foreground/80 mb-3", className)}
+      className={cn("text-base font-medium text-foreground", className)}
       {...rest}
     >
       {children}
@@ -74,7 +74,7 @@ export function ProjectSummaryDescription({
   ...rest
 }: ComponentProps<"p">) {
   return (
-    <p className={cn("max-w-prose", className)} {...rest}>
+    <p className={cn("text-sm text-muted-foreground max-w-prose", className)} {...rest}>
       {children}
     </p>
   );
