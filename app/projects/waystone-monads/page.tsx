@@ -61,7 +61,7 @@ export default async function WaystoneMonadsPage() {
           </BreadcrumbList>
         </Breadcrumb>
 
-        <header className="mb-16 space-y-6 max-w-2xl">
+        <header className="mb-16 space-y-6 max-w-2xl lg:max-w-3xl">
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
             <BrandMark className="text-primary mr-3" />
             Waystone.Monads
@@ -120,20 +120,24 @@ export default async function WaystoneMonadsPage() {
         </section>
 
         <section className="mb-16">
-          <ProjectSectionHeading>Option&lt;T&gt;</ProjectSectionHeading>
-          <p className="text-muted-foreground mb-6 max-w-prose">
-            Represents a value that may or may not be present. Forces the caller
-            to handle both the <Code>Some</Code> and <Code>None</Code> cases.
-          </p>
-          <div className="space-y-6 max-w-3xl">
+          <div className="lg:grid lg:grid-cols-[2fr_3fr] lg:gap-12 lg:items-start">
             <div>
-              <p className="font-mono text-sm text-muted-foreground mb-3">
-                <BrandMark className="text-primary mr-1" />
-                basic usage
+              <ProjectSectionHeading>Option&lt;T&gt;</ProjectSectionHeading>
+              <p className="text-muted-foreground mb-6 lg:mb-0 max-w-prose">
+                Represents a value that may or may not be present. Forces the
+                caller to handle both the <Code>Some</Code> and{" "}
+                <Code>None</Code> cases.
               </p>
-              <CodeBlock
-                language="csharp"
-                code={`// A user may or may not exist for a given id
+            </div>
+            <div className="space-y-6 max-w-3xl">
+              <div>
+                <p className="font-mono text-sm text-muted-foreground mb-3">
+                  <BrandMark className="text-primary mr-1" />
+                  basic usage
+                </p>
+                <CodeBlock
+                  language="csharp"
+                  code={`// A user may or may not exist for a given id
 Option<User> user = repository.Find(id);
 
 // Pattern match — compiler ensures both cases are handled
@@ -141,16 +145,16 @@ return user.Match(
     onSome: u => Results.Ok(u),
     onNone: () => Results.NotFound()
 );`}
-              />
-            </div>
-            <div>
-              <p className="font-mono text-sm text-muted-foreground mb-3">
-                <BrandMark className="text-primary mr-1" />
-                chaining with Map and Bind
-              </p>
-              <CodeBlock
-                language="csharp"
-                code={`// Transform the inner value without unwrapping
+                />
+              </div>
+              <div>
+                <p className="font-mono text-sm text-muted-foreground mb-3">
+                  <BrandMark className="text-primary mr-1" />
+                  chaining with Map and Bind
+                </p>
+                <CodeBlock
+                  language="csharp"
+                  code={`// Transform the inner value without unwrapping
 Option<string> email = repository
     .Find(userId)
     .Map(u => u.Email)
@@ -160,27 +164,31 @@ Option<string> email = repository
 Option<Address> address = repository
     .Find(userId)
     .Bind(u => addressRepository.Find(u.AddressId));`}
-              />
+                />
+              </div>
             </div>
           </div>
         </section>
 
         <section className="mb-16">
-          <ProjectSectionHeading>Result&lt;T, E&gt;</ProjectSectionHeading>
-          <p className="text-muted-foreground mb-6 max-w-prose">
-            Represents either a successful value (<Code>Ok</Code>) or a typed
-            error (<Code>Err</Code>). Eliminates untyped exceptions from your
-            domain logic.
-          </p>
-          <div className="space-y-6 max-w-3xl">
+          <div className="lg:grid lg:grid-cols-[2fr_3fr] lg:gap-12 lg:items-start">
             <div>
-              <p className="font-mono text-sm text-muted-foreground mb-3">
-                <BrandMark className="text-primary mr-1" />
-                returning typed errors
+              <ProjectSectionHeading>Result&lt;T, E&gt;</ProjectSectionHeading>
+              <p className="text-muted-foreground mb-6 lg:mb-0 max-w-prose">
+                Represents either a successful value (<Code>Ok</Code>) or a
+                typed error (<Code>Err</Code>). Eliminates untyped exceptions
+                from your domain logic.
               </p>
-              <CodeBlock
-                language="csharp"
-                code={`Result<Order, OrderError> result = orderService.Place(cart);
+            </div>
+            <div className="space-y-6 max-w-3xl">
+              <div>
+                <p className="font-mono text-sm text-muted-foreground mb-3">
+                  <BrandMark className="text-primary mr-1" />
+                  returning typed errors
+                </p>
+                <CodeBlock
+                  language="csharp"
+                  code={`Result<Order, OrderError> result = orderService.Place(cart);
 
 return result.Match(
     onOk: order => Results.Created($"/orders/{order.Id}", order),
@@ -191,7 +199,8 @@ return result.Match(
         _                            => Results.StatusCode(500)
     }
 );`}
-              />
+                />
+              </div>
             </div>
           </div>
         </section>

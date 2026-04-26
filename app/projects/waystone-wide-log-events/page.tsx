@@ -51,7 +51,7 @@ export default async function WaystoneWideLogEventsPage() {
           </BreadcrumbList>
         </Breadcrumb>
 
-        <header className="mb-16 space-y-6 max-w-2xl">
+        <header className="mb-16 space-y-6 max-w-2xl lg:max-w-3xl">
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
             <BrandMark className="text-primary mr-3" />
             Waystone.WideLogEvents
@@ -112,17 +112,20 @@ export default async function WaystoneWideLogEventsPage() {
         </section>
 
         <section className="mb-16">
-          <ProjectSectionHeading>Setup</ProjectSectionHeading>
-          <p className="text-muted-foreground mb-6 max-w-prose">
-            Configure Serilog with the <Code>WideLogEventsContext</Code>{" "}
-            enricher and middleware. The library integrates with{" "}
-            <Code>Serilog.AspNetCore</Code> — your existing request logging
-            pipeline stays intact.
-          </p>
-          <div className="max-w-3xl">
-            <CodeBlock
-              language="csharp"
-              code={`// Program.cs
+          <div className="lg:grid lg:grid-cols-[2fr_3fr] lg:gap-12 lg:items-start">
+            <div>
+              <ProjectSectionHeading>Setup</ProjectSectionHeading>
+              <p className="text-muted-foreground mb-6 lg:mb-0 max-w-prose">
+                Configure Serilog with the <Code>WideLogEventsContext</Code>{" "}
+                enricher and middleware. The library integrates with{" "}
+                <Code>Serilog.AspNetCore</Code> — your existing request logging
+                pipeline stays intact.
+              </p>
+            </div>
+            <div className="max-w-3xl">
+              <CodeBlock
+                language="csharp"
+                code={`// Program.cs
 builder.Host.UseSerilog((context, config) => config
     .Enrich.FromWideLogEventsContext()
     .Filter.WithWideLogEventsSampling()
@@ -133,25 +136,29 @@ var app = builder.Build();
 // Middleware order matters — register before UseSerilogRequestLogging
 app.UseWideLogEventsContext();
 app.UseSerilogRequestLogging();`}
-            />
+              />
+            </div>
           </div>
         </section>
 
         <section className="mb-16">
-          <ProjectSectionHeading>Usage</ProjectSectionHeading>
-          <p className="text-muted-foreground mb-6 max-w-prose">
-            Push properties anywhere in the request pipeline. They accumulate in
-            the ambient context and flush as a single structured event when the
-            request completes.
-          </p>
-          <div className="space-y-6 max-w-3xl">
+          <div className="lg:grid lg:grid-cols-[2fr_3fr] lg:gap-12 lg:items-start">
             <div>
-              <p className="font-mono text-sm text-secondary mb-3">
-                <BrandMark className="text-primary mr-1" /> pushing properties
+              <ProjectSectionHeading>Usage</ProjectSectionHeading>
+              <p className="text-muted-foreground mb-6 lg:mb-0 max-w-prose">
+                Push properties anywhere in the request pipeline. They
+                accumulate in the ambient context and flush as a single
+                structured event when the request completes.
               </p>
-              <CodeBlock
-                language="csharp"
-                code={`// In a handler, service, or middleware — anywhere in the request
+            </div>
+            <div className="space-y-6 max-w-3xl">
+              <div>
+                <p className="font-mono text-sm text-secondary mb-3">
+                  <BrandMark className="text-primary mr-1" /> pushing properties
+                </p>
+                <CodeBlock
+                  language="csharp"
+                  code={`// In a handler, service, or middleware — anywhere in the request
 WideLogEventContext.PushProperty("userId", userId);
 WideLogEventContext.PushProperty("action", "checkout");
 WideLogEventContext.PushProperty("cartItemCount", cart.Items.Count);
@@ -167,16 +174,16 @@ WideLogEventContext.PushProperty("totalValue", cart.Total);
 //   "StatusCode": 201,
 //   "Elapsed": 42.7
 // }`}
-              />
-            </div>
-            <div>
-              <p className="font-mono text-sm text-secondary mb-3">
-                <BrandMark className="text-primary mr-1" /> sampling by log
-                level
-              </p>
-              <CodeBlock
-                language="csharp"
-                code={`// Tune per-level sample rates — errors and fatals always emit
+                />
+              </div>
+              <div>
+                <p className="font-mono text-sm text-secondary mb-3">
+                  <BrandMark className="text-primary mr-1" /> sampling by log
+                  level
+                </p>
+                <CodeBlock
+                  language="csharp"
+                  code={`// Tune per-level sample rates — errors and fatals always emit
 builder.Host.UseSerilog((context, config) => config
     .Enrich.FromWideLogEventsContext()
     .Filter.WithWideLogEventsSampling(options =>
@@ -198,7 +205,8 @@ builder.Host.UseSerilog((context, config) => config
         }
     })
     .ReadFrom.Configuration(context.Configuration));`}
-              />
+                />
+              </div>
             </div>
           </div>
         </section>
