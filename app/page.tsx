@@ -192,6 +192,32 @@ WideLogEventContext.PushProperty("action", "checkout");`}
               hello@wpei.me
             </ButtonLink>
           </ProjectSummaryAttributeValue>
+          <ProjectSummaryAttribute>@linkedin</ProjectSummaryAttribute>
+          <ProjectSummaryAttributeValue>
+            <ButtonLink
+              link={{
+                href: "https://www.linkedin.com/in/wpei",
+                target: "_blank",
+                rel: "noopener noreferrer",
+              }}
+              external
+            >
+              linkedin/wpei
+            </ButtonLink>
+          </ProjectSummaryAttributeValue>
+          <ProjectSummaryAttribute>@github</ProjectSummaryAttribute>
+          <ProjectSummaryAttributeValue>
+            <ButtonLink
+              link={{
+                href: "https://github.com/draekien",
+                target: "_blank",
+                rel: "noopener noreferrer",
+              }}
+              external
+            >
+              github/draekien
+            </ButtonLink>
+          </ProjectSummaryAttributeValue>
         </ProjectSummaryAttributeList>
       </section>
     </>
