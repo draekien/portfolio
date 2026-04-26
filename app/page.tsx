@@ -130,7 +130,7 @@ export default function Page() {
               </ButtonLink>
             </div>
             <ProjectSummaryCodeBlock>
-              <Carousel opts={{ loop: true }}>
+              <Carousel opts={{ loop: true }} keyboard={false}>
                 <CarouselContent>
                   <CarouselItem>
                     <Image
@@ -254,7 +254,7 @@ export default function Page() {
               </ButtonLink>
             </div>
             <ProjectSummaryCodeBlock>
-              <Carousel opts={{ loop: true }}>
+              <Carousel opts={{ loop: true }} keyboard={false}>
                 <CarouselContent>
                   <CarouselItem>
                     <Image

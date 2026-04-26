@@ -19,6 +19,7 @@ type CarouselProps = {
   plugins?: CarouselPlugin;
   orientation?: "horizontal" | "vertical";
   setApi?: (api: CarouselApi) => void;
+  keyboard?: boolean;
 };
 
 type CarouselContextProps = {
@@ -47,6 +48,7 @@ function Carousel({
   opts,
   setApi,
   plugins,
+  keyboard = true,
   className,
   children,
   ...props
@@ -58,8 +60,8 @@ function Carousel({
     },
     plugins,
   );
-  const [canScrollPrev, setCanScrollPrev] = React.useState(false);
-  const [canScrollNext, setCanScrollNext] = React.useState(false);
+  const [canScrollPrev, setCanScrollPrev] = React.useState(!!opts?.loop);
+  const [canScrollNext, setCanScrollNext] = React.useState(true);
 
   const onSelect = React.useCallback((api: CarouselApi) => {
     if (!api) return;
@@ -76,11 +78,13 @@ function Carousel({
   }, [api]);
 
   useHotkeys(
-    [
-      { hotkey: "ArrowLeft", callback: scrollPrev },
-      { hotkey: "ArrowRight", callback: scrollNext },
-    ],
-    { preventDefault: true },
+    keyboard
+      ? [
+          { hotkey: "ArrowLeft", callback: scrollPrev },
+          { hotkey: "ArrowRight", callback: scrollNext },
+        ]
+      : [],
+    { preventDefault: keyboard },
   );
 
   React.useEffect(() => {
