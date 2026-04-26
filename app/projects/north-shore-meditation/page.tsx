@@ -76,8 +76,6 @@ export default function NorthShoreMeditationPage() {
               rel: "noopener noreferrer",
             }}
             external
-            variant="outline"
-            className="h-9 px-4"
           >
             View live →
           </ButtonLink>

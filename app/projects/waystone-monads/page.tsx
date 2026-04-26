@@ -80,8 +80,6 @@ export default async function WaystoneMonadsPage() {
               rel: "noopener noreferrer",
             }}
             external
-            variant="outline"
-            className="h-9 px-4"
           >
             GitHub →
           </ButtonLink>
@@ -92,8 +90,7 @@ export default async function WaystoneMonadsPage() {
               rel: "noopener noreferrer",
             }}
             external
-            variant="outline"
-            className="h-9 px-4"
+            className="text-muted-foreground"
           >
             GitBook docs →
           </ButtonLink>

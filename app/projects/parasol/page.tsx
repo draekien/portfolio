@@ -76,8 +76,6 @@ export default function ParasolPage() {
               rel: "noopener noreferrer",
             }}
             external
-            variant="outline"
-            className="h-9 px-4"
           >
             View live →
           </ButtonLink>
