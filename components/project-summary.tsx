@@ -47,7 +47,7 @@ export function ProjectSummaryTitle({
       className={cn("text-2xl font-semibold text-secondary mb-4", className)}
       {...rest}
     >
-      <span className="text-primary mr-1 font-mono text-xl">\\</span>
+      <span className="text-secondary mr-1 font-mono text-xl">\\</span>
       {children}
     </h1>
   );

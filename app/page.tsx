@@ -32,17 +32,11 @@ export default function Page() {
             <TextLoopRotatingText
               rotatingTexts={[
                 "Elevating Quality",
-                "Improving Delivery",
-                "Raising Standards",
-                "Boosting Output",
+                "Accelerating Delivery",
                 "Mentoring Engineers",
-                "Coaching Growth",
                 "Building Leaders",
                 "Scaling Practices",
-                "Improving Reliability",
-                "Streamlining Delivery",
-                "Setting Best Practices",
-                "Growing Skills",
+                "Shaping Architecture",
               ]}
             />
           </div>
@@ -177,6 +171,28 @@ WideLogEventContext.PushProperty("action", "checkout");`}
             />
           </ProjectSummaryCodeBlock>
         </ProjectSummary>
+      </section>
+      <section
+        id="contact"
+        className="container mx-auto py-24 md:py-32 min-h-[40dvh] flex flex-col justify-center"
+      >
+        <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-4">
+          Let&apos;s work together.
+        </h2>
+        <p className="max-w-prose text-muted-foreground mb-8">
+          I&apos;m a Technical Lead at InfoTrack, focused on engineering culture,
+          platform quality, and shipping things that matter. If you&apos;re
+          looking for someone who brings both technical depth and team
+          leadership, reach out.
+        </p>
+        <ProjectSummaryAttributeList>
+          <ProjectSummaryAttribute>@email</ProjectSummaryAttribute>
+          <ProjectSummaryAttributeValue>
+            <ButtonLink link={{ href: "mailto:hello@wpei.me" }} external>
+              hello@wpei.me
+            </ButtonLink>
+          </ProjectSummaryAttributeValue>
+        </ProjectSummaryAttributeList>
       </section>
     </>
   );

@@ -25,7 +25,7 @@ export function TextLoopRotatingText({
   rotatingTexts = ["Limitless", "Timeless", "Flawless"],
   className,
   interval = 3000,
-  transition = { duration: 0.8, ease: "easeInOut" },
+  transition = { duration: 0.6, ease: "easeOut" },
   rotatingTextClassName,
   backgroundClassName,
   cursorClassName,
@@ -46,7 +46,7 @@ export function TextLoopRotatingText({
           key={rotatingTexts[index]}
           initial={{ width: 0, opacity: 0 }}
           animate={{ width: "auto", opacity: 1 }}
-          exit={{ width: 0, opacity: 0 }}
+          exit={{ width: 0, opacity: 0, transition: { duration: 0.3, ease: "easeIn" } }}
           transition={transition}
           className="overflow-hidden whitespace-nowrap relative"
         >
@@ -62,9 +62,7 @@ export function TextLoopRotatingText({
 
           <span
             className={cn(
-              "relative bg-clip-text text-transparent",
-              "bg-linear-to-r from-violet-400 to-violet-800",
-              "dark:bg-linear-to-r from-violet-400 to-violet-600 pr-1",
+              "relative text-secondary pr-1",
               rotatingTextClassName,
             )}
           >
