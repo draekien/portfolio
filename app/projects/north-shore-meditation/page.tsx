@@ -3,6 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
+import {
+  ProjectSectionDivider,
+  ProjectSectionHeading,
+} from "@/components/project-section";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
 import { FrameworkBadge } from "@/components/framework-badge";
@@ -26,15 +30,6 @@ export const metadata: Metadata = {
   description:
     "A CMS-driven marketing site built with Next.js and Contentful for a Sydney meditation centre.",
 };
-
-function SectionHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="text-xl font-semibold mb-6">
-      <BrandMark className="text-primary mr-3" />
-      {children}
-    </h2>
-  );
-}
 
 export default function NorthShoreMeditationPage() {
   return (
@@ -156,7 +151,7 @@ export default function NorthShoreMeditationPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16 mb-20">
         <section>
-          <SectionHeading>Problem</SectionHeading>
+          <ProjectSectionHeading>Problem</ProjectSectionHeading>
           <div className="space-y-4 text-muted-foreground leading-relaxed max-w-prose">
             <p>
               The centre ran events regularly and published practitioner notes,
@@ -172,7 +167,7 @@ export default function NorthShoreMeditationPage() {
         </section>
 
         <section>
-          <SectionHeading>Solution</SectionHeading>
+          <ProjectSectionHeading>Solution</ProjectSectionHeading>
           <div className="space-y-4 text-muted-foreground leading-relaxed max-w-prose">
             <p>
               A headless CMS architecture where Contentful handles all content
@@ -189,7 +184,7 @@ export default function NorthShoreMeditationPage() {
       </div>
 
       <section className="mb-20">
-        <SectionHeading>Tech stack</SectionHeading>
+        <ProjectSectionHeading>Tech stack</ProjectSectionHeading>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8 max-w-3xl">
           {[
             {
@@ -224,14 +219,7 @@ export default function NorthShoreMeditationPage() {
       </section>
 
       <section>
-        <div className="flex items-center gap-4 mb-8">
-          <BrandMark className="text-primary shrink-0" />
-          <hr className="flex-1 border-border" />
-          <h2 className="font-mono text-sm text-secondary tracking-wider shrink-0">
-            key decisions
-          </h2>
-          <BrandMark className="text-primary shrink-0" />
-        </div>
+        <ProjectSectionDivider>key decisions</ProjectSectionDivider>
         <div className="space-y-16 max-w-3xl">
           <div>
             <p className="font-mono text-sm text-secondary mb-2">

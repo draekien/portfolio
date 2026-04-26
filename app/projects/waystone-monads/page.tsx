@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
+import { ProjectSectionHeading } from "@/components/project-section";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
@@ -19,15 +20,6 @@ export const metadata: Metadata = {
   description:
     "A .NET library implementing Option<T> and Result<T,E> monads for type-safe null and error handling.",
 };
-
-function SectionHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="text-xl font-semibold mb-6">
-      <BrandMark className="text-primary mr-3" />
-      {children}
-    </h2>
-  );
-}
 
 function InstallCommand({ command }: { command: string }) {
   return (
@@ -98,7 +90,7 @@ export default async function WaystoneMonadsPage() {
       </header>
 
       <section className="mb-16 max-w-prose">
-        <SectionHeading>Why this exists</SectionHeading>
+        <ProjectSectionHeading>Why this exists</ProjectSectionHeading>
         <div className="space-y-4 text-muted-foreground leading-relaxed">
           <p>
             Null reference exceptions were costing my team production incidents.
@@ -116,7 +108,7 @@ export default async function WaystoneMonadsPage() {
       </section>
 
       <section className="mb-16">
-        <SectionHeading>Option&lt;T&gt;</SectionHeading>
+        <ProjectSectionHeading>Option&lt;T&gt;</ProjectSectionHeading>
         <p className="text-muted-foreground mb-6 max-w-prose">
           Represents a value that may or may not be present. Forces the caller
           to handle both the <Code>Some</Code> and <Code>None</Code> cases.
@@ -162,7 +154,7 @@ Option<Address> address = repository
       </section>
 
       <section className="mb-16">
-        <SectionHeading>Result&lt;T, E&gt;</SectionHeading>
+        <ProjectSectionHeading>Result&lt;T, E&gt;</ProjectSectionHeading>
         <p className="text-muted-foreground mb-6 max-w-prose">
           Represents either a successful value (<Code>Ok</Code>) or a typed
           error (<Code>Err</Code>). Eliminates untyped exceptions from your
@@ -193,7 +185,7 @@ return result.Match(
       </section>
 
       <section className="mb-16">
-        <SectionHeading>Compatibility</SectionHeading>
+        <ProjectSectionHeading>Compatibility</ProjectSectionHeading>
         <div className="space-y-3 font-mono text-sm">
           <div className="flex items-center gap-4">
             <FrameworkBadge version="netstandard2.0" />

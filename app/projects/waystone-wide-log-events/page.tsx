@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
+import { ProjectSectionHeading } from "@/components/project-section";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
@@ -20,15 +21,6 @@ export const metadata: Metadata = {
   description:
     "A .NET library for accumulating and emitting structured log events as a single wide event per request.",
 };
-
-function SectionHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="text-xl font-semibold mb-6">
-      <BrandMark className="text-primary mr-3" />
-      {children}
-    </h2>
-  );
-}
 
 export default async function WaystoneWideLogEventsPage() {
   return (
@@ -88,7 +80,7 @@ export default async function WaystoneWideLogEventsPage() {
       </header>
 
       <section className="mb-16 max-w-prose">
-        <SectionHeading>Why this exists</SectionHeading>
+        <ProjectSectionHeading>Why this exists</ProjectSectionHeading>
         <div className="space-y-4 text-muted-foreground leading-relaxed">
           <p>
             Debugging distributed systems meant correlating dozens of fragmented
@@ -107,7 +99,7 @@ export default async function WaystoneWideLogEventsPage() {
       </section>
 
       <section className="mb-16">
-        <SectionHeading>Setup</SectionHeading>
+        <ProjectSectionHeading>Setup</ProjectSectionHeading>
         <p className="text-muted-foreground mb-6 max-w-prose">
           Configure Serilog with the <Code>WideLogEventsContext</Code> enricher
           and middleware. The library integrates with{" "}
@@ -133,7 +125,7 @@ app.UseSerilogRequestLogging();`}
       </section>
 
       <section className="mb-16">
-        <SectionHeading>Usage</SectionHeading>
+        <ProjectSectionHeading>Usage</ProjectSectionHeading>
         <p className="text-muted-foreground mb-6 max-w-prose">
           Push properties anywhere in the request pipeline. They accumulate in
           the ambient context and flush as a single structured event when the
@@ -198,7 +190,7 @@ builder.Host.UseSerilog((context, config) => config
       </section>
 
       <section className="mb-16">
-        <SectionHeading>Compatibility</SectionHeading>
+        <ProjectSectionHeading>Compatibility</ProjectSectionHeading>
         <div className="space-y-3 font-mono text-sm">
           {[
             {
