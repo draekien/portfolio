@@ -1,4 +1,5 @@
 import type { ComponentProps } from "react";
+import { BrandMark } from "@/components/brand-mark";
 import { cn } from "@/lib/utils";
 
 export function ProjectSummary({
@@ -7,7 +8,7 @@ export function ProjectSummary({
   ...rest
 }: ComponentProps<"article">) {
   return (
-    <article className={cn("space-y-4", className)} {...rest}>
+    <article className={cn(className)} {...rest}>
       {children}
     </article>
   );
@@ -19,7 +20,7 @@ export function ProjectSummaryHeader({
   ...rest
 }: ComponentProps<"header">) {
   return (
-    <header className={className} {...rest}>
+    <header className={cn("space-y-3", className)} {...rest}>
       {children}
     </header>
   );
@@ -41,15 +42,30 @@ export function ProjectSummaryTitle({
   children,
   className,
   ...rest
-}: ComponentProps<"h1">) {
+}: ComponentProps<"h2">) {
   return (
-    <h1
-      className={cn("text-2xl font-semibold text-secondary mb-4", className)}
+    <h2
+      className={cn("text-2xl font-semibold text-secondary", className)}
       {...rest}
     >
-      <span className="text-primary mr-1 font-mono text-xl">\\</span>
+      <BrandMark className="text-primary mr-1" />
       {children}
-    </h1>
+    </h2>
+  );
+}
+
+export function ProjectSummaryHook({
+  children,
+  className,
+  ...rest
+}: ComponentProps<"p">) {
+  return (
+    <p
+      className={cn("text-base font-medium text-foreground", className)}
+      {...rest}
+    >
+      {children}
+    </p>
   );
 }
 
@@ -59,7 +75,10 @@ export function ProjectSummaryDescription({
   ...rest
 }: ComponentProps<"p">) {
   return (
-    <p className={cn("max-w-prose", className)} {...rest}>
+    <p
+      className={cn("text-sm text-muted-foreground max-w-prose", className)}
+      {...rest}
+    >
       {children}
     </p>
   );

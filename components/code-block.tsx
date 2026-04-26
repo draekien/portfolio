@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
 import { type BundledLanguage, codeToHast, type SpecialLanguage } from "shiki";
 import { cn } from "@/lib/utils";
+import { CopyButton } from "./copy-button";
 
 export type CodeBlockProps = {
   code: string;
@@ -23,7 +24,7 @@ export async function CodeBlock({
     },
   });
 
-  return toJsxRuntime(hast, {
+  const rendered = toJsxRuntime(hast, {
     Fragment,
     jsx,
     jsxs,
@@ -43,4 +44,11 @@ export async function CodeBlock({
       ),
     },
   });
+
+  return (
+    <div className="relative group">
+      {rendered}
+      <CopyButton code={code} />
+    </div>
+  );
 }
