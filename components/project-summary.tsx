@@ -75,7 +75,10 @@ export function ProjectSummaryDescription({
   ...rest
 }: ComponentProps<"p">) {
   return (
-    <p className={cn("text-sm text-muted-foreground max-w-prose", className)} {...rest}>
+    <p
+      className={cn("text-sm text-muted-foreground max-w-prose", className)}
+      {...rest}
+    >
       {children}
     </p>
   );

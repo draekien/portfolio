@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { OG_COLORS, OgMark, loadFonts } from "@/lib/opengraph";
+import { loadFonts, OG_COLORS, OgMark } from "@/lib/opengraph";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
