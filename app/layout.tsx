@@ -18,6 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.wpei.me"),
   title: "Technical Lead | William Pei | Portfolio",
   description:
     "William Pei is a Technical Lead at InfoTrack. He sets technical direction and develops the engineers who execute it into the ones who define it next.",
