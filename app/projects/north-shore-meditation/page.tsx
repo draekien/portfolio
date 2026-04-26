@@ -53,7 +53,7 @@ export default function NorthShoreMeditationPage() {
       </Breadcrumb>
 
       <header className="mb-16 space-y-6 max-w-2xl">
-        <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
           <BrandMark className="text-primary mr-3" />
           North Shore Meditation
         </h1>
