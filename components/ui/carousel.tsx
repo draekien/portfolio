@@ -201,6 +201,91 @@ function CarouselPrevious({
   )
 }
 
+function CarouselControls({ className, ...props }: React.ComponentProps<"div">) {
+  const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } = useCarousel()
+
+  return (
+    <div
+      className={cn("flex items-center justify-between mt-3", className)}
+      {...props}
+    >
+      <Button
+        variant="outline"
+        size="icon-sm"
+        className="touch-manipulation rounded-full"
+        disabled={!canScrollPrev}
+        onClick={scrollPrev}
+      >
+        <CaretLeftIcon />
+        <span className="sr-only">Previous slide</span>
+      </Button>
+      <CarouselIndicator />
+      <Button
+        variant="outline"
+        size="icon-sm"
+        className="touch-manipulation rounded-full"
+        disabled={!canScrollNext}
+        onClick={scrollNext}
+      >
+        <CaretRightIcon />
+        <span className="sr-only">Next slide</span>
+      </Button>
+    </div>
+  )
+}
+
+function CarouselIndicator({ className, ...props }: React.ComponentProps<"div">) {
+  const { api } = useCarousel()
+  const [current, setCurrent] = React.useState(0)
+  const [total, setTotal] = React.useState(0)
+
+  React.useEffect(() => {
+    if (!api) return
+
+    const sync = (api: CarouselApi) => {
+      if (!api) return
+      setTotal(api.scrollSnapList().length)
+      setCurrent(api.selectedScrollSnap())
+    }
+
+    sync(api)
+    api.on("select", sync)
+    api.on("reInit", sync)
+
+    return () => {
+      api.off("select", sync)
+      api.off("reInit", sync)
+    }
+  }, [api])
+
+  if (total <= 1) return null
+
+  return (
+    <div
+      className={cn("flex items-center gap-1.5", className)}
+      role="tablist"
+      aria-label="Slides"
+      {...props}
+    >
+      {Array.from({ length: total }).map((_, i) => (
+        <button
+          key={i}
+          role="tab"
+          aria-selected={i === current}
+          aria-label={`Go to slide ${i + 1}`}
+          onClick={() => api?.scrollTo(i)}
+          className={cn(
+            "h-2 rounded-full transition-all duration-300 cursor-pointer",
+            i === current
+              ? "w-5 bg-primary"
+              : "w-2 bg-muted-foreground/40 hover:bg-muted-foreground/70"
+          )}
+        />
+      ))}
+    </div>
+  )
+}
+
 function CarouselNext({
   className,
   variant = "outline",
@@ -238,5 +323,7 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselControls,
+  CarouselIndicator,
   useCarousel,
 }

@@ -20,9 +20,8 @@ import { SectionNav } from "@/components/section-nav";
 import {
   Carousel,
   CarouselContent,
+  CarouselControls,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 function InstallCommand({ command }: { command: string }) {
@@ -35,7 +34,6 @@ function InstallCommand({ command }: { command: string }) {
     </div>
   );
 }
-
 
 export default function Page() {
   return (
@@ -53,16 +51,23 @@ export default function Page() {
             I set technical direction and develop the engineers who execute it
             into the ones who define it next.
           </p>
+          <p className="text-base text-muted-foreground">
+            Shipping full-stack systems and open-source libraries used in
+            production across distributed .NET services.
+          </p>
         </div>
       </section>
 
       <SectionNav />
 
       <section id="applications" className="container mx-auto pt-16 pb-24">
-        <p className="font-mono text-sm text-muted-foreground mb-16">
-          <BrandMark className="text-primary mr-1" />
-          applications
-        </p>
+        <div className="flex items-center gap-4 mb-16">
+          <p className="font-mono text-sm text-secondary tracking-wider shrink-0">
+            <BrandMark className="text-primary mr-1" />
+            applications
+          </p>
+          <hr className="flex-1 border-border" />
+        </div>
         <div className="space-y-24">
           <ProjectSummary
             id="parasol"
@@ -178,8 +183,7 @@ export default function Page() {
                     />
                   </CarouselItem>
                 </CarouselContent>
-                <CarouselPrevious className="left-2" />
-                <CarouselNext className="right-2" />
+                <CarouselControls />
               </Carousel>
             </ProjectSummaryCodeBlock>
           </ProjectSummary>
@@ -303,8 +307,7 @@ export default function Page() {
                     />
                   </CarouselItem>
                 </CarouselContent>
-                <CarouselPrevious className="left-2" />
-                <CarouselNext className="right-2" />
+                <CarouselControls />
               </Carousel>
             </ProjectSummaryCodeBlock>
           </ProjectSummary>
@@ -312,10 +315,13 @@ export default function Page() {
       </section>
 
       <section id="libraries" className="container mx-auto pt-16 pb-24">
-        <p className="font-mono text-sm text-muted-foreground mb-16">
-          <BrandMark className="text-primary mr-1" />
-          libraries
-        </p>
+        <div className="flex items-center gap-4 mb-16">
+          <p className="font-mono text-sm text-secondary tracking-wider shrink-0">
+            <BrandMark className="text-primary mr-1" />
+            libraries
+          </p>
+          <hr className="flex-1 border-border" />
+        </div>
         <div className="space-y-24">
           <ProjectSummary
             id="waystone-monads"
@@ -459,10 +465,10 @@ WideLogEventContext.PushProperty("action", "checkout");`}
           Let&apos;s work together.
         </h2>
         <p className="max-w-prose text-muted-foreground mb-8">
-          I&apos;m a Technical Lead at InfoTrack, focused on engineering
-          culture, platform quality, and shipping things that matter. If
-          you&apos;re looking for someone who brings both technical depth and
-          team leadership, reach out.
+          I take on consulting and contract work alongside my role at InfoTrack
+          — distributed .NET systems, TypeScript, developer tooling, and
+          architecture. Open to open-source collaborations too. If what I build
+          is relevant to your problem, reach out.
         </p>
         <ProjectSummaryAttributeList>
           <ProjectSummaryAttribute>@email</ProjectSummaryAttribute>
