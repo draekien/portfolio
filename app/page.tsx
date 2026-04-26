@@ -5,6 +5,7 @@ import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
 import { ExpandableInstallCommand } from "@/components/expandable-install-command";
 import { FrameworkBadge } from "@/components/framework-badge";
+import { JsonLd } from "@/components/json-ld";
 import {
   ProjectSummary,
   ProjectSummaryAttribute,
@@ -23,6 +24,7 @@ import {
   CarouselControls,
   CarouselItem,
 } from "@/components/ui/carousel";
+import structuredData from "./structured-data.json" with { type: "json" };
 
 function InstallCommand({ command }: { command: string }) {
   return (
@@ -38,6 +40,7 @@ function InstallCommand({ command }: { command: string }) {
 export default function Page() {
   return (
     <>
+      <JsonLd data={structuredData} />
       <section
         id="hero"
         className="flex flex-col justify-center h-[calc(100svh-var(--header-height)-4rem)] container mx-auto"

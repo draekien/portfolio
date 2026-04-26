@@ -7,6 +7,8 @@ import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
 import { ExpandableInstallCommand } from "@/components/expandable-install-command";
 import { FrameworkBadge } from "@/components/framework-badge";
+import { JsonLd } from "@/components/json-ld";
+import structuredData from "./structured-data.json" with { type: "json" };
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -32,7 +34,9 @@ export const metadata: Metadata = {
 
 export default async function WaystoneWideLogEventsPage() {
   return (
-    <div className="container mx-auto py-12 md:py-20">
+    <>
+      <JsonLd data={structuredData} />
+      <div className="container mx-auto py-12 md:py-20">
       <Breadcrumb className="mb-12">
         <BreadcrumbList className="font-mono text-sm">
           <BreadcrumbItem>
@@ -222,5 +226,6 @@ builder.Host.UseSerilog((context, config) => config
         </div>
       </section>
     </div>
+    </>
   );
 }

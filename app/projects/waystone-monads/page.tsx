@@ -6,6 +6,8 @@ import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
 import { FrameworkBadge } from "@/components/framework-badge";
+import { JsonLd } from "@/components/json-ld";
+import structuredData from "./structured-data.json" with { type: "json" };
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -42,7 +44,9 @@ function InstallCommand({ command }: { command: string }) {
 
 export default async function WaystoneMonadsPage() {
   return (
-    <div className="container mx-auto py-12 md:py-20">
+    <>
+      <JsonLd data={structuredData} />
+      <div className="container mx-auto py-12 md:py-20">
       <Breadcrumb className="mb-12">
         <BreadcrumbList className="font-mono text-sm">
           <BreadcrumbItem>
@@ -204,5 +208,6 @@ return result.Match(
         </div>
       </section>
     </div>
+    </>
   );
 }

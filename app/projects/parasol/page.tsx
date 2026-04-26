@@ -10,6 +10,8 @@ import {
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
 import { FrameworkBadge } from "@/components/framework-badge";
+import { JsonLd } from "@/components/json-ld";
+import structuredData from "./structured-data.json" with { type: "json" };
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -41,7 +43,9 @@ export const metadata: Metadata = {
 
 export default function ParasolPage() {
   return (
-    <div className="container mx-auto py-12 md:py-20">
+    <>
+      <JsonLd data={structuredData} />
+      <div className="container mx-auto py-12 md:py-20">
       <Breadcrumb className="mb-12">
         <BreadcrumbList className="font-mono text-sm">
           <BreadcrumbItem>
@@ -338,5 +342,6 @@ yield* Schema.decodeUnknown(InputSchema)(input).pipe(
         </div>
       </section>
     </div>
+    </>
   );
 }
