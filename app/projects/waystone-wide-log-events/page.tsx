@@ -117,9 +117,10 @@ export default async function WaystoneWideLogEventsPage() {
           <Code>Serilog.AspNetCore</Code> — your existing request logging
           pipeline stays intact.
         </p>
-        <CodeBlock
-          language="csharp"
-          code={`// Program.cs
+        <div className="max-w-3xl">
+          <CodeBlock
+            language="csharp"
+            code={`// Program.cs
 builder.Host.UseSerilog((context, config) => config
     .Enrich.FromWideLogEventsContext()
     .Filter.WithWideLogEventsSampling()
@@ -130,7 +131,8 @@ var app = builder.Build();
 // Middleware order matters — register before UseSerilogRequestLogging
 app.UseWideLogEventsContext();
 app.UseSerilogRequestLogging();`}
-        />
+          />
+        </div>
       </section>
 
       <section className="mb-16">
@@ -140,7 +142,7 @@ app.UseSerilogRequestLogging();`}
           the ambient context and flush as a single structured event when the
           request completes.
         </p>
-        <div className="space-y-6">
+        <div className="space-y-6 max-w-3xl">
           <div>
             <p className="font-mono text-sm text-secondary mb-3">
               <BrandMark className="text-primary mr-1" /> pushing properties

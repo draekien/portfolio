@@ -124,7 +124,7 @@ export default async function WaystoneMonadsPage() {
           Represents a value that may or may not be present. Forces the caller
           to handle both the <Code>Some</Code> and <Code>None</Code> cases.
         </p>
-        <div className="space-y-6">
+        <div className="space-y-6 max-w-3xl">
           <div>
             <p className="font-mono text-sm text-muted-foreground mb-3">
               <BrandMark className="text-primary mr-1" />
@@ -171,7 +171,7 @@ Option<Address> address = repository
           error (<Code>Err</Code>). Eliminates untyped exceptions from your
           domain logic.
         </p>
-        <div className="space-y-6">
+        <div className="space-y-6 max-w-3xl">
           <div>
             <p className="font-mono text-sm text-muted-foreground mb-3">
               <BrandMark className="text-primary mr-1" />
