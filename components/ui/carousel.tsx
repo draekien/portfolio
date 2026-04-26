@@ -321,13 +321,13 @@ function CarouselNext({
 }
 
 export {
-  type CarouselApi,
   Carousel,
+  type CarouselApi,
   CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
   CarouselControls,
   CarouselIndicator,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
   useCarousel,
 };

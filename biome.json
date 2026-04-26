@@ -22,6 +22,10 @@
         "noCommentText": "error",
         "noDuplicateJsxProps": "error",
         "noUnknownAtRules": "off"
+      },
+      "nursery": {
+        "noComponentHookFactories": "error",
+        "useImportsFirst": "error"
       }
     },
 
