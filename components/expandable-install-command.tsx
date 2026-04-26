@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { CaretDownIcon } from "@phosphor-icons/react";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const variants = [
@@ -31,6 +31,7 @@ export function ExpandableInstallCommand() {
         </span>
         <span className="text-foreground flex-1">{variants[0].command}</span>
         <button
+          type="button"
           onClick={() => setExpanded(!expanded)}
           aria-expanded={expanded}
           aria-label="Show installation variants"
@@ -61,10 +62,7 @@ export function ExpandableInstallCommand() {
                 {v.label}
               </span>
               <div className="flex items-center gap-3">
-                <span
-                  className="text-secondary select-none"
-                  aria-hidden="true"
-                >
+                <span className="text-secondary select-none" aria-hidden="true">
                   $
                 </span>
                 <span className="text-foreground">{v.command}</span>

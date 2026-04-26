@@ -3,6 +3,8 @@ export function OgMark({ height = 40 }: { height?: number }) {
   const width = height * (79.838 / 54);
   return (
     <svg
+      role="img"
+      aria-label="Logo"
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}

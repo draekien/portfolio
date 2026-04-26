@@ -1,8 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { BrandMark } from "@/components/brand-mark";
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
 
 const sections = [
   { id: "applications", label: "Applications" },
@@ -59,6 +59,7 @@ export function SectionNav() {
         {sections.map(({ id, label }) => (
           <button
             key={id}
+            type="button"
             onClick={() => scrollToSection(id)}
             className={cn(
               "font-mono text-sm transition-colors duration-150",

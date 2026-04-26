@@ -27,13 +27,16 @@ function ButtonGroup({
   ...props
 }: React.ComponentProps<"div"> & VariantProps<typeof buttonGroupVariants>) {
   return (
-    <div
-      role="group"
-      data-slot="button-group"
-      data-orientation={orientation}
-      className={cn(buttonGroupVariants({ orientation }), className)}
-      {...props}
-    />
+    <>
+      {/* biome-ignore lint/a11y/useSemanticElements: role="group" is correct for button groups; fieldset semantics don't apply */}
+      <div
+        role="group"
+        data-slot="button-group"
+        data-orientation={orientation}
+        className={cn(buttonGroupVariants({ orientation }), className)}
+        {...props}
+      />
+    </>
   );
 }
 

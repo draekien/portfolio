@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 
 function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
+    // biome-ignore lint/a11y/useSemanticElements: role="group" intentional; fieldset requires legend and changes element semantics
     <div
       data-slot="input-group"
       role="group"
@@ -48,6 +49,8 @@ function InputGroupAddon({
   ...props
 }: React.ComponentProps<"div"> & VariantProps<typeof inputGroupAddonVariants>) {
   return (
+    // biome-ignore lint/a11y/useSemanticElements: role="group" intentional; fieldset semantics don't apply to input addons
+    // biome-ignore lint/a11y/useKeyWithClickEvents: onClick focuses the input on addon click, not a primary interaction
     <div
       role="group"
       data-slot="input-group-addon"
