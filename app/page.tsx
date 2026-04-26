@@ -40,7 +40,7 @@ export default function Page() {
     <>
       <section
         id="hero"
-        className="flex flex-col justify-center h-[70dvh] container mx-auto"
+        className="flex flex-col justify-center h-[calc(100dvh-var(--header-height)-4rem)] container mx-auto"
       >
         <div className="space-y-8">
           <h1 className="font-mono text-4xl md:text-7xl font-medium tracking-tight leading-tight">

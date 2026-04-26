@@ -49,6 +49,7 @@
 }
 
 :root {
+  --header-height: 5.5rem;
   --background: oklch(0.9911 0.0055 211.04);
   --foreground: oklch(0.2178 0 0);
   --card: oklch(0.9911 0.0055 211.04);
@@ -115,6 +116,18 @@
   --sidebar-accent-foreground: oklch(0.8877 0.0288 218.97);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.553 0.013 58.071);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-height: 6.5rem;
+  }
 }
 
 @layer base {
