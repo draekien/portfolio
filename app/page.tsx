@@ -48,46 +48,48 @@ export default function Page() {
         <div className="space-y-20">
         <ProjectSummary
           id="parasol"
-          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 items-start"
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 items-start"
         >
-          <ProjectSummaryHeader>
-            <ProjectSummaryTitle>Parasol</ProjectSummaryTitle>
-            <ProjectSummaryHook>
-              I wanted to track my path to financial independence without
-              handing a fintech app open banking access. Parasol is a private
-              FIRE calculator that keeps your data yours.
-            </ProjectSummaryHook>
-            <ProjectSummaryDescription>
-              A SaaS application for tracking Financial Independence, Retire
-              Early (FIRE) progress. Built with TanStack Start for type-safe
-              full-stack routing, Neon for serverless Postgres, and Clerk for
-              auth — so the infrastructure scales to zero when you&apos;re not
-              using it.
-            </ProjectSummaryDescription>
-          </ProjectSummaryHeader>
-          <ProjectSummaryAttributeList className="row-start-2">
-            <ProjectSummaryAttribute>@frameworks</ProjectSummaryAttribute>
-            <ProjectSummaryAttributeValue className="flex gap-2 flex-wrap">
-              <FrameworkBadge version="tanstack-start" />
-              <FrameworkBadge version="neon" />
-              <FrameworkBadge version="clerk" />
-              <FrameworkBadge version="typescript" />
-            </ProjectSummaryAttributeValue>
-            <ProjectSummaryAttribute>@live</ProjectSummaryAttribute>
-            <ProjectSummaryAttributeValue>
-              <ButtonLink
-                link={{
-                  href: "https://parasol.wpei.me",
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                }}
-                external
-              >
-                parasol.wpei.me
-              </ButtonLink>
-            </ProjectSummaryAttributeValue>
-          </ProjectSummaryAttributeList>
-          <ProjectSummaryCodeBlock className="md:col-start-2 md:row-span-2">
+          <div className="space-y-6">
+            <ProjectSummaryHeader>
+              <ProjectSummaryTitle>Parasol</ProjectSummaryTitle>
+              <ProjectSummaryHook>
+                I wanted to track my path to financial independence without
+                handing a fintech app open banking access. Parasol is a private
+                FIRE calculator that keeps your data yours.
+              </ProjectSummaryHook>
+              <ProjectSummaryDescription>
+                A SaaS application for tracking Financial Independence, Retire
+                Early (FIRE) progress. Built with TanStack Start for type-safe
+                full-stack routing, Neon for serverless Postgres, and Clerk for
+                auth — so the infrastructure scales to zero when you&apos;re not
+                using it.
+              </ProjectSummaryDescription>
+            </ProjectSummaryHeader>
+            <ProjectSummaryAttributeList>
+              <ProjectSummaryAttribute>@frameworks</ProjectSummaryAttribute>
+              <ProjectSummaryAttributeValue className="flex gap-2 flex-wrap">
+                <FrameworkBadge version="tanstack-start" />
+                <FrameworkBadge version="neon" />
+                <FrameworkBadge version="clerk" />
+                <FrameworkBadge version="typescript" />
+              </ProjectSummaryAttributeValue>
+              <ProjectSummaryAttribute>@live</ProjectSummaryAttribute>
+              <ProjectSummaryAttributeValue>
+                <ButtonLink
+                  link={{
+                    href: "https://parasol.wpei.me",
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                  }}
+                  external
+                >
+                  parasol.wpei.me
+                </ButtonLink>
+              </ProjectSummaryAttributeValue>
+            </ProjectSummaryAttributeList>
+          </div>
+          <ProjectSummaryCodeBlock>
             <Carousel opts={{ loop: true }}>
               <CarouselContent>
                 <CarouselItem>
@@ -132,56 +134,58 @@ export default function Page() {
         </ProjectSummary>
         <ProjectSummary
           id="waystone-monads"
-          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 items-start"
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 items-start"
         >
-          <ProjectSummaryHeader>
-            <ProjectSummaryTitle>Waystone.Monads</ProjectSummaryTitle>
-            <ProjectSummaryHook>
-              Null reference exceptions were costing my team production
-              incidents. I built idiomatic .NET monads to make impossible states
-              impossible at the type level.
-            </ProjectSummaryHook>
-            <ProjectSummaryDescription>
-              A .NET implementation of functional programming patterns inspired
-              by Rust&apos;s standard library, specifically the{" "}
-              <Code>{"Option<T>"}</Code> and <Code>{"Result<T, E>"}</Code>{" "}
-              monads. This library provides a type-safe, composable approach to
-              handling nullable values and error cases.
-            </ProjectSummaryDescription>
-          </ProjectSummaryHeader>
-          <ProjectSummaryAttributeList className="row-start-2">
-            <ProjectSummaryAttribute>@frameworks</ProjectSummaryAttribute>
-            <ProjectSummaryAttributeValue className="flex gap-2">
-              <FrameworkBadge version="netstandard2.0" />
-            </ProjectSummaryAttributeValue>
-            <ProjectSummaryAttribute>@repository</ProjectSummaryAttribute>
-            <ProjectSummaryAttributeValue>
-              <ButtonLink
-                link={{
-                  href: "https://github.com/draekien-industries/waystone-dotnet",
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                }}
-                external
-              >
-                github/waystone-dotnet
-              </ButtonLink>
-            </ProjectSummaryAttributeValue>
-            <ProjectSummaryAttribute>@documentation</ProjectSummaryAttribute>
-            <ProjectSummaryAttributeValue>
-              <ButtonLink
-                link={{
-                  href: "https://draekien-industries.wpei.me/",
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                }}
-                external
-              >
-                gitbook
-              </ButtonLink>
-            </ProjectSummaryAttributeValue>
-          </ProjectSummaryAttributeList>
-          <ProjectSummaryCodeBlock className="md:col-start-2 md:row-span-2">
+          <div className="space-y-6">
+            <ProjectSummaryHeader>
+              <ProjectSummaryTitle>Waystone.Monads</ProjectSummaryTitle>
+              <ProjectSummaryHook>
+                Null reference exceptions were costing my team production
+                incidents. I built idiomatic .NET monads to make impossible
+                states impossible at the type level.
+              </ProjectSummaryHook>
+              <ProjectSummaryDescription>
+                A .NET implementation of functional programming patterns inspired
+                by Rust&apos;s standard library, specifically the{" "}
+                <Code>{"Option<T>"}</Code> and <Code>{"Result<T, E>"}</Code>{" "}
+                monads. This library provides a type-safe, composable approach to
+                handling nullable values and error cases.
+              </ProjectSummaryDescription>
+            </ProjectSummaryHeader>
+            <ProjectSummaryAttributeList>
+              <ProjectSummaryAttribute>@frameworks</ProjectSummaryAttribute>
+              <ProjectSummaryAttributeValue className="flex gap-2">
+                <FrameworkBadge version="netstandard2.0" />
+              </ProjectSummaryAttributeValue>
+              <ProjectSummaryAttribute>@repository</ProjectSummaryAttribute>
+              <ProjectSummaryAttributeValue>
+                <ButtonLink
+                  link={{
+                    href: "https://github.com/draekien-industries/waystone-dotnet",
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                  }}
+                  external
+                >
+                  github/waystone-dotnet
+                </ButtonLink>
+              </ProjectSummaryAttributeValue>
+              <ProjectSummaryAttribute>@documentation</ProjectSummaryAttribute>
+              <ProjectSummaryAttributeValue>
+                <ButtonLink
+                  link={{
+                    href: "https://draekien-industries.wpei.me/",
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                  }}
+                  external
+                >
+                  gitbook
+                </ButtonLink>
+              </ProjectSummaryAttributeValue>
+            </ProjectSummaryAttributeList>
+          </div>
+          <ProjectSummaryCodeBlock>
             <CodeBlock
               language="csharp"
               code={`// A user may or may not exist for a given id
@@ -197,60 +201,62 @@ return user.Match(
         </ProjectSummary>
         <ProjectSummary
           id="waystone-wide-log-events"
-          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 items-start"
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 items-start"
         >
-          <ProjectSummaryHeader>
-            <ProjectSummaryTitle>Waystone.WideLogEvents</ProjectSummaryTitle>
-            <ProjectSummaryHook>
-              Debugging distributed systems meant correlating dozens of
-              fragmented log entries per request. WideLogEvents flushes all
-              context as a single structured event, making traces trivial to
-              reason about.
-            </ProjectSummaryHook>
-            <ProjectSummaryDescription>
-              A sophisticated logging pattern implementation designed to solve a
-              fundamental challenge in modern distributed systems: context
-              correlation at scale. This library enables developers to
-              accumulate all relevant information throughout a logical operation
-              and emit it as a single, rich log event rather than fragmented
-              events across an application&apos;s lifecycle.
-            </ProjectSummaryDescription>
-          </ProjectSummaryHeader>
-          <ProjectSummaryAttributeList className="row-start-2">
-            <ProjectSummaryAttribute>@frameworks</ProjectSummaryAttribute>
-            <ProjectSummaryAttributeValue className="flex gap-2 flex-wrap">
-              <FrameworkBadge version="netstandard2.0" />
-              <FrameworkBadge version="net8.0" />
-              <FrameworkBadge version="net10.0" />
-            </ProjectSummaryAttributeValue>
-            <ProjectSummaryAttribute>@repository</ProjectSummaryAttribute>
-            <ProjectSummaryAttributeValue>
-              <ButtonLink
-                link={{
-                  href: "https://github.com/draekien-industries/waystone-dotnet",
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                }}
-                external
-              >
-                github/waystone-dotnet
-              </ButtonLink>
-            </ProjectSummaryAttributeValue>
-            <ProjectSummaryAttribute>@documentation</ProjectSummaryAttribute>
-            <ProjectSummaryAttributeValue>
-              <ButtonLink
-                link={{
-                  href: "https://draekien-industries.wpei.me/waystone.widelogevents",
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                }}
-                external
-              >
-                gitbook
-              </ButtonLink>
-            </ProjectSummaryAttributeValue>
-          </ProjectSummaryAttributeList>
-          <ProjectSummaryCodeBlock className="md:col-start-2 md:row-span-2">
+          <div className="space-y-6">
+            <ProjectSummaryHeader>
+              <ProjectSummaryTitle>Waystone.WideLogEvents</ProjectSummaryTitle>
+              <ProjectSummaryHook>
+                Debugging distributed systems meant correlating dozens of
+                fragmented log entries per request. WideLogEvents flushes all
+                context as a single structured event, making traces trivial to
+                reason about.
+              </ProjectSummaryHook>
+              <ProjectSummaryDescription>
+                A sophisticated logging pattern implementation designed to solve
+                a fundamental challenge in modern distributed systems: context
+                correlation at scale. This library enables developers to
+                accumulate all relevant information throughout a logical
+                operation and emit it as a single, rich log event rather than
+                fragmented events across an application&apos;s lifecycle.
+              </ProjectSummaryDescription>
+            </ProjectSummaryHeader>
+            <ProjectSummaryAttributeList>
+              <ProjectSummaryAttribute>@frameworks</ProjectSummaryAttribute>
+              <ProjectSummaryAttributeValue className="flex gap-2 flex-wrap">
+                <FrameworkBadge version="netstandard2.0" />
+                <FrameworkBadge version="net8.0" />
+                <FrameworkBadge version="net10.0" />
+              </ProjectSummaryAttributeValue>
+              <ProjectSummaryAttribute>@repository</ProjectSummaryAttribute>
+              <ProjectSummaryAttributeValue>
+                <ButtonLink
+                  link={{
+                    href: "https://github.com/draekien-industries/waystone-dotnet",
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                  }}
+                  external
+                >
+                  github/waystone-dotnet
+                </ButtonLink>
+              </ProjectSummaryAttributeValue>
+              <ProjectSummaryAttribute>@documentation</ProjectSummaryAttribute>
+              <ProjectSummaryAttributeValue>
+                <ButtonLink
+                  link={{
+                    href: "https://draekien-industries.wpei.me/waystone.widelogevents",
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                  }}
+                  external
+                >
+                  gitbook
+                </ButtonLink>
+              </ProjectSummaryAttributeValue>
+            </ProjectSummaryAttributeList>
+          </div>
+          <ProjectSummaryCodeBlock>
             <CodeBlock
               language="csharp"
               code={`// Configure Serilog to use WideLogEventsContext
