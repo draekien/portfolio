@@ -33,11 +33,11 @@ export const metadata: Metadata = {
 
 function InstallCommand({ command }: { command: string }) {
   return (
-    <div className="flex items-center gap-3 bg-muted rounded-md px-4 py-2.5 font-mono text-sm">
-      <span className="text-secondary select-none" aria-hidden="true">
+    <div className="flex items-center gap-3 bg-muted rounded-md px-4 py-2.5 font-mono text-sm overflow-x-auto">
+      <span className="text-secondary select-none shrink-0" aria-hidden="true">
         $
       </span>
-      <span className="text-foreground">{command}</span>
+      <span className="text-foreground whitespace-nowrap">{command}</span>
     </div>
   );
 }
@@ -212,7 +212,7 @@ return result.Match(
         <section className="mb-16">
           <ProjectSectionHeading>Compatibility</ProjectSectionHeading>
           <div className="space-y-3 font-mono text-sm">
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4">
               <FrameworkBadge version="netstandard2.0" />
               <span className="text-muted-foreground">
                 .NET Core 2.0+, .NET Framework 4.6.1+, .NET 5+

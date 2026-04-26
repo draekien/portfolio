@@ -26,10 +26,17 @@ export function ExpandableInstallCommand() {
   return (
     <div className="space-y-1">
       <div className="flex items-center gap-3 bg-muted rounded-md px-4 py-2.5 font-mono text-sm">
-        <span className="text-secondary select-none" aria-hidden="true">
+        <span
+          className="text-secondary select-none shrink-0"
+          aria-hidden="true"
+        >
           $
         </span>
-        <span className="text-foreground flex-1">{variants[0].command}</span>
+        <div className="flex-1 min-w-0 overflow-x-auto">
+          <span className="text-foreground whitespace-nowrap">
+            {variants[0].command}
+          </span>
+        </div>
         <button
           type="button"
           onClick={() => setExpanded(!expanded)}
@@ -61,11 +68,16 @@ export function ExpandableInstallCommand() {
               <span className="text-secondary select-none" aria-hidden="true">
                 {v.label}
               </span>
-              <div className="flex items-center gap-3">
-                <span className="text-secondary select-none" aria-hidden="true">
+              <div className="flex items-center gap-3 overflow-x-auto">
+                <span
+                  className="text-secondary select-none shrink-0"
+                  aria-hidden="true"
+                >
                   $
                 </span>
-                <span className="text-foreground">{v.command}</span>
+                <span className="text-foreground whitespace-nowrap">
+                  {v.command}
+                </span>
               </div>
             </div>
           ))}

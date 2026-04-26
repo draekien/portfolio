@@ -233,7 +233,10 @@ builder.Host.UseSerilog((context, config) => config
                 targets: "Full .NET 10 API surface",
               },
             ].map(({ badge, targets }) => (
-              <div key={badge} className="flex items-center gap-4">
+              <div
+                key={badge}
+                className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4"
+              >
                 <FrameworkBadge version={badge} />
                 <span className="text-muted-foreground">{targets}</span>
               </div>
