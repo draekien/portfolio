@@ -96,7 +96,7 @@ export default function Page() {
                 <CarouselContent>
                   <CarouselItem>
                     <Image
-                      src="/parasol-hero-dark.png"
+                      src="/parasol-hero-dark.webp"
                       alt="Parasol — FIRE tracking dashboard"
                       width={2259}
                       height={1316}
@@ -104,7 +104,7 @@ export default function Page() {
                       priority
                     />
                     <Image
-                      src="/parasol-hero-light.png"
+                      src="/parasol-hero-light.webp"
                       alt="Parasol — FIRE tracking dashboard"
                       width={2259}
                       height={1316}
@@ -114,14 +114,14 @@ export default function Page() {
                   </CarouselItem>
                   <CarouselItem>
                     <Image
-                      src="/parasol-feature-dark.png"
+                      src="/parasol-feature-dark.webp"
                       alt="Parasol — portfolio and progress features"
                       width={2259}
                       height={1316}
                       className="hidden dark:block w-full h-auto rounded-lg"
                     />
                     <Image
-                      src="/parasol-feature-light.png"
+                      src="/parasol-feature-light.webp"
                       alt="Parasol — portfolio and progress features"
                       width={2259}
                       height={1316}
@@ -184,7 +184,7 @@ export default function Page() {
                 <CarouselContent>
                   <CarouselItem>
                     <Image
-                      src="/north-shore-meditation-hero-dark.png"
+                      src="/north-shore-meditation-hero-dark.webp"
                       alt="North Shore Meditation — homepage hero"
                       width={2259}
                       height={1316}
@@ -192,7 +192,7 @@ export default function Page() {
                       priority
                     />
                     <Image
-                      src="/north-shore-meditation-hero-light.png"
+                      src="/north-shore-meditation-hero-light.webp"
                       alt="North Shore Meditation — homepage hero"
                       width={2259}
                       height={1316}
@@ -202,14 +202,14 @@ export default function Page() {
                   </CarouselItem>
                   <CarouselItem>
                     <Image
-                      src="/north-shore-meditation-science-dark.png"
+                      src="/north-shore-meditation-science-dark.webp"
                       alt="North Shore Meditation — backed by science section"
                       width={2259}
                       height={1316}
                       className="hidden dark:block w-full h-auto rounded-lg"
                     />
                     <Image
-                      src="/north-shore-meditation-science-light.png"
+                      src="/north-shore-meditation-science-light.webp"
                       alt="North Shore Meditation — backed by science section"
                       width={2259}
                       height={1316}
