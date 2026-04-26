@@ -91,11 +91,27 @@ export default function NorthShoreMeditationPage() {
           <CarouselContent>
             <CarouselItem>
               <Image
+                src="/north-shore-meditation-hero-dark-mobile.webp"
+                alt="North Shore Meditation — homepage hero"
+                width={375}
+                height={812}
+                className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
+                priority
+              />
+              <Image
+                src="/north-shore-meditation-hero-light-mobile.webp"
+                alt="North Shore Meditation — homepage hero"
+                width={375}
+                height={812}
+                className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
+                priority
+              />
+              <Image
                 src="/north-shore-meditation-hero-dark.webp"
                 alt="North Shore Meditation — homepage hero"
                 width={2259}
                 height={1316}
-                className="hidden dark:block w-full h-auto rounded-lg"
+                className="hidden sm:dark:block w-full h-auto rounded-lg"
                 priority
               />
               <Image
@@ -103,24 +119,38 @@ export default function NorthShoreMeditationPage() {
                 alt="North Shore Meditation — homepage hero"
                 width={2259}
                 height={1316}
-                className="block dark:hidden w-full h-auto rounded-lg"
+                className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
                 priority
               />
             </CarouselItem>
             <CarouselItem>
               <Image
+                src="/north-shore-meditation-science-dark-mobile.webp"
+                alt="North Shore Meditation — backed by science section"
+                width={375}
+                height={812}
+                className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
+              />
+              <Image
+                src="/north-shore-meditation-science-light-mobile.webp"
+                alt="North Shore Meditation — backed by science section"
+                width={375}
+                height={812}
+                className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
+              />
+              <Image
                 src="/north-shore-meditation-science-dark.webp"
                 alt="North Shore Meditation — backed by science section"
                 width={2259}
                 height={1316}
-                className="hidden dark:block w-full h-auto rounded-lg"
+                className="hidden sm:dark:block w-full h-auto rounded-lg"
               />
               <Image
                 src="/north-shore-meditation-science-light.webp"
                 alt="North Shore Meditation — backed by science section"
                 width={2259}
                 height={1316}
-                className="block dark:hidden w-full h-auto rounded-lg"
+                className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
               />
             </CarouselItem>
           </CarouselContent>

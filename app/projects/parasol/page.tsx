@@ -91,11 +91,27 @@ export default function ParasolPage() {
           <CarouselContent>
             <CarouselItem>
               <Image
+                src="/parasol-hero-dark-mobile.webp"
+                alt="Parasol — FIRE tracking dashboard"
+                width={375}
+                height={812}
+                className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
+                priority
+              />
+              <Image
+                src="/parasol-hero-light-mobile.webp"
+                alt="Parasol — FIRE tracking dashboard"
+                width={375}
+                height={812}
+                className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
+                priority
+              />
+              <Image
                 src="/parasol-hero-dark.webp"
                 alt="Parasol — FIRE tracking dashboard"
                 width={2259}
                 height={1316}
-                className="hidden dark:block w-full h-auto rounded-lg"
+                className="hidden sm:dark:block w-full h-auto rounded-lg"
                 priority
               />
               <Image
@@ -103,24 +119,38 @@ export default function ParasolPage() {
                 alt="Parasol — FIRE tracking dashboard"
                 width={2259}
                 height={1316}
-                className="block dark:hidden w-full h-auto rounded-lg"
+                className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
                 priority
               />
             </CarouselItem>
             <CarouselItem>
               <Image
+                src="/parasol-feature-dark-mobile.webp"
+                alt="Parasol — portfolio and progress features"
+                width={375}
+                height={812}
+                className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
+              />
+              <Image
+                src="/parasol-feature-light-mobile.webp"
+                alt="Parasol — portfolio and progress features"
+                width={375}
+                height={812}
+                className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
+              />
+              <Image
                 src="/parasol-feature-dark.webp"
                 alt="Parasol — portfolio and progress features"
                 width={2259}
                 height={1316}
-                className="hidden dark:block w-full h-auto rounded-lg"
+                className="hidden sm:dark:block w-full h-auto rounded-lg"
               />
               <Image
                 src="/parasol-feature-light.webp"
                 alt="Parasol — portfolio and progress features"
                 width={2259}
                 height={1316}
-                className="block dark:hidden w-full h-auto rounded-lg"
+                className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
               />
             </CarouselItem>
           </CarouselContent>
