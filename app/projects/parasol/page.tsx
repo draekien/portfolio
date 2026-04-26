@@ -224,10 +224,14 @@ export default function ParasolPage() {
       </section>
 
       <section>
-        <p className="font-mono text-xs text-secondary mb-4" aria-hidden="true">
-          <BrandMark className="text-primary mr-1.5" /> engineering depth
-        </p>
-        <SectionHeading>Key decisions</SectionHeading>
+        <div className="flex items-center gap-4 mb-8">
+          <BrandMark className="text-primary shrink-0" />
+          <hr className="flex-1 border-border" />
+          <h2 className="font-mono text-sm text-secondary tracking-wider shrink-0">
+            key decisions
+          </h2>
+          <BrandMark className="text-primary shrink-0" />
+        </div>
         <div className="space-y-16 max-w-3xl">
           <div>
             <p className="font-mono text-sm text-secondary mb-2">
