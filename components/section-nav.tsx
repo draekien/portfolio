@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 const sections = [
   { id: "applications", label: "Applications" },
   { id: "libraries", label: "Libraries" },
+  { id: "contact", label: "Contact" },
 ] as const;
 
 type SectionId = (typeof sections)[number]["id"];

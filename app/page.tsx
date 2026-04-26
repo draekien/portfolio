@@ -459,10 +459,15 @@ WideLogEventContext.PushProperty("action", "checkout");`}
         </div>
       </section>
 
-      <section
-        id="contact"
-        className="container mx-auto py-24 md:py-32 min-h-[40dvh] flex flex-col justify-center"
-      >
+      <section id="contact" className="container mx-auto pt-16 pb-24">
+        <div className="flex items-center gap-4 mb-16">
+          <BrandMark className="text-primary shrink-0" />
+          <hr className="flex-1 border-border" />
+          <p className="font-mono text-sm text-secondary tracking-wider shrink-0">
+            contact
+          </p>
+          <BrandMark className="text-primary shrink-0" />
+        </div>
         <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-4">
           Let&apos;s work together.
         </h2>
