@@ -3,6 +3,7 @@ ignoredBuiltDependencies:
   - unrs-resolver
 
 onlyBuiltDependencies:
+  - lefthook
   - msw
 overrides:
   path-to-regexp@>=4.0.0 <6.3.0: '>=6.3.0'
