@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
+import { Code } from "@/components/code";
+import { CodeBlock } from "@/components/code-block";
 import { FrameworkBadge } from "@/components/framework-badge";
 import {
   Breadcrumb,
@@ -227,9 +229,110 @@ export default function NorthShoreMeditationPage() {
 
       <section>
         <SectionHeading>Key decisions</SectionHeading>
-        <p className="text-sm text-muted-foreground font-mono">
-          — coming soon
-        </p>
+        <div className="space-y-16 max-w-3xl">
+          <div>
+            <p className="font-mono text-sm text-secondary mb-2">
+              <BrandMark className="text-primary mr-1" /> 01 — performance
+            </p>
+            <h3 className="text-lg font-semibold mb-3">
+              React Compiler over manual memoization
+            </h3>
+            <p className="text-muted-foreground leading-relaxed max-w-prose">
+              The app enables React Compiler via{" "}
+              <Code>reactCompiler: true</Code> in{" "}
+              <Code>next.config.mjs</Code> rather than scattering{" "}
+              <Code>React.memo</Code>, <Code>useMemo</Code>, and{" "}
+              <Code>useCallback</Code> through component files. The compiler
+              analyses the component tree at build time and memoizes only
+              where it determines re-renders would be redundant — no manual
+              decisions, no annotation drift, no incorrect dependency arrays.
+            </p>
+          </div>
+
+          <div>
+            <p className="font-mono text-sm text-secondary mb-2">
+              <BrandMark className="text-primary mr-1" /> 02 — data fetching
+            </p>
+            <h3 className="text-lg font-semibold mb-3">
+              React cache() for within-request deduplication
+            </h3>
+            <p className="text-muted-foreground leading-relaxed max-w-prose mb-6">
+              Every Contentful fetcher wraps its{" "}
+              <Code>queryClient.fetchQuery()</Code> call in React&apos;s{" "}
+              <Code>cache()</Code>. TanStack Query deduplicates client-side;{" "}
+              <Code>cache()</Code> handles the server side — two Server
+              Components requesting the same article during a single render
+              cycle share one Contentful response. Without it, each component
+              tree branch that reads the same entry makes its own network call.
+            </p>
+            <CodeBlock
+              language="typescript"
+              code={`// lib/contentful-api.ts
+export const getArticles = cache(async (options) => {
+  return queryClient.fetchQuery({ ...options });
+});
+
+// Two Server Components can both call getArticles()
+// in the same render — Contentful is only hit once`}
+            />
+          </div>
+
+          <div>
+            <p className="font-mono text-sm text-secondary mb-2">
+              <BrandMark className="text-primary mr-1" /> 03 — i18n
+            </p>
+            <h3 className="text-lg font-semibold mb-3">
+              Server-only JSON dictionaries instead of an i18n library
+            </h3>
+            <p className="text-muted-foreground leading-relaxed max-w-prose mb-6">
+              UI strings (navigation, buttons, labels) are served from
+              statically-imported JSON files behind a{" "}
+              <Code>server-only</Code> directive. This ships zero i18n runtime
+              to the client. Libraries like <Code>next-intl</Code> or{" "}
+              <Code>i18next</Code> add bundle weight and require hydration;
+              the JSON approach simply can&apos;t be imported in a client
+              component — TypeScript will reject it at build time.
+            </p>
+            <CodeBlock
+              language="typescript"
+              code={`// app/[lang]/dictionaries.ts
+import 'server-only'
+
+export async function getDictionary(locale: Locale) {
+  return {
+    en: () => import('./dictionaries/en.json').then((m) => m.default),
+  }[locale]?.()
+}`}
+            />
+          </div>
+
+          <div>
+            <p className="font-mono text-sm text-secondary mb-2">
+              <BrandMark className="text-primary mr-1" /> 04 — data layer
+            </p>
+            <h3 className="text-lg font-semibold mb-3">
+              Generated React Query hooks from the GraphQL schema
+            </h3>
+            <p className="text-muted-foreground leading-relaxed max-w-prose mb-6">
+              GraphQL Code Generator reads the Contentful schema and emits
+              fully-typed React Query hooks. No manual wrapper writing. A
+              custom fetcher function is injected into every generated hook,
+              so authentication tokens, cache tags, and draft-mode flags flow
+              through automatically. Contentful schema changes regenerate types
+              — mismatches become build errors before they reach production.
+            </p>
+            <CodeBlock
+              language="typescript"
+              code={`// codegen.ts — custom fetcher injected into every generated hook
+config:
+  fetcher: "@/lib/fetcher#fetcher"
+  addSuspenseQuery: true
+
+// Generated usage — fully typed, no hand-written wrapper
+const { data } = useSuspenseGetArticlesQuery({ preview: isPreview })`}
+            />
+          </div>
+        </div>
       </section>
     </div>
   );
