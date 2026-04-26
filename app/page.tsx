@@ -42,19 +42,29 @@ export default function Page() {
         id="hero"
         className="flex flex-col justify-center h-[calc(100svh-var(--header-height)-4rem)] container mx-auto"
       >
-        <div className="space-y-8">
-          <h1 className="font-mono text-4xl md:text-7xl font-medium tracking-tight leading-tight">
+        <div>
+          <Image
+            src="/mark.svg"
+            alt=""
+            width={80}
+            height={54}
+            className="h-8 w-auto mb-4 md:h-12 md:mb-6"
+            aria-hidden="true"
+          />
+          <h1 className="font-mono text-4xl md:text-7xl font-medium tracking-tight leading-tight mb-8 md:mb-12">
             <span>Technical Lead</span>{" "}
-            <span className="text-muted-foreground/70">at InfoTrack</span>
+            <span className="text-secondary">at InfoTrack</span>
           </h1>
-          <p className="text-lg md:text-xl">
-            I set technical direction and develop the engineers who execute it
-            into the ones who define it next.
-          </p>
-          <p className="text-base text-muted-foreground">
-            Shipping full-stack systems and open-source libraries used in
-            production across distributed .NET services.
-          </p>
+          <div className="space-y-3 max-w-prose">
+            <p className="text-lg md:text-xl">
+              I set technical direction and develop the engineers who execute it
+              into the ones who define it next.
+            </p>
+            <p className="text-base text-muted-foreground">
+              Shipping full-stack systems and open-source libraries used in
+              production across distributed .NET services.
+            </p>
+          </div>
         </div>
       </section>
 
