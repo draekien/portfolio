@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
+import { Code } from "@/components/code";
+import { CodeBlock } from "@/components/code-block";
 import { FrameworkBadge } from "@/components/framework-badge";
 import {
   Breadcrumb,
@@ -227,9 +229,100 @@ export default function ParasolPage() {
 
       <section>
         <SectionHeading>Key decisions</SectionHeading>
-        <p className="text-sm text-muted-foreground font-mono">
-          — coming soon
-        </p>
+        <div className="space-y-16 max-w-3xl">
+          <div>
+            <p className="font-mono text-sm text-secondary mb-2">
+              <BrandMark className="text-primary mr-1" /> 01 — validation
+            </p>
+            <h3 className="text-lg font-semibold mb-3">Effect Schema, not Zod</h3>
+            <p className="text-muted-foreground leading-relaxed max-w-prose mb-6">
+              The project uses Effect for services and error handling throughout.
+              Introducing Zod alongside it created dual dependency for overlapping
+              concerns — parsing, error types, pipeline integration. Effect Schema
+              maps <Code>ParseError</Code> directly into Effect&apos;s typed error
+              channel; Zod errors required manual bridging outside it.
+            </p>
+            <CodeBlock
+              language="typescript"
+              code={`// Zod — parse error escapes the typed pipeline
+const result = schema.safeParse(input)
+if (!result.success) return { error: result.error }
+return doWork(result.data)
+
+// Effect Schema — parse error is a typed value in the same pipeline
+yield* Schema.decodeUnknown(InputSchema)(input).pipe(
+  Effect.mapError((e) => new DbError({ cause: e })),
+  Effect.flatMap(doWork)
+)`}
+            />
+          </div>
+
+          <div>
+            <p className="font-mono text-sm text-secondary mb-2">
+              <BrandMark className="text-primary mr-1" /> 02 — forms
+            </p>
+            <h3 className="text-lg font-semibold mb-3">
+              Explicit save for financial settings
+            </h3>
+            <p className="text-muted-foreground leading-relaxed max-w-prose">
+              Preferences (currency, locale) use debounced auto-save. Plan
+              settings — withdrawal rate, expected return, inflation — use an
+              explicit save button. Numeric fields pass through intermediate
+              invalid states while typing: <Code>&quot;4.&quot;</Code> mid-entry
+              of <Code>&quot;4.5%&quot;</Code>. Auto-saving at that moment would
+              silently corrupt every downstream FIRE projection. Stale-but-complete
+              beats live-but-partial.
+            </p>
+          </div>
+
+          <div>
+            <p className="font-mono text-sm text-secondary mb-2">
+              <BrandMark className="text-primary mr-1" /> 03 — performance
+            </p>
+            <h3 className="text-lg font-semibold mb-3">
+              CSS :has() over React hover state
+            </h3>
+            <p className="text-muted-foreground leading-relaxed max-w-prose mb-6">
+              Dense transaction and portfolio lists need one element to respond
+              when a sibling is hovered — row highlight when an action button is
+              hovered, for example. Tracking this with <Code>useState</Code> and{" "}
+              <Code>onMouseEnter</Code>/<Code>onMouseLeave</Code> triggers
+              re-renders on every hover event across every row. The CSS approach
+              is zero JS overhead and works with React Compiler optimisations.
+            </p>
+            <CodeBlock
+              language="css"
+              code={`/* Dim all rows in the group when any row is hovered */
+.row-group:has([data-row-id]:hover) [data-row-id] {
+  opacity: 0.5;
+}
+
+/* Keep the hovered row at full opacity */
+.row-group [data-row-id]:hover {
+  opacity: 1;
+}`}
+            />
+          </div>
+
+          <div>
+            <p className="font-mono text-sm text-secondary mb-2">
+              <BrandMark className="text-primary mr-1" /> 04 — data model
+            </p>
+            <h3 className="text-lg font-semibold mb-3">
+              Transaction price is a snapshot, not a reference
+            </h3>
+            <p className="text-muted-foreground leading-relaxed max-w-prose">
+              <Code>transaction.pricePerUnit</Code> is the price the user paid at
+              trade time — it never changes after recording.{" "}
+              <Code>security_prices.adjustedClose</Code> is nightly market close
+              data from Yahoo Finance. These serve different purposes and are
+              never substituted: P&L uses cost basis from{" "}
+              <Code>pricePerUnit</Code>; current portfolio value uses{" "}
+              <Code>adjustedClose</Code>. Conflating them silently corrupts
+              unrealised gain calculations.
+            </p>
+          </div>
+        </div>
       </section>
     </div>
   );
