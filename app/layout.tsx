@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Figtree, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { BackgroundFx } from "@/components/background-fx";
 import { DevTools } from "@/components/dev-tools";
 import { LayoutHeader } from "@/components/layout-header";
 import { Providers } from "@/components/providers";
@@ -44,9 +45,12 @@ export default function RootLayout({
         className={`${figtree.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <Providers>
-          <LayoutHeader />
-          <main className="p-4">{children}</main>
-          <DevTools />
+          <BackgroundFx />
+          <div className="relative z-[1]">
+            <LayoutHeader />
+            <main className="p-4">{children}</main>
+            <DevTools />
+          </div>
         </Providers>
       </body>
     </html>
