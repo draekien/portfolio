@@ -12,30 +12,38 @@ const sections = [
 
 type SectionId = (typeof sections)[number]["id"];
 
+function getActiveSection(): SectionId {
+  // Near bottom of page → last section is active regardless of scroll position
+  const scrollBottom = window.scrollY + window.innerHeight;
+  const docHeight = document.documentElement.scrollHeight;
+  if (docHeight - scrollBottom < 50) {
+    return sections[sections.length - 1].id;
+  }
+
+  // Last section whose top has scrolled to or past the nav (≈60px)
+  const threshold = 60;
+  for (const { id } of [...sections].reverse()) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    if (el.getBoundingClientRect().top <= threshold) {
+      return id;
+    }
+  }
+
+  return sections[0].id;
+}
+
 export function SectionNav() {
   const [active, setActive] = useState<SectionId>("applications");
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    function onScroll() {
+      setActive(getActiveSection());
+    }
 
-    sections.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActive(id);
-          }
-        },
-        { rootMargin: "0px 0px -60% 0px", threshold: 0 },
-      );
-
-      observer.observe(el);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach((o) => o.disconnect());
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   function scrollToSection(id: string) {
@@ -59,9 +67,7 @@ export function SectionNav() {
                 : "text-muted-foreground hover:text-foreground",
             )}
           >
-            {active === id && (
-              <BrandMark className="text-primary mr-1" />
-            )}
+            {active === id && <BrandMark className="text-primary mr-1" />}
             {label}
           </button>
         ))}
