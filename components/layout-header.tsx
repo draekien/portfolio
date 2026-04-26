@@ -18,27 +18,23 @@ export function LayoutHeader() {
         <span>Pei</span>
       </Link>
       <ButtonGroup>
-        <ButtonGroup>
-          <Tooltip>
-            <TooltipTrigger render={<ThemeToggle variant="ghost" />} />
-            <TooltipContent>Change theme</TooltipContent>
-          </Tooltip>
-        </ButtonGroup>
-        <ButtonGroup>
-          <Tooltip>
-            <a
-              href="https://github.com/draekien/portfolio"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <TooltipTrigger render={<Button variant="ghost" />}>
-                <GithubLogoIcon />
-                <SrOnly>View Repository</SrOnly>
-              </TooltipTrigger>
-            </a>
-            <TooltipContent>View repository on GitHub</TooltipContent>
-          </Tooltip>
-        </ButtonGroup>
+        <Tooltip>
+          <TooltipTrigger render={<ThemeToggle variant="ghost" />} />
+          <TooltipContent>Change theme</TooltipContent>
+        </Tooltip>
+        <Tooltip>
+          <a
+            href="https://github.com/draekien/portfolio"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <TooltipTrigger render={<Button variant="ghost" />}>
+              <GithubLogoIcon />
+              <SrOnly>View Repository</SrOnly>
+            </TooltipTrigger>
+          </a>
+          <TooltipContent>View repository on GitHub</TooltipContent>
+        </Tooltip>
       </ButtonGroup>
     </header>
   );
