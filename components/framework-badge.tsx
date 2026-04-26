@@ -9,7 +9,10 @@ type FrameworkVersion =
   | "tanstack-start"
   | "neon"
   | "clerk"
-  | "typescript";
+  | "typescript"
+  | "nextjs"
+  | "contentful"
+  | "resend";
 
 const displayLabels: Record<FrameworkVersion, string> = {
   "netstandard2.0": ".NET Standard 2.0",
@@ -19,6 +22,9 @@ const displayLabels: Record<FrameworkVersion, string> = {
   neon: "Neon",
   clerk: "Clerk",
   typescript: "TypeScript",
+  nextjs: "Next.js",
+  contentful: "Contentful",
+  resend: "Resend",
 };
 
 type FrameworkBadgeProps = {
