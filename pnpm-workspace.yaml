@@ -1,9 +1,15 @@
-ignoredBuiltDependencies:
-  - sharp
-  - unrs-resolver
+allowBuilds:
+  lefthook: true
+  msw: true
+  sharp: true
 
-onlyBuiltDependencies:
-  - lefthook
-  - msw
+minimumReleaseAgeExclude:
+  - path-to-regexp@8.4.0
+  - postcss@8.5.10
+  - ip-address@10.1.1
+  - qs@6.15.2
+
 overrides:
-  path-to-regexp@>=4.0.0 <6.3.0: '>=6.3.0'
+  postcss@<8.5.10: ^8.5.10
+
+saveExact: true
