@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { BrandMark } from "@/components/brand-mark";
-import { cn } from "@/lib/utils";
+import { assertDefined, cn } from "@/lib/utils";
 
 const sections = [
   { id: "applications", label: "Applications" },
@@ -17,7 +17,7 @@ function getActiveSection(): SectionId {
   const scrollBottom = window.scrollY + window.innerHeight;
   const docHeight = document.documentElement.scrollHeight;
   if (docHeight - scrollBottom < 50) {
-    return sections[sections.length - 1].id;
+    return assertDefined(sections[sections.length - 1]).id;
   }
 
   // Last section whose top has scrolled to or past the nav (≈60px)

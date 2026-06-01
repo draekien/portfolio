@@ -15,14 +15,14 @@ interface WindowControlsProps {
 }
 
 interface AddressBarProps {
-  url?: string;
+  url?: string | undefined;
   secure?: boolean;
   variant?: "chrome" | "safari";
   className?: string;
 }
 
 interface SidebarContentProps {
-  items?: SidebarItem[];
+  items?: SidebarItem[] | undefined;
   variant?: "navigation" | "bookmarks" | "history" | "extensions";
   className?: string;
 }
