@@ -51,16 +51,23 @@ export const OG_COLORS = {
 } as const;
 
 export async function loadFonts() {
-  const [figtree, jetbrains] = await Promise.all([
-    fetch(
-      "https://fonts.gstatic.com/s/figtree/v9/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_ehR15e.ttf",
-    ).then((r) => r.arrayBuffer()),
-    fetch(
-      "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8-qxjPQ.ttf",
-    ).then((r) => r.arrayBuffer()),
-  ]);
+  const fs = await import("node:fs");
+  const path = await import("node:path");
+  const fontsDir = path.join(process.cwd(), "public/fonts");
+  const figtree = fs.readFileSync(path.join(fontsDir, "figtree-semibold.ttf"));
+  const jetbrains = fs.readFileSync(
+    path.join(fontsDir, "jetbrains-mono-medium.ttf"),
+  );
   return [
-    { name: "Figtree", data: figtree, weight: 600 as const },
-    { name: "JetBrains Mono", data: jetbrains, weight: 500 as const },
+    {
+      name: "Figtree",
+      data: figtree.buffer as ArrayBuffer,
+      weight: 600 as const,
+    },
+    {
+      name: "JetBrains Mono",
+      data: jetbrains.buffer as ArrayBuffer,
+      weight: 500 as const,
+    },
   ];
 }

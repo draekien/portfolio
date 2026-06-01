@@ -1,9 +1,6 @@
-ignoredBuiltDependencies:
-  - sharp
-  - unrs-resolver
+allowBuilds:
+  lefthook: true
+  msw: true
+  sharp: true
 
-onlyBuiltDependencies:
-  - lefthook
-  - msw
-overrides:
-  path-to-regexp@>=4.0.0 <6.3.0: '>=6.3.0'
+saveExact: true

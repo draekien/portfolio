@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-01T00:00:00.000Z",
+  "title": "Design System: William Pei — Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "signal-amber": {
+        "role": "primary",
+        "displayName": "Signal Amber",
+        "canonical": "oklch(0.6823 0.176 46.72)",
+        "tonalRamp": [
+          "oklch(0.15 0.12 47)",
+          "oklch(0.25 0.14 47)",
+          "oklch(0.35 0.16 47)",
+          "oklch(0.45 0.17 47)",
+          "oklch(0.55 0.18 47)",
+          "oklch(0.6823 0.176 46.72)",
+          "oklch(0.78 0.14 47)",
+          "oklch(0.90 0.07 47)"
+        ]
+      },
+      "circuit-purple": {
+        "role": "secondary",
+        "displayName": "Circuit Purple",
+        "canonical": "oklch(0.5579 0.0909 318.07)",
+        "tonalRamp": [
+          "oklch(0.12 0.06 318)",
+          "oklch(0.20 0.07 318)",
+          "oklch(0.30 0.08 318)",
+          "oklch(0.42 0.09 318)",
+          "oklch(0.5579 0.0909 318.07)",
+          "oklch(0.65 0.08 318)",
+          "oklch(0.76 0.06 318)",
+          "oklch(0.90 0.03 318)"
+        ]
+      },
+      "console-blue": {
+        "role": "tertiary",
+        "displayName": "Console Blue",
+        "canonical": "oklch(0.8877 0.0288 218.97)",
+        "tonalRamp": [
+          "oklch(0.18 0.02 219)",
+          "oklch(0.30 0.024 219)",
+          "oklch(0.44 0.027 219)",
+          "oklch(0.58 0.028 219)",
+          "oklch(0.72 0.029 219)",
+          "oklch(0.8877 0.0288 218.97)",
+          "oklch(0.94 0.018 219)",
+          "oklch(0.98 0.008 219)"
+        ]
+      },
+      "deep-void": {
+        "role": "neutral",
+        "displayName": "Deep Void",
+        "canonical": "oklch(0.21 0.004 318)",
+        "tonalRamp": [
+          "oklch(0.07 0.003 318)",
+          "oklch(0.12 0.004 318)",
+          "oklch(0.21 0.004 318)",
+          "oklch(0.30 0.004 318)",
+          "oklch(0.42 0.003 318)",
+          "oklch(0.56 0.003 318)",
+          "oklch(0.72 0.002 318)",
+          "oklch(0.90 0.001 318)"
+        ]
+      },
+      "card-surface": {
+        "role": "neutral",
+        "displayName": "Card Surface",
+        "canonical": "oklch(0.216 0.006 56.043)",
+        "tonalRamp": [
+          "oklch(0.10 0.005 56)",
+          "oklch(0.15 0.005 56)",
+          "oklch(0.216 0.006 56.043)",
+          "oklch(0.30 0.005 56)",
+          "oklch(0.42 0.005 56)",
+          "oklch(0.56 0.004 56)",
+          "oklch(0.72 0.003 56)",
+          "oklch(0.90 0.002 56)"
+        ]
+      },
+      "muted-surface": {
+        "role": "neutral",
+        "displayName": "Muted Surface",
+        "canonical": "oklch(0.268 0.007 34.298)",
+        "tonalRamp": [
+          "oklch(0.12 0.005 34)",
+          "oklch(0.18 0.006 34)",
+          "oklch(0.268 0.007 34.298)",
+          "oklch(0.36 0.007 34)",
+          "oklch(0.48 0.006 34)",
+          "oklch(0.60 0.005 34)",
+          "oklch(0.75 0.004 34)",
+          "oklch(0.92 0.002 34)"
+        ]
+      },
+      "muted-text": {
+        "role": "neutral",
+        "displayName": "Muted Text",
+        "canonical": "oklch(0.709 0.01 56.259)",
+        "tonalRamp": [
+          "oklch(0.20 0.008 56)",
+          "oklch(0.32 0.009 56)",
+          "oklch(0.44 0.01 56)",
+          "oklch(0.56 0.01 56)",
+          "oklch(0.709 0.01 56.259)",
+          "oklch(0.80 0.009 56)",
+          "oklch(0.88 0.007 56)",
+          "oklch(0.95 0.004 56)"
+        ]
+      },
+      "border-subtle": {
+        "role": "neutral",
+        "displayName": "Border Subtle",
+        "canonical": "oklch(1 0 0 / 10%)",
+        "tonalRamp": [
+          "oklch(1 0 0 / 5%)",
+          "oklch(1 0 0 / 8%)",
+          "oklch(1 0 0 / 10%)",
+          "oklch(1 0 0 / 15%)",
+          "oklch(1 0 0 / 20%)",
+          "oklch(1 0 0 / 30%)",
+          "oklch(1 0 0 / 50%)",
+          "oklch(1 0 0 / 80%)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero heading only. One or two short lines maximum. The font choice at this size is the loudest design statement on the site."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section and page-level headings. Maintains the mono voice at a step below display."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project names and sub-section titles. The transition from mono to Figtree signals a shift from announcement to content."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Hooks, descriptions, and all continuous prose. Maximum 65-75ch line length."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Section metadata, attribute names (@frameworks, @live), framework badges, prompt prefixes. The only role where tracking (+0.05em) is used."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Inline code references and code block content. Shiki handles syntax coloring."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default easing for state transitions (hover, focus)."
+      },
+      {
+        "name": "ease-decelerate",
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "purpose": "Elements entering the screen. Decelerates into rest position."
+      },
+      {
+        "name": "duration-fast",
+        "value": "150ms",
+        "purpose": "Hover color changes, focus rings, micro-interactions."
+      },
+      {
+        "name": "duration-standard",
+        "value": "250ms",
+        "purpose": "Panel reveals, state changes with visible displacement."
+      },
+      {
+        "name": "duration-slow",
+        "value": "400ms",
+        "purpose": "Page-level transitions, large element entrances."
+      },
+      {
+        "name": "background-lerp",
+        "value": "0.1 per frame",
+        "purpose": "The canvas dot grid follows the cursor with a 0.1 lerp factor — smooth but not elastic. This is the system's primary interactive texture."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "2xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Brand Mark",
+      "kind": "custom",
+      "refersTo": "brand-mark",
+      "description": "The \\\\ double-backslash structural mark. Always Signal Amber, always JetBrains Mono, always aria-hidden when decorative.",
+      "html": "<span class=\"ds-brand-mark\" aria-hidden=\"true\">\\\\</span>",
+      "css": ".ds-brand-mark { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 500; color: oklch(0.6823 0.176 46.72); letter-spacing: -0.02em; line-height: 1; flex-shrink: 0; }"
+    },
+    {
+      "name": "Section Divider",
+      "kind": "custom",
+      "description": "The full structural pattern: Brand Mark | hr | Circuit Purple label | Brand Mark. Opens each major section.",
+      "html": "<div class=\"ds-section-divider\"><span class=\"ds-brand-mark\" aria-hidden=\"true\">\\\\</span><hr class=\"ds-section-divider__rule\"><p class=\"ds-section-divider__label\">applications</p><span class=\"ds-brand-mark\" aria-hidden=\"true\">\\\\</span></div>",
+      "css": ".ds-section-divider { display: flex; align-items: center; gap: 1rem; } .ds-section-divider__rule { flex: 1; border: none; border-top: 1px solid oklch(1 0 0 / 10%); margin: 0; } .ds-section-divider__label { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 400; color: oklch(0.5579 0.0909 318.07); letter-spacing: 0.05em; flex-shrink: 0; margin: 0; } .ds-brand-mark { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 500; color: oklch(0.6823 0.176 46.72); letter-spacing: -0.02em; line-height: 1; flex-shrink: 0; }"
+    },
+    {
+      "name": "Button Link (Primary CTA)",
+      "kind": "button",
+      "refersTo": "button-link",
+      "description": "Link-style CTA. No background container. Signal Amber at rest; underline on hover. The system's primary interactive affordance.",
+      "html": "<a class=\"ds-btn-link\">Read case study →</a>",
+      "css": ".ds-btn-link { color: oklch(0.6823 0.176 46.72); font-family: 'Figtree', sans-serif; font-size: 1rem; font-weight: 400; line-height: 1.75; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: transparent; transition: text-decoration-color 150ms ease; padding: 0; background: none; border: none; cursor: pointer; display: inline; } .ds-btn-link:hover { text-decoration-color: oklch(0.6823 0.176 46.72); } .ds-btn-link:focus-visible { outline: 2px solid oklch(0.6823 0.176 46.72); outline-offset: 2px; border-radius: 2px; }"
+    },
+    {
+      "name": "Install Command",
+      "kind": "custom",
+      "refersTo": "install-command",
+      "description": "Package install command display. Muted surface container, Circuit Purple prompt operator, Console Blue command text.",
+      "html": "<div class=\"ds-install-command\"><span class=\"ds-install-command__prompt\" aria-hidden=\"true\">$</span><span class=\"ds-install-command__text\">dotnet add package Waystone.Monads</span></div>",
+      "css": ".ds-install-command { display: flex; align-items: center; gap: 0.75rem; background-color: oklch(0.268 0.007 34.298); border-radius: 0.325rem; padding: 0.625rem 1rem; } .ds-install-command__prompt { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 400; color: oklch(0.5579 0.0909 318.07); user-select: none; line-height: 1.25rem; } .ds-install-command__text { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 400; color: oklch(0.8877 0.0288 218.97); line-height: 1.25rem; }"
+    },
+    {
+      "name": "Framework Badge",
+      "kind": "chip",
+      "refersTo": "framework-badge",
+      "description": "Technology version chip. Muted surface, Border Subtle outline, Console Blue JetBrains Mono text.",
+      "html": "<span class=\"ds-framework-badge\">TypeScript</span>",
+      "css": ".ds-framework-badge { display: inline-flex; align-items: center; background-color: oklch(0.268 0.007 34.298); color: oklch(0.8877 0.0288 218.97); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 400; padding: 0.25rem 0.5rem; border-radius: 0.325rem; border: 1px solid oklch(1 0 0 / 10%); line-height: 1; white-space: nowrap; }"
+    },
+    {
+      "name": "Project Attribute Label",
+      "kind": "custom",
+      "description": "The @label metadata pattern. Circuit Purple JetBrains Mono label. Value follows in Console Blue Figtree.",
+      "html": "<dl class=\"ds-project-attr-list\"><dt class=\"ds-project-attr\">@frameworks</dt><dd class=\"ds-project-attr-value\">TanStack Start · Neon · Clerk</dd></dl>",
+      "css": ".ds-project-attr-list { display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 1rem; align-items: baseline; margin: 0; } .ds-project-attr { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 400; color: oklch(0.5579 0.0909 318.07); letter-spacing: 0.025em; margin: 0; } .ds-project-attr-value { font-family: 'Figtree', sans-serif; font-size: 0.875rem; font-weight: 400; color: oklch(0.8877 0.0288 218.97); margin: 0; }"
+    },
+    {
+      "name": "Code Block Container",
+      "kind": "custom",
+      "description": "Shiki-powered code block shell. Muted Surface background, rounded-lg. Shiki handles syntax via dual-theme CSS custom properties.",
+      "html": "<div class=\"ds-code-block\"><pre><code class=\"ds-code-block__code\">Option&lt;User&gt; user = repository.Find(id);</code></pre></div>",
+      "css": ".ds-code-block { background-color: oklch(0.268 0.007 34.298); border-radius: 0.45rem; padding: 1.25rem 1.5rem; overflow-x: auto; } .ds-code-block__code { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 400; line-height: 1.6; color: oklch(0.8877 0.0288 218.97); white-space: pre; margin: 0; }"
+    },
+    {
+      "name": "Hero Heading",
+      "kind": "custom",
+      "description": "The site's primary display type. JetBrains Mono at display scale. The second span uses Circuit Purple for the employer qualifier.",
+      "html": "<h1 class=\"ds-hero-heading\"><span class=\"ds-hero-heading__primary\">Technical Lead</span> <span class=\"ds-hero-heading__qualifier\">at InfoTrack</span></h1>",
+      "css": ".ds-hero-heading { font-family: 'JetBrains Mono', monospace; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; margin: 0; } .ds-hero-heading__primary { color: oklch(0.8877 0.0288 218.97); } .ds-hero-heading__qualifier { color: oklch(0.5579 0.0909 318.07); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Technical Brief",
+    "overview": "This system is built around the idea of a deliverable: structured, authoritative, and designed to reward both a 30-second skim and a careful read. It is not a showcase — it is a document that happens to run in a browser. Every element earns its placement the same way a well-structured architecture decision record earns its bullet points: by carrying information, not decoration.\n\nThe aesthetic is dark by necessity, not by trend. The audience (engineers, technical recruiters, hiring managers) arrives from a focused working context. The site meets them where they are: dark surface, high-contrast reading text, monospace headings that signal technical precision before a word is read. Density is calibrated above sparse but below overwhelming — the goal is substance, not noise.\n\nWhat this system explicitly rejects: blocky card grids that flatten everything to the same visual weight, résumé-dump chronology without editorial selection, scroll-hijacking or motion that exists to demonstrate capability rather than convey information, glassmorphism, and the leerob.com-style bareness that reads as stripped rather than curated.",
+    "keyCharacteristics": [
+      "Monospace display type announces technical authority; humanist body type explains it",
+      "Three-voice color system: amber draws the eye, purple structures the page, blue carries the content",
+      "The \\\\ double backslash is structural punctuation — it marks where sections begin and end",
+      "Interactivity is purposeful: hover states convey state, nothing animates without meaning",
+      "Code blocks are first-class visual elements, not afterthoughts"
+    ],
+    "rules": [
+      {
+        "name": "The Three-Voice Rule",
+        "body": "Every foreground element speaks in one of three voices: Signal Amber (look here), Circuit Purple (this is structure), Console Blue (this is content). A fourth foreground color requires explicit justification.",
+        "section": "colors"
+      },
+      {
+        "name": "The Amber Scarcity Rule",
+        "body": "Signal Amber appears on no more than 15% of any given screen. Its rarity is what makes it work as an eye-catcher. When amber is everywhere, the signal is noise.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Purple-Brandmark Rule",
+        "body": "The \\\\ mark always renders in Signal Amber. Never Circuit Purple. Purple is for labels; amber is the mark.",
+        "section": "colors"
+      },
+      {
+        "name": "The Inversion Rule",
+        "body": "Display and all labels are mono; prose is humanist. A Figtree headline is the wrong signal. A JetBrains Mono body paragraph is unreadable at length and defeats the point of the pairing.",
+        "section": "typography"
+      },
+      {
+        "name": "The One-Pair Rule",
+        "body": "This system uses exactly two typefaces. No display serif, no third typeface for special callouts.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Shadow Rule",
+        "body": "Box shadows are prohibited throughout the system. Depth comes from tonal surface steps and spacing. A shadow here would read as a design mistake, not a feature.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Use Signal Amber exclusively for the \\\\ brand mark, primary CTAs, and primary display headings.",
+      "Set all display headings and section labels in JetBrains Mono — even when the label feels too technical for the context.",
+      "Write project hooks in first person: 'I built this because…', 'I wanted to…'.",
+      "Treat code blocks as first-class visual content — they do as much persuasive work as the prose beside them.",
+      "Respect prefers-reduced-motion on every custom animation.",
+      "Prefix section labels with the \\\\ brand mark on both sides of the divider rule.",
+      "Use the @label attribute convention for project metadata: @frameworks, @live, @repository, @targets. Lowercase, mono, Circuit Purple."
+    ],
+    "donts": [
+      "Don't use glassmorphism, blurred card surfaces, or frosted overlays.",
+      "Don't introduce blocky card grids with identical cards at the same visual weight.",
+      "Don't add scroll-hijacking, parallax layers, or entrance animations that gate content visibility.",
+      "Don't use Circuit Purple for the \\\\ brand mark.",
+      "Don't introduce a third typeface.",
+      "Don't treat the site as a résumé dump — fewer projects with more depth.",
+      "Don't use filled button containers in the primary content flow.",
+      "Don't add box shadows. The No-Shadow Rule is system-wide and absolute.",
+      "Don't use leerob.com-style bareness — content density is part of this site's voice."
+    ]
+  }
+}
