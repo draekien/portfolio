@@ -9,7 +9,4 @@ minimumReleaseAgeExclude:
   - ip-address@10.1.1
   - qs@6.15.2
 
-overrides:
-  postcss@<8.5.10: ^8.5.10
-
 saveExact: true
