@@ -7,6 +7,7 @@ import { assertDefined, cn } from "@/lib/utils";
 const sections = [
   { id: "applications", label: "Applications" },
   { id: "libraries", label: "Libraries" },
+  { id: "writing", label: "Writing" },
   { id: "contact", label: "Contact" },
 ] as const;
 

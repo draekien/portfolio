@@ -1,0 +1,78 @@
+---
+title: "Making null impossible: the Option type in .NET"
+description: "How an Option<T> monad eliminates null reference exceptions at the type level, and the design decisions behind building one for .NET."
+date: "2025-11-15"
+tags: ["dotnet", "functional-programming", "type-safety"]
+---
+
+Null reference exceptions are the most preventable bugs in software. Tony Hoare called null his "billion-dollar mistake." Decades later, most codebases still do not treat it as the design problem it is.
+
+I built `Option<T>` for Waystone.Monads after one too many `NullReferenceException` incidents in production — exceptions that passed code review because the nullable path was not obvious from the types. The goal was simple: make it impossible to use a value that might not exist without explicitly handling the empty case.
+
+## The problem is visibility
+
+Consider a repository that looks up a user by ID:
+
+```csharp
+public User? FindById(Guid id)
+{
+    return _context.Users.Find(id);
+}
+```
+
+The caller gets back a `User?`. C#'s nullable reference types will issue a warning if they access a property without a null check. In theory. In practice, nullable warnings are suppressed, dismissed, or simply missed during review. The compiler is politely asking. It is not requiring anything.
+
+The core problem: `User?` says "this might be null" but demands nothing from the caller. You can write `user.Name` without checking and the compiler allows it, with at most a warning squiggle. The contract is advisory, not enforced.
+
+## `Option<T>` encodes the contract
+
+`Option<T>` is a type that is either `Some(value)` or `None`. There is no third state. The value is present or it is absent, and the type says which.
+
+```csharp
+public Option<User> FindById(Guid id)
+{
+    var user = _context.Users.Find(id);
+    return user is null ? Option.None<User>() : Option.Some(user);
+}
+```
+
+Now the caller cannot access the user without pattern matching on the result. The `Match` method requires both branches:
+
+```csharp
+Option<User> result = repository.FindById(id);
+
+return result.Match(
+    onSome: user => Results.Ok(user),
+    onNone: () => Results.NotFound()
+);
+```
+
+Both outcomes are handled. The compiler enforces it. There is no way to call `.Match()` with only one callback — it is not an overload that exists.
+
+## Composition without nesting
+
+The real value is in composition. `Map` transforms the inner value if it exists, without unwrapping:
+
+```csharp
+Option<string> email = repository
+    .FindById(id)
+    .Map(user => user.Email);
+```
+
+If the user does not exist, the result is `None<string>`. No null check needed at the call site. `Bind` chains operations that themselves return `Option<T>`:
+
+```csharp
+Option<Order> latestOrder = repository
+    .FindById(id)
+    .Bind(user => orderRepository.FindLatestByUser(user.Id));
+```
+
+Each step either produces a value or short-circuits to `None`. The happy path stays readable. You do not accumulate guard clauses.
+
+## When to reach for it
+
+Not everywhere. Nullable reference types (`T?`) are fine for internal implementation details where the scope is small and the null is obvious from context. `Option<T>` earns its place at domain and application boundaries: repository lookups, external service calls, any operation where absence is a first-class outcome and not an edge case to be papered over.
+
+The question worth asking: can this legitimately return nothing? If yes, the return type should communicate that fact. `User?` communicates it optionally. `Option<User>` communicates it unambiguously.
+
+The overhead is real. You write `.Match()` where you would have written an `if` check. But the forcing function is the point. The `if` check is optional. The `.Match()` is not.

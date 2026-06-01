@@ -8,7 +8,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 export function LayoutHeader() {
   return (
-    <header className="flex justify-between p-4">
+    <header className="flex items-center justify-between p-4">
       <Link
         href="/"
         className="text-xl md:text-2xl lg:text-3xl font-bold uppercase"
@@ -17,25 +17,33 @@ export function LayoutHeader() {
         <br />
         <span>Pei</span>
       </Link>
-      <ButtonGroup>
-        <Tooltip>
-          <TooltipTrigger render={<ThemeToggle variant="ghost" />} />
-          <TooltipContent>Change theme</TooltipContent>
-        </Tooltip>
-        <Tooltip>
-          <a
-            href="https://github.com/draekien/portfolio"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <TooltipTrigger render={<Button variant="ghost" />}>
-              <GithubLogoIcon />
-              <SrOnly>View Repository</SrOnly>
-            </TooltipTrigger>
-          </a>
-          <TooltipContent>View repository on GitHub</TooltipContent>
-        </Tooltip>
-      </ButtonGroup>
+      <div className="flex items-center gap-6">
+        <Link
+          href="/articles"
+          className="font-mono text-sm text-muted-foreground hover:text-foreground transition-colors duration-150"
+        >
+          articles
+        </Link>
+        <ButtonGroup>
+          <Tooltip>
+            <TooltipTrigger render={<ThemeToggle variant="ghost" />} />
+            <TooltipContent>Change theme</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <a
+              href="https://github.com/draekien/portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <TooltipTrigger render={<Button variant="ghost" />}>
+                <GithubLogoIcon />
+                <SrOnly>View Repository</SrOnly>
+              </TooltipTrigger>
+            </a>
+            <TooltipContent>View repository on GitHub</TooltipContent>
+          </Tooltip>
+        </ButtonGroup>
+      </div>
     </header>
   );
 }

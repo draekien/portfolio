@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArticleRow } from "@/components/article-row";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
@@ -24,6 +25,7 @@ import {
   CarouselControls,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { getAllArticles } from "@/lib/articles";
 import structuredData from "./structured-data.json" with { type: "json" };
 
 function InstallCommand({ command }: { command: string }) {
@@ -37,7 +39,9 @@ function InstallCommand({ command }: { command: string }) {
   );
 }
 
-export default function Page() {
+export default async function Page() {
+  const latestArticles = (await getAllArticles()).slice(0, 3);
+
   return (
     <>
       <JsonLd data={structuredData} />
@@ -469,6 +473,27 @@ WideLogEventContext.PushProperty("action", "checkout");`}
               />
             </ProjectSummaryCodeBlock>
           </ProjectSummary>
+        </div>
+      </section>
+
+      <section id="writing" className="container mx-auto pt-16 pb-24">
+        <div className="flex items-center gap-4 mb-16">
+          <BrandMark className="text-primary shrink-0" />
+          <hr className="flex-1 border-border" />
+          <p className="font-mono text-sm text-secondary tracking-wider shrink-0">
+            writing
+          </p>
+          <BrandMark className="text-primary shrink-0" />
+        </div>
+        <div className="divide-y divide-border">
+          {latestArticles.map((article) => (
+            <ArticleRow key={article.slug} article={article} />
+          ))}
+        </div>
+        <div className="mt-8">
+          <ButtonLink internal link={{ href: "/articles" }}>
+            Read all articles →
+          </ButtonLink>
         </div>
       </section>
 
