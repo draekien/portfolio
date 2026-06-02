@@ -5,9 +5,9 @@ date: "2026-06-02"
 tags: ["dotnet", "functional-programming", "rust", "type-safety"]
 ---
 
-Null reference exceptions are the most preventable bugs in software. Tony Hoare, who invented the null reference in 1965, later called it his "billion-dollar mistake." Decades on, most codebases still do not treat it as the design problem it is.
+Null reference exceptions are the most preventable bugs in software. <Define term="tony-hoare">Tony Hoare</Define>, who invented the null reference in 1965, later called it his "billion-dollar mistake." Decades on, most codebases still do not treat it as the design problem it is.
 
-I kept hitting the same wall in production: `NullReferenceException` incidents that had sailed through code review, because nothing in the types said a value might be missing. The fix did not come from .NET. It came from a language that refuses to have the problem at all.
+I kept hitting the same wall in production: <Define term="null-reference-exception" code>NullReferenceException</Define> incidents that had sailed through code review, because nothing in the types said a value might be missing. The fix did not come from .NET. It came from a language that refuses to have the problem at all.
 
 ## How Rust dodged null entirely
 
@@ -20,9 +20,9 @@ An `Option<T>` is one of exactly two things:
 - `Some(value)` — the value is here.
 - `None` — the value is absent.
 
-That is the whole type. There is no secret third state, no "present but actually null." It is what's called a *sum type*: a value that is exactly one of a fixed set of shapes, and the type spells out which shapes are allowed.
+That is the whole type. There is no secret third state, no "present but actually null." It is what's called a <Define term="sum-type">sum type</Define>: a value that is exactly one of a fixed set of shapes, and the type spells out which shapes are allowed.
 
-The payoff is in how you read it back. To get at the value, you *pattern match* — you write a branch for each possible shape:
+The payoff is in how you read it back. To get at the value, you <Define term="pattern-matching">pattern match</Define> — you write a branch for each possible shape:
 
 ```rust
 match find_user(id) {
@@ -54,7 +54,7 @@ Rust's contract is enforced. I wanted to bring that enforcement to C#.
 
 ## Porting Option to .NET
 
-So I built one. [Waystone.Monads](https://github.com/draekien-industries/waystone-dotnet/tree/main/src/Waystone.Monads) is a direct port of Rust's `std::option` to .NET. Same type, same two states, same idea: absence is a value you must handle, not a landmine you might step on.
+So I built one. <Define term="waystone-monads" code>Waystone.Monads</Define> is a direct port of Rust's `std::option` to .NET. Same type, same two states, same idea: absence is a value you must handle, not a landmine you might step on.
 
 The repository method becomes:
 
@@ -68,7 +68,7 @@ public Option<User> FindById(Guid id)
 
 `Option.Some(user)` wraps a present value. `Option.None<User>()` represents its absence. The return type now tells the truth: this lookup might find nothing.
 
-C# has no `match` keyword, so the library gives you a `Match` method that plays the same role:
+C# has no `match` keyword, so the library gives you a <Define term="match-method" code>Match</Define> method that plays the same role:
 
 ```csharp
 Option<User> result = repository.FindById(id);
@@ -87,7 +87,7 @@ Forcing a check at every step would be exhausting if you had to unwrap and rewra
 
 > **What's a monad?** Strip away the jargon. A monad is a wrapper around a value with two rules. You can transform what's inside without opening the box (`Map`). You can chain it with another step that returns its own box, and the boxes flatten into one instead of nesting (`FlatMap`). You never reach in and grab the raw value directly. `Option<T>` is one of the simplest monads there is — that is all the word means here.
 
-`Map` transforms the inner value *if it exists*, and leaves `None` untouched:
+<Define term="map" code>Map</Define> transforms the inner value *if it exists*, and leaves `None` untouched:
 
 ```csharp
 Option<string> email = repository
@@ -97,7 +97,7 @@ Option<string> email = repository
 
 If the user is absent, the result is `None<string>` and the lambda never runs. No null check at the call site, because there is no way to reach a value that isn't there.
 
-`FlatMap` chains steps that *themselves* return an `Option`. Rust calls this `and_then`; the idea is identical:
+<Define term="flat-map" code>FlatMap</Define> chains steps that *themselves* return an `Option`. Rust calls this `and_then`; the idea is identical:
 
 ```csharp
 Option<Order> latestOrder = repository

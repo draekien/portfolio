@@ -7,6 +7,7 @@ import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
+import { Define } from "@/components/define";
 import { FrameworkBadge } from "@/components/framework-badge";
 import { Pre } from "./pre";
 
@@ -33,6 +34,7 @@ const components = {
   BrandMark,
   ButtonLink,
   CodeBlock,
+  Define,
   FrameworkBadge,
 };
 
