@@ -5,6 +5,7 @@ import { ButtonLink } from "@/components/button-link";
 import { JsonLd } from "@/components/json-ld";
 import { MdxContent } from "@/components/mdx/mdx-content";
 import { getAllArticleSlugs, getArticleBySlug } from "@/lib/articles";
+import { cn } from "@/lib/utils";
 
 export const dynamicParams = false;
 
@@ -56,6 +57,11 @@ export default async function ArticlePage({
     day: "numeric",
   });
 
+  const titleSize =
+    article.title.length > 36
+      ? "text-[clamp(1.75rem,1rem+2.4vw,2.5rem)]"
+      : "text-[clamp(1.875rem,1rem+3vw,3rem)]";
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -77,7 +83,12 @@ export default async function ArticlePage({
       <JsonLd data={structuredData} />
       <article className="container mx-auto pt-16 pb-24 max-w-4xl">
         <header className="mb-12 space-y-4">
-          <h1 className="font-mono text-3xl md:text-5xl font-medium tracking-tight leading-tight text-wrap-balance">
+          <h1
+            className={cn(
+              "font-mono font-medium tracking-tight leading-tight text-wrap-balance",
+              titleSize,
+            )}
+          >
             <BrandMark className="text-primary mr-2" />
             {article.title}
           </h1>

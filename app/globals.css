@@ -166,6 +166,14 @@
   --tw-prose-pre-bg: var(--color-muted);
   --tw-prose-th-borders: var(--color-border);
   --tw-prose-td-borders: var(--color-border);
+  & h2 {
+    margin-top: 3.5em;
+    margin-bottom: 0.6em;
+  }
+  & h3 {
+    margin-top: 2.5em;
+    margin-bottom: 0.5em;
+  }
 }
 
 html.dark .shiki,
