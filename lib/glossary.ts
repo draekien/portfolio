@@ -54,6 +54,35 @@ export const glossary = {
     summary:
       "Takes one callback for the Some case and one for the None case, then runs whichever applies. There is no overload that accepts only one, so handling absence is not something you can skip.",
   },
+  "agent-skill": {
+    label: "Agent capability",
+    summary:
+      "A folder of instructions — a SKILL.md file plus optional scripts and reference docs — that an AI agent loads on demand to gain a specific capability. Defined by the open standard at agentskills.io.",
+    href: "https://agentskills.io/specification",
+    hrefLabel: "The specification",
+  },
+  "skill-md": {
+    label: "File format",
+    summary:
+      "The single Markdown file at the heart of a skill. Its frontmatter declares the name and the description that decides when the skill activates; the body holds the instructions the agent reads once it does.",
+  },
+  "progressive-disclosure": {
+    label: "Design principle",
+    summary:
+      "Loading detail only when it is needed: a short, always-loaded body that links out to heavier reference files, so the agent spends its limited context on what the task actually requires.",
+  },
+  "degrees-of-freedom": {
+    label: "Authoring concept",
+    summary:
+      "How much latitude a skill gives the agent. Tight, exact steps when one wrong move breaks things; loose direction when many paths work and judgment picks the route. Anthropic frames the choice as a narrow bridge versus an open field.",
+    href: "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
+    hrefLabel: "Anthropic's best practices",
+  },
+  "context-window": {
+    label: "LLM constraint",
+    summary:
+      "The fixed budget of text a language model can hold in mind at once. The system prompt, the conversation, every loaded skill, and the task itself all compete for the same finite space.",
+  },
 } satisfies Record<string, GlossaryEntry>;
 
 export type GlossaryTerm = keyof typeof glossary;

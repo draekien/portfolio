@@ -1,0 +1,87 @@
+---
+title: "Skills that teach, not scripts that break"
+description: "I spent a month rewriting my own skill for writing skills. The lesson: the rigid, step-by-step instructions that feel safest are the ones that fail first."
+date: "2026-06-03"
+tags: ["agent-skills", "llm", "claude", "prompt-engineering"]
+---
+
+A coding agent ran my skill last week and did something useless, very correctly. The skill told it to interview me before writing a technical spec. The codebase already answered every question the interview would have asked. But the instructions said *interview, then write*, so it interviewed — invented questions, waited for answers it did not need — and produced a spec nobody wanted. It followed the letter perfectly and missed the point entirely.
+
+That is the failure mode I want to talk about. And the skill that failed was one of my own, from an earlier draft.
+
+## What a skill is, and why mine broke
+
+An <Define term="agent-skill">agent skill</Define> is a folder you hand to an AI agent to give it a capability it did not have. At its centre is a <Define term="skill-md" code>SKILL.md</Define> file: some frontmatter that decides when the skill switches on, and a body of instructions the agent reads once it does. Think of it as onboarding documentation written for a teammate who is brilliant, fast, and has never met you.
+
+My first version of a skill *for writing skills* read like a bad runbook. It had seven numbered steps. **Step 1 — Gather requirements (ask these in order, one at a time).** Then literal scripted questions for the agent to recite:
+
+```markdown
+**Question 1 — Purpose**
+> "What should this skill do? Describe the workflow or task it will handle."
+```
+
+The body even instructed: *"Number steps sequentially. Map any decision trees explicitly: 'If X, go to step N. Otherwise, continue.'"*
+
+It demos beautifully. Every reviewer nods. And it is brittle in a specific way: it encodes one path through a task as if that path were the task. The moment reality diverges — the repo already holds the answers, a newer model needs less hand-holding, the user's request skips two steps — the agent has no way to notice. It was given a sequence to execute, not a goal to reach. So it executes, and fails politely.
+
+This is the trap I see in a lot of published skills. Walls of numbered steps. Strings of `MUST`, `ALWAYS`, `NEVER`. They read as careful. They are actually fragile, because the rigidity is load-bearing: take the steps away and nothing of the author's intent remains.
+
+## Where I started: Anthropic's freedom dial
+
+I did not arrive at the seven-step version by being careless. I arrived there by following the best guidance available — Anthropic's own [skill-authoring documentation](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices) and the `skill-creator` skill they ship with it. My first file was essentially a fork of theirs, down to the name.
+
+Their central idea is genuinely good, and worth stating in their terms. They call it **<Define term="degrees-of-freedom">degrees of freedom</Define>**: match how much latitude you give the agent to how fragile the task is. They draw it as a picture. A narrow bridge with cliffs on both sides has one safe path, so you give exact instructions — *low freedom*. An open field has many routes to the far side, so you give a direction and trust the agent to find its way — *high freedom*. Three rungs:
+
+- **High freedom** — prose heuristics, for when many approaches are valid.
+- **Medium freedom** — pseudocode or a parameterised template, for when a preferred shape exists but variation is fine.
+- **Low freedom** — an exact command, for when one wrong move breaks something.
+
+That dial is the right mental model. But here is the detail that sent me down a month of rewrites. Anthropic's *own* example of a high-freedom instruction is this:
+
+```markdown
+## Code review process
+
+1. Analyze the code structure and organization
+2. Check for potential bugs or edge cases
+3. Suggest improvements for readability and maintainability
+4. Verify adherence to project conventions
+```
+
+A numbered list. The illustration of *maximum freedom* is shaped exactly like the rigid checklists the principle is supposed to free us from. The form contradicts the lesson. I copied that example into my skill without noticing, and it sat there for weeks.
+
+## What a month of rewriting taught me
+
+I kept using the skill, kept watching agents stumble on it, and kept editing. The repository history is an embarrassing, honest record of me learning one thing several times. A few moments mattered.
+
+**Compression is not the goal.** My first instinct when a skill felt heavy was to make it terse — strip articles, shorten everything to a telegram. Smaller, surely better. It was not. Terseness saves tokens; it does not transfer intent. A clipped imperative is *more* brittle, not less, because it strips out the reasoning a reader would need to adapt. The <Define term="context-window">context window</Define> is finite and worth respecting — but the way to respect it is to cut what the agent already knows, not to compress what it needs.
+
+**The skill was committing its own sin.** I had built three "modes" into it — create, update, refine — with logic to detect which one applied. One day it struck me that this was the seven-step runbook all over again, one level up: I was prescribing a procedure for choosing a procedure. So I deleted all of it. I replaced the modes with a single standard the agent always works toward, and reframed the whole document around one sentence that now opens the skill:
+
+> A skill is a teaching document for a future LLM instance — it transfers intent and judgment so the agent can achieve a goal without the author present.
+
+That line did more than any rule. Once a skill is a teaching document, "should I script this step or explain it?" answers itself: you explain anything the future reader will need to think with, and you script only what they must not vary.
+
+**Carry the why, not just the what.** This is the fix for the numbered-list contradiction. In any step that needs judgment, the instruction should say what good looks like and *why* — because an agent that understands the goal can adapt when the exact step does not fit, and an agent holding only a command cannot. The contrast I put in the skill:
+
+- Weak: "Run `git status` to see uncommitted changes."
+- Strong: "Understand the working tree state before deciding what to stage — distinguish between intentional changes, generated artefacts, and files that might be sensitive."
+
+The weak version is a keystroke. The strong version is a reason, and the keystroke follows from it. Bare commands are correct only for deterministic operations, where variation is a bug.
+
+**Stop hedging against the model.** I had inherited a section telling authors to *test the skill against every model tier* and add scaffolding for the weaker ones. I cut it, and the commit message I wrote was blunt: *trust violation*. Padding a skill with crutches for a hypothetically weaker reader bloats it for the capable one and bakes distrust into a document whose job is to transfer intent cleanly. Write for an intelligent reader. If a specific weak model genuinely can't cope, that is a problem to solve at deployment, not by deadening the skill.
+
+**The freedom dial has a blind spot.** This was the real lesson, the one underneath all the others. "Match freedom to fragility" assumes the only question is *how tightly* to specify a process. But sometimes the right amount of process is *none* — the judgment the agent needs is whether to run a procedure at all. My spec-writing skill failed precisely there: no degree of freedom on the "interview" step would have helped, because the bug was that the step existed as a mandate. So I added a named anti-pattern to the skill, and it is the part I am proudest of:
+
+> **Workflow scripting** — encoding a fixed sequence of steps when the task requires judgment about whether to follow a process at all... Recognise it by this tell: if removing every step header leaves nothing of substance, the steps were carrying the skill — not the intent.
+
+That tell is now the first thing I check on anything I write. Delete the headings. If the skill collapses, the structure was a costume.
+
+## When rigidity is right anyway
+
+None of this is an argument against structure. The narrow bridge is real. A database migration that must run in an exact sequence, a destructive batch operation, a format another system will parse — these genuinely have one safe path, and there the right instruction is an exact command with a flat *do not modify this*. Low freedom is not the enemy. Misapplied low freedom is. The failure is reaching for the bridge's guardrails while standing in an open field.
+
+And the principle-first style I have been selling has a real cost, which I would be lying to omit. Teaching skills lean harder on the reader: a less capable model handed "understand the working tree and use judgment" may do less well than one handed "run `git status`." They are harder to validate automatically — you can lint a checklist, but you cannot lint whether a paragraph successfully transferred a way of thinking. And the failure mode at this end of the dial is its own kind of bad: vague, vibe-shaped skills that gesture at intent and specify nothing, which fail exactly as surely as the over-scripted ones, just more quietly.
+
+So the honest rule is not "prefer freedom." It is the teaching test, applied per instruction. For each line, ask what the future agent needs in order to make this decision well without you in the room. Sometimes the answer is a reason. Sometimes it is an exact command. The skill author's only real job is telling those two cases apart — and resisting the pull of the runbook that *feels* safe because it looks thorough.
+
+My skill for writing skills is still changing. That is the point. The version that stops changing is the one that has quietly become a runbook again.
