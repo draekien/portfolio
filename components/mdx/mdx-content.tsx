@@ -2,6 +2,7 @@ import type { Route } from "next";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import type { ComponentProps } from "react";
+import rehypeSlug from "rehype-slug";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
@@ -36,5 +37,11 @@ const components = {
 };
 
 export function MdxContent({ source }: { source: string }) {
-  return <MDXRemote source={source} components={components} />;
+  return (
+    <MDXRemote
+      source={source}
+      components={components}
+      options={{ mdxOptions: { rehypePlugins: [rehypeSlug] } }}
+    />
+  );
 }

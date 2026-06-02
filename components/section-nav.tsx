@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { BrandMark } from "@/components/brand-mark";
-import { assertDefined, cn } from "@/lib/utils";
+import { useScrollSpy } from "@/lib/use-scroll-spy";
+import { cn } from "@/lib/utils";
 
 const sections = [
   { id: "applications", label: "Applications" },
@@ -13,39 +13,10 @@ const sections = [
 
 type SectionId = (typeof sections)[number]["id"];
 
-function getActiveSection(): SectionId {
-  // Near bottom of page → last section is active regardless of scroll position
-  const scrollBottom = window.scrollY + window.innerHeight;
-  const docHeight = document.documentElement.scrollHeight;
-  if (docHeight - scrollBottom < 50) {
-    return assertDefined(sections[sections.length - 1]).id;
-  }
-
-  // Last section whose top has scrolled to or past the nav (≈60px)
-  const threshold = 60;
-  for (const { id } of [...sections].reverse()) {
-    const el = document.getElementById(id);
-    if (!el) continue;
-    if (el.getBoundingClientRect().top <= threshold) {
-      return id;
-    }
-  }
-
-  return sections[0].id;
-}
+const sectionIds: readonly SectionId[] = sections.map((section) => section.id);
 
 export function SectionNav() {
-  const [active, setActive] = useState<SectionId>("applications");
-
-  useEffect(() => {
-    function onScroll() {
-      setActive(getActiveSection());
-    }
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const active = useScrollSpy(sectionIds);
 
   function scrollToSection(id: string) {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });

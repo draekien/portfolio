@@ -17,6 +17,12 @@ const frontmatterSchema = z.object({
   draft: z.boolean().default(false),
 });
 
+export type ArticleHeading = {
+  id: string;
+  text: string;
+  level: 2 | 3;
+};
+
 export type ArticleMeta = z.infer<typeof frontmatterSchema> & {
   slug: string;
   readingTime: string;
@@ -24,7 +30,29 @@ export type ArticleMeta = z.infer<typeof frontmatterSchema> & {
 
 export type Article = ArticleMeta & {
   content: string;
+  headings: ArticleHeading[];
 };
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
+
+function extractHeadings(content: string): ArticleHeading[] {
+  const regex = /^(#{2,3})\s+(.+)$/gm;
+  const results: ArticleHeading[] = [];
+  for (const match of content.matchAll(regex)) {
+    const hashes = match[1];
+    const raw = match[2];
+    if (!hashes || !raw) continue;
+    const text = raw.trim();
+    results.push({ level: hashes.length as 2 | 3, text, id: slugify(text) });
+  }
+  return results;
+}
 
 function isDraftVisible(): boolean {
   return process.env.NODE_ENV !== "production";
@@ -75,6 +103,7 @@ export const getArticleBySlug = cache(
       slug,
       readingTime: `${Math.ceil(rt.minutes)} min read`,
       content,
+      headings: extractHeadings(content),
     };
   },
 );

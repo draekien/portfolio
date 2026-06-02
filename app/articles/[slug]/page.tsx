@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArticleToc } from "@/components/article-toc";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { JsonLd } from "@/components/json-ld";
@@ -74,7 +75,7 @@ export default async function ArticlePage({
   return (
     <>
       <JsonLd data={structuredData} />
-      <article className="container mx-auto pt-16 pb-24 max-w-[70ch]">
+      <article className="container mx-auto pt-16 pb-24 max-w-4xl">
         <header className="mb-12 space-y-4">
           <h1 className="font-mono text-3xl md:text-5xl font-medium tracking-tight leading-tight text-wrap-balance">
             <BrandMark className="text-primary mr-2" />
@@ -106,8 +107,11 @@ export default async function ArticlePage({
             )}
           </dl>
         </header>
-        <div className="prose prose-article max-w-none">
-          <MdxContent source={article.content} />
+        <div className="lg:grid lg:grid-cols-[1fr_200px] lg:gap-12 xl:gap-16">
+          <div className="prose prose-article max-w-none min-w-0">
+            <MdxContent source={article.content} />
+          </div>
+          <ArticleToc headings={article.headings} />
         </div>
         <footer className="mt-16 pt-8 border-t border-border">
           <ButtonLink internal link={{ href: "/articles" }}>
