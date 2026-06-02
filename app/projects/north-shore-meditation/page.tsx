@@ -98,65 +98,65 @@ export default function NorthShoreMeditationPage() {
             <CarouselContent>
               <CarouselItem>
                 <Image
-                  src="/north-shore-meditation-hero-dark-mobile.webp"
+                  src="/north-shore-meditation-hero-dark-mobile.png"
                   alt="North Shore Meditation homepage showing the hero section with navigation, headline, and call to action"
-                  width={375}
-                  height={812}
+                  width={1179}
+                  height={2556}
                   className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
                   priority
                 />
                 <Image
-                  src="/north-shore-meditation-hero-light-mobile.webp"
+                  src="/north-shore-meditation-hero-light-mobile.png"
                   alt="North Shore Meditation homepage showing the hero section with navigation, headline, and call to action"
-                  width={375}
-                  height={812}
+                  width={1179}
+                  height={2556}
                   className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
                   priority
                 />
                 <Image
-                  src="/north-shore-meditation-hero-dark.webp"
+                  src="/north-shore-meditation-hero-dark.png"
                   alt="North Shore Meditation homepage showing the hero section with navigation, headline, and call to action"
-                  width={2259}
-                  height={1316}
+                  width={1920}
+                  height={1080}
                   className="hidden sm:dark:block w-full h-auto rounded-lg"
                   priority
                 />
                 <Image
-                  src="/north-shore-meditation-hero-light.webp"
+                  src="/north-shore-meditation-hero-light.png"
                   alt="North Shore Meditation homepage showing the hero section with navigation, headline, and call to action"
-                  width={2259}
-                  height={1316}
+                  width={1920}
+                  height={1080}
                   className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
                   priority
                 />
               </CarouselItem>
               <CarouselItem>
                 <Image
-                  src="/north-shore-meditation-science-dark-mobile.webp"
+                  src="/north-shore-meditation-science-dark-mobile.png"
                   alt="North Shore Meditation — backed by science section"
-                  width={375}
-                  height={812}
+                  width={1179}
+                  height={2556}
                   className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
                 />
                 <Image
-                  src="/north-shore-meditation-science-light-mobile.webp"
+                  src="/north-shore-meditation-science-light-mobile.png"
                   alt="North Shore Meditation — backed by science section"
-                  width={375}
-                  height={812}
+                  width={1179}
+                  height={2556}
                   className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
                 />
                 <Image
-                  src="/north-shore-meditation-science-dark.webp"
+                  src="/north-shore-meditation-science-dark.png"
                   alt="North Shore Meditation — backed by science section"
-                  width={2259}
-                  height={1316}
+                  width={1920}
+                  height={1080}
                   className="hidden sm:dark:block w-full h-auto rounded-lg"
                 />
                 <Image
-                  src="/north-shore-meditation-science-light.webp"
+                  src="/north-shore-meditation-science-light.png"
                   alt="North Shore Meditation — backed by science section"
-                  width={2259}
-                  height={1316}
+                  width={1920}
+                  height={1080}
                   className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
                 />
               </CarouselItem>

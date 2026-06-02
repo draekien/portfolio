@@ -98,65 +98,65 @@ export default function ParasolPage() {
             <CarouselContent>
               <CarouselItem>
                 <Image
-                  src="/parasol-hero-dark-mobile.webp"
+                  src="/parasol-hero-dark-mobile.png"
                   alt="Parasol dashboard showing net worth target, progress toward financial independence, and portfolio allocation"
-                  width={375}
-                  height={812}
+                  width={1179}
+                  height={2556}
                   className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
                   priority
                 />
                 <Image
-                  src="/parasol-hero-light-mobile.webp"
+                  src="/parasol-hero-light-mobile.png"
                   alt="Parasol dashboard showing net worth target, progress toward financial independence, and portfolio allocation"
-                  width={375}
-                  height={812}
+                  width={1179}
+                  height={2556}
                   className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
                   priority
                 />
                 <Image
-                  src="/parasol-hero-dark.webp"
+                  src="/parasol-hero-dark.png"
                   alt="Parasol dashboard showing net worth target, progress toward financial independence, and portfolio allocation"
-                  width={2259}
-                  height={1316}
+                  width={1920}
+                  height={1080}
                   className="hidden sm:dark:block w-full h-auto rounded-lg"
                   priority
                 />
                 <Image
-                  src="/parasol-hero-light.webp"
+                  src="/parasol-hero-light.png"
                   alt="Parasol dashboard showing net worth target, progress toward financial independence, and portfolio allocation"
-                  width={2259}
-                  height={1316}
+                  width={1920}
+                  height={1080}
                   className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
                   priority
                 />
               </CarouselItem>
               <CarouselItem>
                 <Image
-                  src="/parasol-feature-dark-mobile.webp"
+                  src="/parasol-feature-dark-mobile.png"
                   alt="Parasol portfolio view showing transaction history with cost basis, market value, and unrealised gain columns"
-                  width={375}
-                  height={812}
+                  width={1179}
+                  height={2556}
                   className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
                 />
                 <Image
-                  src="/parasol-feature-light-mobile.webp"
+                  src="/parasol-feature-light-mobile.png"
                   alt="Parasol portfolio view showing transaction history with cost basis, market value, and unrealised gain columns"
-                  width={375}
-                  height={812}
+                  width={1179}
+                  height={2556}
                   className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
                 />
                 <Image
-                  src="/parasol-feature-dark.webp"
+                  src="/parasol-feature-dark.png"
                   alt="Parasol portfolio view showing transaction history with cost basis, market value, and unrealised gain columns"
-                  width={2259}
-                  height={1316}
+                  width={1920}
+                  height={1080}
                   className="hidden sm:dark:block w-full h-auto rounded-lg"
                 />
                 <Image
-                  src="/parasol-feature-light.webp"
+                  src="/parasol-feature-light.png"
                   alt="Parasol portfolio view showing transaction history with cost basis, market value, and unrealised gain columns"
-                  width={2259}
-                  height={1316}
+                  width={1920}
+                  height={1080}
                   className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
                 />
               </CarouselItem>

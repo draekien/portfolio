@@ -38,7 +38,7 @@ Next.js 16 App Router portfolio site. React 19 with React Compiler enabled. Type
 
 ## Key patterns
 
-**Images** — every project screenshot has four variants: `{name}-dark.webp`, `{name}-light.webp`, `{name}-dark-mobile.webp`, `{name}-light-mobile.webp`. Visibility is controlled with Tailwind classes: `hidden dark:block sm:dark:hidden` etc. Follow this same pattern when adding new project images.
+**Images** — every project screenshot has four variants: `{name}-dark.png`, `{name}-light.png`, `{name}-dark-mobile.png`, `{name}-light-mobile.png`. Visibility is controlled with Tailwind classes: `hidden dark:block sm:dark:hidden` etc. Follow this same pattern when adding new project images.
 
 **Structured data** — each project route has a `structured-data.json` colocated alongside its `page.tsx`, injected via `<JsonLd data={...} />`.
 
