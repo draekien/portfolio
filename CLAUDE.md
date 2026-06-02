@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code (claude.ai/code) working in this repository.
 
 ## Commands
 
@@ -13,43 +13,32 @@ pnpm format       # Biome format only
 pnpm typegen      # regenerate Next.js typed routes
 ```
 
-No test suite — this is a portfolio site.
+No test suite — this is a portfolio site. Use `pnpm`, never `npm`.
 
-## Architecture
+## Stack
 
-Next.js 16 App Router portfolio site. React 19 with React Compiler enabled. TypeScript strict mode. `@/` maps to the repo root.
+Next.js 16 App Router. React 19 with React Compiler enabled. TypeScript strict mode. `@/` maps to the repo root.
 
-**`app/`** — pages only. No business logic here.
-- `app/page.tsx` — single-page home: hero, applications section, libraries section, contact section
-- `app/projects/[slug]/page.tsx` — individual case study pages for each project
-- `app/layout.tsx` — root layout: Google Fonts (Figtree + JetBrains Mono as CSS vars), `<Providers>`, `<BackgroundFx>`, `<LayoutHeader>`
+## Layout
 
-**`components/`** — all components
-- `components/ui/` — shadcn/ui primitives. These have their own `biome.json` that relaxes rules for generated code. Don't edit these manually; use `pnpm dlx shadcn add <component>`.
-- `components/project-summary.tsx` — compound components for project cards on the home page
-- `components/project-section.tsx` — heading/divider components for case study pages
-- `components/code-block.tsx` — **async Server Component** using Shiki for SSR syntax highlighting (catppuccin-latte/mocha themes)
-- `components/framework-badge.tsx` — `<FrameworkBadge version="...">`. Adding a new badge requires extending the `FrameworkVersion` union and `displayLabels` map in that file.
+Subsystem detail lives in nested `CLAUDE.md` files that load on demand when you open that directory:
 
-**`lib/`** — shared utilities
-- `lib/utils.ts` — `cn()` helper (clsx + tailwind-merge)
-- `lib/query-client.ts` — TanStack Query client singleton
-- `lib/opengraph.tsx` — shared OG image utilities
+- `app/` — pages only, no business logic. See `app/CLAUDE.md`.
+  - `app/projects/` — case study pages. See `app/projects/CLAUDE.md`.
+- `components/` — all components. See `components/CLAUDE.md`.
+  - `components/ui/` — generated shadcn primitives. See `components/ui/CLAUDE.md`.
+  - `components/mdx/` — MDX rendering. See `components/mdx/CLAUDE.md`.
+- `lib/` — shared utilities, incl. the articles pipeline. See `lib/CLAUDE.md`.
+- `content/articles/` — article `.mdx` source. See `content/articles/CLAUDE.md`.
 
-## Key patterns
-
-**Images** — every project screenshot has four variants: `{name}-dark.png`, `{name}-light.png`, `{name}-dark-mobile.png`, `{name}-light-mobile.png`. Visibility is controlled with Tailwind classes: `hidden dark:block sm:dark:hidden` etc. Follow this same pattern when adding new project images.
-
-**Structured data** — each project route has a `structured-data.json` colocated alongside its `page.tsx`, injected via `<JsonLd data={...} />`.
-
-**MDX components** — custom components usable in article `.mdx` are registered in the `components` map in `components/mdx/mdx-content.tsx`. Client components (`"use client"`) work there as client islands within the RSC-rendered MDX.
-
-**Typed routes** — `next.config.ts` enables `typedRoutes: true`. Always use typed `href` props (e.g. `link={{ href: "/projects/parasol" }}`). Run `pnpm typegen` if route types are stale.
+## Conventions (apply everywhere)
 
 **Theme** — `next-themes` with `attribute="class"`. Both light and dark modes must be considered for any new visual element.
 
-## Tooling notes
+**Typed routes** — `next.config.ts` enables `typedRoutes: true`. Always use typed `href` props (e.g. `link={{ href: "/projects/parasol" }}`). Run `pnpm typegen` if route types are stale.
 
-**Biome 2.x** is the linter and formatter (no ESLint, no Prettier). Double quotes for JS/TS strings. Imports are auto-organized on save via Biome assist. `tailwindDirectives: true` is set in `biome.json` — do not disable CSS linting to work around Tailwind `@` directives.
+**Biome 2.x** is the primary linter and formatter (no Prettier). `pnpm lint` runs `biome check`. An `eslint.config.mjs` (`eslint-config-next`) also exists for Next.js core-web-vitals rules but is not part of `pnpm lint`. Double quotes for JS/TS strings. Imports are auto-organized on save via Biome assist. `tailwindDirectives: true` is set in `biome.json` — do not disable CSS linting to work around Tailwind `@` directives.
 
-**shadcn/ui** — use the `shadcn` CLI to add components. Don't hand-edit files in `components/ui/`. shadcn primitives in this project are built on **Base UI** (`@base-ui/react`), not Radix — the component API (e.g. `Popover.Positioner`/`Popover.Popup`) and props differ from Radix equivalents.
+**Pre-commit** — `lefthook.yml` runs `biome check --write` on staged JS/TS/JSON/CSS files and re-stages fixes.
+
+**shadcn primitives are built on Base UI (`@base-ui/react`), not Radix** — the API differs (e.g. `Popover.Positioner` / `Popover.Popup`). Details in `components/ui/CLAUDE.md`.
