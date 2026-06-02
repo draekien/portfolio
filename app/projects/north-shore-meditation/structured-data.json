@@ -6,7 +6,7 @@
       "name": "North Shore Meditation",
       "description": "A CMS-driven marketing site for a Transcendental Meditation centre on Sydney's North Shore. Built with Next.js and Contentful so the owner can schedule events, publish practitioner notes, and manage page content without touching code.",
       "url": "https://www.northshoremeditation.au/en",
-      "image": "https://www.wpei.me/north-shore-meditation-hero-light.webp",
+      "image": "https://www.wpei.me/north-shore-meditation-hero-light.png",
       "author": { "@id": "https://www.wpei.me/#person" }
     },
     {

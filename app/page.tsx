@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArticleRow } from "@/components/article-row";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
@@ -24,6 +25,7 @@ import {
   CarouselControls,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { getAllArticles } from "@/lib/articles";
 import structuredData from "./structured-data.json" with { type: "json" };
 
 function InstallCommand({ command }: { command: string }) {
@@ -37,7 +39,9 @@ function InstallCommand({ command }: { command: string }) {
   );
 }
 
-export default function Page() {
+export default async function Page() {
+  const latestArticles = (await getAllArticles()).slice(0, 3);
+
   return (
     <>
       <JsonLd data={structuredData} />
@@ -134,65 +138,65 @@ export default function Page() {
                 <CarouselContent>
                   <CarouselItem>
                     <Image
-                      src="/parasol-hero-dark-mobile.webp"
+                      src="/parasol-hero-dark-mobile.png"
                       alt="Parasol — FIRE tracking dashboard"
-                      width={375}
-                      height={812}
+                      width={1179}
+                      height={2556}
                       className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
                       priority
                     />
                     <Image
-                      src="/parasol-hero-light-mobile.webp"
+                      src="/parasol-hero-light-mobile.png"
                       alt="Parasol — FIRE tracking dashboard"
-                      width={375}
-                      height={812}
+                      width={1179}
+                      height={2556}
                       className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
                       priority
                     />
                     <Image
-                      src="/parasol-hero-dark.webp"
+                      src="/parasol-hero-dark.png"
                       alt="Parasol — FIRE tracking dashboard"
-                      width={2259}
-                      height={1316}
+                      width={1920}
+                      height={1080}
                       className="hidden sm:dark:block w-full h-auto rounded-lg"
                       priority
                     />
                     <Image
-                      src="/parasol-hero-light.webp"
+                      src="/parasol-hero-light.png"
                       alt="Parasol — FIRE tracking dashboard"
-                      width={2259}
-                      height={1316}
+                      width={1920}
+                      height={1080}
                       className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
                       priority
                     />
                   </CarouselItem>
                   <CarouselItem>
                     <Image
-                      src="/parasol-feature-dark-mobile.webp"
+                      src="/parasol-feature-dark-mobile.png"
                       alt="Parasol — portfolio and progress features"
-                      width={375}
-                      height={812}
+                      width={1179}
+                      height={2556}
                       className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
                     />
                     <Image
-                      src="/parasol-feature-light-mobile.webp"
+                      src="/parasol-feature-light-mobile.png"
                       alt="Parasol — portfolio and progress features"
-                      width={375}
-                      height={812}
+                      width={1179}
+                      height={2556}
                       className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
                     />
                     <Image
-                      src="/parasol-feature-dark.webp"
+                      src="/parasol-feature-dark.png"
                       alt="Parasol — portfolio and progress features"
-                      width={2259}
-                      height={1316}
+                      width={1920}
+                      height={1080}
                       className="hidden sm:dark:block w-full h-auto rounded-lg"
                     />
                     <Image
-                      src="/parasol-feature-light.webp"
+                      src="/parasol-feature-light.png"
                       alt="Parasol — portfolio and progress features"
-                      width={2259}
-                      height={1316}
+                      width={1920}
+                      height={1080}
                       className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
                     />
                   </CarouselItem>
@@ -258,65 +262,65 @@ export default function Page() {
                 <CarouselContent>
                   <CarouselItem>
                     <Image
-                      src="/north-shore-meditation-hero-dark-mobile.webp"
+                      src="/north-shore-meditation-hero-dark-mobile.png"
                       alt="North Shore Meditation — homepage hero"
-                      width={375}
-                      height={812}
+                      width={1179}
+                      height={2556}
                       className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
                       priority
                     />
                     <Image
-                      src="/north-shore-meditation-hero-light-mobile.webp"
+                      src="/north-shore-meditation-hero-light-mobile.png"
                       alt="North Shore Meditation — homepage hero"
-                      width={375}
-                      height={812}
+                      width={1179}
+                      height={2556}
                       className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
                       priority
                     />
                     <Image
-                      src="/north-shore-meditation-hero-dark.webp"
+                      src="/north-shore-meditation-hero-dark.png"
                       alt="North Shore Meditation — homepage hero"
-                      width={2259}
-                      height={1316}
+                      width={1920}
+                      height={1080}
                       className="hidden sm:dark:block w-full h-auto rounded-lg"
                       priority
                     />
                     <Image
-                      src="/north-shore-meditation-hero-light.webp"
+                      src="/north-shore-meditation-hero-light.png"
                       alt="North Shore Meditation — homepage hero"
-                      width={2259}
-                      height={1316}
+                      width={1920}
+                      height={1080}
                       className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
                       priority
                     />
                   </CarouselItem>
                   <CarouselItem>
                     <Image
-                      src="/north-shore-meditation-science-dark-mobile.webp"
+                      src="/north-shore-meditation-science-dark-mobile.png"
                       alt="North Shore Meditation — backed by science section"
-                      width={375}
-                      height={812}
+                      width={1179}
+                      height={2556}
                       className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
                     />
                     <Image
-                      src="/north-shore-meditation-science-light-mobile.webp"
+                      src="/north-shore-meditation-science-light-mobile.png"
                       alt="North Shore Meditation — backed by science section"
-                      width={375}
-                      height={812}
+                      width={1179}
+                      height={2556}
                       className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
                     />
                     <Image
-                      src="/north-shore-meditation-science-dark.webp"
+                      src="/north-shore-meditation-science-dark.png"
                       alt="North Shore Meditation — backed by science section"
-                      width={2259}
-                      height={1316}
+                      width={1920}
+                      height={1080}
                       className="hidden sm:dark:block w-full h-auto rounded-lg"
                     />
                     <Image
-                      src="/north-shore-meditation-science-light.webp"
+                      src="/north-shore-meditation-science-light.png"
                       alt="North Shore Meditation — backed by science section"
-                      width={2259}
-                      height={1316}
+                      width={1920}
+                      height={1080}
                       className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
                     />
                   </CarouselItem>
@@ -469,6 +473,27 @@ WideLogEventContext.PushProperty("action", "checkout");`}
               />
             </ProjectSummaryCodeBlock>
           </ProjectSummary>
+        </div>
+      </section>
+
+      <section id="writing" className="container mx-auto pt-16 pb-24">
+        <div className="flex items-center gap-4 mb-16">
+          <BrandMark className="text-primary shrink-0" />
+          <hr className="flex-1 border-border" />
+          <p className="font-mono text-sm text-secondary tracking-wider shrink-0">
+            writing
+          </p>
+          <BrandMark className="text-primary shrink-0" />
+        </div>
+        <div className="divide-y divide-border">
+          {latestArticles.map((article) => (
+            <ArticleRow key={article.slug} article={article} />
+          ))}
+        </div>
+        <div className="mt-8">
+          <ButtonLink internal link={{ href: "/articles" }}>
+            Read all articles →
+          </ButtonLink>
         </div>
       </section>
 

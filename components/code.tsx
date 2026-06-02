@@ -4,7 +4,7 @@ export function Code({ className, ...props }: React.ComponentProps<"code">) {
   return (
     <code
       className={cn(
-        "font-mono text-sm bg-muted px-1 py-0.5 rounded-sm",
+        "font-mono text-[0.85em] bg-muted px-[0.4em] py-[0.1em] rounded-sm",
         className,
       )}
       {...props}
