@@ -1,17 +1,43 @@
 ---
 title: "Making null impossible: the Option type in .NET"
-description: "How an Option<T> monad eliminates null reference exceptions at the type level, and the design decisions behind building one for .NET."
-date: "2025-11-15"
-tags: ["dotnet", "functional-programming", "type-safety"]
+description: "Rust deleted null from the language. This is how I ported its Option type to .NET — and what it teaches about designing absence into the type system itself."
+date: "2026-06-02"
+tags: ["dotnet", "functional-programming", "rust", "type-safety"]
 ---
 
-Null reference exceptions are the most preventable bugs in software. Tony Hoare called null his "billion-dollar mistake." Decades later, most codebases still do not treat it as the design problem it is.
+Null reference exceptions are the most preventable bugs in software. Tony Hoare, who invented the null reference in 1965, later called it his "billion-dollar mistake." Decades on, most codebases still do not treat it as the design problem it is.
 
-I built `Option<T>` for Waystone.Monads after one too many `NullReferenceException` incidents in production — exceptions that passed code review because the nullable path was not obvious from the types. The goal was simple: make it impossible to use a value that might not exist without explicitly handling the empty case.
+I kept hitting the same wall in production: `NullReferenceException` incidents that had sailed through code review, because nothing in the types said a value might be missing. The fix did not come from .NET. It came from a language that refuses to have the problem at all.
 
-## The problem is visibility
+## How Rust dodged null entirely
 
-Consider a repository that looks up a user by ID:
+Rust is a systems programming language — the kind you would reach for instead of C or C++. It is built around one stubborn idea: catch whole categories of bugs at compile time, before the code ever runs.
+
+So Rust made a radical choice. **It has no null.** There is no keyword for "nothing here." If a value can be absent, you say so in the type, using a built-in type called `Option`.
+
+An `Option<T>` is one of exactly two things:
+
+- `Some(value)` — the value is here.
+- `None` — the value is absent.
+
+That is the whole type. There is no secret third state, no "present but actually null." It is what's called a *sum type*: a value that is exactly one of a fixed set of shapes, and the type spells out which shapes are allowed.
+
+The payoff is in how you read it back. To get at the value, you *pattern match* — you write a branch for each possible shape:
+
+```rust
+match find_user(id) {
+    Some(user) => println!("{}", user.name),
+    None       => println!("user not found"),
+}
+```
+
+Here is the part that changes everything: **if you forget the `None` branch, the code does not compile.** Not a warning. A hard error. Rust forces you to confront absence at the exact moment you reach for the value. You physically cannot read `user.name` without first proving the user exists.
+
+That is the bar I wanted in .NET.
+
+## Why C#'s own answer falls short
+
+C# does have an answer to null: nullable reference types. Mark a return as `User?` and the compiler will warn you if you touch a property without a null check.
 
 ```csharp
 public User? FindById(Guid id)
@@ -20,13 +46,17 @@ public User? FindById(Guid id)
 }
 ```
 
-The caller gets back a `User?`. C#'s nullable reference types will issue a warning if they access a property without a null check. In theory. In practice, nullable warnings are suppressed, dismissed, or simply missed during review. The compiler is politely asking. It is not requiring anything.
+In theory the caller gets nudged. In practice, nullable warnings are suppressed, dismissed, or simply missed in review. The compiler is *asking politely*. It is not *requiring* anything.
 
-The core problem: `User?` says "this might be null" but demands nothing from the caller. You can write `user.Name` without checking and the compiler allows it, with at most a warning squiggle. The contract is advisory, not enforced.
+That is the gap. `User?` says "this might be null" but demands nothing of the caller. You can write `user.Name` with no check and the build still succeeds — at most you get a squiggle. The contract is advisory.
 
-## `Option<T>` encodes the contract
+Rust's contract is enforced. I wanted to bring that enforcement to C#.
 
-`Option<T>` is a type that is either `Some(value)` or `None`. There is no third state. The value is present or it is absent, and the type says which.
+## Porting Option to .NET
+
+So I built one. [Waystone.Monads](https://github.com/draekien-industries/waystone-dotnet/tree/main/src/Waystone.Monads) is a direct port of Rust's `std::option` to .NET. Same type, same two states, same idea: absence is a value you must handle, not a landmine you might step on.
+
+The repository method becomes:
 
 ```csharp
 public Option<User> FindById(Guid id)
@@ -36,7 +66,9 @@ public Option<User> FindById(Guid id)
 }
 ```
 
-Now the caller cannot access the user without pattern matching on the result. The `Match` method requires both branches:
+`Option.Some(user)` wraps a present value. `Option.None<User>()` represents its absence. The return type now tells the truth: this lookup might find nothing.
+
+C# has no `match` keyword, so the library gives you a `Match` method that plays the same role:
 
 ```csharp
 Option<User> result = repository.FindById(id);
@@ -47,11 +79,15 @@ return result.Match(
 );
 ```
 
-Both outcomes are handled. The compiler enforces it. There is no way to call `.Match()` with only one callback — it is not an overload that exists.
+Both branches are required. `Match` takes two callbacks, and there is no overload that accepts only one — leaving out the empty case is not something you can express. You get Rust's "handle every shape" guarantee, enforced by the method's signature instead of the compiler's `match` checker.
 
-## Composition without nesting
+## Composition without the nesting
 
-The real value is in composition. `Map` transforms the inner value if it exists, without unwrapping:
+Forcing a check at every step would be exhausting if you had to unwrap and rewrap by hand each time. This is where the design earns its keep, and where one word usually scares people off: *monad*.
+
+> **What's a monad?** Strip away the jargon. A monad is a wrapper around a value with two rules. You can transform what's inside without opening the box (`Map`). You can chain it with another step that returns its own box, and the boxes flatten into one instead of nesting (`FlatMap`). You never reach in and grab the raw value directly. `Option<T>` is one of the simplest monads there is — that is all the word means here.
+
+`Map` transforms the inner value *if it exists*, and leaves `None` untouched:
 
 ```csharp
 Option<string> email = repository
@@ -59,20 +95,24 @@ Option<string> email = repository
     .Map(user => user.Email);
 ```
 
-If the user does not exist, the result is `None<string>`. No null check needed at the call site. `Bind` chains operations that themselves return `Option<T>`:
+If the user is absent, the result is `None<string>` and the lambda never runs. No null check at the call site, because there is no way to reach a value that isn't there.
+
+`FlatMap` chains steps that *themselves* return an `Option`. Rust calls this `and_then`; the idea is identical:
 
 ```csharp
 Option<Order> latestOrder = repository
     .FindById(id)
-    .Bind(user => orderRepository.FindLatestByUser(user.Id));
+    .FlatMap(user => orderRepository.FindLatestByUser(user.Id));
 ```
 
-Each step either produces a value or short-circuits to `None`. The happy path stays readable. You do not accumulate guard clauses.
+Each step either produces a value or short-circuits to `None`. Without `FlatMap` you would get an `Option<Option<Order>>` — a box inside a box. It flattens them for you. The happy path stays a clean, readable chain. You never accumulate the pyramid of guard clauses that null handling usually breeds.
 
 ## When to reach for it
 
-Not everywhere. Nullable reference types (`T?`) are fine for internal implementation details where the scope is small and the null is obvious from context. `Option<T>` earns its place at domain and application boundaries: repository lookups, external service calls, any operation where absence is a first-class outcome and not an edge case to be papered over.
+Not everywhere. Nullable reference types (`T?`) are fine for small, internal details where the absence is obvious from a glance at the surrounding code.
 
-The question worth asking: can this legitimately return nothing? If yes, the return type should communicate that fact. `User?` communicates it optionally. `Option<User>` communicates it unambiguously.
+`Option<T>` earns its place at boundaries — repository lookups, external service calls, anywhere absence is a legitimate outcome rather than an edge case to paper over. The question worth asking: *can this honestly return nothing?* If yes, the return type should say so out loud.
 
-The overhead is real. You write `.Match()` where you would have written an `if` check. But the forcing function is the point. The `if` check is optional. The `.Match()` is not.
+`User?` says it optionally. `Option<User>` says it unambiguously.
+
+The overhead is real. You write `.Match()` where you might have written an `if`. But that is the entire point. The `if` is optional; the compiler shrugs if you skip it. The `.Match()` is not. Rust proved you can make the safe path the only path — porting that discipline to .NET is just a matter of deciding the politeness was never enough.
