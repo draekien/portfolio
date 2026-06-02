@@ -79,7 +79,7 @@ export function ArticleFeedSubscribe() {
             </ol>
             <p>
               Readers like NetNewsWire, Feedly, and Reeder check the feed and
-              surface new articles as they're published.
+              surface new articles as they&apos;re published.
             </p>
             <a
               href="https://aboutfeeds.com"
