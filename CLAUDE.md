@@ -42,6 +42,8 @@ Next.js 16 App Router portfolio site. React 19 with React Compiler enabled. Type
 
 **Structured data** — each project route has a `structured-data.json` colocated alongside its `page.tsx`, injected via `<JsonLd data={...} />`.
 
+**MDX components** — custom components usable in article `.mdx` are registered in the `components` map in `components/mdx/mdx-content.tsx`. Client components (`"use client"`) work there as client islands within the RSC-rendered MDX.
+
 **Typed routes** — `next.config.ts` enables `typedRoutes: true`. Always use typed `href` props (e.g. `link={{ href: "/projects/parasol" }}`). Run `pnpm typegen` if route types are stale.
 
 **Theme** — `next-themes` with `attribute="class"`. Both light and dark modes must be considered for any new visual element.
@@ -50,4 +52,4 @@ Next.js 16 App Router portfolio site. React 19 with React Compiler enabled. Type
 
 **Biome 2.x** is the linter and formatter (no ESLint, no Prettier). Double quotes for JS/TS strings. Imports are auto-organized on save via Biome assist. `tailwindDirectives: true` is set in `biome.json` — do not disable CSS linting to work around Tailwind `@` directives.
 
-**shadcn/ui** — use the `shadcn` CLI to add components. Don't hand-edit files in `components/ui/`.
+**shadcn/ui** — use the `shadcn` CLI to add components. Don't hand-edit files in `components/ui/`. shadcn primitives in this project are built on **Base UI** (`@base-ui/react`), not Radix — the component API (e.g. `Popover.Positioner`/`Popover.Popup`) and props differ from Radix equivalents.
