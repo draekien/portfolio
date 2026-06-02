@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArticleFeedSubscribe } from "@/components/article-feed-subscribe";
 import { ArticleRow } from "@/components/article-row";
 import { BrandMark } from "@/components/brand-mark";
 import { JsonLd } from "@/components/json-ld";
@@ -40,6 +41,7 @@ export default async function ArticlesPage() {
     <>
       <JsonLd data={structuredData} />
       <section className="container mx-auto pt-16 pb-24">
+        <ArticleFeedSubscribe />
         <div className="flex items-center gap-4 mb-16">
           <BrandMark className="text-primary shrink-0" />
           <hr className="flex-1 border-border" />
