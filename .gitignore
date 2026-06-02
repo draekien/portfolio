@@ -46,6 +46,7 @@ next-env.d.ts
 .superpowers
 .claude/settings.local.json
 .copilot
+.playwright-mcp/
 
 # Worktrees
 .worktrees
