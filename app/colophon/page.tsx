@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Colophon | William Pei",
@@ -33,7 +42,7 @@ function Section({
           {label}
         </p>
       </div>
-      <h2 className="text-2xl md:text-3xl font-mono font-medium tracking-tight">
+      <h2 className="text-2xl md:text-3xl font-mono font-medium tracking-tight text-balance">
         {heading}
       </h2>
       <div className="space-y-4 text-muted-foreground leading-relaxed max-w-prose">
@@ -46,16 +55,28 @@ function Section({
 export default function ColophonPage() {
   return (
     <article className="container mx-auto pt-16 pb-24 max-w-3xl">
+      <Breadcrumb className="mb-12">
+        <BreadcrumbList className="font-mono text-sm">
+          <BreadcrumbItem>
+            <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Colophon</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+
       <header className="mb-12 space-y-4">
-        <h1 className="font-mono font-medium tracking-tight leading-tight text-[clamp(1.875rem,1rem+3vw,3rem)]">
+        <h1 className="font-mono font-medium tracking-tight leading-tight text-balance text-[clamp(1.875rem,1rem+3vw,3rem)]">
           <BrandMark className="text-primary mr-2" />
           Colophon
         </h1>
-        <p className="text-lg text-foreground leading-relaxed max-w-prose">
-          I work with AI, and I&apos;d rather say so plainly than let you guess.
-          This page is the honest account of how the site, the articles, and the
-          case studies get made, drawn at the level where the truth actually
-          lives.
+        <p className="text-lg text-foreground leading-relaxed text-pretty max-w-prose">
+          I work with AI, and I would rather say so plainly than leave you
+          guessing. What follows is an honest account of how the site, the
+          articles, and the case studies come together, written at the level
+          where the truth actually lives.
         </p>
       </header>
 
@@ -64,17 +85,18 @@ export default function ColophonPage() {
           label="principle"
           heading="Credit goes to the role, not the keystroke"
         >
-          <p>
-            For anything here there are three separable things, and they have
-            genuinely different origins: the experience and judgment behind a
+          <p className="text-pretty">
+            Three things sit behind anything published here, and they come from
+            genuinely different places: the experience and judgment driving a
             piece, the words and code that express it, and the accountability
-            for publishing it. I name all three rather than collapse them.
+            for putting it out. Rather than collapse those into a single claim,
+            I name each one.
           </p>
-          <p>
-            Tagging individual sentences as &ldquo;mine&rdquo; or &ldquo;the
-            AI&apos;s&rdquo; would claim a precision that does not exist; the
-            work is braided. So I attribute by role instead. The line that
-            matters most:{" "}
+          <p className="text-pretty">
+            Why not tag individual sentences as &ldquo;mine&rdquo; or &ldquo;the
+            AI&apos;s&rdquo;? Because the work is braided, and that kind of
+            labelling would claim a precision that does not exist. Attribution
+            by role is the honest unit. The line that matters most:{" "}
             <span className="text-foreground">
               AI can draft the telling of a true story. It never invents the
               story.
@@ -86,18 +108,18 @@ export default function ColophonPage() {
           label="articles"
           heading="Co-written, fully verified, mine to answer for"
         >
-          <p>
+          <p className="text-pretty">
             The incidents, opinions, and technical judgment in my writing are
-            real and my own: the production failures happened to me, the design
-            decisions were mine to make. I co-write the prose with Claude,
-            working through a writing process I built and keep refining.
+            real and my own. The production failures happened to me; the design
+            decisions were mine to make. The prose itself is co-written with
+            Claude, through a writing process I built and keep refining.
           </p>
-          <p>
-            Before anything publishes, every factual claim is checked against
-            its source: the real repository, the actual type signatures, the
-            published docs. When the source contradicts a draft, the source
-            wins. I read every line and I stand behind all of it, regardless of
-            who typed the first version.
+          <p className="text-pretty">
+            Nothing publishes until every factual claim has been checked against
+            its source, whether that is the real repository, the actual type
+            signatures, or the published docs, and when a draft and its source
+            disagree, the source wins. I read every line, and whoever typed the
+            first version, the final words are mine to answer for.
           </p>
         </Section>
 
@@ -105,12 +127,12 @@ export default function ColophonPage() {
           label="case studies"
           heading="Real projects, co-written write-ups"
         >
-          <p>
+          <p className="text-pretty">
             Parasol, North Shore Meditation, Waystone.Monads, and
-            Waystone.WideLogEvents are my own work, designed, built, and shipped
-            by me. The case-study pages that describe them were co-written with
-            Claude, and every claim about how the projects work is mine and
-            verified.
+            Waystone.WideLogEvents are my own work: designed, built, and shipped
+            by me. The case-study pages describing them were co-written with
+            Claude, and every claim about how the projects actually work is mine
+            and verified before it goes up.
           </p>
         </Section>
 
@@ -118,30 +140,30 @@ export default function ColophonPage() {
           label="this site"
           heading="A hand-authored original, rebuilt with AI"
         >
-          <p>
-            The first version of this portfolio (the original design and the
-            site it produced) was authored entirely by hand, no AI involved. The
-            version you are reading now grew out of that one: I rebuilt it with
-            heavy AI assistance, using{" "}
+          <p className="text-pretty">
+            The first version of this portfolio, both the original design and
+            the site it produced, was authored entirely by hand, with no AI
+            involved. What you are reading now grew out of that earlier version:
+            I rebuilt it with heavy AI assistance, leaning on{" "}
             <span className="text-foreground">Claude Code</span> for the
             engineering and a design process I drive for the interface.
           </p>
-          <p>
+          <p className="text-pretty">
             The architecture, the design decisions, the content, and the final
-            review are mine. The original is the foundation; this is its
-            AI-assisted descendant.
+            review remain mine throughout. The original is the foundation; this
+            is its AI-assisted descendant.
           </p>
         </Section>
 
         <Section label="why" heading="Honesty is the easy call here">
-          <p>
-            This is a portfolio about ideas and judgment, and those are the
-            parts that are unambiguously mine. Saying where AI helped costs me
-            nothing and earns the trust of the people most likely to assume the
-            worst if I stayed quiet. It is also just the consistent thing to do:
-            I already credit the lineage of an idea when I write; crediting the
-            tools that help produce the words is the same standard, one layer
-            down.
+          <p className="text-pretty">
+            This is a portfolio about ideas and judgment, and those parts are
+            unambiguously mine, so saying where AI helped costs me nothing while
+            earning the trust of the people most likely to assume the worst if I
+            stayed quiet. It is also simply the consistent thing to do: I
+            already credit the lineage of an idea when I write, and crediting
+            the tools that help produce the words is that same standard, one
+            layer down.
           </p>
         </Section>
       </div>

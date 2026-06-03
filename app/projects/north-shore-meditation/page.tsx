@@ -364,9 +364,10 @@ const { data } = useSuspenseGetArticlesQuery({ preview: isPreview })`}
         <div className="max-w-3xl">
           <Colophon>
             <p>
-              North Shore Meditation is a site I designed and built for a real
-              client. This case study was co-written with Claude; every claim
-              about how it works is mine and verified.
+              I designed and shipped North Shore Meditation for a real client.
+              Claude and I wrote this case study together, though everything it
+              says about how the site works comes from me, verified against what
+              I built.
             </p>
           </Colophon>
         </div>

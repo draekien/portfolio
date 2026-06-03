@@ -354,9 +354,9 @@ yield* Schema.decodeUnknown(InputSchema)(input).pipe(
         <div className="max-w-3xl">
           <Colophon>
             <p>
-              Parasol is my own work. I designed and built it. This case study
-              was co-written with Claude; every claim about how it works is mine
-              and verified.
+              Parasol is something I designed and built. I co-wrote the write-up
+              with Claude, and any description of how it works is mine, checked
+              against the source before it went up.
             </p>
           </Colophon>
         </div>

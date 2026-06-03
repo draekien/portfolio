@@ -33,9 +33,8 @@ export function Colophon({
       <div className="mt-3 text-muted-foreground leading-relaxed">
         {children ?? (
           <p>
-            The experience and the argument here are mine. I co-wrote the prose
-            with Claude, and checked every claim against its source before
-            publishing. I stand behind all of it.
+            The thinking here is mine; I co-wrote the prose with Claude and
+            checked every claim against its source.
           </p>
         )}
       </div>

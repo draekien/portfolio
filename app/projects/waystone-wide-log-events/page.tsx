@@ -248,9 +248,10 @@ builder.Host.UseSerilog((context, config) => config
         <div className="max-w-3xl">
           <Colophon>
             <p>
-              Waystone.WideLogEvents is my own open-source library. This case
-              study was co-written with Claude; every claim about how the code
-              works is mine and verified against the source.
+              I wrote and open-sourced Waystone.WideLogEvents myself. The case
+              study that follows was co-written with Claude. Wherever I describe
+              how the code works, that account is mine, and I confirmed it
+              against the source.
             </p>
           </Colophon>
         </div>

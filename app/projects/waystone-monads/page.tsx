@@ -225,9 +225,9 @@ return result.Match(
         <div className="max-w-3xl">
           <Colophon>
             <p>
-              Waystone.Monads is my own open-source library. This case study was
-              co-written with Claude; every claim about how the code works is
-              mine and verified against the source.
+              Waystone.Monads is an open-source library I wrote. Claude helped
+              me draft this write-up, but the explanations of how the code
+              behaves are my own, each one checked back against the source.
             </p>
           </Colophon>
         </div>
