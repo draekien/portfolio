@@ -20,12 +20,7 @@ export function Colophon({
   className,
 }: ColophonProps) {
   return (
-    <aside
-      className={cn(
-        "not-prose rounded-lg border border-border bg-muted p-6",
-        className,
-      )}
-    >
+    <aside className={cn("not-prose border-t border-border pt-6", className)}>
       <p className="flex items-center gap-2 font-mono text-sm text-secondary">
         <BrandMark className="text-primary" />
         {label}

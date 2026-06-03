@@ -361,7 +361,7 @@ const { data } = useSuspenseGetArticlesQuery({ preview: isPreview })`}
           </div>
         </section>
 
-        <div className="max-w-3xl">
+        <div className="mt-20">
           <Colophon>
             <p>
               I designed and shipped North Shore Meditation for a real client.

@@ -351,7 +351,7 @@ yield* Schema.decodeUnknown(InputSchema)(input).pipe(
           </div>
         </section>
 
-        <div className="max-w-3xl">
+        <div className="mt-20">
           <Colophon>
             <p>
               Parasol is something I designed and built. I co-wrote the write-up

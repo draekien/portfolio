@@ -222,7 +222,7 @@ return result.Match(
           </div>
         </section>
 
-        <div className="max-w-3xl">
+        <div className="mt-20">
           <Colophon>
             <p>
               Waystone.Monads is an open-source library I wrote. Claude helped

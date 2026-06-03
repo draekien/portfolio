@@ -245,7 +245,7 @@ builder.Host.UseSerilog((context, config) => config
           </div>
         </section>
 
-        <div className="max-w-3xl">
+        <div className="mt-20">
           <Colophon>
             <p>
               I wrote and open-sourced Waystone.WideLogEvents myself. The case
