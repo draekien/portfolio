@@ -4,7 +4,7 @@
     {
       "@type": "SoftwareSourceCode",
       "name": "Waystone.WideLogEvents",
-      "description": "A .NET library implementing the wide events logging pattern. Accumulates properties throughout a request's lifetime and flushes them as a single structured log event — solving context correlation in distributed systems.",
+      "description": "A .NET library implementing the wide events logging pattern. Accumulates properties throughout a request's lifetime and flushes them as a single structured log event, solving context correlation in distributed systems.",
       "codeRepository": "https://github.com/draekien-industries/waystone-dotnet",
       "programmingLanguage": "C#",
       "runtimePlatform": [".NET Standard 2.0", ".NET 8", ".NET 10"],

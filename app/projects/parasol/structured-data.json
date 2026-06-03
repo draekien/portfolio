@@ -5,7 +5,7 @@
       "@type": "SoftwareApplication",
       "name": "Parasol",
       "applicationCategory": "FinanceApplication",
-      "description": "A private FIRE calculator that keeps your data yours — no open banking access required. Track Financial Independence, Retire Early progress with manual entry. Built with TanStack Start, Neon for serverless Postgres, and Clerk for auth.",
+      "description": "A private FIRE calculator that keeps your data yours, no open banking access required. Track Financial Independence, Retire Early progress with manual entry. Built with TanStack Start, Neon for serverless Postgres, and Clerk for auth.",
       "url": "https://parasol.wpei.me",
       "image": "https://www.wpei.me/parasol-hero-light.png",
       "operatingSystem": "Web",

@@ -24,6 +24,12 @@ export function LayoutHeader() {
         >
           articles
         </Link>
+        <Link
+          href="/colophon"
+          className="font-mono text-sm text-muted-foreground hover:text-foreground transition-colors duration-150"
+        >
+          colophon
+        </Link>
         <ButtonGroup>
           <Tooltip>
             <TooltipTrigger render={<ThemeToggle variant="ghost" />} />

@@ -20,7 +20,6 @@ export default async function Image() {
         fontFamily: "Figtree",
       }}
     >
-      {/* Top row */}
       <div
         style={{
           display: "flex",
@@ -40,34 +39,30 @@ export default async function Image() {
           wpei.me
         </span>
       </div>
-
-      {/* Main content */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
         <span
           style={{
-            fontSize: 80,
-            fontWeight: 600,
+            fontFamily: "JetBrains Mono",
+            fontSize: 72,
+            fontWeight: 500,
             color: OG_COLORS.fg,
-            lineHeight: 1.05,
-            letterSpacing: "-0.03em",
+            lineHeight: 1.1,
+            letterSpacing: "-0.02em",
           }}
         >
-          Parasol
+          Colophon
         </span>
         <span
           style={{
             fontSize: 26,
             color: OG_COLORS.muted,
             lineHeight: 1.5,
-            maxWidth: 700,
+            maxWidth: 720,
           }}
         >
-          A private FIRE calculator that keeps your data yours, no open banking
-          access required.
+          Where AI helped, where it didn&apos;t, and what stays mine.
         </span>
       </div>
-
-      {/* Bottom row */}
       <div
         style={{
           display: "flex",
@@ -83,14 +78,9 @@ export default async function Image() {
             letterSpacing: "0.06em",
           }}
         >
-          @application
+          @colophon
         </span>
-        <span
-          style={{
-            fontSize: 20,
-            color: OG_COLORS.muted,
-          }}
-        >
+        <span style={{ fontSize: 20, color: OG_COLORS.muted }}>
           William Pei
         </span>
       </div>

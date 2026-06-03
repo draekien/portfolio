@@ -4,6 +4,7 @@ import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
+import { Colophon } from "@/components/colophon";
 import { ExpandableInstallCommand } from "@/components/expandable-install-command";
 import { FrameworkBadge } from "@/components/framework-badge";
 import { JsonLd } from "@/components/json-ld";
@@ -101,8 +102,8 @@ export default async function WaystoneWideLogEventsPage() {
             <p>
               Debugging distributed systems meant correlating dozens of
               fragmented log entries per request. A single user action could
-              scatter context across 30+ log lines — different timestamps,
-              different log levels, different services — and you had to mentally
+              scatter context across 30+ log lines (different timestamps,
+              different log levels, different services) and you had to mentally
               stitch them together.
             </p>
             <p>
@@ -122,7 +123,7 @@ export default async function WaystoneWideLogEventsPage() {
               <p className="text-muted-foreground mb-6 lg:mb-0 max-w-prose">
                 Configure Serilog with the <Code>WideLogEventsContext</Code>{" "}
                 enricher and middleware. The library integrates with{" "}
-                <Code>Serilog.AspNetCore</Code> — your existing request logging
+                <Code>Serilog.AspNetCore</Code>; your existing request logging
                 pipeline stays intact.
               </p>
             </div>
@@ -137,7 +138,7 @@ builder.Host.UseSerilog((context, config) => config
 
 var app = builder.Build();
 
-// Middleware order matters — register before UseSerilogRequestLogging
+// Middleware order matters: register before UseSerilogRequestLogging
 app.UseWideLogEventsContext();
 app.UseSerilogRequestLogging();`}
               />
@@ -162,7 +163,7 @@ app.UseSerilogRequestLogging();`}
                 </p>
                 <CodeBlock
                   language="csharp"
-                  code={`// In a handler, service, or middleware — anywhere in the request
+                  code={`// In a handler, service, or middleware: anywhere in the request
 WideLogEventContext.PushProperty("userId", userId);
 WideLogEventContext.PushProperty("action", "checkout");
 WideLogEventContext.PushProperty("cartItemCount", cart.Items.Count);
@@ -187,7 +188,7 @@ WideLogEventContext.PushProperty("totalValue", cart.Total);
                 </p>
                 <CodeBlock
                   language="csharp"
-                  code={`// Tune per-level sample rates — errors and fatals always emit
+                  code={`// Tune per-level sample rates: errors and fatals always emit
 builder.Host.UseSerilog((context, config) => config
     .Enrich.FromWideLogEventsContext()
     .Filter.WithWideLogEventsSampling(options =>
@@ -243,6 +244,17 @@ builder.Host.UseSerilog((context, config) => config
             ))}
           </div>
         </section>
+
+        <div className="mt-20">
+          <Colophon>
+            <p>
+              I wrote and open-sourced Waystone.WideLogEvents myself. The case
+              study that follows was co-written with Claude. Wherever I describe
+              how the code works, that account is mine, and I confirmed it
+              against the source.
+            </p>
+          </Colophon>
+        </div>
       </div>
     </>
   );

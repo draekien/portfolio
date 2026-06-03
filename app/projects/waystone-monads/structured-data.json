@@ -4,7 +4,7 @@
     {
       "@type": "SoftwareSourceCode",
       "name": "Waystone.Monads",
-      "description": "A .NET implementation of Option<T> and Result<T,E> monads inspired by Rust's standard library. Makes impossible states impossible at the type level — eliminates null reference exceptions and untyped exceptions from domain logic.",
+      "description": "A .NET implementation of Option<T> and Result<T,E> monads inspired by Rust's standard library. Makes impossible states impossible at the type level: eliminates null reference exceptions and untyped exceptions from domain logic.",
       "codeRepository": "https://github.com/draekien-industries/waystone-dotnet",
       "programmingLanguage": "C#",
       "runtimePlatform": ".NET Standard 2.0",
