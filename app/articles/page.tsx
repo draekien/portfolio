@@ -50,7 +50,7 @@ export default async function ArticlesPage() {
           </h1>
           <BrandMark className="text-primary shrink-0" />
         </div>
-        <div className="divide-y divide-border">
+        <div>
           {articles.map((article) => (
             <ArticleRow key={article.slug} article={article} />
           ))}
