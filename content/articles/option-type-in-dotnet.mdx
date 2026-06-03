@@ -116,3 +116,7 @@ Not everywhere. Nullable reference types (`T?`) are fine for small, internal det
 `User?` says it optionally. `Option<User>` says it unambiguously.
 
 The overhead is real. You write `.Match()` where you might have written an `if`. But that is the entire point. The `if` is optional; the compiler shrugs if you skip it. The `.Match()` is not. Rust proved you can make the safe path the only path — porting that discipline to .NET is just a matter of deciding the politeness was never enough.
+
+<SourceCallout internal href="/projects/waystone-monads" title="Waystone.Monads">
+  The full case study: design rationale, the Option and Result API surface, and the .NET compatibility matrix.
+</SourceCallout>
