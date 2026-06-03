@@ -33,6 +33,8 @@ Short sentences. Plain language. One idea per paragraph.
 
 Explain, don't assert — when a claim matters, give the reason in the same breath, so the reader understands rather than takes it on faith. Cut every word that does not carry meaning, but never cut the *why*. Concision serves clarity; it does not compete with it.
 
+Expect the first draft to run long. Drafting and tightening are separate jobs: the draft gets the ideas down, then a deliberate pass cuts everything that doesn't earn its place. Make that pass paragraph by paragraph — if a sentence can go without losing an idea, it goes. Be ruthless and pragmatic; the grounded, well-structured draft is the starting point for this pass, not the finish line.
+
 ## Shape the arc
 
 Lead with the problem, made vivid and specific, before any solution. Then walk the natural progression:
@@ -43,6 +45,12 @@ Lead with the problem, made vivid and specific, before any solution. Then walk t
 4. **Judgment** — when to reach for it, when not to, and the honest cost.
 
 The arc is a default, not a cage. Reorder it when the material demands, but always move from felt problem to earned conclusion.
+
+## Make it skimmable
+
+Most readers scan before they commit. The table of contents is generated from the `##` and `###` headings, so those headings are the spine — the argument as a skimmer first meets it. Write them as claims, not labels: "Compression is not the goal," not "On compression." A reader should be able to get the thesis from the contents alone.
+
+When a section holds several distinct points, give each its own `###` heading instead of a **bold lead-in**. Bold inline text marks emphasis but never reaches the table of contents, so the one structure a skimmer actually scans stays blind to it. A heading carries the point into the TOC and gives it an anchor to link.
 
 ## Keep the judgment honest
 
@@ -70,3 +78,5 @@ The frontmatter is schema-validated on build, so field names and types must matc
 - **Documentation in disguise** — neutral, sourceless exposition with no point of view. An article argues something; reference material does not.
 - **The sales pitch ending** — closing by recommending the idea unconditionally. Omitting the tradeoff reads as either naïve or dishonest.
 - **Padding the why away** — cutting so hard that claims become bare assertions. Concision removes filler, not reasoning.
+- **Wind-up before the point** — opening a paragraph with a sentence that announces the point, or a hedge ("which I'd be lying to omit"), before making it. Lead with the point; let the reasoning follow.
+- **Bold lead-ins as section markers** — using **bold inline text** to flag the key points in a section. It signals emphasis but never reaches the table of contents, so a skimmer can't find it. Promote a recurring point to a `###` heading instead.
