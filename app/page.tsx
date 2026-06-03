@@ -485,7 +485,7 @@ WideLogEventContext.PushProperty("action", "checkout");`}
           </p>
           <BrandMark className="text-primary shrink-0" />
         </div>
-        <div className="divide-y divide-border">
+        <div>
           {latestArticles.map((article) => (
             <ArticleRow key={article.slug} article={article} />
           ))}
