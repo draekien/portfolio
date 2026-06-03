@@ -75,8 +75,7 @@ export default function ColophonPage() {
         <p className="text-lg text-foreground leading-relaxed text-pretty max-w-prose">
           I work with AI, and I would rather say so plainly than leave you
           guessing. What follows is an honest account of how the site, the
-          articles, and the case studies come together, written at the level
-          where the truth actually lives.
+          articles, and the case studies come together.
         </p>
       </header>
 
@@ -95,8 +94,8 @@ export default function ColophonPage() {
           <p className="text-pretty">
             Why not tag individual sentences as &ldquo;mine&rdquo; or &ldquo;the
             AI&apos;s&rdquo;? Because the work is braided, and that kind of
-            labelling would claim a precision that does not exist. Attribution
-            by role is the honest unit. The line that matters most:{" "}
+            labelling would claim a precision that does not exist. The line that
+            matters most:{" "}
             <span className="text-foreground">
               AI can draft the telling of a true story. It never invents the
               story.
@@ -158,12 +157,12 @@ export default function ColophonPage() {
         <Section label="why" heading="Honesty is the easy call here">
           <p className="text-pretty">
             This is a portfolio about ideas and judgment, and those parts are
-            unambiguously mine, so saying where AI helped costs me nothing while
-            earning the trust of the people most likely to assume the worst if I
-            stayed quiet. It is also simply the consistent thing to do: I
-            already credit the lineage of an idea when I write, and crediting
-            the tools that help produce the words is that same standard, one
-            layer down.
+            unambiguously mine. Saying where AI helped takes nothing away from
+            that, and anyone wondering how the work was made deserves a straight
+            answer rather than a guess. It is also simply the consistent thing
+            to do: I already credit the lineage of an idea when I write, and
+            crediting the tools that help produce the words is that same
+            standard, one layer down.
           </p>
         </Section>
       </div>
