@@ -57,7 +57,7 @@ export const glossary = {
   "agent-skill": {
     label: "Agent capability",
     summary:
-      "A folder of instructions — a SKILL.md file plus optional scripts and reference docs — that an AI agent loads on demand to gain a specific capability. Defined by the open standard at agentskills.io.",
+      "A folder of instructions (a SKILL.md file plus optional scripts and reference docs) that an AI agent loads on demand to gain a specific capability. Defined by the open standard at agentskills.io.",
     href: "https://agentskills.io/specification",
     hrefLabel: "The specification",
   },

@@ -5,6 +5,7 @@ import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
+import { Colophon } from "@/components/colophon";
 import { FrameworkBadge } from "@/components/framework-badge";
 import { JsonLd } from "@/components/json-ld";
 import {
@@ -70,7 +71,7 @@ export default function NorthShoreMeditationPage() {
             North Shore Meditation
           </h1>
           <p className="text-lg md:text-xl text-foreground leading-relaxed">
-            A site the client can actually maintain — events, articles, and page
+            A site the client can actually maintain: events, articles, and page
             content managed entirely from their dashboard.
           </p>
           <div className="flex items-center gap-3 flex-wrap">
@@ -133,28 +134,28 @@ export default function NorthShoreMeditationPage() {
               <CarouselItem>
                 <Image
                   src="/north-shore-meditation-science-dark-mobile.png"
-                  alt="North Shore Meditation — backed by science section"
+                  alt="North Shore Meditation: backed by science section"
                   width={1179}
                   height={2556}
                   className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
                 />
                 <Image
                   src="/north-shore-meditation-science-light-mobile.png"
-                  alt="North Shore Meditation — backed by science section"
+                  alt="North Shore Meditation: backed by science section"
                   width={1179}
                   height={2556}
                   className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
                 />
                 <Image
                   src="/north-shore-meditation-science-dark.png"
-                  alt="North Shore Meditation — backed by science section"
+                  alt="North Shore Meditation: backed by science section"
                   width={1920}
                   height={1080}
                   className="hidden sm:dark:block w-full h-auto rounded-lg"
                 />
                 <Image
                   src="/north-shore-meditation-science-light.png"
-                  alt="North Shore Meditation — backed by science section"
+                  alt="North Shore Meditation: backed by science section"
                   width={1920}
                   height={1080}
                   className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
@@ -175,7 +176,7 @@ export default function NorthShoreMeditationPage() {
                 developer. Every content change was a bottleneck.
               </p>
               <p>
-                The client needed to own their content — publish events on their
+                The client needed to own their content: publish events on their
                 schedule, write articles when the moment was right, and update
                 page copy without friction.
               </p>
@@ -188,7 +189,7 @@ export default function NorthShoreMeditationPage() {
               <p>
                 A headless CMS architecture where Contentful handles all content
                 authoring and Next.js renders it. The client works entirely in
-                Contentful&apos;s dashboard — no code, no deployments, no
+                Contentful&apos;s dashboard: no code, no deployments, no
                 tickets.
               </p>
               <p>
@@ -217,7 +218,7 @@ export default function NorthShoreMeditationPage() {
               {
                 badge: "resend" as const,
                 rationale:
-                  "Reliable transactional email for contact form submissions. Simple API with strong deliverability — no SMTP configuration.",
+                  "Reliable transactional email for contact form submissions. Simple API with strong deliverability, no SMTP configuration.",
               },
               {
                 badge: "typescript" as const,
@@ -240,7 +241,7 @@ export default function NorthShoreMeditationPage() {
           <div className="space-y-16 max-w-3xl md:max-w-none">
             <div className="md:grid md:grid-cols-[11rem_1fr] md:gap-x-12">
               <p className="font-mono text-sm text-secondary mb-2 md:mb-0">
-                <BrandMark className="text-primary mr-1" /> 01 — performance
+                <BrandMark className="text-primary mr-1" /> 01 · performance
               </p>
               <div>
                 <h3 className="text-lg font-semibold mb-3">
@@ -253,7 +254,7 @@ export default function NorthShoreMeditationPage() {
                   <Code>React.memo</Code>, <Code>useMemo</Code>, and{" "}
                   <Code>useCallback</Code> through component files. The compiler
                   analyses the component tree at build time and memoizes only
-                  where it determines re-renders would be redundant — no manual
+                  where it determines re-renders would be redundant: no manual
                   decisions, no annotation drift, no incorrect dependency
                   arrays.
                 </p>
@@ -262,7 +263,7 @@ export default function NorthShoreMeditationPage() {
 
             <div className="md:grid md:grid-cols-[11rem_1fr] md:gap-x-12">
               <p className="font-mono text-sm text-secondary mb-2 md:mb-0">
-                <BrandMark className="text-primary mr-1" /> 02 — data fetching
+                <BrandMark className="text-primary mr-1" /> 02 · data fetching
               </p>
               <div>
                 <h3 className="text-lg font-semibold mb-3">
@@ -272,7 +273,7 @@ export default function NorthShoreMeditationPage() {
                   Every Contentful fetcher wraps its{" "}
                   <Code>queryClient.fetchQuery()</Code> call in React&apos;s{" "}
                   <Code>cache()</Code>. TanStack Query deduplicates client-side;{" "}
-                  <Code>cache()</Code> handles the server side — two Server
+                  <Code>cache()</Code> handles the server side: two Server
                   Components requesting the same article during a single render
                   cycle share one Contentful response. Without it, each
                   component tree branch that reads the same entry makes its own
@@ -287,7 +288,7 @@ export const getArticles = cache(async (options) => {
 });
 
 // Two Server Components can both call getArticles()
-// in the same render — Contentful is only hit once`}
+// in the same render: Contentful is only hit once`}
                   />
                 </div>
               </div>
@@ -295,7 +296,7 @@ export const getArticles = cache(async (options) => {
 
             <div className="md:grid md:grid-cols-[11rem_1fr] md:gap-x-12">
               <p className="font-mono text-sm text-secondary mb-2 md:mb-0">
-                <BrandMark className="text-primary mr-1" /> 03 — i18n
+                <BrandMark className="text-primary mr-1" /> 03 · i18n
               </p>
               <div>
                 <h3 className="text-lg font-semibold mb-3">
@@ -308,7 +309,7 @@ export const getArticles = cache(async (options) => {
                   runtime to the client. Libraries like <Code>next-intl</Code>{" "}
                   or <Code>i18next</Code> add bundle weight and require
                   hydration; the JSON approach simply can&apos;t be imported in
-                  a client component — TypeScript will reject it at build time.
+                  a client component; TypeScript will reject it at build time.
                 </p>
                 <div className="max-w-2xl">
                   <CodeBlock
@@ -328,7 +329,7 @@ export async function getDictionary(locale: Locale) {
 
             <div className="md:grid md:grid-cols-[11rem_1fr] md:gap-x-12">
               <p className="font-mono text-sm text-secondary mb-2 md:mb-0">
-                <BrandMark className="text-primary mr-1" /> 04 — data layer
+                <BrandMark className="text-primary mr-1" /> 04 · data layer
               </p>
               <div>
                 <h3 className="text-lg font-semibold mb-3">
@@ -340,18 +341,18 @@ export async function getDictionary(locale: Locale) {
                   custom fetcher function is injected into every generated hook,
                   so authentication tokens, cache tags, and draft-mode flags
                   flow through automatically. Contentful schema changes
-                  regenerate types — mismatches become build errors before they
+                  regenerate types; mismatches become build errors before they
                   reach production.
                 </p>
                 <div className="max-w-2xl">
                   <CodeBlock
                     language="typescript"
-                    code={`// codegen.ts — custom fetcher injected into every generated hook
+                    code={`// codegen.ts: custom fetcher injected into every generated hook
 config:
   fetcher: "@/lib/fetcher#fetcher"
   addSuspenseQuery: true
 
-// Generated usage — fully typed, no hand-written wrapper
+// Generated usage: fully typed, no hand-written wrapper
 const { data } = useSuspenseGetArticlesQuery({ preview: isPreview })`}
                   />
                 </div>
@@ -359,6 +360,16 @@ const { data } = useSuspenseGetArticlesQuery({ preview: isPreview })`}
             </div>
           </div>
         </section>
+
+        <div className="max-w-3xl">
+          <Colophon>
+            <p>
+              North Shore Meditation is a site I designed and built for a real
+              client. This case study was co-written with Claude; every claim
+              about how it works is mine and verified.
+            </p>
+          </Colophon>
+        </div>
       </div>
     </>
   );

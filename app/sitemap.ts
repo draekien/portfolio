@@ -25,6 +25,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: "https://www.wpei.me/colophon",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
       url: "https://www.wpei.me/projects/parasol",
       lastModified: new Date(),
       changeFrequency: "monthly",

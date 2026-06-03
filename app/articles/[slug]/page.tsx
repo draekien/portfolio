@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArticleToc } from "@/components/article-toc";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
+import { Colophon } from "@/components/colophon";
 import { JsonLd } from "@/components/json-ld";
 import { MdxContent } from "@/components/mdx/mdx-content";
 import { getAllArticleSlugs, getArticleBySlug } from "@/lib/articles";
@@ -124,7 +125,10 @@ export default async function ArticlePage({
           </div>
           <ArticleToc headings={article.headings} />
         </div>
-        <footer className="mt-16 pt-8 border-t border-border">
+        <div className="mt-16">
+          <Colophon />
+        </div>
+        <footer className="mt-12 pt-8 border-t border-border">
           <ButtonLink internal link={{ href: "/articles" }}>
             ← Back to articles
           </ButtonLink>

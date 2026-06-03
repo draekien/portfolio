@@ -4,6 +4,7 @@ import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
+import { Colophon } from "@/components/colophon";
 import { FrameworkBadge } from "@/components/framework-badge";
 import { JsonLd } from "@/components/json-ld";
 import { ProjectSectionHeading } from "@/components/project-section";
@@ -116,7 +117,7 @@ export default async function WaystoneMonadsPage() {
             </p>
             <p>
               Rust&apos;s <Code>Option</Code> and <Code>Result</Code> types
-              solve this elegantly — you cannot access the inner value without
+              solve this elegantly: you cannot access the inner value without
               handling both cases. Waystone.Monads brings that discipline to
               .NET, without requiring F# or abandoning idiomatic C# patterns.
             </p>
@@ -144,7 +145,7 @@ export default async function WaystoneMonadsPage() {
                   code={`// A user may or may not exist for a given id
 Option<User> user = repository.Find(id);
 
-// Pattern match — compiler ensures both cases are handled
+// Pattern match: compiler ensures both cases are handled
 return user.Match(
     onSome: u => Results.Ok(u),
     onNone: () => Results.NotFound()
@@ -220,6 +221,16 @@ return result.Match(
             </div>
           </div>
         </section>
+
+        <div className="max-w-3xl">
+          <Colophon>
+            <p>
+              Waystone.Monads is my own open-source library. This case study was
+              co-written with Claude; every claim about how the code works is
+              mine and verified against the source.
+            </p>
+          </Colophon>
+        </div>
       </div>
     </>
   );

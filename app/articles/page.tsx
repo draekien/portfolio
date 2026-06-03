@@ -27,7 +27,7 @@ export default async function ArticlesPage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "William Pei — Articles",
+    name: "William Pei: Articles",
     description: metadata.description,
     url: "https://www.wpei.me/articles",
     author: {

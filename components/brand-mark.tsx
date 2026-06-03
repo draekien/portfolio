@@ -1,7 +1,7 @@
 import type { SVGProps } from "react";
 import { cn } from "@/lib/utils";
 
-// Geometry sourced from public/mark.svg — left two diagonal bars only.
+// Geometry sourced from public/mark.svg: left two diagonal bars only.
 // viewBox clips at y=54; paths extend to y=58 by design to avoid edge gaps.
 export function BrandMark({ className, ...props }: SVGProps<SVGSVGElement>) {
   return (

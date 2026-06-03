@@ -103,7 +103,7 @@ export default async function Page() {
                   A SaaS application for tracking Financial Independence, Retire
                   Early (FIRE) progress. Built with TanStack Start for type-safe
                   full-stack routing, Neon for serverless Postgres, and Clerk
-                  for auth — so the infrastructure scales to zero when
+                  for auth, so the infrastructure scales to zero when
                   you&apos;re not using it.
                 </ProjectSummaryDescription>
               </ProjectSummaryHeader>
@@ -139,7 +139,7 @@ export default async function Page() {
                   <CarouselItem>
                     <Image
                       src="/parasol-hero-dark-mobile.png"
-                      alt="Parasol — FIRE tracking dashboard"
+                      alt="Parasol: FIRE tracking dashboard"
                       width={1179}
                       height={2556}
                       className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
@@ -147,7 +147,7 @@ export default async function Page() {
                     />
                     <Image
                       src="/parasol-hero-light-mobile.png"
-                      alt="Parasol — FIRE tracking dashboard"
+                      alt="Parasol: FIRE tracking dashboard"
                       width={1179}
                       height={2556}
                       className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
@@ -155,7 +155,7 @@ export default async function Page() {
                     />
                     <Image
                       src="/parasol-hero-dark.png"
-                      alt="Parasol — FIRE tracking dashboard"
+                      alt="Parasol: FIRE tracking dashboard"
                       width={1920}
                       height={1080}
                       className="hidden sm:dark:block w-full h-auto rounded-lg"
@@ -163,7 +163,7 @@ export default async function Page() {
                     />
                     <Image
                       src="/parasol-hero-light.png"
-                      alt="Parasol — FIRE tracking dashboard"
+                      alt="Parasol: FIRE tracking dashboard"
                       width={1920}
                       height={1080}
                       className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
@@ -173,28 +173,28 @@ export default async function Page() {
                   <CarouselItem>
                     <Image
                       src="/parasol-feature-dark-mobile.png"
-                      alt="Parasol — portfolio and progress features"
+                      alt="Parasol: portfolio and progress features"
                       width={1179}
                       height={2556}
                       className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
                     />
                     <Image
                       src="/parasol-feature-light-mobile.png"
-                      alt="Parasol — portfolio and progress features"
+                      alt="Parasol: portfolio and progress features"
                       width={1179}
                       height={2556}
                       className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
                     />
                     <Image
                       src="/parasol-feature-dark.png"
-                      alt="Parasol — portfolio and progress features"
+                      alt="Parasol: portfolio and progress features"
                       width={1920}
                       height={1080}
                       className="hidden sm:dark:block w-full h-auto rounded-lg"
                     />
                     <Image
                       src="/parasol-feature-light.png"
-                      alt="Parasol — portfolio and progress features"
+                      alt="Parasol: portfolio and progress features"
                       width={1920}
                       height={1080}
                       className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
@@ -263,7 +263,7 @@ export default async function Page() {
                   <CarouselItem>
                     <Image
                       src="/north-shore-meditation-hero-dark-mobile.png"
-                      alt="North Shore Meditation — homepage hero"
+                      alt="North Shore Meditation: homepage hero"
                       width={1179}
                       height={2556}
                       className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
@@ -271,7 +271,7 @@ export default async function Page() {
                     />
                     <Image
                       src="/north-shore-meditation-hero-light-mobile.png"
-                      alt="North Shore Meditation — homepage hero"
+                      alt="North Shore Meditation: homepage hero"
                       width={1179}
                       height={2556}
                       className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
@@ -279,7 +279,7 @@ export default async function Page() {
                     />
                     <Image
                       src="/north-shore-meditation-hero-dark.png"
-                      alt="North Shore Meditation — homepage hero"
+                      alt="North Shore Meditation: homepage hero"
                       width={1920}
                       height={1080}
                       className="hidden sm:dark:block w-full h-auto rounded-lg"
@@ -287,7 +287,7 @@ export default async function Page() {
                     />
                     <Image
                       src="/north-shore-meditation-hero-light.png"
-                      alt="North Shore Meditation — homepage hero"
+                      alt="North Shore Meditation: homepage hero"
                       width={1920}
                       height={1080}
                       className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
@@ -297,28 +297,28 @@ export default async function Page() {
                   <CarouselItem>
                     <Image
                       src="/north-shore-meditation-science-dark-mobile.png"
-                      alt="North Shore Meditation — backed by science section"
+                      alt="North Shore Meditation: backed by science section"
                       width={1179}
                       height={2556}
                       className="hidden dark:block sm:dark:hidden w-full h-auto rounded-lg"
                     />
                     <Image
                       src="/north-shore-meditation-science-light-mobile.png"
-                      alt="North Shore Meditation — backed by science section"
+                      alt="North Shore Meditation: backed by science section"
                       width={1179}
                       height={2556}
                       className="block dark:hidden sm:hidden w-full h-auto rounded-lg"
                     />
                     <Image
                       src="/north-shore-meditation-science-dark.png"
-                      alt="North Shore Meditation — backed by science section"
+                      alt="North Shore Meditation: backed by science section"
                       width={1920}
                       height={1080}
                       className="hidden sm:dark:block w-full h-auto rounded-lg"
                     />
                     <Image
                       src="/north-shore-meditation-science-light.png"
-                      alt="North Shore Meditation — backed by science section"
+                      alt="North Shore Meditation: backed by science section"
                       width={1920}
                       height={1080}
                       className="hidden sm:block sm:dark:hidden w-full h-auto rounded-lg"
@@ -467,7 +467,7 @@ builder.Host.UseSerilog((context, config) => config
 app.UseWideLogEventsContext();
 app.UseSerilogRequestLogging();
 
-// Push properties — all flush together at request end
+// Push properties, all flush together at request end
 WideLogEventContext.PushProperty("userId", userId);
 WideLogEventContext.PushProperty("action", "checkout");`}
               />
@@ -510,8 +510,8 @@ WideLogEventContext.PushProperty("action", "checkout");`}
           Let&apos;s work together.
         </h2>
         <p className="max-w-prose text-muted-foreground mb-8">
-          I take on consulting and contract work alongside my role at InfoTrack
-          — distributed .NET systems, TypeScript, developer tooling, and
+          I take on consulting and contract work alongside my role at InfoTrack:
+          distributed .NET systems, TypeScript, developer tooling, and
           architecture. Open to open-source collaborations too. If what I build
           is relevant to your problem, reach out.
         </p>
