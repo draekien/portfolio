@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import type { ComponentProps } from "react";
 import rehypeSlug from "rehype-slug";
+import { ArticleLink } from "@/components/article-link";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
@@ -32,6 +33,7 @@ const components = {
   pre: Pre,
   code: Code,
   a: MdxLink,
+  ArticleLink,
   BrandMark,
   ButtonLink,
   CodeBlock,

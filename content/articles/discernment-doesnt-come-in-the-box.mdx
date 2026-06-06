@@ -1,0 +1,71 @@
+---
+title: "Discernment doesn't come in the box"
+description: "Companies are pointing AI at output metrics: lines of code, PRs, releases. The cost is hidden, because the work we automate is the work that turns juniors into seniors."
+date: "2026-06-07"
+tags: ["ai", "engineering-management", "career", "llm"]
+draft: true
+---
+
+A senior engineer on my team shipped a React feature last month. He is genuinely excellent: years of deep backend work in .NET, the kind of developer whose code I rarely have to question. He had barely written any frontend. So he reached for AI, described what he needed, and let it generate the React.
+
+The pull request looked finished. It was not. The code used an <Define term="use-effect" code>effect</Define> to compute values it already had in hand. It stored *derived state*: values you can calculate from data you already hold, kept instead as a second copy that quietly drifts out of sync. Heavy computations re-ran on every keystroke with no memoisation, the standard trick of caching a result so it only recomputes when its inputs change. And the whole thing was a few giant components, each nursing a tangle of internal state, where small focused pieces would have been clearer.
+
+None of this is exotic. React's own documentation has a page titled ["You Might Not Need an Effect"](https://react.dev/learn/you-might-not-need-an-effect) about the first two mistakes specifically. My team has written rules for each of them. I left review comments explaining every one. He took them back to the AI and tried again, and the result was no better, because he could not tell whether the model's next attempt had fixed the problem or just relocated it.
+
+He lacked one thing, and it was not effort or seniority. It was the ability to look at React and know good from bad. In the end I rewrote the feature from scratch.
+
+## The seniority was real. The discernment wasn't.
+
+It would be easy to read that story as "a senior got sloppy." That misses the point entirely. He was operating outside his domain, and the judgment that makes him excellent in .NET simply does not carry across the fence.
+
+This is the distinction the AI conversation keeps getting wrong. The useful fault line is not junior versus senior. It is *in-domain versus out-of-domain*. An expert frontend developer would have generated the same bad React and caught it on the first read. A backend expert cannot, because the catching is the expertise, and expertise is local. It is built one domain at a time and does not transfer just because you are good somewhere else.
+
+AI changes what each side can do, but not symmetrically. It raises the *floor*: anyone can now produce code that compiles and roughly runs in a language they have never learned. It does nothing for the *ceiling*, which is the ability to judge whether that code is actually good. The floor is generated. The ceiling is earned. AI moves only one of them, and it is not the one that matters.
+
+## AI raises the floor and hides the ceiling
+
+Here is why that gap is dangerous, not just disappointing. AI lets people produce confident, plausible output well beyond their competence, and plausible is exactly the failure mode that gets through. Obvious garbage gets thrown away. Code that looks right is what reaches review.
+
+So the cost moves. It lands on whoever *can* judge the output, which means the seniors. Every out-of-domain AI submission that fails the sniff test is now a senior's problem to catch, explain, and often rewrite. The promise was that AI would reduce the load on experienced engineers. In my experience it has done the opposite, by manufacturing more code that needs an expert eye and giving the author no way to pre-filter it.
+
+The research points the same way. A 2025 study from Microsoft Research and Carnegie Mellon, presented at the CHI conference, [surveyed knowledge workers](https://dl.acm.org/doi/full/10.1145/3706598.3713778) about their AI use. Two findings matter here. The more someone trusted the AI, the less critical thinking they applied to what it returned. And people leaned hardest on the tool, with the least scrutiny, exactly when they lacked the expertise to evaluate its output. The tool is trusted most precisely where it should be trusted least. That is not a quirk of a few users; it is the default human response to a confident machine in an unfamiliar field.
+
+## The work we automate is the work that makes seniors
+
+Now connect that to how organisations are actually deploying AI. The pressure I keep seeing is toward throughput: lines of code per day, pull requests per day, release frequency. Pick a number that looks like productivity and push AI at it. Name a number and AI will hit it, which is <Define term="goodharts-law">Goodhart's Law</Define> with an engine bolted on: the measure stops meaning anything the moment you optimise it this hard.
+
+But the throughput framing hides a slower, worse cost that almost nobody is pricing in. The work we are most eager to automate, the boilerplate, the first stumbling implementation, the bug you stare at for an hour, is the *exact* work that turns a junior into a senior. Discernment is not taught. It is accumulated, through reps: writing the wrong thing, feeling why it is wrong, getting feedback, and trying again. That loop is the only known path from the floor to the ceiling.
+
+Remember my senior's PR. I told him precisely what was wrong. It did not help, because being told is not the same as having learned. I have watched the same thing with juniors for years: a senior points out the mistake, the junior nods, and three weeks later makes it again, because the correction was delivered rather than earned. The struggle is not friction in the learning process. The struggle *is* the learning process. And the struggle is exactly what we are handing to the machine.
+
+So an organisation optimising for output with AI is not just gaming a metric. It is quietly dismantling its own pipeline. Today's seniors are the people who did, by hand, the work AI now does. Automate that work away for the next cohort and you do not get faster seniors. You get juniors who never become seniors, and a few years later you discover that the people who could have reviewed the AI's output are the ones you forgot to grow.
+
+## Cognitive debt comes due later
+
+The same risk has a sharper form at the individual level. Researchers at the MIT Media Lab call it <Define term="cognitive-debt">cognitive debt</Define>, in [a 2025 study](https://www.media.mit.edu/projects/your-brain-on-chatgpt/) modelled deliberately on the idea of technical debt every engineer already knows. The claim: leaning on an LLM saves effort now and charges interest later, in weaker memory, less original thinking, and a shallower grasp of work you only nominally produced.
+
+Their headline finding is striking. People who wrote essays with an LLM showed the weakest brain engagement and the lowest sense of ownership of the result, and 83% of them could not quote a single sentence from the essay they had *just* written. As the lead author, Nataliya Kosmyna, put it: "There is no cognitive credit card. You cannot pay this debt off."
+
+I want to be honest about the evidence, because the skill of judging sources is the whole subject of this article. That MIT result is a preprint, not yet peer-reviewed, with 54 participants and only 18 in the crucial session that reassigned people between conditions. It is a signal, not a verdict, and I would not build an argument on it alone. But the direction it points matches what I watch happen on real teams, and it names the thing you raised if you have ever shipped something with AI and then realised you could not maintain it without AI. That is cognitive debt in one sentence: you built it, but you did not learn it, so the moment the tool is gone, so is your ability to keep it alive.
+
+## Point the tool at the engineer, not the number
+
+None of this is an argument against AI. It is an argument about where you aim it. The same tool that hollows out a junior when pointed at an output metric can accelerate that junior's growth when pointed at the junior instead. Same capability, opposite target.
+
+I have made this argument before in a different shape. I once <ArticleLink slug="skills-that-teach">spent a month rewriting a skill</ArticleLink> and concluded that a good instruction *teaches* rather than dictates: it transfers judgment so the reader can act well on their own, instead of just executing steps. This is that idea one level up. Point AI at the engineer and its job is to transfer judgment, not to spare them the thinking that builds it.
+
+In practice, that has meant pushing my team toward a few habits. Use AI as a rubber duck: explain your problem to it and let the act of explaining surface the answer. Use it to attack your own design, not defend it: ask it for the strongest case against the approach you have already fallen in love with. Ask it *why*, relentlessly, rather than *what*, so the reasoning lands with you and not just the code. I have also been using it to generate learning material, walking a developer through an unfamiliar domain instead of doing that domain's work for them.
+
+I will be straight that this is unfinished. I do not have a clean system, a dashboard, or a five-step programme. I am experimenting, and some of it works better than the rest.
+
+## What I don't have figured out
+
+The honest tradeoffs are real, and they explain why organisations reach for the output metric anyway.
+
+Automating for throughput is sometimes simply correct. Plenty of boilerplate teaches nobody anything; genuine throwaway code, a prototype you will delete next week, deserves no ceremony; and a real deadline can outweigh a learning opportunity. Not every task needs to be a teaching moment, and pretending otherwise is its own kind of waste.
+
+Growth-oriented AI use also costs more, in exactly the dimensions a metrics culture punishes. It is slower. It demands senior time, the scarcest resource on any team. And it is genuinely hard to measure, because "this junior's judgment improved" does not have a number you can chart per day. The output metric wins by default not because it is right, but because it is *legible*. That is the trap, and naming it does not dissolve it.
+
+There is even a failure mode lurking in my own prescription. "Use AI to grow your people" can curdle into its own hollow metric the instant someone starts counting hours-mentored-by-AI. The goal is discernment in the engineer, and you cannot escape the work of judging whether it is actually growing.
+
+So I will end where I actually am, which is without the answer. I am convinced that pointing AI at output metrics is mortgaging the next generation of engineers to flatter this quarter's dashboard. I am equally convinced that the same tool could accelerate the climb from junior to senior faster than anything we have had before. What I do not yet have is the pipeline that reliably does the second thing. That is the work I think is worth doing, and I would rather more of us were trying to build it than racing each other to the bottom of a metric.
