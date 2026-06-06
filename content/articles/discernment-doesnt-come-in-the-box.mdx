@@ -6,13 +6,15 @@ tags: ["ai", "engineering-management", "career", "llm"]
 draft: true
 ---
 
-A senior engineer on my team shipped a React feature. They are genuinely excellent: years of deep backend work in .NET, the kind of developer whose code I rarely have to question. They had barely written any frontend. So they reached for AI, described what they needed, and let it generate the React.
+A senior engineer on my team shipped a React feature. They are genuinely excellent: years of deep backend work in .NET, the kind of developer whose code I rarely have to question. They had barely written any frontend. So they reached for AI and let it generate the React.
 
-The pull request looked finished. It was not. The code used an <Define term="use-effect" code>effect</Define> to compute values it already had in hand. It stored *derived state*: values you can calculate from data you already hold, kept instead as a second copy that quietly drifts out of sync. Heavy computations re-ran on every keystroke with no memoisation, the standard trick of caching a result so it only recomputes when its inputs change. And the whole thing was a few giant components, each nursing a tangle of internal state, where small focused pieces would have been clearer.
+The pull request looked finished. It was not. The code used an <Define term="use-effect" code>effect</Define> to compute values it already had in hand. It stored *derived state*: values you can calculate from data you already hold, kept instead as a second copy that quietly drifts out of sync. Heavy computations re-ran on every keystroke with no memoisation - the standard trick of caching a result so it recomputes only when its inputs change. And the whole thing was a few giant components, each nursing a tangle of internal state, where small focused pieces would have been clearer.
 
 None of this is exotic. React's own documentation has a page titled <LinkNote href="https://react.dev/learn/you-might-not-need-an-effect" note="React's official guide to when an effect is unnecessary: it shows how to calculate values during render, memoise expensive work, and move logic into event handlers instead.">"You Might Not Need an Effect"</LinkNote> about the first two mistakes specifically. My team has written rules for each of them. I left review comments explaining every one. They took them back to the AI and tried again, and the result was no better, because they could not tell whether the model's next attempt had fixed the problem or just relocated it.
 
 They lacked one thing, and it was neither effort nor seniority: the ability to look at React and know good from bad. In the end I rewrote the feature from scratch.
+
+This incident is a small version of a much larger bet companies are making right now. The pressure everywhere is to point AI at output metrics, and hitting those numbers means automating the work that grows engineers in the first place. The damage never reaches this quarter's dashboard; it surfaces years later, in the seniors you no longer have.
 
 ## Discernment doesn't transfer between domains
 
@@ -20,21 +22,21 @@ It would be easy to read that story as "a senior got sloppy." That misses the po
 
 This is the distinction the AI conversation keeps getting wrong. The useful fault line runs between *in-domain and out-of-domain* work, not junior versus senior. An expert frontend developer would have generated the same bad React and caught it on the first read. A backend expert cannot, because the catching is the expertise, and expertise is local. It is built one domain at a time and does not transfer just because you are good somewhere else.
 
-AI changes what each side can do, but not symmetrically. It raises the *floor*: anyone can now produce code that compiles and roughly runs in a language they have never learned. What it cannot raise is the *ceiling*, the ability to judge whether that code is actually good, because that judgment has to be earned rather than generated. AI moves the floor and leaves the ceiling exactly where it was.
+AI changes what each side can do, but not symmetrically. It raises the *floor*: anyone can now produce code that compiles and roughly runs in a language they have never learned. What it cannot raise is the *ceiling*, the ability to judge whether that code is actually good, because that judgment has to be earned rather than generated.
 
 ## AI raises the floor and hides the ceiling
 
-Here is why that gap is dangerous, not just disappointing. AI lets people produce confident, plausible output well beyond their competence, and plausible is exactly the failure mode that gets through: obvious garbage gets thrown away, while code that only looks right reaches review.
+That gap is dangerous, not just disappointing. AI lets people produce confident, plausible output well beyond their competence, and plausible is exactly the failure mode that gets through: obvious garbage gets thrown away, while code that only looks right reaches review.
 
 So the cost moves. It lands on whoever *can* judge the output, which means the seniors. Every out-of-domain AI submission that fails the sniff test is now a senior's problem to catch, explain, and often rewrite. The promise was that AI would reduce the load on experienced engineers. In my experience it has done the opposite, by manufacturing more code that needs an expert eye and giving the author no way to pre-filter it.
 
-The research points the same way. A 2025 study from Microsoft Research and Carnegie Mellon, presented at the CHI conference, <LinkNote href="https://dl.acm.org/doi/full/10.1145/3706598.3713778" note="A CHI 2025 paper from Microsoft Research and Carnegie Mellon: a survey of knowledge workers finding that the more they trusted AI, the less critical thinking they applied to its output.">surveyed knowledge workers</LinkNote> about their AI use.
+The research points the same way. A 2025 study from Microsoft Research and Carnegie Mellon, presented at the CHI human-computer interaction conference, <LinkNote href="https://dl.acm.org/doi/full/10.1145/3706598.3713778" note="A CHI 2025 paper from Microsoft Research and Carnegie Mellon: a survey of knowledge workers finding that the more they trusted AI, the less critical thinking they applied to its output.">surveyed knowledge workers</LinkNote> about their AI use.
 
 Two findings matter here. The more someone trusted the AI, the less critical thinking they applied to what it returned. And people leaned hardest on the tool, with the least scrutiny, exactly when they lacked the expertise to evaluate its output. This is the default human response to a confident machine in an unfamiliar field, not a quirk of a few users.
 
 ## The work we automate is the work that makes seniors
 
-Now connect that to how organisations are actually deploying AI. The pressure I keep seeing is toward throughput: lines of code per day, pull requests per day, release frequency. Pick a number that looks like productivity and push AI at it. Name a number and AI will hit it, which is <Define term="goodharts-law">Goodhart's Law</Define> with an engine bolted on: the measure stops meaning anything the moment you optimise it this hard.
+Now connect that to how organisations are actually deploying AI. The pressure I keep seeing is toward throughput: lines of code per day, pull requests per day, release frequency. Pick a number that looks like productivity, push AI at it, and AI will hit it - <Define term="goodharts-law">Goodhart's Law</Define> with an engine bolted on: the measure stops meaning anything the moment you optimise it this hard.
 
 But the throughput framing hides a slower, worse cost that almost nobody is pricing in. The work we are most eager to automate, the boilerplate, the first stumbling implementation, the bug you stare at for an hour, is the *exact* work that turns a junior into a senior. Discernment is accumulated rather than taught, built through reps: writing the wrong thing, feeling why it is wrong, getting feedback, and trying again. That loop is the only known path from the floor to the ceiling, and it does not come in the box.
 
@@ -46,9 +48,9 @@ So an organisation optimising for output with AI does more than game a metric: i
 
 The same risk has a sharper form at the individual level. Researchers at the MIT Media Lab call it <Define term="cognitive-debt">cognitive debt</Define>, in <LinkNote href="https://www.media.mit.edu/projects/your-brain-on-chatgpt/" note="A 2025 MIT Media Lab study (a preprint) that measured brain activity as people wrote essays with and without an LLM, reporting weaker neural engagement and recall among heavy AI users.">a 2025 study</LinkNote> modelled deliberately on the idea of technical debt every engineer already knows. The claim: leaning on an LLM saves effort now and charges interest later, in weaker memory, less original thinking, and a shallower grasp of work you only nominally produced.
 
-Their headline finding is striking. People who wrote essays with an LLM showed the weakest brain engagement and the lowest sense of ownership of the result, and 83% of them could not quote a single sentence from the essay they had *just* written. As the lead author, Nataliya Kosmyna, put it: "There is no cognitive credit card. You cannot pay this debt off."
+People who wrote essays with an LLM showed the weakest brain engagement and the lowest sense of ownership of the result, and 83% of them could not quote a single sentence from the essay they had *just* written. As the lead author, Nataliya Kosmyna, put it: "There is no cognitive credit card. You cannot pay this debt off."
 
-I want to be honest about the evidence, because the skill of judging sources is the whole subject of this article. That MIT result is a preprint, not yet peer-reviewed, with 54 participants and only 18 in the crucial session that reassigned people between conditions. It points in a direction without settling anything, and I would not build an argument on it alone. But the direction it points matches what I watch happen on real teams, and it names something you will recognise if you have ever shipped something with AI and then realised you could not maintain it without AI. That is cognitive debt in one sentence: you built it, but you did not learn it, so the moment the tool is gone, so is your ability to keep it alive.
+I want to be honest about the evidence, because the skill of judging sources is the whole subject of this article. That MIT result is a preprint, not yet peer-reviewed, with 54 participants and only 18 in the crucial session that switched people between using the LLM and writing unaided. It points in a direction without settling anything, and I would not build an argument on it alone. But it matches what I watch happen on real teams, and it names something you will recognise if you have ever shipped something with AI and then realised you could not maintain it without AI. That is cognitive debt in one sentence: you built it, but you did not learn it, so the moment the tool is gone, so is your ability to keep it alive.
 
 ## Point the tool at the engineer, not the number
 
