@@ -123,7 +123,7 @@ export default async function SkillsPage() {
           </BreadcrumbList>
         </Breadcrumb>
 
-        <header className="mb-16 lg:grid lg:grid-cols-[3fr_2fr] lg:gap-12 lg:items-start">
+        <header className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 items-start">
           <div className="space-y-6 max-w-2xl">
             <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
               <BrandMark className="text-primary mr-3" />
@@ -153,7 +153,7 @@ export default async function SkillsPage() {
               </ButtonLink>
             </div>
           </div>
-          <aside className="mt-12 lg:mt-2">
+          <aside>
             <p className="font-mono text-sm text-secondary mb-4">
               <BrandMark className="text-primary mr-1" />
               at a glance
@@ -200,10 +200,10 @@ export default async function SkillsPage() {
         </section>
 
         <section className="mb-16">
-          <div className="lg:grid lg:grid-cols-[2fr_3fr] lg:gap-12 lg:items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-start">
             <div>
               <ProjectSectionHeading>What a skill is</ProjectSectionHeading>
-              <p className="text-muted-foreground mb-6 lg:mb-0 max-w-prose">
+              <p className="text-muted-foreground max-w-prose">
                 Every skill is a{" "}
                 <Define term="skill-md" code>
                   SKILL.md
@@ -257,7 +257,7 @@ recommendation.`}
             Seventeen skills, grouped into four buckets you can install together
             or one bucket at a time.
           </p>
-          <div className="grid gap-x-12 gap-y-8 sm:grid-cols-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
             {buckets.map((bucket) => (
               <div key={bucket.name}>
                 <p className="font-mono text-sm text-secondary mb-1">
@@ -277,10 +277,10 @@ recommendation.`}
         </section>
 
         <section className="mb-16">
-          <div className="lg:grid lg:grid-cols-[2fr_3fr] lg:gap-12 lg:items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-start">
             <div>
               <ProjectSectionHeading>Install it</ProjectSectionHeading>
-              <p className="text-muted-foreground mb-6 lg:mb-0 max-w-prose leading-relaxed">
+              <p className="text-muted-foreground max-w-prose leading-relaxed">
                 Add the marketplace once, then install everything or pick the
                 buckets you want. For other agents, the <Code>npx skills</Code>{" "}
                 CLI reads the same repository.
