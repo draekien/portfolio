@@ -6,17 +6,17 @@ tags: ["ai", "engineering-management", "career", "llm"]
 draft: true
 ---
 
-A senior engineer on my team shipped a React feature last month. He is genuinely excellent: years of deep backend work in .NET, the kind of developer whose code I rarely have to question. He had barely written any frontend. So he reached for AI, described what he needed, and let it generate the React.
+A senior engineer on my team shipped a React feature. They are genuinely excellent: years of deep backend work in .NET, the kind of developer whose code I rarely have to question. They had barely written any frontend. So they reached for AI, described what they needed, and let it generate the React.
 
 The pull request looked finished. It was not. The code used an <Define term="use-effect" code>effect</Define> to compute values it already had in hand. It stored *derived state*: values you can calculate from data you already hold, kept instead as a second copy that quietly drifts out of sync. Heavy computations re-ran on every keystroke with no memoisation, the standard trick of caching a result so it only recomputes when its inputs change. And the whole thing was a few giant components, each nursing a tangle of internal state, where small focused pieces would have been clearer.
 
-None of this is exotic. React's own documentation has a page titled <LinkNote href="https://react.dev/learn/you-might-not-need-an-effect" note="React's official guide to when an effect is unnecessary: it shows how to calculate values during render, memoise expensive work, and move logic into event handlers instead.">"You Might Not Need an Effect"</LinkNote> about the first two mistakes specifically. My team has written rules for each of them. I left review comments explaining every one. He took them back to the AI and tried again, and the result was no better, because he could not tell whether the model's next attempt had fixed the problem or just relocated it.
+None of this is exotic. React's own documentation has a page titled <LinkNote href="https://react.dev/learn/you-might-not-need-an-effect" note="React's official guide to when an effect is unnecessary: it shows how to calculate values during render, memoise expensive work, and move logic into event handlers instead.">"You Might Not Need an Effect"</LinkNote> about the first two mistakes specifically. My team has written rules for each of them. I left review comments explaining every one. They took them back to the AI and tried again, and the result was no better, because they could not tell whether the model's next attempt had fixed the problem or just relocated it.
 
-He lacked one thing, and it was neither effort nor seniority: the ability to look at React and know good from bad. In the end I rewrote the feature from scratch.
+They lacked one thing, and it was neither effort nor seniority: the ability to look at React and know good from bad. In the end I rewrote the feature from scratch.
 
 ## Discernment doesn't transfer between domains
 
-It would be easy to read that story as "a senior got sloppy." That misses the point entirely. He was operating outside his domain, and the judgment that makes him excellent in .NET simply does not carry across the fence.
+It would be easy to read that story as "a senior got sloppy." That misses the point entirely. They were operating outside their domain, and the judgment that makes them excellent in .NET simply does not carry across the fence.
 
 This is the distinction the AI conversation keeps getting wrong. The useful fault line runs between *in-domain and out-of-domain* work, not junior versus senior. An expert frontend developer would have generated the same bad React and caught it on the first read. A backend expert cannot, because the catching is the expertise, and expertise is local. It is built one domain at a time and does not transfer just because you are good somewhere else.
 
@@ -38,7 +38,7 @@ Now connect that to how organisations are actually deploying AI. The pressure I 
 
 But the throughput framing hides a slower, worse cost that almost nobody is pricing in. The work we are most eager to automate, the boilerplate, the first stumbling implementation, the bug you stare at for an hour, is the *exact* work that turns a junior into a senior. Discernment is accumulated rather than taught, built through reps: writing the wrong thing, feeling why it is wrong, getting feedback, and trying again. That loop is the only known path from the floor to the ceiling, and it does not come in the box.
 
-Remember my senior's PR. I told him precisely what was wrong. It did not help, because being told is not the same as having learned. I have watched the same thing with juniors for years: a senior points out the mistake, the junior nods, and three weeks later makes it again, because the correction was delivered rather than earned. That struggle is the learning process itself, not friction getting in its way, and it is exactly what we are handing to the machine.
+Remember my senior's PR. I told them precisely what was wrong. It did not help, because being told is not the same as having learned. I have watched the same thing with juniors for years: a senior points out the mistake, the junior nods, and three weeks later makes it again, because the correction was delivered rather than earned. That struggle is the learning process itself, not friction getting in its way, and it is exactly what we are handing to the machine.
 
 So an organisation optimising for output with AI does more than game a metric: it quietly dismantles its own pipeline. Today's seniors are the people who did, by hand, the work AI now does. Automate that work away for the next cohort and they never make the climb at all. A few years later you discover that the people who could have reviewed the AI's output are the ones you forgot to grow.
 
