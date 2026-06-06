@@ -43,7 +43,7 @@ Name the failure mode precisely. When something breaks, say exactly how - "confl
 
 Say the uncertain part plainly. Where the author is still working something out, write it as that - "I'm still experimenting here" - not as false confidence, and not as a hedge that buries the claim. Honest uncertainty reads as credible; "just / maybe / I think" softening reads as weak. State the claim, then bound it.
 
-Concede before you counter. The strongest version of an argument names what the other side gets right first - "AI genuinely raises the floor for a junior" - and only then turns - "but without the struggle, the same mistakes keep coming back." The concession is what earns the counter.
+Concede before you counter. The strongest version of an argument names what the other side gets right first - "AI genuinely raises the floor for a junior" - and only then turns - "but without the struggle, the same mistakes keep coming back." Make the turn inside flowing sentences; do not let it harden into the two-beat antithesis banned below. The concession is what earns the counter.
 
 Write to a competent peer. The reader is a professional. No ceremony, no apology, no explaining what they already know. This trusts the reader; the newcomer on-ramp above handles the genuinely unfamiliar term, which is a different job.
 
@@ -55,7 +55,8 @@ The voice is blunt and direct, with momentum. These conversational textures surv
 
 - Join a statement to its elaboration with a spaced hyphen ` - `, not an em-dash. This is the author's habit and the house punctuation.
 - Call weak things weak. State the judgment without cushioning it.
-- Drop to a short fragment for punch against the longer reasoning sentences around it. "It was not." earns its place.
+- Drop to a short fragment for punch against the longer reasoning sentences around it - but rarely. At most one or two bare fragments in a whole article, or the device stops being punch and becomes a tic. "It was not." earns its place once; the third one does not.
+- Never build the recurring two-beat antithesis ("X is not A. It is B."). See the anti-pattern below. A fragment for punch is allowed within the cap; a negation-then-inversion as the section-to-section rhythm is not.
 
 The rest of how the author types in chat does *not* belong in an article: no lowercase sentence openers, no slang, no ASCII arrows (`->`), no em-dashes. Published prose is composed, not transcribed.
 
@@ -106,3 +107,4 @@ The frontmatter is schema-validated on build, so field names and types must matc
 - **Hedged claims** - softening a real claim with "just", "maybe", or "I think" until it means nothing. State the claim; bound it honestly if it needs bounding. Genuine uncertainty is named plainly, not smuggled in as a hedge.
 - **Bold lead-ins as section markers** - using **bold inline text** to flag the key points in a section. It signals emphasis but never reaches the table of contents, so a skimmer can't find it. Promote a recurring point to a `###` heading instead.
 - **Chat voice in composed prose** - em-dashes, lowercase sentence openers, slang, ASCII arrows. They are how the author types in conversation, not how the article reads. Use a spaced hyphen and full sentences.
+- **Two-beat antithesis as default cadence** - the recurring "X is not A. It is B." rhythm ("The floor is generated. The ceiling is earned." / "Discernment is not taught. It is accumulated." / "Same capability, opposite target."). One instance can land; used section after section it reads as engineered, and it is the cadence that makes prose feel machine-written. Dissolve it into explanatory prose: state the claim and its reason in flowing sentences, not as a negation followed by its inversion. An occasional compact "X, not Y" clause inside a sentence is fine; the staccato two-sentence formula as a habit is not.
