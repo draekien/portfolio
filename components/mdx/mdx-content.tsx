@@ -3,12 +3,14 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import type { ComponentProps } from "react";
 import rehypeSlug from "rehype-slug";
+import { ArticleLink } from "@/components/article-link";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
 import { Define } from "@/components/define";
 import { FrameworkBadge } from "@/components/framework-badge";
+import { LinkNote } from "@/components/link-note";
 import { SourceCallout } from "@/components/source-callout";
 import { Pre } from "./pre";
 
@@ -32,11 +34,13 @@ const components = {
   pre: Pre,
   code: Code,
   a: MdxLink,
+  ArticleLink,
   BrandMark,
   ButtonLink,
   CodeBlock,
   Define,
   FrameworkBadge,
+  LinkNote,
   SourceCallout,
 };
 

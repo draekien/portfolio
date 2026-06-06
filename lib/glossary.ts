@@ -83,6 +83,39 @@ export const glossary = {
     summary:
       "The fixed budget of text a language model can hold in mind at once. The system prompt, the conversation, every loaded skill, and the task itself all compete for the same finite space.",
   },
+  "goodharts-law": {
+    label: "Management adage",
+    summary:
+      "When a measure becomes a target, it ceases to be a good measure. Charles Goodhart noted the effect in 1975; Marilyn Strathern gave it this phrasing in 1997. Optimise the proxy hard enough and it stops tracking the thing it was meant to stand for.",
+    href: "https://en.wikipedia.org/wiki/Goodhart%27s_law",
+    hrefLabel: "Wikipedia",
+  },
+  "pull-request": {
+    label: "Version control",
+    summary:
+      "A proposed set of code changes submitted for review before it merges into the shared codebase. It is the gate where a teammate reads your work and can request changes before it ships.",
+  },
+  "use-effect": {
+    label: "React hook",
+    summary:
+      "React's tool for synchronising a component with something outside React: a network request, a subscription, the document title. It is widely misused to compute values that should simply be derived while the component renders.",
+    href: "https://react.dev/reference/react/useEffect",
+    hrefLabel: "React docs",
+  },
+  memoisation: {
+    label: "Performance technique",
+    summary:
+      "Caching the result of an expensive computation so it only re-runs when its inputs change. In React, useMemo and useCallback apply this at the component level, preventing redundant work on every render.",
+    href: "https://react.dev/reference/react/useMemo",
+    hrefLabel: "React docs",
+  },
+  "cognitive-debt": {
+    label: "AI risk",
+    summary:
+      "A term from a 2025 MIT Media Lab study: leaning on an LLM saves effort now but accrues a long-term cost in weaker recall, less original thought, and shallower grasp of work you nominally produced. Modelled on technical debt.",
+    href: "https://www.media.mit.edu/projects/your-brain-on-chatgpt/",
+    hrefLabel: "MIT Media Lab",
+  },
 } satisfies Record<string, GlossaryEntry>;
 
 export type GlossaryTerm = keyof typeof glossary;
