@@ -90,6 +90,11 @@ export const glossary = {
     href: "https://en.wikipedia.org/wiki/Goodhart%27s_law",
     hrefLabel: "Wikipedia",
   },
+  "pull-request": {
+    label: "Version control",
+    summary:
+      "A proposed set of code changes submitted for review before it merges into the shared codebase. It is the gate where a teammate reads your work and can request changes before it ships.",
+  },
   "use-effect": {
     label: "React hook",
     summary:
