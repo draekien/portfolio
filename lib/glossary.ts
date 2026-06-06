@@ -102,6 +102,13 @@ export const glossary = {
     href: "https://react.dev/reference/react/useEffect",
     hrefLabel: "React docs",
   },
+  memoisation: {
+    label: "Performance technique",
+    summary:
+      "Caching the result of an expensive computation so it only re-runs when its inputs change. In React, useMemo and useCallback apply this at the component level, preventing redundant work on every render.",
+    href: "https://react.dev/reference/react/useMemo",
+    hrefLabel: "React docs",
+  },
   "cognitive-debt": {
     label: "AI risk",
     summary:
