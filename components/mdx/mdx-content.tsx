@@ -10,6 +10,7 @@ import { Code } from "@/components/code";
 import { CodeBlock } from "@/components/code-block";
 import { Define } from "@/components/define";
 import { FrameworkBadge } from "@/components/framework-badge";
+import { LinkNote } from "@/components/link-note";
 import { SourceCallout } from "@/components/source-callout";
 import { Pre } from "./pre";
 
@@ -39,6 +40,7 @@ const components = {
   CodeBlock,
   Define,
   FrameworkBadge,
+  LinkNote,
   SourceCallout,
 };
 
