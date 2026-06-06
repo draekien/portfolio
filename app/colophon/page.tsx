@@ -127,11 +127,10 @@ export default function ColophonPage() {
           heading="Real projects, co-written write-ups"
         >
           <p className="text-pretty">
-            Parasol, North Shore Meditation, Waystone.Monads, and
-            Waystone.WideLogEvents are my own work: designed, built, and shipped
-            by me. The case-study pages describing them were co-written with
-            Claude, and every claim about how the projects actually work is mine
-            and verified before it goes up.
+            The projects showcased in my portfolio are my own work: designed,
+            built, and shipped by me. The case-study pages describing them were
+            co-written with Claude, and every claim about how the projects
+            actually work is mine and verified before it goes up.
           </p>
         </Section>
 

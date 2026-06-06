@@ -1,21 +1,14 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
-import { CodeBlock } from "@/components/code-block";
 import { Colophon } from "@/components/colophon";
 import { FrameworkBadge } from "@/components/framework-badge";
+import { InstallCommand } from "@/components/install-command";
 import { JsonLd } from "@/components/json-ld";
+import { LabeledCodeBlock } from "@/components/labeled-code-block";
+import { ProjectBreadcrumb } from "@/components/project-breadcrumb";
 import { ProjectSectionHeading } from "@/components/project-section";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import structuredData from "./structured-data.json" with { type: "json" };
 
 export const metadata: Metadata = {
@@ -32,39 +25,12 @@ export const metadata: Metadata = {
   },
 };
 
-function InstallCommand({ command }: { command: string }) {
-  return (
-    <div className="flex items-center gap-3 bg-muted rounded-md px-4 py-2.5 font-mono text-sm overflow-x-auto">
-      <span className="text-secondary select-none shrink-0" aria-hidden="true">
-        $
-      </span>
-      <span className="text-foreground whitespace-nowrap">{command}</span>
-    </div>
-  );
-}
-
 export default async function WaystoneMonadsPage() {
   return (
     <>
       <JsonLd data={structuredData} />
       <div className="container mx-auto py-12 md:py-20">
-        <Breadcrumb className="mb-12">
-          <BreadcrumbList className="font-mono text-sm">
-            <BreadcrumbItem>
-              <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink render={<Link href="/#libraries" />}>
-                libraries
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Waystone.Monads</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+        <ProjectBreadcrumb section="libraries" current="Waystone.Monads" />
 
         <header className="mb-16 space-y-6 max-w-2xl lg:max-w-3xl">
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
@@ -125,24 +91,20 @@ export default async function WaystoneMonadsPage() {
         </section>
 
         <section className="mb-16">
-          <div className="lg:grid lg:grid-cols-[2fr_3fr] lg:gap-12 lg:items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-start">
             <div>
               <ProjectSectionHeading>Option&lt;T&gt;</ProjectSectionHeading>
-              <p className="text-muted-foreground mb-6 lg:mb-0 max-w-prose">
+              <p className="text-muted-foreground max-w-prose">
                 Represents a value that may or may not be present. Forces the
                 caller to handle both the <Code>Some</Code> and{" "}
                 <Code>None</Code> cases.
               </p>
             </div>
             <div className="space-y-6 max-w-3xl">
-              <div>
-                <p className="font-mono text-sm text-muted-foreground mb-3">
-                  <BrandMark className="text-primary mr-1" />
-                  basic usage
-                </p>
-                <CodeBlock
-                  language="csharp"
-                  code={`// A user may or may not exist for a given id
+              <LabeledCodeBlock
+                label="basic usage"
+                language="csharp"
+                code={`// A user may or may not exist for a given id
 Option<User> user = repository.Find(id);
 
 // Pattern match: compiler ensures both cases are handled
@@ -150,16 +112,11 @@ return user.Match(
     onSome: u => Results.Ok(u),
     onNone: () => Results.NotFound()
 );`}
-                />
-              </div>
-              <div>
-                <p className="font-mono text-sm text-muted-foreground mb-3">
-                  <BrandMark className="text-primary mr-1" />
-                  chaining with Map and Bind
-                </p>
-                <CodeBlock
-                  language="csharp"
-                  code={`// Transform the inner value without unwrapping
+              />
+              <LabeledCodeBlock
+                label="chaining with Map and Bind"
+                language="csharp"
+                code={`// Transform the inner value without unwrapping
 Option<string> email = repository
     .Find(userId)
     .Map(u => u.Email)
@@ -169,31 +126,26 @@ Option<string> email = repository
 Option<Address> address = repository
     .Find(userId)
     .Bind(u => addressRepository.Find(u.AddressId));`}
-                />
-              </div>
+              />
             </div>
           </div>
         </section>
 
         <section className="mb-16">
-          <div className="lg:grid lg:grid-cols-[2fr_3fr] lg:gap-12 lg:items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-start">
             <div>
               <ProjectSectionHeading>Result&lt;T, E&gt;</ProjectSectionHeading>
-              <p className="text-muted-foreground mb-6 lg:mb-0 max-w-prose">
+              <p className="text-muted-foreground max-w-prose">
                 Represents either a successful value (<Code>Ok</Code>) or a
                 typed error (<Code>Err</Code>). Eliminates untyped exceptions
                 from your domain logic.
               </p>
             </div>
             <div className="space-y-6 max-w-3xl">
-              <div>
-                <p className="font-mono text-sm text-muted-foreground mb-3">
-                  <BrandMark className="text-primary mr-1" />
-                  returning typed errors
-                </p>
-                <CodeBlock
-                  language="csharp"
-                  code={`Result<Order, OrderError> result = orderService.Place(cart);
+              <LabeledCodeBlock
+                label="returning typed errors"
+                language="csharp"
+                code={`Result<Order, OrderError> result = orderService.Place(cart);
 
 return result.Match(
     onOk: order => Results.Created($"/orders/{order.Id}", order),
@@ -204,8 +156,7 @@ return result.Match(
         _                            => Results.StatusCode(500)
     }
 );`}
-                />
-              </div>
+              />
             </div>
           </div>
         </section>

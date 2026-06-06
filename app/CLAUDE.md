@@ -3,6 +3,7 @@
 Pages only. No business logic here — extract to `lib/` or `components/`.
 
 - `page.tsx` — single-page home: hero, applications section, libraries section, contact section
+- `_summaries/` — one file per home-page project summary (extracted presentational JSX, no logic). Private folder (`_`-prefixed), excluded from routing.
 - `layout.tsx` — root layout: Google Fonts (Figtree + JetBrains Mono as CSS vars), `<Providers>`, `<BackgroundFx>`, `<LayoutHeader>`
 - `articles/`, `articles/[slug]/page.tsx` — article index + individual MDX articles
 - `projects/[slug]/page.tsx` — case study pages (see `projects/CLAUDE.md`)

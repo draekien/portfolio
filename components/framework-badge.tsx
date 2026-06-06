@@ -12,7 +12,9 @@ type FrameworkVersion =
   | "typescript"
   | "nextjs"
   | "contentful"
-  | "resend";
+  | "resend"
+  | "claude-code"
+  | "agent-skills";
 
 const displayLabels: Record<FrameworkVersion, string> = {
   "netstandard2.0": ".NET Standard 2.0",
@@ -25,6 +27,8 @@ const displayLabels: Record<FrameworkVersion, string> = {
   nextjs: "Next.js",
   contentful: "Contentful",
   resend: "Resend",
+  "claude-code": "Claude Code",
+  "agent-skills": "Agent Skills",
 };
 
 type FrameworkBadgeProps = {
