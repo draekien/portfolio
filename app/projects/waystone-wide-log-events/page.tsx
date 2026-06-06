@@ -70,7 +70,24 @@ export default async function WaystoneWideLogEventsPage() {
             <FrameworkBadge version="net8.0" />
             <FrameworkBadge version="net10.0" />
           </div>
-          <ExpandableInstallCommand />
+          <ExpandableInstallCommand
+            variants={[
+              {
+                label: "# core",
+                command: "dotnet add package Waystone.WideLogEvents",
+              },
+              {
+                label: "# serilog",
+                command:
+                  "dotnet add package Serilog.Enrichers.Waystone.WideLogEvents",
+              },
+              {
+                label: "# serilog + aspnetcore",
+                command:
+                  "dotnet add package Serilog.Enrichers.Waystone.WideLogEvents.AspNetCore",
+              },
+            ]}
+          />
           <div className="flex gap-4">
             <ButtonLink
               link={{

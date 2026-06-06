@@ -1,0 +1,31 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Skills",
+      "description": "A collection of AI agent skills built on the Agent Skills open standard: 17 skills across drafting, engineering, productivity, and output styles. Each is a SKILL.md that teaches a complete workflow, installable as a Claude Code plugin or across 40+ other agents.",
+      "codeRepository": "https://github.com/draekien/skills",
+      "programmingLanguage": "Markdown",
+      "runtimePlatform": "Claude Code",
+      "author": { "@id": "https://www.wpei.me/#person" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.wpei.me"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Skills",
+          "item": "https://www.wpei.me/projects/skills"
+        }
+      ]
+    }
+  ]
+}

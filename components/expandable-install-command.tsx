@@ -4,24 +4,20 @@ import { CaretDownIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-const variants = [
-  {
-    label: "# core",
-    command: "dotnet add package Waystone.WideLogEvents",
-  },
-  {
-    label: "# serilog",
-    command: "dotnet add package Serilog.Enrichers.Waystone.WideLogEvents",
-  },
-  {
-    label: "# serilog + aspnetcore",
-    command:
-      "dotnet add package Serilog.Enrichers.Waystone.WideLogEvents.AspNetCore",
-  },
-] as const;
+type InstallVariant = {
+  label: string;
+  command: string;
+};
 
-export function ExpandableInstallCommand() {
+export function ExpandableInstallCommand({
+  variants,
+}: {
+  variants: readonly InstallVariant[];
+}) {
   const [expanded, setExpanded] = useState(false);
+
+  const [primary, ...rest] = variants;
+  if (!primary) return null;
 
   return (
     <div className="space-y-1">
@@ -34,7 +30,7 @@ export function ExpandableInstallCommand() {
         </span>
         <div className="flex-1 min-w-0 overflow-x-auto">
           <span className="text-foreground whitespace-nowrap">
-            {variants[0].command}
+            {primary.command}
           </span>
         </div>
         <button
@@ -60,7 +56,7 @@ export function ExpandableInstallCommand() {
         )}
       >
         <div className="overflow-hidden space-y-1">
-          {variants.slice(1).map((v) => (
+          {rest.map((v) => (
             <div
               key={v.label}
               className="flex flex-col bg-muted rounded-md px-4 py-2.5 font-mono text-sm gap-1"
