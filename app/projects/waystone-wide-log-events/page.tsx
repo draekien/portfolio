@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
@@ -8,15 +7,9 @@ import { Colophon } from "@/components/colophon";
 import { ExpandableInstallCommand } from "@/components/expandable-install-command";
 import { FrameworkBadge } from "@/components/framework-badge";
 import { JsonLd } from "@/components/json-ld";
+import { LabeledCodeBlock } from "@/components/labeled-code-block";
+import { ProjectBreadcrumb } from "@/components/project-breadcrumb";
 import { ProjectSectionHeading } from "@/components/project-section";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import structuredData from "./structured-data.json" with { type: "json" };
 
 export const metadata: Metadata = {
@@ -38,23 +31,10 @@ export default async function WaystoneWideLogEventsPage() {
     <>
       <JsonLd data={structuredData} />
       <div className="container mx-auto py-12 md:py-20">
-        <Breadcrumb className="mb-12">
-          <BreadcrumbList className="font-mono text-sm">
-            <BreadcrumbItem>
-              <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink render={<Link href="/#libraries" />}>
-                libraries
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Waystone.WideLogEvents</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+        <ProjectBreadcrumb
+          section="libraries"
+          current="Waystone.WideLogEvents"
+        />
 
         <header className="mb-16 space-y-6 max-w-2xl lg:max-w-3xl">
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
@@ -134,10 +114,10 @@ export default async function WaystoneWideLogEventsPage() {
         </section>
 
         <section className="mb-16">
-          <div className="lg:grid lg:grid-cols-[2fr_3fr] lg:gap-12 lg:items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-start">
             <div>
               <ProjectSectionHeading>Setup</ProjectSectionHeading>
-              <p className="text-muted-foreground mb-6 lg:mb-0 max-w-prose">
+              <p className="text-muted-foreground max-w-prose">
                 Configure Serilog with the <Code>WideLogEventsContext</Code>{" "}
                 enricher and middleware. The library integrates with{" "}
                 <Code>Serilog.AspNetCore</Code>; your existing request logging
@@ -164,23 +144,20 @@ app.UseSerilogRequestLogging();`}
         </section>
 
         <section className="mb-16">
-          <div className="lg:grid lg:grid-cols-[2fr_3fr] lg:gap-12 lg:items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-start">
             <div>
               <ProjectSectionHeading>Usage</ProjectSectionHeading>
-              <p className="text-muted-foreground mb-6 lg:mb-0 max-w-prose">
+              <p className="text-muted-foreground max-w-prose">
                 Push properties anywhere in the request pipeline. They
                 accumulate in the ambient context and flush as a single
                 structured event when the request completes.
               </p>
             </div>
             <div className="space-y-6 max-w-3xl">
-              <div>
-                <p className="font-mono text-sm text-muted-foreground mb-3">
-                  <BrandMark className="text-primary mr-1" /> pushing properties
-                </p>
-                <CodeBlock
-                  language="csharp"
-                  code={`// In a handler, service, or middleware: anywhere in the request
+              <LabeledCodeBlock
+                label="pushing properties"
+                language="csharp"
+                code={`// In a handler, service, or middleware: anywhere in the request
 WideLogEventContext.PushProperty("userId", userId);
 WideLogEventContext.PushProperty("action", "checkout");
 WideLogEventContext.PushProperty("cartItemCount", cart.Items.Count);
@@ -196,16 +173,11 @@ WideLogEventContext.PushProperty("totalValue", cart.Total);
 //   "StatusCode": 201,
 //   "Elapsed": 42.7
 // }`}
-                />
-              </div>
-              <div>
-                <p className="font-mono text-sm text-muted-foreground mb-3">
-                  <BrandMark className="text-primary mr-1" /> sampling by log
-                  level
-                </p>
-                <CodeBlock
-                  language="csharp"
-                  code={`// Tune per-level sample rates: errors and fatals always emit
+              />
+              <LabeledCodeBlock
+                label="sampling by log level"
+                language="csharp"
+                code={`// Tune per-level sample rates: errors and fatals always emit
 builder.Host.UseSerilog((context, config) => config
     .Enrich.FromWideLogEventsContext()
     .Filter.WithWideLogEventsSampling(options =>
@@ -227,8 +199,7 @@ builder.Host.UseSerilog((context, config) => config
         }
     })
     .ReadFrom.Configuration(context.Configuration));`}
-                />
-              </div>
+              />
             </div>
           </div>
         </section>

@@ -1,24 +1,17 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
 import type { Metadata } from "next";
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
-import { CodeBlock } from "@/components/code-block";
 import { Colophon } from "@/components/colophon";
 import { Define } from "@/components/define";
 import { FrameworkBadge } from "@/components/framework-badge";
+import { InstallCommand } from "@/components/install-command";
 import { JsonLd } from "@/components/json-ld";
+import { LabeledCodeBlock } from "@/components/labeled-code-block";
+import { ProjectBreadcrumb } from "@/components/project-breadcrumb";
 import { ProjectSectionHeading } from "@/components/project-section";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import structuredData from "./structured-data.json" with { type: "json" };
 
 export const metadata: Metadata = {
@@ -46,17 +39,6 @@ function AtAGlanceRow({
     <div className="flex items-center justify-between gap-4 border-b border-border py-2.5">
       <dt className="text-muted-foreground">{label}</dt>
       <dd className="text-foreground">{children}</dd>
-    </div>
-  );
-}
-
-function InstallCommand({ command }: { command: string }) {
-  return (
-    <div className="flex items-center gap-3 bg-muted rounded-md px-4 py-2.5 font-mono text-sm overflow-x-auto">
-      <span className="text-secondary select-none shrink-0" aria-hidden="true">
-        $
-      </span>
-      <span className="text-foreground whitespace-nowrap">{command}</span>
     </div>
   );
 }
@@ -105,23 +87,7 @@ export default async function SkillsPage() {
     <>
       <JsonLd data={structuredData} />
       <div className="container mx-auto py-12 md:py-20">
-        <Breadcrumb className="mb-12">
-          <BreadcrumbList className="font-mono text-sm">
-            <BreadcrumbItem>
-              <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink render={<Link href="/#libraries" />}>
-                libraries
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Skills</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+        <ProjectBreadcrumb section="libraries" current="Skills" />
 
         <header className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 items-start">
           <div className="space-y-6 max-w-2xl">
@@ -222,14 +188,10 @@ export default async function SkillsPage() {
               </p>
             </div>
             <div className="space-y-6 max-w-3xl">
-              <div>
-                <p className="font-mono text-sm text-muted-foreground mb-3">
-                  <BrandMark className="text-primary mr-1" />
-                  round-table/SKILL.md
-                </p>
-                <CodeBlock
-                  language="markdown"
-                  code={`---
+              <LabeledCodeBlock
+                label="round-table/SKILL.md"
+                language="markdown"
+                code={`---
 name: round-table
 description: Assembles an adversarial agent team to compare
   competing options, approaches, or technologies. Champions
@@ -245,8 +207,7 @@ Runs an adversarial debate: N champion teammates argue and
 challenge each other via direct messaging, then a synthesizer
 subagent analyses the settled debate and delivers a
 recommendation.`}
-                />
-              </div>
+              />
             </div>
           </div>
         </section>

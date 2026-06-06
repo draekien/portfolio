@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 import { Code } from "@/components/code";
@@ -8,18 +7,11 @@ import { CodeBlock } from "@/components/code-block";
 import { Colophon } from "@/components/colophon";
 import { FrameworkBadge } from "@/components/framework-badge";
 import { JsonLd } from "@/components/json-ld";
+import { ProjectBreadcrumb } from "@/components/project-breadcrumb";
 import {
   ProjectSectionDivider,
   ProjectSectionHeading,
 } from "@/components/project-section";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import {
   Carousel,
   CarouselContent,
@@ -47,23 +39,10 @@ export default function NorthShoreMeditationPage() {
     <>
       <JsonLd data={structuredData} />
       <div className="container mx-auto py-12 md:py-20">
-        <Breadcrumb className="mb-12">
-          <BreadcrumbList className="font-mono text-sm">
-            <BreadcrumbItem>
-              <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink render={<Link href="/#applications" />}>
-                applications
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>North Shore Meditation</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+        <ProjectBreadcrumb
+          section="applications"
+          current="North Shore Meditation"
+        />
 
         <header className="mb-16 space-y-6 max-w-2xl">
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
