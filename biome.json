@@ -3,15 +3,7 @@
   "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
   "files": {
     "ignoreUnknown": true,
-    "includes": [
-      "**",
-      "!node_modules",
-      "!.next",
-      "!dist",
-      "!build",
-      "!content",
-      "!.claude"
-    ]
+    "includes": ["**", "!node_modules", "!.next", "!dist", "!build", "!content"]
   },
   "formatter": { "enabled": true, "indentStyle": "space" },
   "linter": {
