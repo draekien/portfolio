@@ -46,16 +46,16 @@ export default async function ArticlesPage() {
             <BrandMark className="text-primary mr-2" />
             Thinking out loud
           </h1>
-          <div className="space-y-3 max-w-prose">
+          <div className="space-y-3 max-w-prose text-wrap-pretty">
             <p className="text-lg md:text-xl">
-              Longer pieces that usually start with something that bit me at
-              work, a bug that shipped, a tool I broke, a decision I got wrong,
-              then get worked out until there&apos;s a point worth making.
+              Each piece starts with something I couldn&apos;t leave alone. I
+              write to work it out; the point usually surfaces somewhere in the
+              middle.
             </p>
             <p className="text-base text-muted-foreground">
-              Software engineering, type systems, and the AI tooling we&apos;re
-              all still figuring out. I&apos;m learning in public; I just try to
-              finish the lesson before I hit publish.
+              Long-form on software engineering and the things adjacent to it.
+              I&apos;m learning in public; I just try to finish the lesson
+              before I hit publish.
             </p>
           </div>
         </div>
