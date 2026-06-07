@@ -29,7 +29,7 @@ Subsystem detail lives in nested `CLAUDE.md` files that load on demand when you 
   - `components/ui/` — generated shadcn primitives. See `components/ui/CLAUDE.md`.
   - `components/mdx/` — MDX rendering. See `components/mdx/CLAUDE.md`.
 - `lib/` — shared utilities, incl. the articles pipeline. See `lib/CLAUDE.md`.
-- `content/articles/` — article `.mdx` source. See `content/articles/CLAUDE.md`.
+- `content/articles/` — article `.mdx` source. See `content/articles/CLAUDE.md`. When the user asks to draft an article, follow the authoring process there.
 
 ## Conventions (apply everywhere)
 
