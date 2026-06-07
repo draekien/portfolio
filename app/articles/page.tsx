@@ -41,13 +41,29 @@ export default async function ArticlesPage() {
     <>
       <JsonLd data={structuredData} />
       <section className="container mx-auto pt-16 pb-24">
+        <div className="mb-12">
+          <h1 className="font-mono text-3xl md:text-5xl font-medium tracking-tight leading-tight mb-6 text-wrap-balance">
+            <BrandMark className="text-primary mr-2" />
+            Thinking out loud
+          </h1>
+          <div className="space-y-3 max-w-prose text-wrap-pretty">
+            <p className="text-lg md:text-xl">
+              Each piece starts with something I couldn&apos;t leave alone. I
+              write to work it out; the point usually surfaces somewhere in the
+              middle.
+            </p>
+            <p className="text-base text-muted-foreground">
+              Long-form on software engineering and the things adjacent to it.
+            </p>
+          </div>
+        </div>
         <ArticleFeedSubscribe />
         <div className="flex items-center gap-4 mb-16">
           <BrandMark className="text-primary shrink-0" />
           <hr className="flex-1 border-border" />
-          <h1 className="font-mono text-sm text-secondary tracking-wider shrink-0">
+          <p className="font-mono text-sm text-secondary tracking-wider shrink-0">
             articles
-          </h1>
+          </p>
           <BrandMark className="text-primary shrink-0" />
         </div>
         <div>
