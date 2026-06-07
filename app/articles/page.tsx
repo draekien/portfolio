@@ -54,8 +54,6 @@ export default async function ArticlesPage() {
             </p>
             <p className="text-base text-muted-foreground">
               Long-form on software engineering and the things adjacent to it.
-              I&apos;m learning in public; I just try to finish the lesson
-              before I hit publish.
             </p>
           </div>
         </div>
