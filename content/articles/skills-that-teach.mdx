@@ -30,11 +30,11 @@ This is the trap I see in a lot of published skills. Walls of numbered steps. St
 
 I did not arrive at the seven-step version by being careless. I followed the best guidance available: Anthropic's own <LinkNote href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices" note="Anthropic's official guide to authoring Claude agent skills: keeping them concise, matching degrees of freedom to task fragility, progressive disclosure, and iterating with evaluations.">skill-authoring documentation</LinkNote> and the `skill-creator` skill they ship with it. My first file was a fork of theirs, down to the name.
 
-Their central idea is genuinely good. They call it **<Define term="degrees-of-freedom">degrees of freedom</Define>**: match the latitude you give the agent to how fragile the task is. A narrow bridge with cliffs on both sides has one safe path, so you give exact instructions: *low freedom*. An open field has many routes across, so you give a direction and trust the agent to find one: *high freedom*. Three rungs:
+Their central idea is genuinely good. They call it <Define term="degrees-of-freedom">degrees of freedom</Define>: match the latitude you give the agent to how fragile the task is. A narrow bridge with cliffs on both sides has one safe path, so you give exact instructions: *low freedom*. An open field has many routes across, so you give a direction and trust the agent to find one: *high freedom*. Three rungs:
 
-- **High freedom**: prose heuristics, for when many approaches are valid.
-- **Medium freedom**: pseudocode or a parameterised template, for when a preferred shape exists but variation is fine.
-- **Low freedom**: an exact command, for when one wrong move breaks something.
+- High freedom - prose heuristics, for when many approaches are valid.
+- Medium freedom - pseudocode or a parameterised template, for when a preferred shape exists but variation is fine.
+- Low freedom - an exact command, for when one wrong move breaks something.
 
 That dial is the right mental model. But here is the detail that sent me down a month of rewrites: Anthropic's *own* example of a high-freedom instruction is this:
 
@@ -84,7 +84,7 @@ This was the real lesson, underneath all the others. "Match freedom to fragility
 
 > **Workflow scripting**: encoding a fixed sequence of steps when the task requires judgment about whether to follow a process at all... Recognise it by this tell: if removing every step header leaves nothing of substance, the steps were carrying the skill, not the intent.
 
-That tell is now the first thing I check on anything I write. Delete the headings. If the skill collapses, the structure was a costume.
+That tell is now the first thing I check on anything I write: delete the headings, and see whether the skill collapses.
 
 ## When rigidity is right anyway
 

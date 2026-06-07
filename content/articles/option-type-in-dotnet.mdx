@@ -13,7 +13,7 @@ I kept hitting the same wall in production: <Define term="null-reference-excepti
 
 Rust is a systems programming language, the kind you would reach for instead of C or C++. It is built around one stubborn idea: catch whole categories of bugs at compile time, before the code ever runs.
 
-So Rust made a radical choice. **It has no null.** There is no keyword for "nothing here." If a value can be absent, you say so in the type, using a built-in type called `Option`.
+So Rust made a radical choice. It has no null. There is no keyword for "nothing here." If a value can be absent, you say so in the type, using a built-in type called `Option`.
 
 An `Option<T>` is one of exactly two things:
 
@@ -31,7 +31,7 @@ match find_user(id) {
 }
 ```
 
-Here is the part that changes everything: **if you forget the `None` branch, the code does not compile.** Not a warning. A hard error. Rust forces you to confront absence at the exact moment you reach for the value. You physically cannot read `user.name` without first proving the user exists.
+Here is the part that changes everything: if you forget the `None` branch, the code does not compile. Not a warning. A hard error. Rust forces you to confront absence at the exact moment you reach for the value. You physically cannot read `user.name` without first proving the user exists.
 
 That is the bar I wanted in .NET.
 
@@ -113,9 +113,9 @@ Not everywhere. Nullable reference types (`T?`) are fine for small, internal det
 
 `Option<T>` earns its place at boundaries: repository lookups, external service calls, anywhere absence is a legitimate outcome rather than an edge case to paper over. The question worth asking: *can this honestly return nothing?* If yes, the return type should say so out loud.
 
-`User?` says it optionally. `Option<User>` says it unambiguously.
+`Option<User>` says absence is possible and forces the caller to handle it; `User?` only suggests it.
 
-The overhead is real. You write `.Match()` where you might have written an `if`. But that is the entire point. The `if` is optional; the compiler shrugs if you skip it. The `.Match()` is not. Rust proved you can make the safe path the only path; porting that discipline to .NET is just a matter of deciding the politeness was never enough.
+The overhead is real. You write `.Match()` where you might have written an `if`. But that is the entire point. The `if` is optional; the compiler shrugs if you skip it. The `.Match()` is not. Rust made the safe path the only path. The port brings that to .NET.
 
 <SourceCallout internal href="/projects/waystone-monads" title="Waystone.Monads">
   The full case study: design rationale, the Option and Result API surface, and the .NET compatibility matrix.
