@@ -1,3 +1,4 @@
+import { CaretRightIcon } from "@phosphor-icons/react/ssr";
 import type { Route } from "next";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -30,6 +31,17 @@ function MdxLink({ href, children }: ComponentProps<"a">) {
   return <Link href={href as Route}>{children}</Link>;
 }
 
+function SequenceArrow() {
+  return (
+    <CaretRightIcon
+      aria-label="then"
+      className="inline align-[-0.1em] text-muted-foreground"
+      size="0.85em"
+      weight="bold"
+    />
+  );
+}
+
 const components = {
   pre: Pre,
   code: Code,
@@ -41,6 +53,7 @@ const components = {
   Define,
   FrameworkBadge,
   LinkNote,
+  SequenceArrow,
   SourceCallout,
 };
 
