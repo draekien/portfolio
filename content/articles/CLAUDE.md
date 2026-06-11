@@ -32,3 +32,4 @@ When drafting a new article, follow these steps in order:
 - Colons only for lists, quote intros, and deliberate label-openers ("So here is where I land:") — "claim: elaboration" as the default sentence shape is a tic; prefer a period or " - ".
 - Max one " - " aside per sentence; don't stack them.
 - Don't justify narrative moves (why an experiment ran again, why a section exists) — just state what happened.
+- Don't use "the" to universalise the author's own readings or positions — "The honest reading is..." → "My honest reading is...", "The position comes with..." → "My position comes with..."
