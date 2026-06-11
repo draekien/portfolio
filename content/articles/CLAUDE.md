@@ -24,3 +24,11 @@ When drafting a new article, follow these steps in order:
 - **All definitions go in `<Define>`, never inline.** If an article explains a term in parentheses or an em-dash aside, move that explanation to the glossary and replace it with `<Define>`.
 - `<ArticleLink slug="...">text</ArticleLink>` — cross-link to another article (`slug` = its filename minus `.mdx`), shown as a popover previewing the target's title, reading time, and excerpt.
 - `<LinkNote href="..." note="...">text</LinkNote>` — external source link that reveals the `note` summary on hover, so readers grasp where it leads without clicking. Still navigates on click.
+
+## Voice (recurring review feedback)
+
+- No self-referential narration ("the article would be optimistic", "an engineer concluding X deserves suspicion") — state the point flat, don't narrate the writing.
+- No superlative up-play ("the best question I have heard") — understate ("the question that stuck with me").
+- Colons only for lists, quote intros, and deliberate label-openers ("So here is where I land:") — "claim: elaboration" as the default sentence shape is a tic; prefer a period or " - ".
+- Max one " - " aside per sentence; don't stack them.
+- Don't justify narrative moves (why an experiment ran again, why a section exists) — just state what happened.

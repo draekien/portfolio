@@ -43,4 +43,6 @@ Subsystem detail lives in nested `CLAUDE.md` files that load on demand when you 
 
 **Pre-commit** — `lefthook.yml` runs `biome check --write` on staged JS/TS/JSON/CSS files and re-stages fixes.
 
+**Preview verification** — dev server config is named `portfolio` (port 3000). With `preview_eval`, trigger `location.reload()` in one call and read the DOM in a separate follow-up call — reloading kills the inspected context mid-eval.
+
 **shadcn primitives are built on Base UI (`@base-ui/react`), not Radix** — the API differs (e.g. `Popover.Positioner` / `Popover.Popup`). Details in `components/ui/CLAUDE.md`.
