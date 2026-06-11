@@ -1,0 +1,68 @@
+---
+title: "We gave a product owner an agent"
+description: "Two experiments to find out where the agentic SDLC breaks inside a company. The barrier was not the tooling - it was the work engineers do that nobody calls work."
+date: "2026-06-11"
+tags: ["ai", "sdlc", "engineering-management", "llm"]
+---
+
+I hold two positions on AI adoption that do not sit comfortably together. The first I have already written down: <ArticleLink slug="discernment-doesnt-come-in-the-box">discernment doesn't come in the box</ArticleLink> - judgment is built by doing the work, and it stays local to the domain that built it. The second is that I want to be on the front foot anyway. Sitting out this wave to protect the old way of working is not a strategy; it is a slower way to lose.
+
+The discourse does not make holding both easy. <LinkNote href="https://www.forrester.com/blogs/agentic-software-development-takes-the-lead-from-code-assistants-to-orchestrated-sdlc-agents/" note="June 2026, Forrester analyst Diego Lo Giudice: agents now operate across analysis, planning, design, build, test, and delivery.">Forrester says agents now operate across the whole lifecycle</LinkNote>. Maggie Appleton, a research engineer at GitHub Next, <LinkNote href="https://maggieappleton.com/zero-alignment" note="A 2026 talk: one developer, two dozen agents, five features a day - a provocative scenario arguing the bottleneck moves from implementation to alignment.">sketches a near future where one developer with a fleet of agents ships five features a day</LinkNote> - a scenario she builds in order to critique it. Around the careful analysis swirl the slogans - one-day <Define term="sprint">sprints</Define>, the individual who ships like a team - and the claim underneath is always the same: the specialised team is dissolving, and soon anyone will build. The careful sources never quite make that claim. The vendor decks built on them always do.
+
+The strongest version of the pitch is the agentic <Define term="sdlc">SDLC</Define>. Generate a <Define term="prd">PRD</Define> from an idea <SequenceArrow/> break it into tasks <SequenceArrow/> classify each task as <Define term="afk">AFK</Define> or <Define term="human-in-the-loop">human-in-the-loop</Define> <SequenceArrow/> <Define term="agent">agents</Define> take the AFK pile while humans refine the rest. The pipeline has legs - I have watched solo builders run it end to end. It works because a solo builder holds everything: what to build, how, what done looks like. What does it look like inside a company, where nobody holds the whole picture and the expertise is split across roles on purpose? A <Define term="product-owner">product owner</Define> and I ran two experiments to find out: the first with the "everyone builds" pitch at full strength, the second with the same kind of job split along the role lines.
+
+## The entry barrier is real but temporary
+
+The first experiment: the product owner built a small, non-critical feature on their own, with an agent - a mix of Claude Cowork and Claude Code in the Claude desktop app - in a real codebase, end to end. We wanted to watch where it strained, not bet a roadmap on it.
+
+It strained immediately, lower in the stack than I expected. Setting up a development environment consumed most of the effort. They had never used a terminal, did not know what a CLI was, or git, or why the agent kept asking them to run commands they could not parse. That is not a criticism - no product owner has reason to know these things, and that is the point. A feature in a company codebase drags the whole development stack in behind it, and the agent assumed a developer was driving: a developer's machine, vocabulary, and instincts.
+
+The honest reading of experiment one is that the barrier is temporary. Vendors are already dismantling it - cloud agents and hosted environments now arrive with the machine provisioned, no terminal required. Had we stopped here, the article would be optimistic: the barrier is real, but it is tooling, and tooling gets fixed. So we changed the design and ran it again.
+
+## The agent doesn't ask the right questions
+
+The second experiment split the job along the role lines, the way the agentic SDLC says to: the product owner authored the PRD with an agent, I refined it as I would any ticket, and I implemented it with Claude Code. The tooling problem disappeared. A more interesting failure appeared in the first leg.
+
+The PRD came back confident and complete-looking, and it was missing exactly what an engineer would have pulled out of them in <Define term="backlog-refinement">refinement</Define>: what happens when this fails, which users it applies to, whether it needs to work on mobile. They did not know the agent needed it - requirements are their expertise - but in every feature they had ever shipped, that knowledge had been extracted, not volunteered. The agent does ask questions, but it asks to unblock itself, not to protect the feature. It does not know the customer or what failure costs here, so it filled the gaps with plausible guesses. When I refined the PRD, every question I asked had an answer - in the product owner's head, absent from the document.
+
+I had not appreciated how much of an engineer's job is elicitation until I watched it not happen. We call it refinement, estimation, pushing back on a ticket; none of it shows up as work the way a <Define term="pull-request">pull request</Define> does.
+
+The skill gap is real, but it is not coding - the agent had that covered. The product owner needed to learn what a machine has to be told: how to brief something that cannot read the room and will not ask what an engineer would ask in the first thirty seconds of refinement. That literacy is orthogonal to their expertise, and nobody teaches it. An engineer picks up agents quickly because making implicit things explicit already *is* the job; someone in sales or product has spent a successful career never needing to.
+
+## The judgment concentrates upstream
+
+Appleton's conclusion from her scenario: "The hard question is no longer how to build it. It's should we build it." That much is close to consensus now: inside a company, writing code was never the hard part. The hard parts were deciding what to build, agreeing how it should behave, knowing where it breaks, and judging when it is done. Code generation automates the step that was already the cheapest - one reason <LinkNote href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/" note="A July 2025 METR randomised trial: 16 experienced developers, 246 real issues - 19% slower with AI tools, while believing they were about 20% faster.">measured gains keep underwhelming</LinkNote>.
+
+Less discussed is where the hard part goes. Judgment does not disappear as tasks move from human-in-the-loop to AFK - it concentrates. Every task an agent completes unwatched runs on decisions made up front: what it is for, which trade-offs are acceptable, what failure looks like. The newest name for the job, <LinkNote href="https://addyosmani.com/blog/loop-engineering/" note="Addy Osmani, June 2026: designing the system that prompts the agent for you, so the engineer stops being the person who presses go.">loop engineering</LinkNote>, is the same move again: "replacing yourself as the person who prompts the agent", in Addy Osmani's words. Even prompting gets automated, and his caveat tells you what survives: "a loop running unattended is also a loop making mistakes unattended." The judgment never goes away; it stacks up at the top.
+
+And inside a company, the top is not one person. The roles exist because the judgment is structural: product sits closest to what should be built and why, engineering to how, QA to where it breaks. The "one person with a fleet of agents" future assumes all of it fits in one head. The solo open-source maintainer who runs the whole pipeline holds product, build, and test judgment for one codebase at once; companies split those across roles because at scale nobody can.
+
+## Adoption follows the role lines
+
+So here is where I land: adopt aggressively, but along the role lines. The org chart is not an obstacle the agentic SDLC needs to dissolve - it is a map of where the judgment lives, and the human-in-the-loop decisions should land on it. A product owner driving an agent inside their own domain - drafting PRDs, pressure-testing requirements - is working where their discernment can tell good output from bad. The same person generating production code is working where it cannot. An engineer concluding the org chart survives deserves suspicion - the last section names what would prove me wrong - and the position needs three qualifications, each from the experiments.
+
+### Each role automates at its own speed
+
+Engineering looks furthest along not because code is the most automatable work but because engineers built these tools for themselves. The equivalent tooling for product, QA, sales, and support is younger and worse. Expect uneven adoption and plan for it, rather than reading the gap as resistance.
+
+### The handoffs need skills nobody is teaching
+
+What used to cross a role boundary through conversation now has to cross it as explicit context. The elicitation an engineer performs in refinement has to become something a product owner can perform on themselves, against a machine that will not push back. That is learnable - closer to briefing a contractor than to programming - but nobody's onboarding, training budget, or vendor pitch accounts for it.
+
+The obvious counter is the interviewing agent that interrogates the requester before building. It already exists as an <Define term="agent-skill">agent skill</Define> - the best known is <LinkNote href="https://www.aihero.dev/my-grill-me-skill-has-gone-viral" note="A few sentences that interview you relentlessly about a plan until shared understanding.">Matt Pocock's grill-me</LinkNote> - but the product owner has to know it exists, and what a skill is: the literacy gap again. And it only moves the problem: an interview is only as good as someone's judgment of whether the question set was complete. The product owner can judge the answers; judging the questions was never their job. It was refinement, and it was ours.
+
+### The upskilling bill lands on engineering
+
+The product owner got further in the second experiment for one reason: an engineer picked up the second leg. The ability does not ship with the licence. Other roles driving agents costs engineer time spent teaching - the seniors-grow-juniors loop, run across a role boundary instead of up a seniority ladder. Budget for it, or the backlog fills with confident, wrong artefacts and the engineers clean them up anyway.
+
+## The best question came from the product owner
+
+Partway through, the product owner asked the best question I have heard in any AI adoption conversation: how much of what I build will actually survive the engineer's review? Am I adding value, or making something that gets thrown away?
+
+I did not have a good answer in the room. The experiment later provided a partial one: the feature shipped. It went to team review like any other change, merged after a week, and released a week later. Nobody threw it away.
+
+Two readings, both right I think. First: the second experiment was never "everyone builds" - it was the pipeline run along the role lines, each leg held by the person whose judgment covered it, and it shipping is that design working. In the discernment article, a senior's out-of-domain PR was rewritten from scratch; this feature merged, and the difference was not the agent. Second: building took a session, while review and release - the steps that run on the team's collective judgment - took two weeks. Even when the generated code is worth keeping, the code is the fast part.
+
+An honest weight check: two experiments, one product owner, one company, a feature chosen to be safe - an anecdote, not a study. What would falsify it: if product owners with interviewing agents and a year of practice start landing solo features at the same review survival rate as engineers, the gap was literacy all along, the role lines are the wrong unit of adoption, and I will write the correction.
+
+What stays with me: the question came from the non-technical side of the desk. The five-features-a-day pitch never asks whether the features survive contact with the people who hold the judgment they were built without - and any company buying "everyone becomes a builder" needs that answer, role by role. Being on the front foot means running the next experiment - the full pipeline at company scale, along the role lines - not waiting for a vendor deck to answer for me.

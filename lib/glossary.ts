@@ -109,6 +109,46 @@ export const glossary = {
     href: "https://react.dev/reference/react/useMemo",
     hrefLabel: "React docs",
   },
+  sdlc: {
+    label: "Engineering process",
+    summary:
+      "Software development lifecycle: the end-to-end process of shipping software - gathering requirements, designing, building, testing, releasing, and maintaining it.",
+  },
+  prd: {
+    label: "Product artefact",
+    summary:
+      "Product requirements document: the written specification of what a feature must do and why it matters, handed from product to engineering as the starting point for a build.",
+  },
+  afk: {
+    label: "Automation shorthand",
+    summary:
+      "Away from keyboard: work an agent can complete end to end with nobody watching. Agentic workflows sort tasks into AFK and human-in-the-loop, and try to grow the first pile.",
+  },
+  agent: {
+    label: "AI tooling",
+    summary:
+      "An LLM wired up with tools - file access, a terminal, a browser - so it can carry out multi-step work on its own, checking in with a human at decision points rather than answering one prompt at a time.",
+  },
+  sprint: {
+    label: "Agile cadence",
+    summary:
+      "The fixed cycle agile teams plan work in - conventionally one or two weeks of committed work ending in a review. The 'one-day sprint' slogan compresses that whole cycle into a day.",
+  },
+  "human-in-the-loop": {
+    label: "Automation pattern",
+    summary:
+      "A workflow step that pauses for a human decision before the automation continues. The machine does the legwork; a person makes the call.",
+  },
+  "product-owner": {
+    label: "Agile role",
+    summary:
+      "The person on a product team accountable for what gets built and in what order. They own the requirements and the priorities, and in most organisations the role is non-technical.",
+  },
+  "backlog-refinement": {
+    label: "Agile ritual",
+    summary:
+      "The recurring session where engineers and product walk through upcoming work, asking questions until a vague feature request becomes something buildable. Where requirements actually get extracted.",
+  },
   "cognitive-debt": {
     label: "AI risk",
     summary:
