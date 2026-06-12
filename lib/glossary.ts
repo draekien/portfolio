@@ -149,6 +149,16 @@ export const glossary = {
     summary:
       "The recurring session where engineers and product walk through upcoming work, asking questions until a vague feature request becomes something buildable. Where requirements actually get extracted.",
   },
+  "ci-cd": {
+    label: "Delivery automation",
+    summary:
+      "Continuous integration and continuous delivery: the automated pipeline that builds, tests, and ships each code change, so work merges and reaches production in small, frequent steps rather than a big-bang release.",
+  },
+  uat: {
+    label: "Release gate",
+    summary:
+      "User acceptance testing: the final check where the people who asked for a feature confirm it does what they needed before it goes live. The gate that runs on human judgement, not automation.",
+  },
   "cognitive-debt": {
     label: "AI risk",
     summary:

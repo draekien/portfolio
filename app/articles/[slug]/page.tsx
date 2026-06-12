@@ -5,6 +5,14 @@ import { ButtonLink } from "@/components/button-link";
 import { Colophon } from "@/components/colophon";
 import { JsonLd } from "@/components/json-ld";
 import { MdxContent } from "@/components/mdx/mdx-content";
+import {
+  VersionHistory,
+  VersionHistoryContent,
+  VersionHistoryItem,
+  VersionHistoryItemDate,
+  VersionHistoryItemDescription,
+  VersionHistoryTrigger,
+} from "@/components/version-history";
 import { getAllArticleSlugs, getArticleBySlug } from "@/lib/articles";
 import { cn } from "@/lib/utils";
 
@@ -44,6 +52,14 @@ export async function generateMetadata({
   };
 }
 
+function formatDate(date: string): string {
+  return new Date(date).toLocaleDateString("en-AU", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
 export default async function ArticlePage({
   params,
 }: {
@@ -52,11 +68,8 @@ export default async function ArticlePage({
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
 
-  const formattedDate = new Date(article.date).toLocaleDateString("en-AU", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const formattedDate = formatDate(article.date);
+  const latestVersion = article.versions.at(-1);
 
   const titleSize =
     article.title.length > 36
@@ -98,6 +111,40 @@ export default async function ArticlePage({
             <dd className="font-mono text-sm text-foreground">
               {formattedDate}
             </dd>
+            {latestVersion && (
+              <>
+                <dt className="font-mono text-sm text-secondary">@updated</dt>
+                <dd className="font-mono text-sm text-foreground">
+                  <VersionHistory>
+                    <VersionHistoryTrigger>
+                      {formatDate(latestVersion.date)}
+                    </VersionHistoryTrigger>
+                    <VersionHistoryContent>
+                      {article.versions.toReversed().map((version) => (
+                        <VersionHistoryItem
+                          key={`${version.date}-${version.description}`}
+                        >
+                          <VersionHistoryItemDate dateTime={version.date}>
+                            {formatDate(version.date)}
+                          </VersionHistoryItemDate>
+                          <VersionHistoryItemDescription>
+                            {version.description}
+                          </VersionHistoryItemDescription>
+                        </VersionHistoryItem>
+                      ))}
+                      <VersionHistoryItem>
+                        <VersionHistoryItemDate dateTime={article.date}>
+                          {formattedDate}
+                        </VersionHistoryItemDate>
+                        <VersionHistoryItemDescription>
+                          Published.
+                        </VersionHistoryItemDescription>
+                      </VersionHistoryItem>
+                    </VersionHistoryContent>
+                  </VersionHistory>
+                </dd>
+              </>
+            )}
             <dt className="font-mono text-sm text-secondary">@reading-time</dt>
             <dd className="font-mono text-sm text-foreground">
               {article.readingTime}

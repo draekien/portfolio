@@ -4,7 +4,9 @@ One `.mdx` file per article; the filename (minus `.mdx`) is the slug.
 
 **Frontmatter** is validated by a Zod schema in `@/lib/articles`:
 - required: `title`, `description`, `date`
-- optional: `updated`, `tags` (string[]), `draft` (boolean)
+- optional: `updated`, `tags` (string[]), `draft` (boolean), `versions` (list of `{ date, description }`, oldest-first)
+
+**Versions** — every post-publication edit appends a `versions` entry (date + short description of the change). The latest entry drives `updated` (SEO modified dates) and the `@updated` row with its version-history popover on the article page.
 
 **Drafts** (`draft: true`) render only when `NODE_ENV !== "production"` — hidden in the production build.
 
@@ -18,7 +20,8 @@ When drafting a new article, follow these steps in order:
 
 1. Use `/article-writing` to work out what we are writing about.
 2. Once the subject and shape are finalised, use `/personal-skills:ghost-writing` to write the article.
-3. Use `/article-review` to perform an independent review of the draft and present findings.
+3. With a first draft in hand, use `/refine-prose` to tighten the prose concern by concern, then apply and verify the edits.
+4. Use `/article-review` to perform an independent review of the draft and present findings.
 
 - `<Define term="...">` — the `term` must be a key in the typed glossary at `lib/glossary.ts`. An unregistered term is a TypeScript error, not a runtime fallback. To add a new term: add the entry to `lib/glossary.ts` first, then use the component in the MDX. Remove any inline parenthetical definition the MDX was carrying — it belongs in the glossary now.
 - **All definitions go in `<Define>`, never inline.** If an article explains a term in parentheses or an em-dash aside, move that explanation to the glossary and replace it with `<Define>`.

@@ -15,7 +15,17 @@ const frontmatterSchema = z.object({
   updated: z.string().optional(),
   tags: z.array(z.string()).default([]),
   draft: z.boolean().default(false),
+  versions: z
+    .array(z.object({ date: z.string(), description: z.string() }))
+    .default([]),
 });
+
+// versions are listed oldest-first in frontmatter; the latest one drives `updated`
+function parseFrontmatter(data: unknown): z.infer<typeof frontmatterSchema> {
+  const parsed = frontmatterSchema.parse(data);
+  const updated = parsed.updated ?? parsed.versions.at(-1)?.date;
+  return { ...parsed, ...(updated && { updated }) };
+}
 
 export type ArticleHeading = {
   id: string;
@@ -66,7 +76,7 @@ export const getAllArticles = cache(async (): Promise<ArticleMeta[]> => {
       const slug = filename.replace(/\.mdx$/, "");
       const raw = fs.readFileSync(path.join(articlesDir, filename), "utf-8");
       const { data, content } = matter(raw);
-      const parsed = frontmatterSchema.parse(data);
+      const parsed = parseFrontmatter(data);
       const rt = readingTime(content);
       return {
         ...parsed,
@@ -90,7 +100,7 @@ export const getArticleBySlug = cache(
 
     const raw = fs.readFileSync(filePath, "utf-8");
     const { data, content } = matter(raw);
-    const parsed = frontmatterSchema.parse(data);
+    const parsed = parseFrontmatter(data);
 
     if (parsed.draft && !isDraftVisible()) {
       notFound();
