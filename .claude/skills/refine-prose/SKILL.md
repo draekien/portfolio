@@ -20,6 +20,9 @@ A refinement pass targets a named set of faults, not "make it better". The autho
 - **Metaphor that explains** - a metaphor doing the explanatory work a plain sentence already did. If the concept is clear without it, the metaphor is decoration; reserve it for emphasis, not explanation.
 - **Performed prose** - sentences reaching to sound clever: the word-of-the-day where a plain word is exact, the aphorism, the ornament that does not earn its place.
 - **Self-narration** - the writing describing its own moves instead of just making them.
+- **Awkward progressive** - a continuous "-ing" verb standing where the simple present or an infinitive reads cleaner. "the question nobody is asking", "the work done training juniors" carry an ongoing-action nuance the sentence does not want; "nobody asks", "done to train juniors" land flatter and more direct. Keep the progressive only where the action being ongoing is the point.
+- **Undercutting tail** - a clause tacked onto the end that takes back the stake the sentence just set, typically a second, milder consequence ("...and someone clears it up eventually", "...but it gets fixed anyway") that drains the urgency of the first. Two opposed outcomes in one sentence leave the reader no clear stake. End on the strongest consequence and let it stand.
+- **Stranded locational frame** - a spatial or directional word (upstream and downstream, above and below, across and up) placed far from the thing it positions, so the reader has to reconstruct what sits where. Keep the frame next to its antecedent; when the word that orients an idea drifts from the idea, the orientation is lost. This applies across a passage too - a heading that locates the section ("the cost lands downstream") strands its reader if the body then places the weight elsewhere.
 
 These map onto the project's established house voice and prose conventions - the same standards the [article-writing](../article-writing/SKILL.md) skill and the prose-style skill hold the draft to. Brief every reader with that guidance so its findings target the established voice, not generic style advice the author has already rejected.
 
@@ -35,6 +38,7 @@ Hold each reader to selectivity, not coverage. A surface pattern is not a fault 
 - A run of events about one subject. Serial happenings to one actor are a single idea, not a crowded compound.
 - A precise, common technical term. Refinement does not swap a correct word for a simpler, vaguer one.
 - A metaphor carrying genuine emphasis. The fault is the metaphor that re-explains something already clear, not the one that lands a point.
+- A progressive carrying genuine ongoing aspect. The fault is the "-ing" standing in for a plain present, not the one describing an action that is actually continuous.
 
 ## Edit with judgment, not by transcription
 
