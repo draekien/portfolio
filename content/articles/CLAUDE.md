@@ -4,7 +4,9 @@ One `.mdx` file per article; the filename (minus `.mdx`) is the slug.
 
 **Frontmatter** is validated by a Zod schema in `@/lib/articles`:
 - required: `title`, `description`, `date`
-- optional: `updated`, `tags` (string[]), `draft` (boolean)
+- optional: `updated`, `tags` (string[]), `draft` (boolean), `versions` (list of `{ date, description }`, oldest-first)
+
+**Versions** — every post-publication edit appends a `versions` entry (date + short description of the change). The latest entry drives `updated` (SEO modified dates) and the `@updated` row with its version-history popover on the article page.
 
 **Drafts** (`draft: true`) render only when `NODE_ENV !== "production"` — hidden in the production build.
 
