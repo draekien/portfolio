@@ -11,13 +11,13 @@ The first time it caused real trouble was 1966. Joseph Weizenbaum, at MIT, wrote
 
 What unsettles me is not that ELIZA fooled people. It is that it fooled the person who knew best how little was behind it. The secretary had watched the program take shape for months, and knowing exactly how it worked bought her no protection. The reflex is strong enough, and old enough, that it has a name of its own now: <Define term="eliza-effect">the ELIZA effect</Define>, after this very program. Weizenbaum found the lesson in 1966, and we have mislaid it and paid to relearn it ever since.
 
-Sixty years later the program on the other end is no longer simple, and the delusion is no longer a quirk. It underwrites a great deal of investment, a great deal of trust, and a great many decisions about who does what work. The machine has changed beyond recognition. What we get wrong about it has not.
+Sixty years later the program on the other end is no longer simple, and the delusion is no longer a quirk. People wire these models into real work - drafting the contract, triaging the support ticket, sifting the job applications - and lean on the output the way they would lean on a person they trusted. The machine has changed beyond recognition. What we get wrong about it has not.
 
 I am not going to tell you to stop. You can't. The instinct is older than the technology and has no off switch. The useful question is not whether you imagine a person. You will. It is which person.
 
 The one you imagine is a colleague. Someone who knows things, who tells you when they don't, who remembers what you told them this morning, and who can be held to account when they get it wrong. None of that describes what is actually there. And before this gets filed under things non-technical people get wrong, I watch engineers do it too. Most have never looked at how a model actually works. Building software on top of one is not the same as looking. The ones who have looked still reach for "it knew" and "it decided" anyway.
 
-## Knowing is the wrong word
+## What looks like knowing is prediction
 
 A <Define term="large-language-model">large language model</Define> generates text one <Define term="token">token</Define> at a time. At each step it produces a spread of probabilities across its whole vocabulary and <LinkNote href="https://sebastianraschka.com/faq/docs/next-token-prediction.html" note="A clear technical explainer of next-token prediction by Sebastian Raschka, author of Build a Large Language Model From Scratch.">picks from it</LinkNote>. The thing it is optimising is whether the next token is a plausible continuation of the text so far, and only that. There is no separate step where it checks a claim against the world, because it has nothing to check it against - no store of facts of its own, only the statistical shape of the text it was trained on.
 
@@ -25,13 +25,13 @@ This is why a model states a wrong answer with exactly the confidence of a right
 
 A colleague who says "I'm certain" has something on the line - their reputation, their standing, their sense of themselves as reliable. The model has nothing on the line. Its confidence is a feature of the sentence, not a judgement about the answer. I have watched an agent describe an access check in <ArticleLink slug="we-gave-a-product-owner-an-agent">convincing detail that did not exist anywhere in the system</ArticleLink> - not lying, just producing the plausible-sounding thing, which is all it ever does.
 
-## Remembering is the wrong word
+## What looks like memory is re-reading
 
 Start a new conversation and the model knows nothing of the last one. Within a single conversation it feels like it is following along, but there is no running memory keeping track. Each turn, it re-reads the entire conversation from the top and predicts what comes next. <Define term="context-window">The context window</Define> is the amount of text it can take in at once, and nothing outside that window exists for it.
 
 The chat products bolt memory on top. ChatGPT and Claude will save notes about you and paste them back in next time, so it feels like continuity. That is the application managing a file and re-feeding it, not the model remembering you. Take the wrapper away and the model meets you fresh every single time.
 
-## Reasoning is the wrong word
+## What looks like reasoning is narration
 
 This is the one that fools careful people, because it looks exactly like thinking. Ask a current model a hard question and it will produce a visible train of thought before its answer - this is what "reasoning" models do. And it works: having a model generate intermediate steps <LinkNote href="https://arxiv.org/abs/2201.11903" note="Chain-of-Thought Prompting Elicits Reasoning in Large Language Models (Wei et al., 2022): intermediate reasoning steps measurably improve accuracy on multi-step problems.">measurably improves its accuracy</LinkNote> on multi-step problems. So the <Define term="chain-of-thought">chain of thought</Define> is doing something real.
 
@@ -47,7 +47,7 @@ Here is the part that should settle it. Look at what the industry is actually bu
 
 We attach search and retrieval - <Define term="rag">retrieval-augmented generation</Define>, vector databases - so the model fetches real documents and reads them before answering, because it has no reliable store of facts of its own. We add memory layers so it can appear to remember you. We wrap it in verification loops, evaluation suites, and second models whose only job is to check the first, because we cannot trust a single pass to be right. We build guardrails to catch it doing the thing it will otherwise confidently do.
 
-Every one of those is a prosthetic for something the imagined colleague is assumed to already have - knowledge, memory, judgement, accountability. We are supplying from the outside the very things the words "knows", "remembers", and "reasons" quietly claim are already inside. We wrap people in process too - code review, documentation - but to catch the occasional miss, not to supply judgement they lack. You do not build this much apparatus around someone you can trust to know things.
+Every one of those is a prosthetic for something the imagined colleague is assumed to already have - knowledge, memory, judgement, accountability. We are supplying from the outside the very things the words "knows", "remembers", and "reasons" quietly claim are already inside. We wrap people in process too, but they internalise it - take the code review and the mentoring away and a capable engineer still performs to standard. Take the scaffolding off the model and it is back where it started. You do not build this much apparatus around someone you can trust to know things.
 
 ## It is not a parrot either
 
