@@ -5,7 +5,7 @@ description: Refine a drafted article line by line through focused, concern-by-c
 
 # Refine Prose
 
-A draft that is true and well-shaped can still read badly, sentence by sentence. This pass works at that level. It does not argue with what the piece says or how it is built - the [article-writing](../article-writing/SKILL.md) skill owns substance and structure - it works on how each sentence reads, against the house voice the piece is already trying to hold. Unlike a review, it ends with the edits made, not a list handed back.
+A draft that is true and well-shaped can still read badly, sentence by sentence and at the seams where one paragraph hands off to the next. This pass works at that level. It does not argue with what the piece says or how it is built - the [article-writing](../article-writing/SKILL.md) skill owns substance and structure - it works on how the prose reads, line by line and across those seams, against the house voice the piece is already trying to hold. Unlike a review, it ends with the edits made, not a list handed back.
 
 The method is one focused reader per editorial concern, run independently, with an editor synthesising their findings and applying only the changes that survive judgment. A single read tightens a few obvious lines and tires before the rest. Splitting the read by concern lets each pass hunt one fault to exhaustion, and a passage two concerns flag independently is almost always the one most worth reworking.
 
@@ -23,6 +23,7 @@ A refinement pass targets a named set of faults, not "make it better". The autho
 - **Awkward progressive** - a continuous "-ing" verb standing where the simple present or an infinitive reads cleaner. "the question nobody is asking", "the work done training juniors" carry an ongoing-action nuance the sentence does not want; "nobody asks", "done to train juniors" land flatter and more direct. Keep the progressive only where the action being ongoing is the point.
 - **Undercutting tail** - a clause tacked onto the end that takes back the stake the sentence just set, typically a second, milder consequence ("...and someone clears it up eventually", "...but it gets fixed anyway") that drains the urgency of the first. Two opposed outcomes in one sentence leave the reader no clear stake. End on the strongest consequence and let it stand.
 - **Stranded locational frame** - a spatial or directional word (upstream and downstream, above and below, across and up) placed far from the thing it positions, so the reader has to reconstruct what sits where. Keep the frame next to its antecedent; when the word that orients an idea drifts from the idea, the orientation is lost. This applies across a passage too - a heading that locates the section ("the cost lands downstream") strands its reader if the body then places the weight elsewhere.
+- **Paragraph cohesion** - the seam between paragraphs rather than the line within one. A transition that jumps to the next topic with no hand-off; a "this", "that", or "that much" whose referent sits a paragraph or more back, so the reader climbs to recover it; a hook or promise raised in one paragraph whose payoff the following ones defer past the point it was set up for. Each paragraph should connect to the one before, and a point should pay off near where it is raised. Argument structure stays with article-writing - this is the connective tissue, not the skeleton.
 
 These map onto the project's established house voice and prose conventions - the same standards the [article-writing](../article-writing/SKILL.md) skill and the prose-style skill hold the draft to. Brief every reader with that guidance so its findings target the established voice, not generic style advice the author has already rejected.
 
@@ -39,6 +40,7 @@ Hold each reader to selectivity, not coverage. A surface pattern is not a fault 
 - A precise, common technical term. Refinement does not swap a correct word for a simpler, vaguer one.
 - A metaphor carrying genuine emphasis. The fault is the metaphor that re-explains something already clear, not the one that lands a point.
 - A progressive carrying genuine ongoing aspect. The fault is the "-ing" standing in for a plain present, not the one describing an action that is actually continuous.
+- A clean break between sections. A new section opening a fresh line is not a broken seam; the fault is a missing hand-off where the prose means to continue, not a deliberate reset.
 
 ## Edit with judgment, not by transcription
 
@@ -61,7 +63,7 @@ Apply selectively. The measure of the pass is targeted improvement, not the numb
 
 ## Verify the survivors
 
-After editing, search the text again for each concern's signature - the connectors, the colons, the repeated phrasings. For every match still standing, say why it stays. A clean pass is one where every survivor is justified, not one where the count dropped. Then confirm the piece still builds, so no edit broke a component, a link, or the frontmatter.
+After editing, search the text again for each concern's signature - the connectors, the colons, the repeated phrasings. For every match still standing, say why it stays. A clean pass is one where every survivor is justified, not one where the count dropped. Paragraph cohesion has no search signature - re-read the seams between paragraphs instead, checking each demonstrative resolves to something close behind it. Then confirm the piece still builds, so no edit broke a component, a link, or the frontmatter.
 
 ## Gotchas
 
