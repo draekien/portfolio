@@ -1,21 +1,21 @@
 ---
 name: article-review
-description: Review a draft article through four independent reviewer perspectives and synthesise prioritised, actionable feedback. Use when reviewing or critiquing an article before publishing, or when the user says "review the article", "get feedback on this draft", "have reviewers look at this", or "critique this piece".
+description: Review a draft article through five independent reviewer perspectives and synthesise prioritised, actionable feedback. Use when reviewing or critiquing an article before publishing, or when the user says "review the article", "get feedback on this draft", "have reviewers look at this", or "critique this piece".
 ---
 
 # Article Review
 
-A single reviewer reads with a single set of blind spots. The value here is four readers who fail differently: each lens catches a class of problem the others are built to miss, and a flaw that surfaces under two lenses independently is both real and worth fixing first. The deliverable is not four opinions stapled together - it is one prioritised list the author can act on.
+A single reviewer reads with a single set of blind spots. The value here is five readers who fail differently: each lens catches a class of problem the others are built to miss, and a flaw that surfaces under two lenses independently is both real and worth fixing first. The deliverable is not five opinions stapled together - it is one prioritised list the author can act on.
 
-## Run the four reviews in isolation
+## Run the five reviews in isolation
 
-Conduct four reviews of the same article, each with no knowledge of the others. Independence is the whole point: when two reviewers flag the same passage without having seen each other's notes, that convergence is signal rather than coincidence, and it is the clearest guide to where the author should spend effort first. Letting reviewers see each other's work collapses them toward one consensus voice and destroys that signal, so keep them separate until synthesis.
+Conduct five reviews of the same article, each with no knowledge of the others. Independence is the whole point: when two reviewers flag the same passage without having seen each other's notes, that convergence is signal rather than coincidence, and it is the clearest guide to where the author should spend effort first. Letting reviewers see each other's work collapses them toward one consensus voice and destroys that signal, so keep them separate until synthesis.
 
 Give each reviewer the full article. When a house style guide exists (such as the [article-writing](../article-writing/SKILL.md) skill), brief every reviewer with it so their feedback targets the established voice and standards rather than offering generic writing advice the author has already decided against.
 
 Each reviewer returns structured findings. For every issue: where it is, what the problem is, why it matters, and a concrete fix. "This could be clearer" is not a finding. "The paragraph on derived state uses the term before defining it, which loses a reader outside the niche - introduce it in one plain sentence at first use" is.
 
-The four lenses are distinct readers, not four passes of the same critique. Hold each one to its perspective:
+The five lenses are distinct readers, not five passes of the same critique. Hold each one to its perspective:
 
 ### The newcomer
 
@@ -29,13 +29,17 @@ A peer fluent in the article's actual subject. They catch technical inaccuracy: 
 
 A reader who judges the argument's stakes and structure. They catch sag and weak support: repetitive or overlong sections, claims about teams, organisations, or the industry asserted without grounding, a thesis that never pays off, a missing "so what", headings that label rather than carry the argument so a skimmer learns nothing from the table of contents. Their question is whether the piece earns a busy reader's time and whether its claims about practice hold up.
 
+### The structural editor
+
+A developmental editor who reads for the spine rather than the sentence. They catch the failure that hides when every paragraph is individually sound but the whole does not cohere: a thesis that cannot be stated in one line, sections ordered so the argument doubles back or arrives before the ground it stands on, weight misallocated so a minor beat is over-built while the load-bearing turn is rushed past. Their job is to state the single controlling claim, then walk the headings as a logic chain and check that each step follows from the last and earns its length - and when the structure itself is what is broken, to hand back the thesis and the order the argument should take, a rebuild brief rather than a line edit, because no amount of sentence polish rescues a piece that is sound in its parts and incoherent as a whole.
+
 ### The devil's advocate
 
 An adversary trying to break the argument. They catch what the author is too close to see: a thesis the conclusion quietly contradicts, overclaiming, an obvious counterargument left unaddressed, a logical gap, the single weakest link in the chain. Their job is to name where the piece is most attackable before a hostile reader does it for them.
 
 ## Synthesise into one prioritised list
 
-Collation is where the four reviews become useful. Do not hand back four raw reviews - that pushes the sorting work onto the author, which is the job the skill is meant to do.
+Collation is where the five reviews become useful. Do not hand back five raw reviews - that pushes the sorting work onto the author, which is the job the skill is meant to do.
 
 Group findings that point at the same underlying problem, even when reviewers phrased them differently. Then order the list by two factors together:
 
