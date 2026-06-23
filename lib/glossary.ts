@@ -166,6 +166,47 @@ export const glossary = {
     href: "https://www.media.mit.edu/projects/your-brain-on-chatgpt/",
     hrefLabel: "MIT Media Lab",
   },
+  "large-language-model": {
+    label: "AI model",
+    summary:
+      "A program trained on a vast amount of text to predict the next chunk of text, one piece at a time. Everything it produces - answers, code, the appearance of reasoning - is that one prediction repeated. ChatGPT and Claude are interfaces built on top of one.",
+  },
+  token: {
+    label: "LLM unit",
+    summary:
+      "The chunk of text a language model reads and writes in - usually a word-piece rather than a whole word. The model works one token at a time, never with a whole sentence at once.",
+  },
+  hallucination: {
+    label: "LLM failure",
+    summary:
+      "When a model states something false with the same fluency it states something true. The word frames it as a glitch, but producing plausible text is the model's normal mode - a true statement and a convincing fabrication are made the same way.",
+  },
+  "chain-of-thought": {
+    label: "Prompting technique",
+    summary:
+      "Having a model generate intermediate steps before its final answer. It measurably improves accuracy on multi-step problems, which is why 'reasoning' models produce it - but the steps are generated text, not a record of how the answer was actually reached.",
+    href: "https://arxiv.org/abs/2201.11903",
+    hrefLabel: "Wei et al., 2022",
+  },
+  "stochastic-parrot": {
+    label: "AI critique",
+    summary:
+      "From a 2021 paper by Bender and colleagues: a system that stitches language together by statistical likelihood with no access to meaning. Often borrowed loosely as 'it's just autocomplete', though the paper's own argument was subtler than the slogan.",
+    href: "https://dl.acm.org/doi/10.1145/3442188.3445922",
+    hrefLabel: "The paper",
+  },
+  "eliza-effect": {
+    label: "Cognitive bias",
+    summary:
+      "The tendency to read far more understanding into a computer's output than is there. Named by Douglas Hofstadter in 1995, after a 1960s chatbot whose users confided in it knowing full well it was a program.",
+    href: "https://en.wikipedia.org/wiki/ELIZA_effect",
+    hrefLabel: "Wikipedia",
+  },
+  rag: {
+    label: "LLM architecture",
+    summary:
+      "Retrieval-augmented generation: bolting a search step onto a model so it fetches relevant documents and reads them before answering, rather than relying on what it absorbed in training. A workaround for the model having no reliable store of facts.",
+  },
 } satisfies Record<string, GlossaryEntry>;
 
 export type GlossaryTerm = keyof typeof glossary;

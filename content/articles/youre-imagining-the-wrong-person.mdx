@@ -1,0 +1,64 @@
+---
+title: "Would you mind leaving the room, please?"
+description: "A chatbot taught us this in 1966, and we are relearning it the expensive way. You cannot stop imagining a person behind the machine, so the fix is to correct which person you imagine."
+date: "2026-06-23"
+tags: ["ai", "llm", "mental-models"]
+---
+
+We name our cars. We say please to the self-checkout, swear at the printer, and feel a small pang switching off a robot vacuum still nosing at a skirting board. Reading a mind into a thing that has none is one of the most reliable things people do.
+
+The first time it caused real trouble was 1966. Joseph Weizenbaum, at MIT, wrote a program called <LinkNote href="https://www.csee.umbc.edu/courses/331/papers/eliza.html" note="Weizenbaum's 1966 Communications of the ACM paper introducing ELIZA, the program and the DOCTOR script.">ELIZA</LinkNote>. Its most famous script imitated a psychotherapist by reflecting your own words back as questions - you typed "I feel stuck", it asked "why do you feel stuck?". A few lines of pattern-matching, with no understanding of anything behind them. Weizenbaum <LinkNote href="https://en.wikipedia.org/wiki/Computer_Power_and_Human_Reason" note="Computer Power and Human Reason (1976), the book Weizenbaum wrote partly in response to how people reacted to ELIZA.">later wrote</LinkNote> that his own secretary, who had watched him build the thing and knew exactly what it was, turned to him after a few exchanges and asked him to leave the room. He reported her exact words: "Would you mind leaving the room, please?" He was disturbed enough by how readily people did this that he spent the next decade arguing against the field he had helped found, writing that "extremely short exposures to a relatively simple computer program could induce powerful delusional thinking in quite normal people."
+
+What unsettles me is not that ELIZA fooled people. It is that it fooled the person who knew best how little was behind it. The secretary had watched the program take shape for months, and knowing exactly how it worked bought her no protection - the reflex is strong enough, and old enough, that it has a name of its own now: <Define term="eliza-effect">the ELIZA effect</Define>, after this very program. Weizenbaum found the lesson in 1966, and we have been mislaying it and paying to relearn it ever since.
+
+Sixty years later the program on the other end is no longer simple, and the delusion is no longer a quirk. It underwrites a great deal of investment, a great deal of trust, and a great many decisions about who does what work. The machine has changed beyond recognition; what we get wrong about it has not.
+
+I am not going to tell you to stop. You can't. The instinct is older than the technology and has no off switch. The useful question is not whether you imagine a person. You will. It is which person.
+
+The one you imagine is a colleague. Someone who knows things, who tells you when they don't, who remembers what you told them this morning, and who can be held to account when they get it wrong. None of that describes what is actually there. And before this gets filed under things non-technical people get wrong, I watch engineers do it too. Most have never looked at how a model actually works. Building software on top of one is not the same as looking. The ones who have looked still reach for "it knew" and "it decided" anyway.
+
+## Knowing is the wrong word
+
+A <Define term="large-language-model">large language model</Define> generates text one <Define term="token">token</Define> at a time. At each step it produces a spread of probabilities across its whole vocabulary and <LinkNote href="https://sebastianraschka.com/faq/docs/next-token-prediction.html" note="A clear technical explainer of next-token prediction by Sebastian Raschka, author of Build a Large Language Model From Scratch.">picks from it</LinkNote>. The thing it is optimising is whether the next token is a plausible continuation of the text so far, and only that. There is no separate step where it checks a claim against the world, because it has no model of the world to check against - only the statistical shape of the text it was trained on.
+
+This is why a model states a wrong answer with exactly the confidence of a right one. We call that a <Define term="hallucination">hallucination</Define>, which makes it sound like a fault. It isn't. A convincing falsehood and a convincing truth are built the identical way, from the same machinery, and nothing inside the model distinguishes them. OpenAI researchers <LinkNote href="https://arxiv.org/abs/2509.04664" note="Why Language Models Hallucinate (OpenAI, 2025): argues hallucination is driven by training and evaluation that reward confident guessing over admitting uncertainty.">argued in 2025</LinkNote> that models hallucinate because training and evaluation reward confident guessing over admitting uncertainty - a model that guesses scores better on the test than one that says "I don't know", so guessing is what it learns. The fabrication is the system working as designed.
+
+A colleague who says "I'm certain" has something on the line: their reputation, their standing, their sense of themselves as reliable. The model has nothing on the line. Its confidence is a feature of the sentence, not a judgement about the answer. I have watched an agent describe an access check in <ArticleLink slug="we-gave-a-product-owner-an-agent">convincing detail that did not exist anywhere in the system</ArticleLink> - not lying, just producing the plausible-sounding thing, which is all it ever does.
+
+## Remembering is the wrong word
+
+Start a new conversation and the model knows nothing of the last one. Within a single conversation it feels like it is following along, but there is no running memory keeping track. Each turn, it re-reads the entire conversation from the top and predicts what comes next. <Define term="context-window">The context window</Define> is the amount of text it can take in at once, and nothing outside that window exists for it.
+
+The chat products bolt memory on top. ChatGPT and Claude will save notes about you and paste them back in next time, so it feels like continuity. That is the application managing a file and re-feeding it, not the model remembering you. Take the wrapper away and the model meets you fresh every single time.
+
+## Reasoning is the wrong word
+
+This is the one that fools careful people, because it looks exactly like thinking. Ask a current model a hard question and it will produce a visible train of thought before its answer - this is what "reasoning" models do. And it works: having a model generate intermediate steps <LinkNote href="https://arxiv.org/abs/2201.11903" note="Chain-of-Thought Prompting Elicits Reasoning in Large Language Models (Wei et al., 2022): intermediate reasoning steps measurably improve accuracy on multi-step problems.">measurably improves its accuracy</LinkNote> on multi-step problems. So the <Define term="chain-of-thought">chain of thought</Define> is doing something real.
+
+What it is not doing is recording how the model reached its answer. Anthropic tested this in 2025. They <LinkNote href="https://arxiv.org/abs/2505.05410" note="Reasoning Models Don't Always Say What They Think (Anthropic, 2025): models verbalised the hint that changed their answer well under 20% of the time, some as low as 1%.">slipped a hint into a prompt</LinkNote>, watched the model use it to change its answer, then checked whether the written-out reasoning admitted using the hint. It did so less than a fifth of the time, and for some hints as rarely as once in a hundred. The model reached the answer one way and narrated a tidy, plausible path that was not the one it took. Earlier work found the same shape: chain-of-thought explanations <LinkNote href="https://arxiv.org/abs/2305.04388" note="Turpin et al., 2023: chain-of-thought explanations can systematically misrepresent the true reason for a model's prediction.">can systematically misrepresent the true reason</LinkNote> for an answer.
+
+So the train of thought is real text that helps the model land on a better answer, and it is also a story written out for your benefit that need not match what happened underneath. Expand it, follow along, and you are reading a narrative rather than a recording. The fluency of it is exactly what earns your trust.
+
+I want to be fair to the other side of this. Models are not wholly blind to their own limits. Anthropic showed in 2022 that a large model can, on <LinkNote href="https://arxiv.org/abs/2207.05221" note="Language Models (Mostly) Know What They Know (Anthropic, 2022): larger models are reasonably calibrated about their own correctness on structured questions, with the effect weakening on open-ended tasks.">neatly structured questions</LinkNote>, estimate fairly well whether its own answer is right. There is some genuine signal there. But it holds on tidy multiple-choice formats and frays on open-ended work, and a faint statistical sense of "I might be wrong here" is a different thing from a colleague who knows the edge of what they know and stops at it.
+
+## The workarounds are the confession
+
+Here is the part that should settle it. Look at what the industry is actually building around these models.
+
+We attach search and retrieval - <Define term="rag">retrieval-augmented generation</Define>, vector databases - so the model fetches real documents and reads them before answering, because it has no reliable store of facts of its own. We add memory layers so it can appear to remember you. We wrap it in verification loops, evaluation suites, and second models whose only job is to check the first, because we cannot trust a single pass to be right. We build guardrails to catch it doing the thing it will otherwise confidently do.
+
+Every one of those is a prosthetic for something the imagined colleague is assumed to already have - knowledge, memory, judgement, accountability. An entire engineering discipline has grown up to supply from the outside the things the words "knows", "remembers", and "reasons" quietly claim are already inside. You do not build this much apparatus around someone you can trust to know things. The scaffolding is the tell.
+
+## It is not a parrot either
+
+The risk in all of this is over-correcting into the opposite mistake. Pull the other lever too hard and you land on "it's just autocomplete", the <Define term="stochastic-parrot">stochastic parrot</Define> that only ever remixes its training data. That gets you burned just as badly, in the other direction. A system that has absorbed the statistical shape of most of what people have written can generalise, can work through problems it was never shown, and is right and useful far more often than a parrot would be. Even the paper that gave us the phrase was making a sharper point than the slogan it became - it warned against mistaking fluent form for understanding, not against the models being capable.
+
+The machine is not stupid. Its competence simply has a different shape than a person's, and every word we have for it describes the person's shape. Downgrading it to a parrot swaps one wrong character for another.
+
+## Watch the words you give it
+
+I am not proposing a new vocabulary of invented terms. Coined words never stick, and they would miss the point anyway. The fix is smaller and harder than that: notice the verbs you reach for. When I catch myself writing that the model "knew" or "decided" or "understood", I change it to what actually happened - it produced, it generated, it predicted. "Hallucinate" is the one I would most like to take back, because it frames everyday fabrication as a rare medical event rather than the ordinary way the thing runs.
+
+This is not pedantry. The word you choose sets the character you think you are dealing with, and the character sets how far you trust the output before you check it. Call it knowing and you stop reading critically. Call it predicting and you keep your eyes open.
+
+The character also keeps moving. Memory features, tools, and retrieval each make one of these flat statements a little less flat, so "it can't remember" is already fuzzier than it was two years ago. The literacy is not memorising a fixed list of what the model cannot do. It is noticing which of the human words you have quietly imported, and being willing to take them back when the output has not earned them. You will not stop seeing a person in there. You can at least pick the right one.
