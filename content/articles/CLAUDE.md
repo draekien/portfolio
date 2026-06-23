@@ -18,11 +18,12 @@ Custom MDX components (`<Define>`, `<CodeBlock>`, `<FrameworkBadge>`, etc.) are 
 
 When drafting a new article, follow these steps in order:
 
-1. Use `/article-writing` to work out what we are writing about.
-2. Once the subject and shape are finalised, use `/personal-skills:ghost-writing` to write the article.
-3. With a first draft in hand, use `/refine-prose` to tighten the prose concern by concern, then apply and verify the edits.
-4. Use `/stop-slop` to strip predictable AI writing tells, then apply and verify the edits.
-5. Use `/article-review` to perform an independent review of the draft and present findings.
+1. Use `/brain-dump` to develop the raw idea — dump unstructured thinking into `content/brain-dumps/`, then fill the gaps the skill surfaces, until the thinking is whole.
+2. Use `/article-writing` to work out what we are writing about.
+3. Once the subject and shape are finalised, use `/personal-skills:ghost-writing` to write the article.
+4. With a first draft in hand, use `/refine-prose` to tighten the prose concern by concern, then apply and verify the edits.
+5. Use `/stop-slop` to strip predictable AI writing tells, then apply and verify the edits.
+6. Use `/article-review` to perform an independent review of the draft and present findings.
 
 - `<Define term="...">` — the `term` must be a key in the typed glossary at `lib/glossary.ts`. An unregistered term is a TypeScript error, not a runtime fallback. To add a new term: add the entry to `lib/glossary.ts` first, then use the component in the MDX. Remove any inline parenthetical definition the MDX was carrying — it belongs in the glossary now.
 - **All definitions go in `<Define>`, never inline.** If an article explains a term in parentheses or an em-dash aside, move that explanation to the glossary and replace it with `<Define>`.
