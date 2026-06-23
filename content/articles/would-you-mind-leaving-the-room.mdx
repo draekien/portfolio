@@ -31,7 +31,7 @@ A colleague who says "I'm certain" has something on the line - their reputation,
 
 Start a new conversation and the model knows nothing of the last one. Within a single conversation it feels like it is following along, but there is no running memory keeping track. It re-reads the entire conversation from the top every <Define term="turn">turn</Define> and predicts what comes next. <Define term="context-window">The context window</Define> is the amount of text it can take in at once, and nothing outside that window exists for it.
 
-The chat products bolt memory on top. ChatGPT and Claude will save notes about you and insert them into the context next time, so it feels like continuity. That is the application managing a file and feeding it back into the context window, not the model remembering you. Take the wrapper away and the model meets you fresh every single time.
+The chat products bolt memory on top. ChatGPT and Claude will save notes about you and insert them into the context next time, so it feels like continuity. That is the application managing a file and feeding it back into the context window, not the model remembering you. Take the wrapper away and the model meets you fresh every time.
 
 ## What looks like reasoning is narration
 
@@ -41,7 +41,7 @@ What it is not doing is recording how the model reached its answer. Anthropic te
 
 ## The workarounds are the confession
 
-Here is the part that confirms it. Look at what the industry actually builds around these models - each piece patches exactly one of the gaps we just walked through.
+Here is the part that confirms it. Look at what the industry actually builds around these models - each piece props up exactly what these models lack.
 
 We attach search and retrieval - <Define term="rag">retrieval-augmented generation</Define>, vector databases - so the application fetches real documents and feeds them into the context before the model answers, because the model has no reliable store of facts of its own. We add memory layers so it can appear to remember you. We wrap it in verification loops, evaluation suites, and second models whose only job is to check the first, because we cannot trust a single pass to be right. We build guardrails to catch it doing the thing it will otherwise confidently do.
 
@@ -61,6 +61,6 @@ So picture someone else on the other end. A contractor you hired this morning - 
 
 I am not proposing a new vocabulary of invented terms. Coined words never stick, and they would miss the point anyway. The fix is smaller and harder than that: notice the verbs you reach for. When I catch myself writing that the model "knew" or "decided" or "understood", I change it to what actually happened - it produced, it generated, it predicted. "Hallucinate" is the one I would most like to take back, because it frames everyday fabrication as a rare medical event rather than the ordinary way the thing runs.
 
-This is not pedantry. The word you choose sets the character you think you are dealing with, and the character sets how far you trust the output before you check it. Call it knowing and you stop reading critically. Call it predicting and you keep your eyes open.
+This is not pedantry. The word you choose sets the character you think you are dealing with, and the character sets how far you trust the output before you check it. Call it knowing and you stop reading critically.
 
 The character also keeps moving. Memory features, tools, and retrieval each make one of these flat statements a little less flat, so "it can't remember" is already fuzzier than it was two years ago. The literacy is not memorising a fixed list of what the model cannot do. It is noticing which of the human words you have quietly imported, and being willing to take them back when the output has not earned them. You will not stop seeing a person in there. You can at least pick the right one.
