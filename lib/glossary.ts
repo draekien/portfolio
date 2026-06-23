@@ -176,6 +176,11 @@ export const glossary = {
     summary:
       "The chunk of text a language model reads and writes in - usually a word-piece rather than a whole word. The model works one token at a time, never with a whole sentence at once.",
   },
+  turn: {
+    label: "Conversation unit",
+    summary:
+      "One exchange in a conversation - the message you send and the reply the model generates in response. The model keeps nothing between turns; each one starts from the whole conversation re-read from the top.",
+  },
   hallucination: {
     label: "LLM failure",
     summary:
