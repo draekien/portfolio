@@ -10,6 +10,7 @@ import {
 } from "@/components/project-summary";
 import { SectionNav } from "@/components/section-nav";
 import { getAllArticles } from "@/lib/articles";
+import { MashaySummary } from "./_summaries/mashay";
 import { NorthShoreMeditationSummary } from "./_summaries/north-shore-meditation";
 import { ParasolSummary } from "./_summaries/parasol";
 import { SkillsSummary } from "./_summaries/skills";
@@ -80,6 +81,7 @@ export default async function Page() {
           <BrandMark className="text-primary shrink-0" />
         </div>
         <div className="space-y-24">
+          <MashaySummary />
           <SkillsSummary />
           <WaystoneMonadsSummary />
           <WaystoneWideLogEventsSummary />
