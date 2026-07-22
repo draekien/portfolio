@@ -43,6 +43,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
+      url: "https://www.wpei.me/projects/mashay",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: "https://www.wpei.me/projects/waystone-monads",
       lastModified: new Date(),
       changeFrequency: "monthly",
