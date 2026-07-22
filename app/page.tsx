@@ -37,13 +37,13 @@ export default async function Page() {
             aria-hidden="true"
           />
           <h1 className="font-mono text-4xl md:text-7xl font-medium tracking-tight leading-tight mb-8 md:mb-12">
-            <span>Technical Lead</span>{" "}
+            <span>Solution Architect</span>{" "}
             <span className="text-secondary">at InfoTrack</span>
           </h1>
           <div className="space-y-3 max-w-prose">
             <p className="text-lg md:text-xl">
-              I set technical direction and develop the engineers who execute it
-              into the ones who define it next.
+              I design the systems teams build on, and develop the engineers who
+              execute the direction into the ones who define it next.
             </p>
             <p className="text-base text-muted-foreground">
               Shipping full-stack systems and open-source libraries used in

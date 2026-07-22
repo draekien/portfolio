@@ -20,9 +20,9 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.wpei.me"),
-  title: "Technical Lead | William Pei | Portfolio",
+  title: "Solution Architect | William Pei | Portfolio",
   description:
-    "William Pei is a Technical Lead at InfoTrack. He sets technical direction and develops the engineers who execute it into the ones who define it next.",
+    "William Pei is a Solution Architect at InfoTrack. He designs the systems teams build on and develops the engineers who execute the direction into the ones who define it next.",
   openGraph: {
     siteName: "William Pei",
     locale: "en_AU",

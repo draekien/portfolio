@@ -53,7 +53,7 @@ export default async function Image() {
               letterSpacing: "-0.03em",
             }}
           >
-            Technical Lead
+            Solution Architect
           </span>
           <span
             style={{
