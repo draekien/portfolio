@@ -10,7 +10,7 @@ Recruiters screening candidates, hiring managers, and engineers — arriving fro
 
 ## Product Purpose
 
-A personal portfolio for William Pei — Technical Lead at InfoTrack — that demonstrates technical depth through the quality of what it ships, not through a résumé dump. Projects are presented as curated case studies with working demos, code samples, and package docs. Consulting and contract work is a secondary goal: the contact section invites relevant outreach for distributed .NET systems, TypeScript, and architecture work.
+A personal portfolio for William Pei — Solution Architect at InfoTrack — that demonstrates technical depth through the quality of what it ships, not through a résumé dump. Projects are presented as curated case studies with working demos, code samples, and package docs. Consulting and contract work is a secondary goal: the contact section invites relevant outreach for distributed .NET systems, TypeScript, and architecture work.
 
 Success looks like: a visitor who arrives skeptical leaves thinking "this person knows what they're doing."
 
@@ -44,7 +44,7 @@ The `\\` (double backslash) is the site's structural mark — used as a prefix f
 - **Theme**: Dark primary. Audience sits at a screen in a focused context.
 - **Visual richness**: Denser than Emil Kowalski, not as sparse as Lee Rob or Paco. Content feels substantial.
 - **Interactivity**: Present and purposeful — like Brittany Chiang's site. Not scroll-jacking, not gimmicky.
-- **Hero**: Static. No rotating text. The current statement ("Technical Lead at InfoTrack" + positioning line) is the final direction. Future hero work builds on this foundation; don't reintroduce animation for its own sake.
+- **Hero**: Static. No rotating text. The current statement ("Solution Architect at InfoTrack" + positioning line) is the final direction. Future hero work builds on this foundation; don't reintroduce animation for its own sake.
 - **Architecture**: Multi-page. Navigation patterns, page transitions, and layout shells are built for a multi-page site, not a single-page scroll.
 
 **References**: Brittany Chiang (visual interest + interactivity level, but more curated); Emil Kowalski (content quality and presentation, but more visual substance).

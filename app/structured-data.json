@@ -5,7 +5,7 @@
       "@type": "Person",
       "@id": "https://www.wpei.me/#person",
       "name": "William Pei",
-      "jobTitle": "Technical Lead",
+      "jobTitle": "Solution Architect",
       "worksFor": {
         "@type": "Organization",
         "name": "InfoTrack"
@@ -24,7 +24,7 @@
         "software architecture",
         "open source"
       ],
-      "description": "William Pei is a Technical Lead at InfoTrack. He sets technical direction and develops the engineers who execute it into the ones who define it next."
+      "description": "William Pei is a Solution Architect at InfoTrack. He designs the systems teams build on and develops the engineers who execute the direction into the ones who define it next."
     },
     {
       "@type": "WebSite",
