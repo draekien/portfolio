@@ -14,7 +14,12 @@ type FrameworkVersion =
   | "contentful"
   | "resend"
   | "claude-code"
-  | "agent-skills";
+  | "agent-skills"
+  | "node"
+  | "unified"
+  | "tailwind"
+  | "commander"
+  | "zod";
 
 const displayLabels: Record<FrameworkVersion, string> = {
   "netstandard2.0": ".NET Standard 2.0",
@@ -29,6 +34,11 @@ const displayLabels: Record<FrameworkVersion, string> = {
   resend: "Resend",
   "claude-code": "Claude Code",
   "agent-skills": "Agent Skills",
+  node: "Node.js",
+  unified: "unified",
+  tailwind: "Tailwind CSS",
+  commander: "Commander",
+  zod: "Zod",
 };
 
 type FrameworkBadgeProps = {
