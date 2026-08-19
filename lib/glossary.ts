@@ -212,6 +212,28 @@ export const glossary = {
     summary:
       "Retrieval-augmented generation: bolting a search step onto a model so it fetches relevant documents and reads them before answering, rather than relying on what it absorbed in training. A workaround for the model having no reliable store of facts.",
   },
+  "roslyn-analyzer": {
+    label: ".NET tooling",
+    summary:
+      "A rule that runs inside the C# compiler, inspecting your code as it builds and reporting a diagnostic when it matches a pattern the rule cares about. Ships as a NuGet package, so installing the library installs its rules.",
+    href: "https://learn.microsoft.com/en-us/dotnet/framework/code-analyzers",
+    hrefLabel: "Microsoft docs",
+  },
+  "code-fix-provider": {
+    label: ".NET tooling",
+    summary:
+      "The other half of an analyzer: given a reported diagnostic, it rewrites the offending code. This is what puts the lightbulb in the editor margin and lets one keystroke apply the correction.",
+  },
+  "unwrap-method": {
+    label: "Method",
+    summary:
+      "Reaches straight into an Option or Result for the value and throws if there isn't one. It is the escape hatch out of the type, and using it puts back the exception the type existed to remove.",
+  },
+  "diagnostic-severity": {
+    label: ".NET tooling",
+    summary:
+      "How loudly a compiler diagnostic speaks: Error fails the build, Warning shows in build output and can be promoted to Error, Info appears only in the editor. A rule can also ship disabled, so it does nothing until a consumer opts in.",
+  },
 } satisfies Record<string, GlossaryEntry>;
 
 export type GlossaryTerm = keyof typeof glossary;
