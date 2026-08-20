@@ -20,7 +20,7 @@ return 0;
 
 It compiles, it passes tests, and it returns the right number. It is also the exact shape the library exists to remove. <ArticleLink slug="option-type-in-dotnet">The whole point is that absence stops being a surprise</ArticleLink>, and this asks whether there is a value and then reaches in anyway. It should be a <Define term="match-method" code>Match</Define>, which takes one branch for `Some` and one for `None` so both cases get written down.
 
-The agent kept doing it, and it is a good model. A C# developer's instinct is to check-then-access, and that instinct is all over the training data. Nothing in my library stopped it. A human would have written the same thing, slower and one at a time.
+The agent kept doing it, and it is a good model. A C# developer's instinct is to check-then-access, and that instinct is all over the training data. Nothing in my library stopped it.
 
 ## A rule in markdown is a rule you are hoping for
 
@@ -42,7 +42,7 @@ Distribution has not been the obstacle for years. Analyzers ship inside a <Defin
 
 I did not, for four major versions. An analyzer does not read your code as text. It reads a <Define term="syntax-tree">syntax tree</Define>, and to know what any name in that tree refers to it has to ask the <Define term="semantic-model">semantic model</Define>. Then every rule needs a test asserting its <Define term="diagnostic">diagnostic</Define> lands on the right span of text and nowhere else. That is days of unglamorous work for polish a determined reader of the docs did not need. I knew how to do it. I could not justify the time, and so the rules stayed in prose.
 
-I built the suite over two days with Claude Code. The 5.5 release carries twenty-seven rules, seven code fix providers covering fourteen of them, and about 4,586 lines of analyzer and test code. 138 test methods ship with those rules, and 45 of them assert that a rule stays *quiet* on code that looks like a violation and isn't. That ratio is where the time went. The model produced traversal faster than I could have, and the work left over was deciding which spans a rule must never touch, watching it fail that assertion, and narrowing it.
+I built the suite over two days with Claude Code. The 5.5 release carries twenty-seven rules, seven code fix providers covering fourteen of them, and about 4,586 lines of analyzer and test code. 138 test methods ship with those rules, and 45 of them assert that a rule stays *quiet* on code that looks like a violation and isn't. That ratio is where the time went. The model produced traversal quickly, and the work left over was deciding which spans a rule must never touch, watching it fail that assertion, and narrowing it.
 
 The list itself was mine. Knowing which shapes the library was built to remove, which ones are fine, and which mistakes are bugs rather than habits comes from four versions of watching people use it, and it is nowhere in the source. I handed over the rules I wanted followed, and the model turned each one into a traversal, a test suite, and for half of them a fix.
 
