@@ -24,7 +24,7 @@ The agent kept doing it, and it is a good model. A C# developer's instinct is to
 
 ## A rule in markdown is a rule you are hoping for
 
-The reflex is to write it down. Add a line to `AGENTS.md` or `CLAUDE.md`, something like *prefer Match over a guarded unwrap*, and move on.
+The reflex is to write it down. Add a line to <Define term="agents-md" code>AGENTS.md</Define>, something like *prefer Match over a guarded unwrap*, and move on.
 
 I have <ArticleLink slug="skills-that-teach">spent a long time on instructions that teach rather than dictate</ArticleLink>, so this is not a complaint about writing instructions badly. It is that a markdown instruction has properties you would not accept anywhere else in your toolchain. The model might follow it and might not. It competes for the <Define term="context-window">context window</Define> against everything else in the task, and it gets weighed again on every turn. It fails silently, so you find out by reading the diff. And the cost grows with the rule count, because ten guidelines is ten things the model has to hold in mind while also solving the problem you gave it.
 
@@ -32,7 +32,7 @@ Nobody would ship a type system with those properties. We accept them in agent i
 
 The alternative is to move the rule somewhere it executes. In .NET that means a <Define term="roslyn-analyzer">Roslyn analyzer</Define>, which runs inside the compiler on every build, and a <Define term="code-fix-provider">code fix provider</Define>, which rewrites the offending code in the editor. The rule stops being advice and becomes an outcome the model cannot talk its way past, and it costs nothing to check again because checking is what a compiler already does.
 
-Something else falls out of that. One general instruction survives - the project compiles clean unless I approve a warning - and it does the work of all of them, because the rules now live in the build and nothing has to remember them. The win is compression rather than elimination. I did not delete the prose, I stopped adding to it.
+Something else falls out of that. One general instruction now does the work of all the specific ones: the project compiles clean unless I approve a warning. The rules themselves live in the build, so nothing has to remember them. I still have prose in my repositories. I stopped adding to it.
 
 ## Documentation was always the cheap substitute
 
@@ -40,7 +40,7 @@ Scott Meyers wrote the rule I keep coming back to in <LinkNote href="https://www
 
 That constraint has not been real in .NET for years. Analyzers ship inside a <Define term="nuget">NuGet</Define> package, so installing a library can install its rules with no separate step. .NET's larger projects do this - StyleCop, xunit and Microsoft's own threading analyzers all ship rules alongside the code.
 
-I did not, for four major versions. Writing an analyzer means walking syntax trees, resolving symbols through the semantic model, and building a test harness that asserts a diagnostic lands on the right span of text. That is days of unglamorous work for polish a determined reader of the docs did not need. I knew how to do it. I could not justify the time, and so the rules stayed in prose.
+I did not, for four major versions. An analyzer does not read your code as text. It reads a <Define term="syntax-tree">syntax tree</Define>, and to know what any name in that tree refers to it has to ask the <Define term="semantic-model">semantic model</Define>. Then every rule needs a test asserting its <Define term="diagnostic">diagnostic</Define> lands on the right span of text and nowhere else. That is days of unglamorous work for polish a determined reader of the docs did not need. I knew how to do it. I could not justify the time, and so the rules stayed in prose.
 
 ## The tax on getting this right has collapsed
 
@@ -48,19 +48,23 @@ I built the suite over two days with Claude Code. The 5.5 release carries twenty
 
 Two days of elapsed time is not two days of writing. 138 test methods ship with those rules, and 45 of them assert that a rule stays *quiet* on code that looks like a violation and isn't. That ratio is where the time went. The model produced syntax-tree traversal faster than I could have. The work left over was deciding which spans a rule must never touch, watching it fail that assertion, and narrowing it.
 
-The polish I could not justify in a week I can now justify in an afternoon. I would not stretch that to any library at all - mine has a small and regular API surface, and one with a broader surface pays more than an afternoon by some amount I have not measured.
+The polish I could not justify in a week I can now justify in an afternoon.
 
-Deciding what to forbid did not get cheaper. The model wrote the traversal, and it did not decide which mistakes are bugs and which are habits. I won't claim my judgement was uncontaminated, because it proposed severities too and I cannot fully separate what I chose from what I accepted because it sounded right. The calls I remember making against it were about how loud to be.
+Deciding what to forbid is the part that still needs a maintainer, and it is not a question of time. Writing a rule means knowing which shapes the library was built to remove, which ones are fine, and which mistakes are bugs rather than habits. That comes from four versions of watching people use it, and it is nowhere in the source. The model wrote the traversal from a description of the pattern. It could not have supplied the description.
+
+I won't claim my judgement here was uncontaminated. It proposed <Define term="diagnostic-severity">severities</Define> too, and I cannot fully separate what I chose from what I accepted because it sounded right. The calls I remember making against it were about how loud to be.
 
 ## A guardrail only works at a severity its reader can see
 
-That last part is where the real design sits, and it is the part a markdown file cannot express at all.
+How loud to be is the whole design, and a markdown file cannot express it at all.
 
 The rules ship in three tiers. Bugs warn, so they show up in build output. Idiom informs, so it surfaces in an editor and stays out of the build. Migrations ship disabled, because turning every nullable return into an `Option` is a project, not a defect. Nothing ships as an error.
 
-That is the one call I did not think was mine to make. Some people using this library want idiomatic C# with a few monads in it. Others want to live inside the pipeline. A rule that fails the build decides that argument on the consumer's behalf, and the packaging makes it worse - the analyzer rides inside the library's own package, so a consumer bumping a patch version inherits every rule I have added since, with no opt-in and no route out but `.editorconfig`. A rule that fires on working code breaks a build nobody asked to change. That question - does this fire on code that worked yesterday - sat behind every one of them, and I do not think I got it right every time.
+That last one is the call I did not think was mine to make. Some people using this library want idiomatic C# with a few <Define term="monad">monads</Define> in it, and others want to live inside the chain. A rule that fails the build settles that argument on the consumer's behalf.
 
-Here is the cost of that restraint, and it is the thing I would attack if someone else had written this. The guarded unwrap I opened with is an idiom rule. Idiom informs. So it never appears in build output, `TreatWarningsAsErrors` never sees it, and an agent working from a build log never learns about it. Reaching it takes one line from whoever installs the library:
+The packaging sharpens it. The analyzer rides inside the library's own package, so a consumer bumping a patch version inherits every rule I have added since, with no opt-in and no route out but an <Define term="editorconfig" code>.editorconfig</Define> entry. If one of those rules fires on code that worked yesterday, I have broken a build nobody asked me to touch. That question sat behind every one of them, and I do not think I got it right every time.
+
+Restraint has a cost, and here is the one I would attack if someone else had written this. The guarded unwrap I opened with is an idiom rule, and idiom informs. So it never reaches build output, <Define term="treat-warnings-as-errors" code>TreatWarningsAsErrors</Define> never sees it, and an agent working from a build log never learns about it. Reaching it takes one line from whoever installs the library:
 
 ```ini
 dotnet_diagnostic.WM2004.severity = warning
@@ -68,7 +72,7 @@ dotnet_diagnostic.WM2004.severity = warning
 
 My own repository does not set it. So the loop closes on the tier where a mistake is a bug, and the tier where a mistake is a habit still waits on somebody choosing to make it loud. A deterministic guardrail is only as strong as the volume you ship it at, and picking that volume is a judgement about your consumers that no amount of tooling makes for you.
 
-What survives regardless is that the same artefact reaches a person. A developer sees a squiggle where the mistake is, and for fourteen of the rules a lightbulb that applies the fix, before any build and without reading anything. That is why the prose inside each rule is written for a human rather than compressed into a code. One of them explains itself like this:
+One thing works at every tier. The same rule that talks to an agent also reaches a person: a developer sees a squiggle where the mistake is, and for fourteen of the rules a lightbulb that applies the fix, before any build and without reading anything. That is why the prose inside each rule is written for a human rather than compressed into a code. One of them explains itself like this:
 
 > Checking IsSome and then unwrapping asks the same question twice and relies on the reader to see that the answers agree.
 
@@ -78,7 +82,7 @@ We cannot forget the human even while we fix what the agents do. The sentence th
 
 You cannot write a rule against a pattern without stating why it is wrong, and more than once the honest answer was that the library made it too easy.
 
-`Result<TOk, TErr>` declares an <Define term="implicit-conversion">implicit conversion</Define> from each of its two type arguments, so you can hand back a bare value or a bare error and let the compiler wrap it. Give it the same type twice and the compiler cannot choose between them, so every implicit conversion in that file stops compiling. `Result<string, string>` is a type my library will happily let you declare and then refuse to let you use.
+A <Define term="result-type" code>Result</Define> declares an <Define term="implicit-conversion">implicit conversion</Define> from each of its two type arguments, so you can hand back a bare value or a bare error and let the compiler wrap it. Give it the same type twice and the compiler cannot choose between them, so every implicit conversion in that file stops compiling. `Result<string, string>` is a type my library will happily let you declare and then refuse to let you use.
 
 Nobody reported that. It came out of trying to write the rule, because you cannot describe the pattern to a compiler without first saying exactly what is wrong with it, and "the two conversions are ambiguous" is a sentence I had never been forced to write down. It happened more than once across the suite, and the result is that v6 changes the library itself rather than only the diagnostics that describe it.
 

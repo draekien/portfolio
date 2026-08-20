@@ -234,6 +234,51 @@ export const glossary = {
     summary:
       "A conversion the compiler applies on its own, with no cast written in the source. A type can declare one, which is how a bare value can be assigned to a wrapper type without naming it. Declaring two from the same source type makes every such conversion ambiguous, and ambiguity is a compile error.",
   },
+  "syntax-tree": {
+    label: "Compiler concept",
+    summary:
+      "A source file represented as a tree the compiler can walk - a method holds an if statement, which holds a condition, which holds a method call. An analyzer reads this tree, so a rule about the shape of code is written as a question about which nodes sit inside which.",
+  },
+  "semantic-model": {
+    label: "Compiler concept",
+    summary:
+      "The layer above the syntax tree that knows what every name in the file actually refers to: which type, which method, from which package. The syntax tree can see the word Unwrap; only the semantic model can tell you whether it is my Unwrap or somebody else's.",
+  },
+  diagnostic: {
+    label: ".NET tooling",
+    summary:
+      "One report from an analyzer or the compiler: an id, a message, a severity, and the exact span of text it points at. The squiggle in the editor and the line in the build output are the same diagnostic rendered two ways.",
+  },
+  "diagnostic-severity": {
+    label: ".NET tooling",
+    summary:
+      "How loudly a diagnostic speaks. An error fails the build, a warning shows in build output, info reaches the editor and nowhere else. The author of a rule picks its default, and whoever installs the rule can override that.",
+  },
+  editorconfig: {
+    label: "Config file",
+    summary:
+      "A plain text file at the root of a project that sets editor and compiler conventions for every file beneath it. It is where a consumer raises, lowers, or silences an analyzer rule without touching the package that shipped it.",
+  },
+  "treat-warnings-as-errors": {
+    label: "Compiler option",
+    summary:
+      "A build setting that promotes every warning to an error, so a project carrying warnings fails to compile. It is the usual way to make a warning impossible to ignore, and it only reaches diagnostics already shipping at warning or above.",
+  },
+  "result-type": {
+    label: "Type",
+    summary:
+      "The other half of Waystone.Monads: a Result is either Ok holding a value or Err holding an error, so a method that can fail says so in its return type instead of throwing. Rust spells it the same way.",
+  },
+  monad: {
+    label: "Functional programming",
+    summary:
+      "A type that wraps a value and defines how to chain further work onto it, so steps compose instead of each one unpacking and re-checking. Option and Result are the two most developers meet. The word names the shape they share rather than anything either of them does.",
+  },
+  "agents-md": {
+    label: "Agent convention",
+    summary:
+      "A markdown file in a repository holding standing instructions for an AI coding agent: conventions, commands, things to avoid. AGENTS.md is the cross-tool name and CLAUDE.md is Claude Code's. The agent reads it as part of its prompt, which is where its weaknesses come from.",
+  },
   nuget: {
     label: ".NET tooling",
     summary:
