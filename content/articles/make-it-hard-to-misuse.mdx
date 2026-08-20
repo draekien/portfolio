@@ -44,7 +44,7 @@ I did not, for four major versions. Writing an analyzer means walking syntax tre
 
 ## The tax on getting this right has collapsed
 
-I built the suite over two days with Claude Code. Twenty-seven rules, seven code fix providers covering fourteen of them, about 4,586 lines of analyzer and test code.
+I built the suite over two days with Claude Code. The 5.5 release carries twenty-seven rules, seven code fix providers covering fourteen of them, and about 4,586 lines of analyzer and test code.
 
 Two days of elapsed time is not two days of writing. 138 test methods ship with those rules, and 45 of them assert that a rule stays *quiet* on code that looks like a violation and isn't. That ratio is where the time went. The model produced syntax-tree traversal faster than I could have. The work left over was deciding which spans a rule must never touch, watching it fail that assertion, and narrowing it.
 
@@ -58,7 +58,7 @@ That last part is where the real design sits, and it is the part a markdown file
 
 The rules ship in three tiers. Bugs warn, so they show up in build output. Idiom informs, so it surfaces in an editor and stays out of the build. Migrations ship disabled, because turning every nullable return into an `Option` is a project, not a defect. Nothing ships as an error.
 
-That is the one call I did not think was mine to make. Some people using this library want idiomatic C# with a few monads in it. Others want to live inside the pipeline. A rule that fails the build decides that argument on the consumer's behalf, and the packaging makes it worse - the analyzer rides inside the library's own package, so a consumer bumping a patch version inherits every rule I have added since, with no opt-in and no route out but `.editorconfig`. A rule that fires on working code breaks a build nobody asked to change. That question - does this fire on code that worked yesterday - sat behind all twenty-seven, and I do not think I got it right every time.
+That is the one call I did not think was mine to make. Some people using this library want idiomatic C# with a few monads in it. Others want to live inside the pipeline. A rule that fails the build decides that argument on the consumer's behalf, and the packaging makes it worse - the analyzer rides inside the library's own package, so a consumer bumping a patch version inherits every rule I have added since, with no opt-in and no route out but `.editorconfig`. A rule that fires on working code breaks a build nobody asked to change. That question - does this fire on code that worked yesterday - sat behind every one of them, and I do not think I got it right every time.
 
 Here is the cost of that restraint, and it is the thing I would attack if someone else had written this. The guarded unwrap I opened with is an idiom rule. Idiom informs. So it never appears in build output, `TreatWarningsAsErrors` never sees it, and an agent working from a build log never learns about it. Reaching it takes one line from whoever installs the library:
 
@@ -78,9 +78,9 @@ We cannot forget the human even while we fix what the agents do. The sentence th
 
 You cannot write a rule against a pattern without stating why it is wrong, and more than once the honest answer was that the library made it too easy.
 
-`Option<bool>` cannot hold `false`. `Some` rejects the <Define term="default-of-t" code>default of T</Define>, and `false` is the default of `bool`, so an `Option` over a boolean cannot represent half its own domain. For a library whose whole premise is that the type forces you to handle absence, that is not a rough edge.
+`Result<TOk, TErr>` declares an <Define term="implicit-conversion">implicit conversion</Define> from each of its two type arguments, so you can hand back a bare value or a bare error and let the compiler wrap it. Give it the same type twice and the compiler cannot choose between them, so every implicit conversion in that file stops compiling. `Result<string, string>` is a type my library will happily let you declare and then refuse to let you use.
 
-It is also not new. Anyone holding an `Option<bool>` in production has been carrying it since v1. Calling it a discovery is generous - the hole was always there, and writing the analyzer is what made me put it into words. That happened three times across the twenty-seven rules, and the result is that v6 changes the library rather than only the diagnostics. Three rules are built to be deleted when it lands, because what each of them warns about stops being true.
+Nobody reported that. It came out of trying to write the rule, because you cannot describe the pattern to a compiler without first saying exactly what is wrong with it, and "the two conversions are ambiguous" is a sentence I had never been forced to write down. It happened more than once across the suite, and the result is that v6 changes the library itself rather than only the diagnostics that describe it.
 
 I set out to correct an agent and ended up with a written specification of everything my own API gets wrong, which is a thing four major versions of shipping it had never forced me to produce.
 
@@ -97,5 +97,5 @@ The question worth asking about every guideline you have written down for an age
 The guarded unwrap that started this has an id now, a severity I picked on purpose, and a sentence explaining itself to whoever reads it next. Making it louder than a suggestion is a decision I left to the person installing the library, which is the part that was always the real work - deciding what your library forbids, and how loudly.
 
 <SourceCallout external href="https://github.com/draekien-industries/waystone-dotnet" title="draekien-industries/waystone-dotnet">
-  The analyzer package, its twenty-seven rules, and the design notes arguing with a future maintainer about why each one ships at the severity it does.
+  The analyzer package, its rules, and the design notes arguing with a future maintainer about why each one ships at the severity it does.
 </SourceCallout>

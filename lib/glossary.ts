@@ -229,10 +229,10 @@ export const glossary = {
     summary:
       "Reaches straight into an Option or Result for the value and throws if there isn't one. It is the escape hatch out of the type, and using it puts back the exception the type existed to remove.",
   },
-  "default-of-t": {
+  "implicit-conversion": {
     label: "C# language",
     summary:
-      "Every C# type has a zero value, written default(T). For reference types that is null, but for value types it is a real value: false for bool, 0 for int, all-zeroes for a Guid. So the default of a type is not the same idea as the absence of a value, and code that treats them alike breaks on the value types.",
+      "A conversion the compiler applies on its own, with no cast written in the source. A type can declare one, which is how a bare value can be assigned to a wrapper type without naming it. Declaring two from the same source type makes every such conversion ambiguous, and ambiguity is a compile error.",
   },
   nuget: {
     label: ".NET tooling",
