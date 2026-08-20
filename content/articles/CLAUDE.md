@@ -40,4 +40,5 @@ When drafting a new article, follow these steps in order:
 - Don't use "the" to universalise the author's own readings or positions — "The honest reading is..." → "My honest reading is...", "The position comes with..." → "My position comes with..."
 - No "not A, it's B" contrasts — just say "it's B." The negation is never load-bearing.
 - No circular "X because X" — if the "because" clause restates the claim in different vocabulary (including the article's own metaphors), it's not an explanation. Supply the actual mechanism or cut the "because" entirely. Example of the trap: "it keeps no memory because it carries no character between conversations."
+- No self-appraising codas - a clause hung off a finished sentence to tell the reader how to judge it, usually wry and usually about the author ("...and felt fine about it", "...where they were free"). A shared auxiliary makes it cheap to attach, so it recurs once the voice finds it. End on the fact; if the tail carries no information, cut it.
 - No redundant run-on chains — four clauses saying the same thing in different framings isn't emphasis, it's fog. Identify the sharpest framing, cut the rest.

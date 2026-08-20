@@ -40,7 +40,7 @@ Scott Meyers wrote the rule I keep coming back to in <LinkNote href="https://www
 
 That constraint has not been real in .NET for years. Analyzers ship inside a <Define term="nuget">NuGet</Define> package, so installing a library can install its rules with no separate step. .NET's larger projects do this - StyleCop, xunit and Microsoft's own threading analyzers all ship rules alongside the code.
 
-I did not, for four major versions. Writing an analyzer means walking syntax trees, resolving symbols through the semantic model, and building a test harness that asserts a diagnostic lands on the right span of text. That is days of unglamorous work for polish a determined reader of the docs did not need. I knew how to do it. I could not justify the time, and so the rules stayed in prose, where they were free.
+I did not, for four major versions. Writing an analyzer means walking syntax trees, resolving symbols through the semantic model, and building a test harness that asserts a diagnostic lands on the right span of text. That is days of unglamorous work for polish a determined reader of the docs did not need. I knew how to do it. I could not justify the time, and so the rules stayed in prose.
 
 ## The tax on getting this right has collapsed
 
@@ -86,7 +86,7 @@ I set out to correct an agent and ended up with a written specification of every
 
 ## What a library owes its users now
 
-I would not have written any of this a year ago. I would have written better documentation instead, and felt fine about it.
+I would not have written any of this a year ago. I would have written better documentation instead.
 
 I no longer think that is a defensible trade. I changed my mind watching a model make the same mistake a hundred times faster than a person could, which made an old problem impossible to ignore at the moment the fix got cheap.
 
