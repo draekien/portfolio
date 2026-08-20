@@ -234,6 +234,26 @@ export const glossary = {
     summary:
       "How loudly a compiler diagnostic speaks: Error fails the build, Warning shows in build output and can be promoted to Error, Info appears only in the editor. A rule can also ship disabled, so it does nothing until a consumer opts in.",
   },
+  "default-of-t": {
+    label: "C# language",
+    summary:
+      "Every C# type has a zero value, written default(T). For reference types that is null, but for value types it is a real value: false for bool, 0 for int, all-zeroes for a Guid. So the default of a type is not the same idea as the absence of a value, and code that treats them alike breaks on the value types.",
+  },
+  "implicit-conversion": {
+    label: "C# language",
+    summary:
+      "A conversion the compiler applies on its own, with no cast written in the source. A type can declare one, which is how `Option<int> x = 0;` compiles without naming Option at all. Declaring two from the same source type makes every such conversion ambiguous, and ambiguity is a compile error.",
+  },
+  nuget: {
+    label: ".NET tooling",
+    summary:
+      "The package manager for .NET, equivalent to npm or PyPI. A package can carry analyzer rules alongside its library code, in which case installing the library installs the rules with no separate step and no opt-in.",
+  },
+  "diagnostic-id": {
+    label: ".NET tooling",
+    summary:
+      "The short code a compiler or analyzer rule reports under, like an ESLint rule name or a compiler warning number. Waystone's rules use a WM prefix, and the number's first digit marks its tier: WM1xxx for bugs, WM2xxx for idiom, WM3xxx for migrations.",
+  },
 } satisfies Record<string, GlossaryEntry>;
 
 export type GlossaryTerm = keyof typeof glossary;

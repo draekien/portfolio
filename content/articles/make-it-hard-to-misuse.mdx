@@ -1,11 +1,13 @@
 ---
 title: "Make it hard to misuse"
-description: "Twenty-five compiler rules, two days. The work a library owes its users was never hard to identify - it was too expensive to build. That excuse is gone, and the first thing it buys you is a library that corrects the agent writing against it."
+description: "Twenty-seven compiler rules, two days. The work a library owes its users was never hard to identify - it was too expensive to build. That excuse is gone, and the first thing it buys you is a library that corrects the agent writing against it."
 date: "2026-08-19"
 tags: ["dotnet", "developer-experience", "ai", "llm", "roslyn"]
 ---
 
-I watched an agent write this against my own library:
+<Define term="waystone-monads">Waystone.Monads</Define> is my port of Rust's `Option` into .NET. An `Option<T>` is either `Some` holding a value or `None` holding nothing, and the type makes you deal with the empty case before you can reach the value. <Define term="unwrap-method" code>Unwrap</Define> is the escape hatch, and it reaches in for the value and throws if there isn't one.
+
+I watched an agent write this against it:
 
 ```csharp
 if (option.IsSome)
@@ -16,9 +18,7 @@ if (option.IsSome)
 return 0;
 ```
 
-It compiles, it passes tests, and it returns the right number. It is also the exact shape the library exists to remove.
-
-<Define term="waystone-monads">Waystone.Monads</Define> is a port of Rust's `Option` into .NET, which I wrote about when I built it. An `Option<T>` is either `Some` holding a value or `None` holding nothing. The type makes you deal with the empty case before you can reach the value. <ArticleLink slug="option-type-in-dotnet">The whole point is that absence stops being a surprise</ArticleLink>. The code above defeats that. It asks whether there is a value, then calls <Define term="unwrap-method" code>Unwrap</Define>, which reaches in and throws if there isn't one. Two questions where one would do, and the reader has to check for themselves that the answers agree. It should be `option.UnwrapOr(0)`, or a `Match` with a branch for each case.
+It compiles, it passes tests, and it returns the right number. It is also the exact shape the library exists to remove. <ArticleLink slug="option-type-in-dotnet">The whole point is that absence stops being a surprise</ArticleLink>, and this asks whether there is a value and then reaches in anyway. Two questions where one would do, and the reader has to check for themselves that the answers agree. It should be a <Define term="match-method" code>Match</Define>, which takes one branch for `Some` and one for `None` so both cases get written down.
 
 The agent kept doing it, and it is a good model. A C# developer's instinct is to check-then-access. That instinct is all over the training data. Nothing in my library stopped it. A human would have written the same thing, slower and one at a time.
 
@@ -26,33 +26,39 @@ The agent kept doing it, and it is a good model. A C# developer's instinct is to
 
 Scott Meyers wrote the rule I keep coming back to in <LinkNote href="https://www.aristeia.com/Papers/IEEE_Software_JulAug_2004_revised.htm" note="Scott Meyers, 'The Most Important Design Guideline?', IEEE Software, July/August 2004. Argues that interface design is where most avoidable defects are prevented or created.">IEEE Software in 2004</LinkNote>: make interfaces easy to use correctly and hard to use incorrectly. He wrote about C++, where the only enforcement available was the type system. Anything the types could not say became a naming convention and a hope that someone read the docs.
 
-That constraint is not real in .NET and has not been for years. A <Define term="roslyn-analyzer">Roslyn analyzer</Define> runs inside the compiler on every build. It ships as a NuGet package, so installing the library installs its rules. A <Define term="code-fix-provider">code fix provider</Define> goes further and rewrites the offending code from the editor. The mechanism to enforce "hard to use incorrectly" has been sitting there the whole time.
+That constraint is not real in .NET and has not been for years. A <Define term="roslyn-analyzer">Roslyn analyzer</Define> runs inside the compiler on every build, and a <Define term="code-fix-provider">code fix provider</Define> rewrites the offending code from the editor. I pack both into the <Define term="nuget">NuGet</Define> package that carries the library, so installing Waystone.Monads installs its rules. The mechanism to enforce "hard to use incorrectly" has been sitting there the whole time.
 
-Almost nobody ships one. I did not, for four major versions. Writing an analyzer means walking syntax trees, resolving symbols through the semantic model, and building a test harness that asserts a diagnostic lands on the right span of text. That is days of unglamorous work for polish that a determined reader of the docs did not need. I knew how to do it. I could not justify the time.
+.NET's larger projects do ship analyzers - StyleCop, xunit and Microsoft's own threading analyzers all do. I have not seen one from a library the size of mine, and I did not ship one either, for four major versions. Writing an analyzer means walking syntax trees, resolving symbols through the semantic model, and building a test harness that asserts a diagnostic lands on the right span of text. That is days of unglamorous work for polish that a determined reader of the docs did not need. I knew how to do it. I could not justify the time.
 
 ## The tax on getting this right has collapsed
 
-I built the analyzer suite over two days with Claude Code. Twenty-five rules, eight code fix providers, about 4,580 lines of analyzer and test code, shipped across three releases.
+I built the analyzer suite over two days with Claude Code. Twenty-seven rules, seven code fix providers covering fourteen of them, about 4,586 lines of analyzer and test code, shipped across three releases.
 
-The line count is not the point. Everything I skipped for four versions was skipped for the same reason - defensible cost, invisible benefit. The polish I could not justify in a week I can now justify in an afternoon, and so can anyone maintaining a library part-time, which is most people maintaining libraries.
+Two days of elapsed time is not two days of writing. 138 test methods ship with those twenty-seven rules, and 45 of them assert that a rule stays *quiet* on code that looks like a violation and isn't. That ratio is where the time actually went. The model produced syntax-tree traversal faster than I could have, and the work left over was deciding which spans a rule must never touch, then watching it fail that assertion and narrowing it.
 
-Deciding what to forbid did not get cheaper. The model wrote the syntax tree traversal. I could not have got there as fast on my own. It did not decide that a guarded unwrap is a style problem and a nullable `Option` is a bug. That judgement is still mine.
+The polish I could not justify in a week I can now justify in an afternoon. I would not stretch that to any library at all - mine has a small and regular API surface, and a library with a broader one pays more than an afternoon by some amount I have not measured.
+
+Deciding what to forbid did not get cheaper. The model wrote the traversal, and it did not decide that a guarded unwrap is a habit while a nullable `Option` is a bug. I won't claim my judgement was uncontaminated, because the model proposed severities too and I cannot fully separate what I chose from what I accepted because it sounded right. The calls I remember making against it were about how loud to be.
 
 ## One diagnostic serves both readers
 
-I did not start from a design principle. I started from watching a model misuse the library and asking how to correct it without spending context on the problem.
+I did not start from a design principle. I started from watching a model misuse the library, and asking how to correct it without spending context on the problem.
 
-The obvious move is to write instructions. I have <ArticleLink slug="skills-that-teach">spent a long time on instructions that teach rather than dictate</ArticleLink>. I still think that is the right technique for judgement calls, and the wrong one here. The model might follow prose guidance and might not. It competes for the <Define term="context-window">context window</Define> against everything else in the task, and the model weighs it again on every turn. Twenty-five rules as prose is twenty-five things it has to hold in mind while also solving the problem you gave it.
+The obvious move is to write instructions. I have <ArticleLink slug="skills-that-teach">spent a long time on instructions that teach rather than dictate</ArticleLink>. I still think that is the right technique for judgement calls, and the wrong one here. The model might follow prose guidance and might not. It competes for the <Define term="context-window">context window</Define> against everything else in the task, and the model weighs it again on every turn. Twenty-seven rules as prose is twenty-seven things it has to hold in mind while also solving the problem you gave it.
 
-An analyzer is deterministic. I have already written it, so it costs nothing to run again, and it competes with nothing.
+The honest version of the win is compression rather than elimination. One prose instruction survives - the project compiles clean unless I approve a warning - and it does the work of twenty-seven, because the rules themselves now live in the build where nothing has to remember them. If you want it enforced harder than a convention, `TreatWarningsAsErrors` breaks the build instead.
 
-Because the twenty-five rules now live in the build, one general instruction is enough to reach all of them. The project compiles clean unless I approve a warning. Claude then fixes what the build reports, and the rules can grow without the instruction growing. If you want it enforced harder than a convention, `TreatWarningsAsErrors` breaks the build instead, and the agent has no choice about noticing.
+There is a hole in that, and it is the one I would attack if someone else had written this. Only the ten reliability rules ship as warnings. The fifteen usage rules ship as suggestions, which surface in an editor and not in build output, so `TreatWarningsAsErrors` never sees them and neither does an agent reading a build log. WM2004 is one of the fifteen. The rule that catches the code I opened this article with does not reach an agent through the build at all, unless somebody raises it:
 
-This beats a prompt-side fix because the same artefact reaches a person. A developer using the library sees a squiggle at the point of the mistake, often with a lightbulb that applies the correction. They get it in the editor, before the build, without reading anything. Guidance that only lives in an agent's context helps exactly one of my two kinds of user.
+```ini
+dotnet_diagnostic.WM2004.severity = warning
+```
 
-## Write the descriptor for a person
+My own repository does not raise it. So the loop closes on the tier where a mistake is a bug, and the tier where a mistake is a habit still depends on a consumer choosing to make it loud.
 
-Every rule carries a title, a message, and a description. Mine follow the .NET guidance for diagnostic descriptors. I write the descriptions as prose for a human reader. WM2004, the rule that catches the code I opened with, explains itself like this:
+What survives the hole is the part I care about, because the same artefact reaches a person either way. A developer using the library sees a squiggle at the point of the mistake, and for fourteen of the rules a lightbulb that applies the correction. They get it in the editor, before any build, without reading anything.
+
+That is why the prose inside each rule is written for a human. Every rule carries a title, a message, and a description, and mine follow the .NET guidance for diagnostic descriptors. WM2004 explains itself like this:
 
 > Checking IsSome and then unwrapping asks the same question twice and relies on the reader to see that the answers agree.
 
@@ -60,23 +66,31 @@ That sentence is aimed at a person, and it survives in a library whose immediate
 
 ## Where I refuse to decide for the consumer
 
-The rules ship in three tiers. The tiers are the most opinionated thing in the package.
+The rules ship in three tiers, and the <Define term="diagnostic-id">WM prefix and number</Define> carry the tier. The tiers are the most opinionated thing in the package.
 
-- Reliability rules, WM1001 to WM1010, ship as warnings. These are bugs. `Option.Some` throws when handed null, so `Some(default(T))` crashes instead of giving you an empty option. Declaring `Option<T>?` adds a third state to a type whose entire purpose is having two.
-- Usage rules, WM2001 to WM2015, ship as information. These are idiom. The guarded unwrap lives here, along with preferring `AndThen` over `Map` then `Flatten`, and not comparing an `Option` to null.
-- Design rules, WM3001 and WM3002, ship disabled. They suggest replacing every nullable return with an `Option` and every throw with a `Result`. That is a migration, so you turn them on for as long as it lasts.
+- Reliability rules, WM1001 to WM1010, ship as <Define term="diagnostic-severity">warnings</Define>. These are bugs. `Option.Some` throws an `InvalidOperationException` when handed the <Define term="default-of-t" code>default of T</Define>, so `Some(0)` crashes rather than giving you an empty option. Declaring `Option<T>?` adds a third state to a type whose entire purpose is having two.
+- Usage rules, WM2001 to WM2015, ship as suggestions. These are mostly idiom - the guarded unwrap lives here, along with preferring `AndThen` over <Define term="flat-map" code>Map</Define> then `Flatten`. WM2010 is the exception, because it marks a `Result<string, string>` that will not compile at any conversion site, and it still ships as a suggestion because the declaration itself is legal and I would rather surface it than break a build.
+- Design rules, WM3001 and WM3002, ship disabled. They suggest replacing every nullable return with an `Option` and every throw with a `Result`. That is a migration, so you enable them for as long as it lasts, and raise them to warnings in `.editorconfig` if you want the remaining work to show up in a build.
 
-Nothing ships as an error. That is the one call I did not think was mine to make. Some people using this library want idiomatic C# with a few monads in it. Others want to live inside the pipeline. A rule that fails the build decides that argument on the consumer's behalf, and <Define term="diagnostic-severity">the severity a rule ships at</Define> is the only place they get to express the preference themselves.
+Nothing ships as an error. That is the one call I did not think was mine to make. Some people using this library want idiomatic C# with a few monads in it. Others want to live inside the pipeline. A rule that fails the build decides that argument on the consumer's behalf.
 
-The same restraint shows up inside individual rules. WM1009 flags `Option<bool>` and `Option<SomeEnum>` because `Some(false)` throws, but the underlying hazard is general - `Option<int>` breaks on zero, `Option<Guid>` on `Guid.Empty`. I scoped it to booleans and zero-valued enums anyway, because a warning that reaches every consumer on their next upgrade should not fire across code that works today. WM1007, which catches types deriving from `Option` or `Result`, ships with no code fix at all. The correction rewrites the type and cascades to every caller, and a fixer cannot see those callers. Offering a one-click fix that silently breaks the build somewhere else is worse than offering nothing.
+The restraint is not only taste, because the packaging forces it. The analyzer rides inside the library's own package rather than shipping as a separate install, so a consumer who bumps a patch version inherits every rule I have added since, with no opt-in and no route out but `.editorconfig`. A rule that fires on working code breaks a build nobody asked to change.
+
+WM1009 is where that bit. It flags `Option<bool>`, and `Option<Colour>` where `Colour` has a member numbered zero, because `Some(false)` throws. The underlying hazard is general - `Option<int>` breaks on zero, `Option<Guid>` on `Guid.Empty` - and I scoped it to those two shapes anyway, because the wider rule would have fired across code that works today. WM1007, which catches types deriving from `Option` or `Result`, ships with no code fix at all. The correction rewrites the type and cascades to every caller, and a fixer cannot see those callers, so offering a one-click fix that silently breaks the build somewhere else is worse than offering nothing.
+
+That same question - does this fire on code that worked yesterday - sat behind all twenty-seven. I do not think I got it right every time, and the 45 quiet-case tests are a floor rather than a proof.
 
 ## Writing down what to forbid audits the API
 
-You cannot write a rule against a pattern without stating why it is wrong. Several times the honest answer was that the library made it too easy. `Option<bool>` cannot hold `false`, because `Some` rejects the default of `T`. `Result<string, string>` declares an implicit conversion from both type arguments, so when they are the same type the compiler cannot pick one and every implicit conversion becomes a compile error. The implicit conversion from `T` to `Option<T>` maps a default value onto `None`, so `Option<int> x = 0;` silently produces an empty option rather than one holding zero.
+You cannot write a rule against a pattern without stating why it is wrong. Several times the honest answer was that the library made it too easy.
 
-None of those are user errors, and I found every one by trying to describe it to a compiler.
+`Option<bool>` cannot hold `false`, because `Some` rejects the default of `T` and `false` is the default of `bool`. `Result<string, string>` declares an <Define term="implicit-conversion">implicit conversion</Define> from both of its type arguments, so when they are the same type the compiler cannot pick one and every conversion becomes a compile error. The implicit conversion from `T` to `Option<T>` maps a default value onto `None`, so `Option<int> x = 0;` produces an empty option rather than one holding zero, and says nothing about it.
 
-v6 changes the rules rather than only the diagnostics. `Some` will reject only null, so the default of a value type becomes an ordinary `Some`. Both type hierarchies close, so nobody can derive from them. A few diagnostics exist only to carry that forward. WM1010 says that `Some(default(int))` throws today and returns a `Some` holding zero in v6, which makes it the rare breaking change that announces itself in your build output a version early. That rule has one job, and I retire it when v6 lands.
+None of those are user errors, and none of them are new. Anyone holding an `Option<bool>` in production has been carrying that since v1. Calling it a discovery is generous - the hole was always there, and writing the analyzer is what made me put it in words. For a library whose whole premise is that the type forces you to handle absence, an `Option` that cannot represent part of its own domain is not a rough edge.
+
+v6 changes the library rather than only the diagnostics. `Some` will reject only null, so the default of a value type becomes an ordinary `Some`. Both type hierarchies become sealed, so nothing outside the library can derive from them and WM1007's hazard stops being expressible. Three of the twenty-seven rules are built to be deleted on the way: WM1004, WM1009 and WM1010 all retire in v6, because what each of them warns about stops being true.
+
+WM1010 is the one that only exists for the crossing. It says that `Some(default(int))` throws today and returns a `Some` holding zero in v6, which makes it a breaking change that announces itself in your build output a version early. It has one job, and I delete it when v6 lands.
 
 ## What a library owes its users now
 
@@ -84,8 +98,10 @@ I would not have written any of this a year ago. I would have written better doc
 
 I no longer think that is a defensible trade. I changed my mind watching a model make the same mistake a hundred times faster than a person could, which made an old problem impossible to ignore at the moment the fix got cheap.
 
-If your library has a shape people keep getting wrong, the enforcement is now an afternoon rather than a fortnight, and it lands in the editor of every consumer without them reading a word. The part that was always the real work is still yours - deciding what your library forbids, and how loudly.
+The delivery here is .NET's. Analyzers ride inside the package and run in every consumer's compiler, and not every ecosystem hands you that for free. The discipline travels anyway. If your library has a shape people keep getting wrong, writing down what it forbids costs an afternoon now, and you will find out something about your own design in the process.
+
+The guarded unwrap that started this is WM2004 now. It has an id, a severity I picked on purpose, and a sentence explaining itself to whoever reads it next. Making it louder than a suggestion is a decision I left to the person installing the library, which is the part that was always the real work - deciding what your library forbids, and how loudly.
 
 <SourceCallout external href="https://github.com/draekien-industries/waystone-dotnet" title="draekien-industries/waystone-dotnet">
-  The analyzer package, its rules, and the design notes arguing with a future maintainer about why each one ships at the severity it does.
+  The analyzer package, its twenty-seven rules, and the design notes arguing with a future maintainer about why each one ships at the severity it does.
 </SourceCallout>
