@@ -56,11 +56,13 @@ How loud to be is the whole design, and a markdown file cannot express it at all
 
 The rules ship in three tiers. Bugs warn, so they show up in build output. Idiom informs, so it surfaces in an editor and stays out of the build. Migrations ship disabled, because turning every nullable return into an `Option` is a project, not a defect. Nothing ships as an error.
 
-That last one is the call I did not think was mine to make. Some people using this library want idiomatic C# with a few <Define term="monad">monads</Define> in it, and others want to live inside the chain. A rule that fails the build settles that argument on the consumer's behalf.
+A new error is a breaking change and nobody ships one in a minor version. Warning is the tier that took thinking about, because plenty of consumers build with <Define term="treat-warnings-as-errors" code>TreatWarningsAsErrors</Define> on, and a rule I mark warning already fails their build on a version bump they made for something else.
+
+Getting out is cheap in both directions - half the rules carry a fix the editor applies for you, and silencing one takes a severity line and no code change at all. What I would not do is settle the question for somebody. Some people using this library want idiomatic C# with a few <Define term="monad">monads</Define> in it, and others want to live inside the chain, so a rule only warns when the code is wrong, and anything merely unidiomatic informs.
 
 The packaging sharpens it. The analyzer rides inside the library's own package, so a consumer bumping a patch version inherits every rule I have added since. They never opted in, and nothing in a red build tells them the fix is one attribute on a package reference. If one of those rules fires on code that worked yesterday, I have broken a build nobody asked me to touch. That question sat behind every <Define term="diagnostic-severity">severity</Define> I picked, and I do not think I got it right every time.
 
-Restraint has a cost. The guarded unwrap I opened with is an idiom rule, and idiom informs. So it never reaches build output, <Define term="treat-warnings-as-errors" code>TreatWarningsAsErrors</Define> never sees it, and an agent working from a build log never learns about it. Making it loud takes one <Define term="editorconfig" code>.editorconfig</Define> line from whoever installs the library:
+Restraint has a cost. The guarded unwrap I opened with is an idiom rule, and idiom informs. So it never reaches build output, `TreatWarningsAsErrors` never sees it, and an agent working from a build log never learns about it. Making it loud takes one <Define term="editorconfig" code>.editorconfig</Define> line from whoever installs the library:
 
 ```ini
 dotnet_diagnostic.WM2004.severity = warning
