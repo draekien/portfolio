@@ -18,9 +18,9 @@ if (option.IsSome)
 return 0;
 ```
 
-It compiles, it passes tests, and it returns the right number. It is also the exact shape the library exists to remove. <ArticleLink slug="option-type-in-dotnet">The whole point is that absence stops being a surprise</ArticleLink>, and this asks whether there is a value and then reaches in anyway. It should be a <Define term="match-method" code>Match</Define>, which takes one branch for `Some` and one for `None` so both cases get written down.
+It compiles, it passes tests, and it returns the right number. It is also the exact shape the library exists to remove. <ArticleLink slug="option-type-in-dotnet">The whole point is that absence stops being a surprise</ArticleLink>, and this asks whether there is a value and then reaches in anyway. It should be a <Define term="match-method" code>Match</Define>, which takes one branch for `Some` and one for `None` so both cases get written down. The guard and the unwrap are two statements that have to agree, and nothing keeps them agreeing through the next edit.
 
-The agent kept doing it, and it is a good model. A C# developer's instinct is to check-then-access, and that instinct is all over the training data. Nothing in my library stopped it.
+The agent kept writing the guarded unwrap, and it is a good model. A C# developer's instinct is to check-then-access, and that instinct is all over the training data. Nothing in my library stopped it.
 
 ## A rule in markdown is a rule you are hoping for
 
@@ -32,21 +32,21 @@ Nobody would ship a type system with those properties. We accept them in agent i
 
 The alternative is to move the rule somewhere it executes. In .NET that means a <Define term="roslyn-analyzer">Roslyn analyzer</Define>, which runs inside the compiler on every build, and a <Define term="code-fix-provider">code fix provider</Define>, which rewrites the offending code in the editor. The rule stops being advice and becomes an outcome no amount of reasoning gets around, and it costs nothing to check again because checking is what a compiler already does.
 
-Something else falls out of that. One general instruction now does the work of all the specific ones. The project compiles clean unless I approve a warning. The rules themselves live in the build, so nothing has to remember them. I still have prose in my repositories. I stopped adding to it.
+Something else falls out of that. One general instruction now does the work of every specific one that guards against a bug. The build carries no warning I have not suppressed on purpose. The rules themselves live in the build, so nothing has to remember them. I still have prose in my repositories. I stopped adding to it.
 
 ## The rule that executes used to cost more than it was worth
 
-Scott Meyers wrote the rule I keep coming back to in <LinkNote href="https://www.aristeia.com/Papers/IEEE_Software_JulAug_2004_revised.htm" note="Scott Meyers, 'The Most Important Design Guideline?', IEEE Software, July/August 2004. Argues that interface design is where most avoidable defects are prevented or created.">IEEE Software in 2004</LinkNote>: make interfaces easy to use correctly and hard to use incorrectly. It predates agents by twenty years. What agents changed is the rate at which a library gets misused, which turned a principle I agreed with into something I could feel.
+Scott Meyers wrote the rule I keep coming back to in <LinkNote href="https://www.aristeia.com/Papers/IEEE_Software_JulAug_2004_revised.htm" note="Scott Meyers, 'The Most Important Design Guideline?', IEEE Software, July/August 2004. Argues that interface design is where most avoidable defects are prevented or created.">IEEE Software in 2004</LinkNote>: make interfaces easy to use correctly and hard to use incorrectly. It predates agents by two decades. What agents changed is the rate at which a library gets misused, which turned a principle I agreed with into something I could feel.
 
-Distribution has not been the obstacle for years. Analyzers ship inside a <Define term="nuget">NuGet</Define> package, so installing a library can install its rules with no separate step. StyleCop, xunit and Microsoft's own threading analyzers all do this.
+Distribution has not been the obstacle for years. Analyzers ship inside a <Define term="nuget">NuGet</Define> package, so installing a library can install its rules with no separate step. xunit ships `xunit.analyzers` as a dependency, and Microsoft's threading library does the same.
 
-I did not, for four major versions. An analyzer does not read your code as text. It reads a <Define term="syntax-tree">syntax tree</Define>, and to know what any name in that tree refers to it has to ask the <Define term="semantic-model">semantic model</Define>. Then every rule needs a test asserting its <Define term="diagnostic">diagnostic</Define> lands on the right span of text and nowhere else. That is days of unglamorous work for polish a determined reader of the docs did not need. I knew how to do it. I could not justify the time, and so the rules stayed in prose.
+I did not ship one, for the four major versions before this one. An analyzer does not read your code as text. It reads a <Define term="syntax-tree">syntax tree</Define>, and to know what any name in that tree refers to it has to ask the <Define term="semantic-model">semantic model</Define>. Then every rule needs a test asserting its <Define term="diagnostic">diagnostic</Define> lands on the right span of text and nowhere else. That is days of unglamorous work for polish a determined reader of the docs did not need. I knew how to do it. I could not justify the time, and so the rules stayed in prose.
 
 I built the suite over two days with Claude Code. The 5.5 release carries twenty-seven rules, seven code fix providers covering fourteen of them, and about 4,586 lines of analyzer and test code. 138 test methods ship with those rules, and 45 of them assert that a rule stays *quiet* on code that looks like a violation and isn't. That ratio is where the time went. The model wrote the tree-walking code quickly, and the work left over was deciding which spans a rule must never touch, watching it fail that assertion, and narrowing it.
 
 The list itself was mine. Knowing which shapes the library was built to remove, which ones are fine, and which mistakes are bugs rather than habits comes from four versions of watching people use it, and it is nowhere in the source. I handed over the rules I wanted followed, and the model turned each one into a tree walk, a test suite, and for half of them a fix.
 
-Writing them down turned up something prose never had. You cannot describe a pattern to a compiler without first stating exactly what is wrong with it, and more than once the honest answer was that the library made it too easy. A <Define term="result-type" code>Result</Define> declares an <Define term="implicit-conversion">implicit conversion</Define> from each of its two type arguments. Give it the same type twice and the compiler cannot choose between them, so `Result<string, string>` is a type my library will let you declare and then refuse to let you use. Nobody reported that. Four versions of documentation had never forced me to write the sentence that found it.
+Writing them down turned up something prose never had. You cannot describe a pattern to a compiler without first stating exactly what is wrong with it, and more than once the honest answer was that the library made it too easy. A <Define term="result-type" code>Result</Define> is either a success value or an error, and it takes an <Define term="implicit-conversion">implicit conversion</Define> from each. Give it the same type twice and the two conversions become indistinguishable, so every implicit conversion fails as ambiguous. You can still build and read a `Result<string, string>` the long way round. The convenience the type was designed around is gone. Nobody reported that. Four versions of documentation had never forced me to write the sentence that found it.
 
 That left one decision the model could not take off my hands.
 
@@ -58,17 +58,17 @@ The rules ship in three tiers. Bugs warn, so they show up in build output. Idiom
 
 That last one is the call I did not think was mine to make. Some people using this library want idiomatic C# with a few <Define term="monad">monads</Define> in it, and others want to live inside the chain. A rule that fails the build settles that argument on the consumer's behalf.
 
-The packaging sharpens it. The analyzer rides inside the library's own package, so a consumer bumping a patch version inherits every rule I have added since. They never opted in, and the only way out is an <Define term="editorconfig" code>.editorconfig</Define> entry. If one of those rules fires on code that worked yesterday, I have broken a build nobody asked me to touch. That question sat behind every <Define term="diagnostic-severity">severity</Define> I picked, and I do not think I got it right every time.
+The packaging sharpens it. The analyzer rides inside the library's own package, so a consumer bumping a patch version inherits every rule I have added since. They never opted in, and nothing in a red build tells them the fix is one attribute on a package reference. If one of those rules fires on code that worked yesterday, I have broken a build nobody asked me to touch. That question sat behind every <Define term="diagnostic-severity">severity</Define> I picked, and I do not think I got it right every time.
 
-Restraint has a cost. The guarded unwrap I opened with is an idiom rule, and idiom informs. So it never reaches build output, <Define term="treat-warnings-as-errors" code>TreatWarningsAsErrors</Define> never sees it, and an agent working from a build log never learns about it. Reaching it takes one line from whoever installs the library:
+Restraint has a cost. The guarded unwrap I opened with is an idiom rule, and idiom informs. So it never reaches build output, <Define term="treat-warnings-as-errors" code>TreatWarningsAsErrors</Define> never sees it, and an agent working from a build log never learns about it. Making it loud takes one <Define term="editorconfig" code>.editorconfig</Define> line from whoever installs the library:
 
 ```ini
 dotnet_diagnostic.WM2004.severity = warning
 ```
 
-My own repository does not set it. So the loop closes on the tier where a mistake is a bug, and the tier where a mistake is a habit still waits on somebody choosing to make it loud.
+My own repository does not set it. It does not have to. `dotnet format analyzers --severity info` reports the whole tier and applies the fixes, because the rules ship with fix providers. The loop closes for anyone who runs it and stays open for anyone who doesn't.
 
-One thing works at every tier. The same rule that talks to an agent also reaches a person: a developer sees a squiggle where the mistake is, and for fourteen of the rules a lightbulb in the editor that applies the fix, before any build and without reading anything. That is why the prose inside each rule is written for a human rather than compressed into a code. One of them explains itself like this:
+One thing works at every tier. The same rule that talks to an agent also reaches a person. A developer sees a squiggle under the mistake, before any build and without reading anything. For fourteen of the rules the editor also offers to apply the fix. That is why the prose inside each rule is written for a human rather than compressed into a code. One of them explains itself like this:
 
 > Checking IsSome and then unwrapping asks the same question twice and relies on the reader to see that the answers agree.
 
