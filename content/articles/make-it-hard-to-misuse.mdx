@@ -32,7 +32,7 @@ Nobody would ship a type system with those properties. We accept them in agent i
 
 The alternative is to move the rule somewhere it executes. In .NET that means a <Define term="roslyn-analyzer">Roslyn analyzer</Define>, which runs inside the compiler on every build, and a <Define term="code-fix-provider">code fix provider</Define>, which rewrites the offending code in the editor. The rule stops being advice and becomes an outcome no amount of reasoning gets around, and it costs nothing to check again because checking is what a compiler already does.
 
-Something else falls out of that. One general instruction now does the work of every specific one that guards against a bug. The build carries no warning I have not suppressed on purpose. The rules themselves live in the build, so nothing has to remember them. I still have prose in my repositories. I stopped adding to it.
+One general instruction now does the work of every specific one that guards against a bug. The build carries no warning I have not suppressed on purpose. The rules themselves live in the build, so nothing has to remember them. I still have prose in my repositories. I stopped adding to it.
 
 ## The rule that executes used to cost more than it was worth
 
@@ -60,9 +60,9 @@ A new error is a breaking change and nobody ships one in a minor version. I thou
 
 Getting out is cheap in both directions - half the rules carry a fix the editor applies for you, and silencing one takes a severity line and no code change at all. Some people using this library want idiomatic C# with a few <Define term="monad">monads</Define> in it, and others want to live inside the chain, so a rule only warns when the code is wrong, and anything merely unidiomatic informs.
 
-The packaging sharpens it. The analyzer rides inside the library's own package, so a consumer bumping a patch version inherits every rule I have added since. They never opted in, and nothing in a red build tells them the fix is one attribute on a package reference. If one of those rules fires on code that worked yesterday, I have broken a build nobody asked me to touch. That question sat behind every <Define term="diagnostic-severity">severity</Define> I picked, and I do not think I got it right every time.
+The analyzer rides inside the library's own package, so a consumer bumping a patch version inherits every rule I have added since. They never opted in, and nothing in a red build tells them the fix is one attribute on a package reference. If one of those rules fires on code that worked yesterday, I have broken a build nobody asked me to touch. That question sat behind every <Define term="diagnostic-severity">severity</Define> I picked, and I do not think I got it right every time.
 
-Restraint has a cost. The guarded unwrap I opened with is an idiom rule, and idiom informs. So it never reaches build output, `TreatWarningsAsErrors` never sees it, and an agent working from a build log never learns about it. Making it loud takes one <Define term="editorconfig" code>.editorconfig</Define> line from whoever installs the library:
+The guarded unwrap I opened with is an idiom rule, and idiom informs. So it never reaches build output, `TreatWarningsAsErrors` never sees it, and an agent working from a build log never learns about it. Making it loud takes one <Define term="editorconfig" code>.editorconfig</Define> line from whoever installs the library:
 
 ```ini
 dotnet_diagnostic.WM2004.severity = warning
@@ -70,7 +70,7 @@ dotnet_diagnostic.WM2004.severity = warning
 
 My own repository does not set it. It does not have to. `dotnet format analyzers --severity info` reports the whole tier and applies the fixes, because the rules ship with fix providers. The loop closes for anyone who runs it and stays open for anyone who doesn't.
 
-One thing works at every tier. The same rule that talks to an agent also reaches a person. A developer sees a squiggle under the mistake, before any build and without reading anything. For fourteen of the rules the editor also offers to apply the fix. That is why the prose inside each rule is written for a human rather than compressed into a code. One of them explains itself like this:
+At every tier, the same rule that talks to an agent also reaches a person. A developer sees a squiggle under the mistake, before any build and without reading anything. For fourteen of the rules the editor also offers to apply the fix. That is why the prose inside each rule is written for a human rather than compressed into a code. One of them explains itself like this:
 
 > Checking IsSome and then unwrapping asks the same question twice and relies on the reader to see that the answers agree.
 
