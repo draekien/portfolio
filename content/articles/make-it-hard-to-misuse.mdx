@@ -30,7 +30,7 @@ I have <ArticleLink slug="skills-that-teach">spent a long time on instructions t
 
 Nobody would ship a type system with those properties. We accept them in agent instructions because writing prose is the cheapest thing available and it feels like doing something.
 
-The alternative is to move the rule somewhere it executes. In .NET that means a <Define term="roslyn-analyzer">Roslyn analyzer</Define>, which runs inside the compiler on every build, and a <Define term="code-fix-provider">code fix provider</Define>, which rewrites the offending code in the editor. The rule stops being advice and becomes an outcome the model cannot talk its way past, and it costs nothing to check again because checking is what a compiler already does.
+The alternative is to move the rule somewhere it executes. In .NET that means a <Define term="roslyn-analyzer">Roslyn analyzer</Define>, which runs inside the compiler on every build, and a <Define term="code-fix-provider">code fix provider</Define>, which rewrites the offending code in the editor. The rule stops being advice and becomes an outcome no amount of reasoning gets around, and it costs nothing to check again because checking is what a compiler already does.
 
 Something else falls out of that. One general instruction now does the work of all the specific ones. The project compiles clean unless I approve a warning. The rules themselves live in the build, so nothing has to remember them. I still have prose in my repositories. I stopped adding to it.
 
