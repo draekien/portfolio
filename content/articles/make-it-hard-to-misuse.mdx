@@ -32,7 +32,7 @@ Nobody would ship a type system with those properties. We accept them in agent i
 
 The alternative is to move the rule somewhere it executes. In .NET that means a <Define term="roslyn-analyzer">Roslyn analyzer</Define>, which runs inside the compiler on every build, and a <Define term="code-fix-provider">code fix provider</Define>, which rewrites the offending code in the editor. The rule stops being advice and becomes an outcome the model cannot talk its way past, and it costs nothing to check again because checking is what a compiler already does.
 
-Something else falls out of that. One general instruction now does the work of all the specific ones: the project compiles clean unless I approve a warning. The rules themselves live in the build, so nothing has to remember them. I still have prose in my repositories. I stopped adding to it.
+Something else falls out of that. One general instruction now does the work of all the specific ones. The project compiles clean unless I approve a warning. The rules themselves live in the build, so nothing has to remember them. I still have prose in my repositories. I stopped adding to it.
 
 ## The rule that executes used to cost more than it was worth
 
@@ -60,7 +60,7 @@ That last one is the call I did not think was mine to make. Some people using th
 
 The packaging sharpens it. The analyzer rides inside the library's own package, so a consumer bumping a patch version inherits every rule I have added since, with no opt-in and no route out but an <Define term="editorconfig" code>.editorconfig</Define> entry. If one of those rules fires on code that worked yesterday, I have broken a build nobody asked me to touch. That question sat behind every <Define term="diagnostic-severity">severity</Define> I picked, and I do not think I got it right every time.
 
-Restraint has a cost, and here is the one I would attack if someone else had written this. The guarded unwrap I opened with is an idiom rule, and idiom informs. So it never reaches build output, <Define term="treat-warnings-as-errors" code>TreatWarningsAsErrors</Define> never sees it, and an agent working from a build log never learns about it. Reaching it takes one line from whoever installs the library:
+Restraint has a cost. The guarded unwrap I opened with is an idiom rule, and idiom informs. So it never reaches build output, <Define term="treat-warnings-as-errors" code>TreatWarningsAsErrors</Define> never sees it, and an agent working from a build log never learns about it. Reaching it takes one line from whoever installs the library:
 
 ```ini
 dotnet_diagnostic.WM2004.severity = warning
@@ -78,9 +78,9 @@ The sentence that tells a developer why the pattern is wrong is also the sentenc
 
 Analyzers are .NET's version of this and not every ecosystem hands you one, but the category is wider than the tool. A type that makes the bad state unrepresentable is a deterministic gate. So is a lint rule with an autofix, a schema that rejects the malformed payload, a test that fails on the regression, a CI check that will not merge. What they share is that they execute, they cost nothing to run again, they fail loudly, and they reach a person and a model with the same artefact. What sits in a markdown file shares none of that.
 
-So the question worth asking about every guideline you have written down for an agent is whether it could be something that runs instead. Most of them can't. Knowing which of two correct designs suits this codebase does not compile, and neither does taste. Those are what a context window is for. The ones that can run are worth an afternoon, and you will find out something about your own design on the way.
+So the question worth asking about every guideline you have written down for an agent is whether it could be something that runs instead. Most of them can't. My own instruction file tells an agent to change only what it must and leave adjacent code alone, and no build step can tell an edit I asked for from one I didn't. Taste does not compile either. Those instructions stay prose and get re-weighed every turn, and moving the mechanical rules out of the context window is what leaves room for them. The ones that can run are worth an afternoon, and you will find out something about your own design on the way.
 
-The guarded unwrap that started this has an id now, a severity I picked on purpose, and a sentence explaining itself to whoever reads it next. It stopped being a line I hope somebody reads.
+The guarded unwrap that started this has an id now, a severity I picked on purpose, and a sentence explaining itself to whoever reads it next. Turning it up takes one line, once, from anyone who wants it louder. A paragraph in `AGENTS.md` asks for that hope again on every turn.
 
 <SourceCallout external href="https://github.com/draekien-industries/waystone-dotnet" title="draekien-industries/waystone-dotnet">
   The analyzer package, its rules, and the design notes arguing with a future maintainer about why each one ships at the severity it does.
