@@ -212,6 +212,78 @@ export const glossary = {
     summary:
       "Retrieval-augmented generation: bolting a search step onto a model so it fetches relevant documents and reads them before answering, rather than relying on what it absorbed in training. A workaround for the model having no reliable store of facts.",
   },
+  "roslyn-analyzer": {
+    label: ".NET tooling",
+    summary:
+      "A rule that runs inside the C# compiler, inspecting your code as it builds and reporting a diagnostic when it matches a pattern the rule cares about. Ships as a NuGet package, so installing the library installs its rules.",
+    href: "https://learn.microsoft.com/en-us/dotnet/framework/code-analyzers",
+    hrefLabel: "Microsoft docs",
+  },
+  "code-fix-provider": {
+    label: ".NET tooling",
+    summary:
+      "The other half of an analyzer: given a reported diagnostic, it rewrites the offending code. This is what puts the lightbulb in the editor margin and lets one keystroke apply the correction.",
+  },
+  "unwrap-method": {
+    label: "Method",
+    summary:
+      "Reaches straight into an Option or Result for the value and throws if there isn't one. It is the escape hatch out of the type, and using it puts back the exception the type existed to remove.",
+  },
+  "implicit-conversion": {
+    label: "C# language",
+    summary:
+      "A conversion the compiler applies on its own, with no cast written in the source. A type can declare one, which is how a bare value can be assigned to a wrapper type without naming it. Declaring two from the same source type makes every such conversion ambiguous, and ambiguity is a compile error.",
+  },
+  "syntax-tree": {
+    label: "Compiler concept",
+    summary:
+      "A source file represented as a tree the compiler can walk - a method holds an if statement, which holds a condition, which holds a method call. An analyzer reads this tree, so a rule about the shape of code is written as a question about which nodes sit inside which.",
+  },
+  "semantic-model": {
+    label: "Compiler concept",
+    summary:
+      "The layer above the syntax tree that knows what every name in the file actually refers to: which type, which method, from which package. The syntax tree can see the word Unwrap; only the semantic model can tell you whether it is my Unwrap or somebody else's.",
+  },
+  diagnostic: {
+    label: ".NET tooling",
+    summary:
+      "One report from an analyzer or the compiler: an id, a message, a severity, and the exact span of text it points at. The squiggle in the editor and the line in the build output are the same diagnostic rendered two ways.",
+  },
+  "diagnostic-severity": {
+    label: ".NET tooling",
+    summary:
+      "How loudly a diagnostic speaks. An error fails the build, a warning shows in build output, info reaches the editor and nowhere else. The author of a rule picks its default, and whoever installs the rule can override that.",
+  },
+  editorconfig: {
+    label: "Config file",
+    summary:
+      "A plain text file at the root of a project that sets editor and compiler conventions for every file beneath it. It is where a consumer raises, lowers, or silences an analyzer rule without touching the package that shipped it.",
+  },
+  "treat-warnings-as-errors": {
+    label: "Compiler option",
+    summary:
+      "A build setting that promotes every warning to an error, so a project carrying warnings fails to compile. It is the usual way to make a warning impossible to ignore, and it only reaches diagnostics already shipping at warning or above.",
+  },
+  "result-type": {
+    label: "Type",
+    summary:
+      "The other half of Waystone.Monads: a Result is either Ok holding a value or Err holding an error, so a method that can fail says so in its return type instead of throwing. Rust spells it the same way.",
+  },
+  monad: {
+    label: "Functional programming",
+    summary:
+      "A type that wraps a value and defines how to chain further work onto it, so steps compose instead of each one unpacking and re-checking. Option and Result are the two most developers meet. The word names the shape they share rather than anything either of them does.",
+  },
+  "agents-md": {
+    label: "Agent convention",
+    summary:
+      "A markdown file in a repository holding standing instructions for an AI coding agent: conventions, commands, things to avoid. AGENTS.md is the cross-tool name and CLAUDE.md is Claude Code's. The agent reads it as part of its prompt, which is where its weaknesses come from.",
+  },
+  nuget: {
+    label: ".NET tooling",
+    summary:
+      "The package manager for .NET, equivalent to npm or PyPI. A package can carry analyzer rules alongside its library code, in which case installing the library installs the rules with no separate step and no opt-in.",
+  },
 } satisfies Record<string, GlossaryEntry>;
 
 export type GlossaryTerm = keyof typeof glossary;
