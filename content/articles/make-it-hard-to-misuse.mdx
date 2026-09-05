@@ -40,7 +40,7 @@ I moved both rules out of prose and into the compiler. Three things had to be se
 
 My first thought was to write it down. Add two lines to <Define term="agents-md" code>AGENTS.md</Define> - *prefer `Match` over a guarded unwrap*, *never leave a `Result` unused* - and move on. That's what everyone does, and it follows from how we've been taught to work with agents, which is that you curate what the model reads and the behaviour follows.
 
-I've <ArticleLink slug="skills-that-teach">spent a long time on instructions that teach rather than dictate</ArticleLink>, and I still think that's the right way to write them. But writing one well doesn't make it run. The model reads it, weighs it against everything else in the <Define term="context-window">context window</Define>, and decides - again, on every turn. When it decides against, nothing tells you, so you find out by reading the diff. And each rule you add makes the others weaker, because ten guidelines is ten things the model holds in mind while also solving the problem you actually gave it.
+I've <ArticleLink slug="skills-that-teach">spent a long time on instructions that teach rather than dictate</ArticleLink>, and I still think that's the right way to write them. But writing one well doesn't make it run. The model reads it, weighs it against everything else in the <Define term="context-window">context window</Define>, and decides whether to follow it - again, on every turn. The turns it doesn't, nothing warns you, so you find out by reading the diff. And each rule you add makes the others weaker, because ten guidelines is ten things the model holds in mind while also solving the problem you actually gave it.
 
 Nobody would ship a type system that worked like that. We put up with it in agent instructions because prose is cheap to write and it feels like doing something.
 
@@ -52,7 +52,7 @@ My `AGENTS.md` now has one general instruction where it used to have a list, and
 
 .NET gave me a <Define term="roslyn-analyzer">Roslyn analyzer</Define>, which the compiler loads and runs over your code on every build, and a <Define term="code-fix-provider">code fix provider</Define>, which offers the correction in your editor. Your language will offer something else. A type that makes the bad state unrepresentable does the same job, and so does a lint rule with an autofix, a schema that rejects a malformed payload, a test that fails on the regression, or a CI check that won't merge. All of them run on their own, cost nothing to run again, fail where you can see it, and say the same thing to a developer and a model. A markdown file does none of that.
 
-Whether one of your rules can move comes down to a single question: can you say exactly what is wrong with the pattern, in terms of something that is actually there in the code, that a machine could be pointed at? If you can write that sentence, the rule can run. If you can't, it stays prose and gets re-weighed every turn.
+Whether one of your rules can move comes down to a single question: can you say exactly what is wrong with the pattern, in terms of something in the code that a machine could be pointed at? If you can write that sentence, the rule can run. If you can't, it stays prose and gets re-weighed every turn.
 
 Plenty of your lines can't, and that's fine. Mine tells an agent to change only what it must and leave adjacent code alone, and no build step will ever tell an edit I asked for from one I didn't, any more than it can compile taste.
 
@@ -88,7 +88,7 @@ That sentence tells a developer why the pattern is wrong, and it gives a model e
 
 ## Go down your own list
 
-Open your instruction file and read it line by line, asking of each one whether you could say what is wrong in terms a machine could be pointed at. The lines that can't move stay prose, and they get weighed better once the mechanical rules have moved out of the context window and stopped competing with them. The ones that can move are worth an afternoon each, and you'll learn something about your own design while you write them - you can't describe a pattern to a compiler without first stating exactly what is wrong with it, and more than once my honest answer was that I had made the wrong thing too easy.
+Open your instruction file and read it line by line, asking of each one whether you could say what is wrong in terms a machine could be pointed at. The lines that can't move stay prose, and they get weighed better once the mechanical rules are out of the context window and no longer competing for the same attention. The ones that can move are worth an afternoon each, and you'll learn something about your own design while you write them - you can't describe a pattern to a compiler without first stating exactly what is wrong with it, and more than once my honest answer was that I had made the wrong thing too easy.
 
 Both mistakes I opened with are now things the compiler finds on its own, every time, without me. The dropped `Result` shows up in the build, the guarded unwrap waits in the editor for anyone who wants it, and each carries a strength I chose on purpose and a sentence that explains itself to whoever meets it next. The paragraph in `AGENTS.md` that they replaced had to be read, understood, and agreed with on every single turn, and now it doesn't have to be read at all.
 
