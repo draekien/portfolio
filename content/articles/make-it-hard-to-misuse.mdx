@@ -2,7 +2,7 @@
 title: "Make it hard to misuse"
 description: "A line in AGENTS.md gets re-weighed on every turn, and nothing tells you when the model decides against it. Here's how to tell which of your rules could run in the build instead."
 date: "2026-09-05"
-tags: ["dotnet", "developer-experience", "ai", "llm", "roslyn"]
+tags: ["ai", "llm", "prompt-engineering", "developer-experience", "static-analysis", "dotnet"]
 ---
 
 An agent wrote this against a library of mine, a .NET port of Rust's <Define term="waystone-monads">`Option` and `Result`</Define>. An `Option<T>` holds a value or holds nothing, and it won't let you read the value until you have said what happens when it's missing. A `Result` is either a success or an error, so a method that can fail says so in its return type instead of throwing.
