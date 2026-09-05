@@ -12,6 +12,7 @@ import { CodeBlock } from "@/components/code-block";
 import { Define } from "@/components/define";
 import { FrameworkBadge } from "@/components/framework-badge";
 import { LinkNote } from "@/components/link-note";
+import { Signpost } from "@/components/signpost";
 import { SourceCallout } from "@/components/source-callout";
 import { Pre } from "./pre";
 
@@ -54,6 +55,7 @@ const components = {
   FrameworkBadge,
   LinkNote,
   SequenceArrow,
+  Signpost,
   SourceCallout,
 };
 

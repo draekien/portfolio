@@ -5,6 +5,14 @@ date: "2026-09-05"
 tags: ["ai", "llm", "prompt-engineering", "developer-experience", "static-analysis", "dotnet"]
 ---
 
+<Signpost about="Which of your agent instructions could run in the build instead of being read on every turn.">
+
+1. Two mistakes an agent kept writing, and why a good model kept writing them
+2. Why a written instruction doesn't hold
+3. Which of your instructions could run instead of being read
+
+</Signpost>
+
 An agent wrote this against a library of mine, a .NET port of Rust's <Define term="waystone-monads">`Option` and `Result`</Define>. An `Option<T>` holds a value or holds nothing, and it won't let you read the value until you have said what happens when it's missing. A `Result` is either a success or an error, so a method that can fail says so in its return type instead of throwing.
 
 ```csharp
@@ -31,7 +39,7 @@ The second one is worse, and you probably read straight past it, because it look
 
 The agent kept writing both, and it's a good model. C# developers check before they access, they have done it for twenty years, and the training data is full of it. Logging an error and carrying on is just as well attested. So the agent wrote what a competent C# developer writes, and nothing in my library told it otherwise.
 
-I moved both rules out of prose and into the compiler. Two things had to be settled first: why a written instruction doesn't hold, and which of your instructions could run instead of being read.
+I moved both rules out of prose and into the compiler.
 
 ## Why I stopped adding rules to AGENTS.md
 
