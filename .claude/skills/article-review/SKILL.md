@@ -11,7 +11,7 @@ A single reviewer reads with a single set of blind spots. The value here is five
 
 Conduct five reviews of the same article, each with no knowledge of the others. Independence is the whole point: when two reviewers flag the same passage without having seen each other's notes, that convergence is signal rather than coincidence, and it is the clearest guide to where the author should spend effort first. Letting reviewers see each other's work collapses them toward one consensus voice and destroys that signal, so keep them separate until synthesis.
 
-Give each reviewer the full article. When a house style guide exists (such as the [article-writing](../article-writing/SKILL.md) skill), brief every reviewer with it so their feedback targets the established voice and standards rather than offering generic writing advice the author has already decided against.
+Give each reviewer the full article, briefed with the house standards: the [article-writing](../article-writing/SKILL.md) skill for substance and structure, and the Voice section of [content/articles/CLAUDE.md](../../../content/articles/CLAUDE.md) for sentence-level voice. Brief every reviewer with both so their feedback targets what this piece is actually trying to do, rather than offering generic writing advice the author has already decided against.
 
 Each reviewer returns structured findings. For every issue: where it is, what the problem is, why it matters, and a concrete fix. "This could be clearer" is not a finding. "The paragraph on derived state uses the term before defining it, which loses a reader outside the niche - introduce it in one plain sentence at first use" is.
 

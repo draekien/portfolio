@@ -9,7 +9,7 @@ An article earns its authority two ways: every claim is true, and every reader c
 
 These articles are personal and technical. They argue a point of view, drawn from the author's real work, and they carry a reader who may be new to the subject from "I don't know this" to "I see why this matters."
 
-This skill governs substance, structure, and grounding - what the article argues and how it is built. How the sentences themselves sound is a separate concern: sentence-level voice and prose mechanics are governed by the dedicated prose-style skill, not here.
+This skill governs substance, structure, and grounding - what the article argues and how it is built. How the sentences themselves sound is a separate concern: sentence-level voice is governed by the Voice section of [content/articles/CLAUDE.md](../../../content/articles/CLAUDE.md) and applied during the [refine-prose](../refine-prose/SKILL.md) pass, not here.
 
 ## Ground every claim in the source
 
