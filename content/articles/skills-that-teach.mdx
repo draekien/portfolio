@@ -5,12 +5,12 @@ date: "2026-06-03"
 tags: ["agent-skills", "llm", "claude", "prompt-engineering"]
 versions:
   - date: "2026-09-05"
-    description: "Rewrote the prose against the house voice."
+    description: "Rewrote the prose against the house voice, dropped the diagnosis promise from a heading that resolves two sections later, and stopped the source callout restating the body."
 ---
 
 A coding agent ran my skill and did something useless, perfectly. The skill told it to interview me before writing a technical spec. But the codebase already answered every question the interview would ask. The instructions said *interview, then write*, so it interviewed, invented questions, waited for answers it didn't need, and produced a spec nobody wanted. That skill was one of my own, from an earlier draft.
 
-## What a skill is, and why mine broke
+## What a skill is
 
 An <Define term="agent-skill">agent skill</Define> is a folder you hand an AI agent to give it a capability it lacked. At its centre is a <Define term="skill-md" code>SKILL.md</Define> file: frontmatter that decides when the skill switches on, and a body of instructions the agent reads once it does. It works like onboarding docs for a teammate who is brilliant, fast, and has never met you.
 
@@ -98,5 +98,5 @@ So I apply the teaching test per instruction. For each line, ask what the future
 My skill for writing skills is still changing, and the version that stops changing is the one that has quietly become a runbook again.
 
 <SourceCallout external href="https://github.com/draekien/skills" title="draekien/skills">
-  The skill this article is about, still changing in the open: the SKILL.md, the anti-patterns, and the commit history of me learning the same lesson several times.
+  The skill this article is about, still changing in the open: the SKILL.md, the named anti-patterns, and every rewrite that got it there.
 </SourceCallout>
