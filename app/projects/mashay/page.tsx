@@ -50,7 +50,7 @@ export default function MashayPage() {
           <p className="text-lg md:text-xl text-foreground leading-relaxed">
             A CLI that turns Markdown into a single, self-contained HTML
             document. Every style, logo, and image is inlined into one file you
-            can email, archive, or open offline — no stylesheet, no asset
+            can email, archive, or open offline - no stylesheet, no asset
             folder, no build server.
           </p>
           <div className="flex items-center gap-3 flex-wrap">
@@ -132,15 +132,14 @@ export default function MashayPage() {
             <div className="space-y-4 text-muted-foreground leading-relaxed max-w-prose">
               <p>
                 I had a pile of Markdown notes I wanted to turn into
-                presentable, shareable HTML documents. The obvious route was to
-                ask an LLM to convert each one, but paying inference costs to
-                reformat text that never changes is the wrong tool for a
-                deterministic job.
+                presentable, shareable HTML documents. I could have asked an LLM
+                to convert each one, but paying inference costs to reformat text
+                that never changes is the wrong tool for a deterministic job.
               </p>
               <p>
-                I wanted a converter I could run locally and for free: feed it
-                Markdown, get back a polished document that looks the same every
-                time and travels as a single file.
+                So I wanted a converter I could run locally and for free: feed
+                it Markdown, get back a document that looks the same every time
+                and travels as a single file.
               </p>
             </div>
           </section>
@@ -151,15 +150,14 @@ export default function MashayPage() {
               <p>
                 mashay is a Node CLI built on the unified/remark/rehype
                 pipeline. Point it at a file or a directory and it renders each
-                document into standalone HTML — styles, logo, and embedded
-                images all inlined — using a pluggable template and theme.
+                document into standalone HTML - styles, logo, and embedded
+                images all inlined - using a pluggable template and theme.
               </p>
               <p>
-                The output is designed to read like a prepared briefing, not a
-                rendered README: a titled masthead, a numbered table of
-                contents, auto-numbered headings, alert callouts, and
-                collapsible appendices, all from plain Markdown frontmatter and
-                syntax.
+                The output reads like a prepared briefing: a titled masthead, a
+                numbered table of contents, auto-numbered headings, alert
+                callouts, and collapsible appendices, all from plain Markdown
+                frontmatter and syntax.
               </p>
             </div>
           </section>
@@ -172,17 +170,17 @@ export default function MashayPage() {
               {
                 badge: "unified" as const,
                 rationale:
-                  "The remark/rehype ecosystem does the parsing. The interesting work lives in custom plugins for alerts, Obsidian syntax, heading numbering, and Mermaid — ordered carefully so each transform sees the tree it expects.",
+                  "The remark/rehype ecosystem does the parsing, and custom plugins do the rest: alerts, Obsidian syntax, heading numbering, and Mermaid - ordered carefully so each transform sees the tree it expects.",
               },
               {
                 badge: "tailwind" as const,
                 rationale:
-                  "Tailwind v4 is driven programmatically to compile the exact CSS each page uses, then inlined. It is what makes the output self-contained rather than dependent on an external stylesheet.",
+                  "Tailwind v4 is driven programmatically to compile the exact CSS each page uses, then inlined, so the output carries its own styles instead of reaching for an external stylesheet.",
               },
               {
                 badge: "commander" as const,
                 rationale:
-                  "Structures the CLI into process and docs subcommands. A no-argument run drops into an interactive file picker built with @clack/prompts.",
+                  "Structures the CLI into process and docs subcommands, and a no-argument run drops into an interactive file picker built with @clack/prompts.",
               },
               {
                 badge: "zod" as const,
@@ -217,19 +215,19 @@ export default function MashayPage() {
                   A fresh Tailwind compiler per document
                 </h3>
                 <p className="text-muted-foreground leading-relaxed max-w-prose mb-6">
-                  To make output self-contained, mashay compiles Tailwind at
+                  To keep the output self-contained, mashay compiles Tailwind at
                   build time: it assembles the page, scans it for the classes
-                  actually used, and inlines only that CSS. The catch is that
-                  Tailwind&apos;s compiler accumulates candidates across calls,
-                  so reusing one instance across a batch leaks every earlier
-                  document&apos;s utilities into later pages. Each document gets
-                  its own compiler.
+                  actually used, and inlines only that CSS. But Tailwind&apos;s
+                  compiler accumulates candidates across calls, so reusing one
+                  instance across a batch leaks every earlier document&apos;s
+                  utilities into later pages. Each document gets its own
+                  compiler.
                 </p>
                 <div className="max-w-2xl">
                   <CodeBlock
                     language="typescript"
                     code={`// Reusing a compiler across documents leaks earlier pages'
-// classes into later ones — the candidate set is cumulative.
+// classes into later ones - the candidate set is cumulative.
 // So build a fresh compiler and scanner for every page.
 async function compilePageCss(html: string): Promise<string> {
   const compiler = await compile(baseCss, { base: cwd });
@@ -259,13 +257,13 @@ async function compilePageCss(html: string): Promise<string> {
                   token contract. Because every template consumes the same
                   colour names, any theme pairs with any template: a new theme
                   is a palette, a new template is a new document format. Only
-                  the <Code>academic</Code> pair ships today, but the seam is
-                  where the tool is built to grow.
+                  the <Code>academic</Code> pair ships today, and anything added
+                  later drops into that seam.
                 </p>
                 <div className="max-w-2xl">
                   <CodeBlock
                     language="css"
-                    code={`/* themes/<name>/theme.css — a theme is only colour tokens */
+                    code={`/* themes/<name>/theme.css - a theme is only colour tokens */
 :root {
   --color-surface: #fdfdfc;
   --color-ink: #1a1a1a;
@@ -283,20 +281,18 @@ async function compilePageCss(html: string): Promise<string> {
               </p>
               <div>
                 <h3 className="text-lg font-semibold mb-3">
-                  Self-contained, with one honest exception
+                  Self-contained, with one exception
                 </h3>
                 <p className="text-muted-foreground leading-relaxed max-w-prose">
                   Styles are inlined, logos are embedded (SVG inline, raster
                   formats as base64), and Obsidian image embeds are resolved and
                   inlined too, so a mashay document opens correctly with no
-                  network and no sidecar files. The one exception is Mermaid:
-                  rendering diagrams in a truly self-contained way would mean
-                  shipping the whole Mermaid runtime in every file, so mashay
-                  instead injects a CDN <Code>&lt;script&gt;</Code> tag — and
-                  only on pages that actually contain a diagram. That page needs
-                  the internet to draw its diagram; everything else works
-                  offline. Naming the trade-off beat pretending it wasn&apos;t
-                  there.
+                  network and no sidecar files. Mermaid is the exception:
+                  rendering diagrams without a network would mean shipping the
+                  whole Mermaid runtime in every file, so mashay injects a CDN{" "}
+                  <Code>&lt;script&gt;</Code> tag instead, and only on pages
+                  that actually contain a diagram. Those pages need the internet
+                  to draw their diagrams, and everything else works offline.
                 </p>
               </div>
             </div>
@@ -314,12 +310,12 @@ async function compilePageCss(html: string): Promise<string> {
                   carry a path, and vaults tend to keep attachments in a central
                   folder rather than next to the note. So the resolver searches
                   down from the note first, then walks up the ancestor
-                  directories — checking each one and its{" "}
-                  <Code>attachments/</Code> subfolder — until it finds the file
+                  directories - checking each one and its{" "}
+                  <Code>attachments/</Code> subfolder - until it finds the file
                   or runs out of vault. Resolved images are inlined as data
-                  URIs; anything it can&apos;t resolve degrades to plain text
-                  rather than a broken link. Wikilinks render as text too, since
-                  there is no vault graph to link into.
+                  URIs, and anything it can&apos;t resolve degrades to plain
+                  text rather than a broken link. Wikilinks render as text too,
+                  since there&apos;s no vault graph to link into.
                 </p>
               </div>
             </div>
