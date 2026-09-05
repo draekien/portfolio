@@ -24,11 +24,36 @@ When drafting a new article, follow these steps in order:
 4. With a first draft in hand, use `/refine-prose` to tighten the prose concern by concern, then apply and verify the edits.
 5. Use `/stop-slop` to strip predictable AI writing tells, then apply and verify the edits.
 6. Use `/article-review` to perform an independent review of the draft and present findings.
+7. Run `pnpm lint:prose` before committing. It fails on the mechanics below and prints a readability table for the whole corpus.
 
 - `<Define term="...">` — the `term` must be a key in the typed glossary at `lib/glossary.ts`. An unregistered term is a TypeScript error, not a runtime fallback. To add a new term: add the entry to `lib/glossary.ts` first, then use the component in the MDX. Remove any inline parenthetical definition the MDX was carrying — it belongs in the glossary now.
 - **All definitions go in `<Define>`, never inline.** If an article explains a term in parentheses or an em-dash aside, move that explanation to the glossary and replace it with `<Define>`.
 - `<ArticleLink slug="...">text</ArticleLink>` — cross-link to another article (`slug` = its filename minus `.mdx`), shown as a popover previewing the target's title, reading time, and excerpt.
+- `<Signpost about="...">` — the contents notice at the top of every article, wrapping a markdown ordered list. See the Scope section below. **Array and object props do not work in this MDX pipeline** — an expression attribute like `covers={["a","b"]}` is silently dropped and arrives as `undefined`. String attributes and children are the only reliable ways to pass content to an MDX component here.
 - `<LinkNote href="..." note="...">text</LinkNote>` — external source link that reveals the `note` summary on hover, so readers grasp where it leads without clicking. Still navigates on click.
+
+## Scope
+
+Four rules that decide what gets written, before any question of how it reads:
+
+- **One topic.** An article has a single purpose. When a section teaches something the core message doesn't need, it belongs in a different article - not in a subsection of this one.
+- **One audience.** Name who the article is for and write only to them. `<Define>` exists so a term can stay in without the article stopping to teach a second, outside reader - it is not licence to widen the audience. It's fine to leave a concept unexplained.
+- **Example first.** Lead a section with the artefact - the code, the file, the transcript - and let the prose follow it. Don't make a claim the reader can't see an instance of. Prose carries what the example can't.
+- **No self-promotion.** My own libraries and projects appear as worked examples and nothing else. When a passage argues for the thing rather than with it, cut the passage.
+
+**Signpost the structure.** Every article opens with a `<Signpost>` block, placed at the very top of the `.mdx` before any prose. `about` is one sentence on what the article is for; the children are a markdown ordered list of what it covers, in the order it covers it, and need blank lines around them so MDX parses them as markdown:
+
+```mdx
+<Signpost about="Which of your agent instructions could run in the build instead of being read.">
+
+1. Two mistakes an agent kept writing
+2. Why a written instruction doesn't hold
+3. Which of your instructions could run instead
+
+</Signpost>
+```
+
+Because it's a notice block rather than prose, the example still leads the writing underneath it. Don't restate the signpost as a sentence in the body.
 
 ## Voice
 
@@ -50,18 +75,6 @@ Approved example — before and after:
 > BEFORE: "Unwrap is the escape hatch, and it reaches in for the value and throws if there isn't one."
 > AFTER: "Unwrap bypasses that. It returns the value, and throws if there isn't one."
 
-Two fixed mechanics, not preferences: Australian English spelling (behaviour, prioritise, optimisation), and the hyphen ` - ` as the only inline aside marker. Em dashes are banned - no article in this corpus contains one.
+Two fixed mechanics, not preferences: Australian English spelling (behaviour, prioritise, optimisation), and the hyphen ` - ` as the only inline aside marker. Em dashes are banned - no article in this corpus contains one. Both are checked by `pnpm lint:prose`, along with inline parenthetical definitions, "not A, it's B", and superlative up-play.
 
-The tics below are the specific ways the voice above still goes wrong. Watch for them on a pass, but don't let avoiding them produce asyndetic prose — that's the mistake this rewrite exists to undo.
-
-- No self-referential narration ("the article would be optimistic") — state the point flat.
-- No superlative up-play ("the best question I have heard") — understate instead ("the question that stuck with me").
-- Colons are fine for lists, quote intros, and deliberate label-openers, but use them sparingly — "claim: elaboration" as the default sentence shape is a tic.
-- Don't justify narrative moves (why an experiment ran again, why a section exists) — just state what happened.
-- Don't use "the" to universalise your own readings or positions — "The honest reading is..." → "My honest reading is..." (a narrow case of habit 1, above).
-- No "not A, it's B" — just say "it's B." The negation is never load-bearing.
-- No circular "X because X" — if the "because" clause restates the claim in different words, including the article's own metaphors, it isn't an explanation. Supply the actual mechanism, or cut the "because." Example of the trap: "it keeps no memory because it carries no character between conversations."
-- No self-appraising codas — a clause hung off a finished sentence to tell the reader how to judge it, usually wry and usually about the author ("...and felt fine about it", "...where they were free"). End on the fact, and cut the tail if it carries no information.
-- No paragraph-opening stubs — a short abstract sentence that names the paragraph's job instead of starting on its content, usually carrying a vague pronoun or a placeholder noun ("The packaging sharpens it", "Something else falls out of that", "Restraint has a cost"). The reader holds it unresolved until the real sentence arrives, and the pronoun often points at the wrong antecedent anyway.
-- No stance sentences — a sentence whose content is your posture toward the point rather than the point itself. The difficulty appraisal rates a thing instead of stating it ("X is the easy part", "X is where the time went"). The concessive defiance announces that an objection was overridden instead of giving the reason ("I shipped them as warnings anyway"). The WH-cleft declares a position the mechanism could state on its own ("What I care about is X"). Give the reason or the mechanism, and cut the posture.
-- No redundant run-on chains — four clauses saying the same thing in different framings isn't emphasis, it's fog. Find the sharpest framing and cut the rest.
+The specific ways this voice still goes wrong are a review-pass concern, not a drafting one, and they live with the pass that hunts them: the concern list in [.claude/skills/refine-prose/SKILL.md](../../.claude/skills/refine-prose/SKILL.md). Don't work through it while drafting. Chasing eleven tics mid-sentence produces the airless, asyndetic prose habit 4 exists to prevent.
