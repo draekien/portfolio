@@ -97,18 +97,18 @@ export default async function WaystoneWideLogEventsPage() {
           <ProjectSectionHeading>Why this exists</ProjectSectionHeading>
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              Debugging distributed systems meant correlating dozens of
+              Debugging a distributed system meant correlating dozens of
               fragmented log entries per request. A single user action could
-              scatter context across 30+ log lines (different timestamps,
-              different log levels, different services) and you had to mentally
-              stitch them together.
+              scatter context across 30+ log lines - different timestamps,
+              different log levels, different services - so you had to stitch
+              them back together in your head before you could read what
+              happened.
             </p>
             <p>
-              The wide event pattern solves this. Instead of emitting a log
-              entry every time something happens, you accumulate properties into
-              a context bag and flush the whole thing as one rich, structured
-              event at the end of the operation. One line per request. Trivially
-              queryable.
+              A wide event replaces that. Instead of emitting a log entry every
+              time something happens, you accumulate properties into a context
+              bag and flush the whole thing as one structured event at the end
+              of the operation, so a request is one line you can query directly.
             </p>
           </div>
         </section>
@@ -119,9 +119,9 @@ export default async function WaystoneWideLogEventsPage() {
               <ProjectSectionHeading>Setup</ProjectSectionHeading>
               <p className="text-muted-foreground max-w-prose">
                 Configure Serilog with the <Code>WideLogEventsContext</Code>{" "}
-                enricher and middleware. The library integrates with{" "}
-                <Code>Serilog.AspNetCore</Code>; your existing request logging
-                pipeline stays intact.
+                enricher and middleware. It integrates with{" "}
+                <Code>Serilog.AspNetCore</Code>, so your existing request
+                logging pipeline stays intact.
               </p>
             </div>
             <div className="max-w-3xl">
