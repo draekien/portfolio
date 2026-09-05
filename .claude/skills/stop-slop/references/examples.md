@@ -6,9 +6,9 @@
 > "Here's the thing: building products is hard. Not because the technology is complex. Because people are complex. Let that sink in."
 
 **After:**
-> "Building products is hard. Technology is manageable. People aren't."
+> "Building products is hard. Technology is manageable, but people aren't."
 
-**Changes:** Removed opener, binary contrast structure, and emphasis crutch. Direct statements.
+**Changes:** Removed opener, binary contrast structure, and emphasis crutch. Kept the two remaining facts connected with "but" rather than stacked as separate fragments.
 
 ---
 
@@ -18,9 +18,9 @@
 > "It turns out that most teams struggle with alignment. The uncomfortable truth is that nobody wants to admit they're confused. And that's okay."
 
 **After:**
-> "Teams struggle with alignment. Nobody admits confusion."
+> "Teams struggle with alignment because nobody admits confusion."
 
-**Changes:** Cut hedging ("most"), removed throat-clearing phrases, deleted permission-granting ending.
+**Changes:** Cut hedging ("most"), removed throat-clearing phrases, deleted permission-granting ending. Connected the two remaining facts with "because" instead of leaving them as separate fragments.
 
 ---
 

@@ -10,6 +10,8 @@ metadata:
 
 Eliminate predictable AI writing patterns from prose.
 
+For articles in this repo, the house voice in the Voice section of [content/articles/CLAUDE.md](../../../content/articles/CLAUDE.md) governs where it and this skill point different ways. In particular: "and", "but", "so", "because" joining two related clauses are not the rhythm problem rule 6 targets, and modal hedges ("might", "would", "could") are not banned - only unearned hedging and throat-clearing are.
+
 ## Core Rules
 
 1. **Cut filler phrases.** Remove throat-clearing openers, emphasis crutches, and all adverbs. See [references/phrases.md](references/phrases.md).

@@ -14,9 +14,9 @@ The method is one focused reader per editorial concern, run independently, with 
 A refinement pass targets a named set of faults, not "make it better". The author usually states them, and when they do, those are the concerns verbatim. When they don't, draw from the faults that recur in this voice:
 
 - **Claim-then-refute** - sentence A asserts something, sentence B takes it back. The "it's A, not B" and "not A, it's B" shapes are the compact form; the same move stretched across a paragraph is a set-up sentence that exists only to be knocked down. Let the fact stand on its own.
-- **Claim-colon** - "claim: explanation" used as a sentence's default shape, where a period or a connector would carry it. Reserve the colon for a true list, a quotation, or a deliberate label-opener.
+- **Claim-colon** - "claim: explanation" leaned on as a sentence's default shape, where a period or a connector would carry it better. Colons are fine used sparingly - for a true list, a quotation, or a deliberate label-opener - the tic is reaching for one by default.
 - **Restatement and circling** - a point already made, said again later in fresh words, or prose that loops back to ground already covered. It reads as progress but adds nothing. Trust the reader to hold the earlier fact, and keep the momentum forward.
-- **Compounds that crowd ideas** - two or more distinct ideas welded into one sentence with "and", a semicolon, or a dash, where each would carry more weight standing alone.
+- **Compounds that crowd ideas** - three or more distinct, unrelated ideas welded into one sentence via a semicolon or a dash, where each would carry more weight standing alone. This is not a case against "and", "but", "so", or "because" joining two clauses that belong together - the house voice wants sentences connected, not stacked behind periods with nothing joining them. The fault is unrelated ideas crammed together, not related clauses holding hands.
 - **Metaphor that explains** - a metaphor doing the explanatory work a plain sentence already did. If the concept is clear without it, the metaphor is decoration; reserve it for emphasis, not explanation.
 - **Performed prose** - sentences reaching to sound clever: the word-of-the-day where a plain word is exact, the aphorism, the ornament that does not earn its place.
 - **Self-narration** - the writing describing its own moves instead of just making them.
@@ -26,7 +26,7 @@ A refinement pass targets a named set of faults, not "make it better". The autho
 - **Stranded locational frame** - a spatial or directional word (upstream and downstream, above and below, across and up) placed far from the thing it positions, so the reader has to reconstruct what sits where. Keep the frame next to its antecedent; when the word that orients an idea drifts from the idea, the orientation is lost. This applies across a passage too - a heading that locates the section ("the cost lands downstream") strands its reader if the body then places the weight elsewhere.
 - **Paragraph cohesion** - the seam between paragraphs rather than the line within one. A transition that jumps to the next topic with no hand-off; a "this", "that", or "that much" whose referent sits a paragraph or more back, so the reader climbs to recover it; a hook or promise raised in one paragraph whose payoff the following ones defer past the point it was set up for. Each paragraph should connect to the one before, and a point should pay off near where it is raised. Argument structure stays with article-writing - this is the connective tissue, not the skeleton.
 
-These map onto the project's established house voice and prose conventions - the same standards the [article-writing](../article-writing/SKILL.md) skill and the prose-style skill hold the draft to. Brief every reader with that guidance so its findings target the established voice, not generic style advice the author has already rejected.
+These map onto the project's established house voice - set out in the Voice section of [content/articles/CLAUDE.md](../../../content/articles/CLAUDE.md) - and the structural conventions the [article-writing](../article-writing/SKILL.md) skill holds the draft to. Brief every reader with that guidance so its findings target the established voice, not generic style advice the author has already rejected.
 
 ## Run one reader per concern, in isolation
 
@@ -37,7 +37,7 @@ Each reader returns findings only - it does not edit. For every finding: the sen
 Hold each reader to selectivity, not coverage. A surface pattern is not a fault by itself, and a reader that flags every instance of one buries the few that matter. The legitimate uses it must leave alone:
 
 - A colon doing real work. The tic is the colon used as a default sentence shape, not a genuine list or quotation.
-- A run of events about one subject. Serial happenings to one actor are a single idea, not a crowded compound.
+- A run of events about one subject, or two related clauses joined by "and", "but", "so", or "because". Connected clauses are the house voice's default, not a crowded compound.
 - A precise, common technical term. Refinement does not swap a correct word for a simpler, vaguer one.
 - A metaphor carrying genuine emphasis. The fault is the metaphor that re-explains something already clear, not the one that lands a point.
 - A progressive carrying genuine ongoing aspect. The fault is the "-ing" standing in for a plain present, not the one describing an action that is actually continuous.
