@@ -54,6 +54,8 @@ Four rules that decide what gets written, before any question of how it reads:
 
 Because it's a notice block rather than prose, the example still leads the writing underneath it. Don't restate the signpost as a sentence in the body.
 
+`tests/prose.test.ts` checks every article for one, including that `about` is a single sentence and that the list has blank lines around it. It's excluded from the readability table, so the list fragments don't count as sentences.
+
 ## Voice
 
 The voice is someone with opinions, talking to you, who names things instead of gesturing at them. Ten habits produce that, and they matter more than any rule below.

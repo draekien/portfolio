@@ -215,20 +215,38 @@ function readCaseStudy(file: string): Piece {
   };
 }
 
-const corpus: Piece[] = [
-  ...fs
-    .readdirSync(ARTICLES_DIR)
-    .filter((f) => f.endsWith(".mdx"))
-    .sort()
-    .map((f) => readArticle(path.join(ARTICLES_DIR, f))),
-  ...fs
-    .readdirSync(CASE_STUDY_DIR, { withFileTypes: true })
-    .filter((d) => d.isDirectory())
-    .map((d) => path.join(CASE_STUDY_DIR, d.name, "page.tsx"))
-    .filter((f) => fs.existsSync(f))
-    .sort()
-    .map(readCaseStudy),
-];
+const articles: Piece[] = fs
+  .readdirSync(ARTICLES_DIR)
+  .filter((f) => f.endsWith(".mdx"))
+  .sort()
+  .map((f) => readArticle(path.join(ARTICLES_DIR, f)));
+
+const caseStudies: Piece[] = fs
+  .readdirSync(CASE_STUDY_DIR, { withFileTypes: true })
+  .filter((d) => d.isDirectory())
+  .map((d) => path.join(CASE_STUDY_DIR, d.name, "page.tsx"))
+  .filter((f) => fs.existsSync(f))
+  .sort()
+  .map(readCaseStudy);
+
+const corpus: Piece[] = [...articles, ...caseStudies];
+
+type Signpost = { about: string; contents: string; items: string[] };
+
+// Anchored at the start, because the block only does its job when the reader
+// meets it before the prose.
+const SIGNPOST = /^<Signpost\b([^>]*)>\r?\n([\s\S]*?)\r?\n<\/Signpost>/;
+
+function readSignpost(raw: string): Signpost | null {
+  const found = SIGNPOST.exec(raw.trimStart());
+  if (!found) return null;
+  const contents = found[2] as string;
+  return {
+    about: /\babout="([^"]*)"/.exec(found[1] as string)?.[1] ?? "",
+    contents,
+    items: contents.split(/\r?\n/).filter((line) => /^\d+\.\s+\S/.test(line)),
+  };
+}
 
 function report(piece: Piece, hits: Hit[]) {
   return hits
@@ -245,6 +263,31 @@ describe.each(corpus)("$id", (piece) => {
   test.each(rules)("$name", (rule) => {
     const hits = rule.run(piece);
     expect(report(piece, hits), report(piece, hits)).toBe("");
+  });
+});
+
+describe.each(articles)("$id signpost", (piece) => {
+  const signpost = readSignpost(piece.raw);
+
+  test("opens the article, before any prose", () => {
+    expect(
+      signpost,
+      `${piece.file} has no <Signpost> at the top`,
+    ).not.toBeNull();
+  });
+
+  test("says in one sentence what the article is for", () => {
+    expect(signpost?.about ?? "").toMatch(/^[A-Z].*\.$/);
+  });
+
+  test("lists what it covers, in the order it covers it", () => {
+    expect(signpost?.items.length ?? 0).toBeGreaterThan(1);
+  });
+
+  // Array props are silently dropped by this MDX pipeline, so the list has to
+  // arrive as markdown children, which needs blank lines around it to parse.
+  test("leaves blank lines around the list so MDX parses it as markdown", () => {
+    expect(signpost?.contents ?? "").toMatch(/^\r?\n[\s\S]*\r?\n$/);
   });
 });
 
@@ -324,13 +367,54 @@ describe("rules", () => {
   });
 });
 
+// A parser that quietly returns null for everything fails the whole corpus, and
+// one that quietly accepts everything passes it. These pin both ends.
+describe("readSignpost", () => {
+  const block = [
+    '<Signpost about="What this is for.">',
+    "",
+    "1. First",
+    "2. Second",
+    "",
+    "</Signpost>",
+  ].join("\n");
+
+  test("reads the about and the items out of a well-formed block", () => {
+    expect(readSignpost(block)).toEqual({
+      about: "What this is for.",
+      contents: "\n1. First\n2. Second\n",
+      items: ["1. First", "2. Second"],
+    });
+  });
+
+  test("reads a block that opens after the frontmatter", () => {
+    expect(readSignpost(`\n\n${block}\n\nProse.`)?.items).toHaveLength(2);
+  });
+
+  test("returns null when prose comes first", () => {
+    expect(readSignpost(`Prose.\n\n${block}`)).toBeNull();
+  });
+
+  test("returns null when there is no signpost", () => {
+    expect(readSignpost("Prose, and then more prose.")).toBeNull();
+  });
+
+  test("keeps a missing blank line visible in the contents", () => {
+    const tight = '<Signpost about="What this is for.">\n1. First\n</Signpost>';
+    expect(readSignpost(tight)?.contents).not.toMatch(/^\r?\n[\s\S]*\r?\n$/);
+  });
+});
+
 const ABBREVIATIONS = /\b(e\.g|i\.e|etc|vs|Mr|Mrs|Ms|Dr|No)\.$/;
 
 function sentences(prose: string) {
   const text = prose
+    // The signpost is a notice block, not writing, so measuring it would put
+    // four list fragments into every article's sentence count.
+    .replace(/<Signpost[\s\S]*?<\/Signpost>/g, "")
     .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
     .replace(/<[^>]+>/g, "")
-    .replace(/^\s*[-*]\s+/gm, "")
+    .replace(/^\s*(?:[-*]|\d+\.)\s+/gm, "")
     .replace(/^#{1,6}\s+/gm, "");
 
   const out: string[] = [];

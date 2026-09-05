@@ -8,6 +8,15 @@ versions:
     description: "Rewrote the prose against the house voice, moved the inline monad explainer into the glossary, named Unwrap as the escape hatch Match doesn't close, added Result as Option's sibling, and rewrote the description to state what the type does."
 ---
 
+<Signpost about="Porting Rust's Option to .NET, so a value that might be missing has to be handled before you can read it.">
+
+1. How Rust does without null
+2. Why C#'s nullable reference types don't hold
+3. What the .NET port asks of a caller
+4. Where it earns its place, and where it doesn't
+
+</Signpost>
+
 <Define term="tony-hoare">Tony Hoare</Define> invented the null reference in 1965 and later called it his "billion-dollar mistake." Decades on, most codebases still handle a missing value by remembering to check for it, rather than by saying in the type that it might not be there.
 
 In production I kept meeting the same bug: a <Define term="null-reference-exception" code>NullReferenceException</Define> that had gone through code review without anyone catching it, because nothing in the types said the value could be missing. The answer I ended up taking came from Rust, which refuses to have the problem at all.

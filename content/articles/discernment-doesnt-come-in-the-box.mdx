@@ -8,6 +8,15 @@ versions:
     description: "Rewrote the prose against the house voice, compressed the doubled research hedge, cut the thesis restatement out of the closing so it ends on what I don't have, and named the mechanism in the description instead of calling the cost hidden."
 ---
 
+<Signpost about="What automating a junior's work costs you in seniors, and where to point AI instead.">
+
+1. Why discernment stays local to the domain that built it
+2. The work we automate is the work that makes seniors
+3. Where to point AI instead, and what to measure
+4. What I don't have figured out
+
+</Signpost>
+
 A senior engineer on my team shipped a React feature. They're excellent - years of deep backend work in .NET, the kind of developer whose code I rarely have to question - but they'd barely written any frontend, so they reached for AI and let it generate the React.
 
 The <Define term="pull-request">pull request</Define> looked finished. It wasn't. The code used an <Define term="use-effect" code>effect</Define> to keep a copy of *derived state*: values you can compute from data you already hold, kept instead as a second copy that drifts out of sync. Heavy computations re-ran on every keystroke with no <Define term="memoisation">memoisation</Define>. And it was a few giant components holding tangles of internal state, where small focused pieces would have been clearer.
