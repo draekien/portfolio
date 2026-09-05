@@ -72,7 +72,7 @@ const buckets = [
     name: "productivity",
     count: "7 skills",
     detail:
-      "get-aligned, deep-research, round-table, steelman, devils-advocate, transcribe-video, and visualise: the thinking work of alignment, research, and structured debate.",
+      "get-aligned, deep-research, round-table, steelman, devils-advocate, transcribe-video, and visualise: alignment, research, structured debate, and the transcribing and diagramming around them.",
   },
   {
     name: "output-styles",
@@ -96,8 +96,8 @@ export default async function SkillsPage() {
               Skills
             </h1>
             <p className="text-lg md:text-xl text-foreground leading-relaxed">
-              Reusable agent skills that teach a complete workflow, not a
-              one-off prompt. Built on the{" "}
+              Reusable agent skills that teach a coding agent a complete
+              workflow. Built on the{" "}
               <Define term="agent-skill">Agent Skills open standard</Define>,
               installable as Claude Code plugins or across 40+ other agents.
             </p>
@@ -150,17 +150,17 @@ export default async function SkillsPage() {
             <p>
               I kept re-explaining the same multi-step workflows to my coding
               agents: how to break a PRD into tracer bullets, how I want a
-              design review run, how a debate should be structured. The
-              explanation was good for one session and then gone, and the next
+              design review run, how a debate should be structured. Each
+              explanation lasted one session and then it was gone, so the next
               session started from scratch.
             </p>
             <p>
               A skill writes that down once. The frontmatter tells the agent
-              when to reach for it; the body teaches the workflow step by step;
-              bundled scripts and templates handle the parts that should not be
-              improvised. Because they follow the Agent Skills open standard,
-              the same files work in Claude Code and across the other agents
-              that read them.
+              when to reach for it, the body teaches the workflow step by step,
+              and bundled scripts and templates handle the parts that
+              shouldn&apos;t be improvised. They follow the Agent Skills open
+              standard, so the same files work in Claude Code and across the
+              other agents that read them.
             </p>
           </div>
         </section>
@@ -175,15 +175,14 @@ export default async function SkillsPage() {
                   SKILL.md
                 </Define>{" "}
                 file: YAML frontmatter plus a Markdown body. The frontmatter{" "}
-                <Code>description</Code> is the activation contract: it loads
-                into context every session and decides when the agent pulls the
-                skill in. Full instructions stay out until then; the standard
-                calls this{" "}
+                <Code>description</Code> loads into context every session and
+                decides when the agent pulls the skill in, and the full
+                instructions stay out until it does - the standard calls this{" "}
                 <Define term="progressive-disclosure">
                   progressive disclosure
                 </Define>
-                , loading detail only when a task needs it. The body is the
-                instruction set, and a skill can bundle scripts, reference docs,
+                , loading detail only when a task needs it. The body carries the
+                instructions, and a skill can bundle scripts, reference docs,
                 and templates it calls on as it runs.
               </p>
             </div>
@@ -195,8 +194,8 @@ export default async function SkillsPage() {
 name: round-table
 description: Assembles an adversarial agent team to compare
   competing options, approaches, or technologies. Champions
-  debate via direct messaging — each builds a case and
-  actively challenges the others — then a synthesizer
+  debate via direct messaging - each builds a case and
+  actively challenges the others - then a synthesizer
   subagent analyses the debate and delivers a recommendation.
 compatibility: Requires Claude Code with agent teams enabled.
   Champions run on a fast mid-tier model; the synthesizer
@@ -215,8 +214,8 @@ recommendation.`}
         <section className="mb-16">
           <ProjectSectionHeading>What&apos;s inside</ProjectSectionHeading>
           <p className="text-muted-foreground mb-8 max-w-prose leading-relaxed">
-            Seventeen skills, grouped into four buckets you can install together
-            or one bucket at a time.
+            Seventeen skills in four buckets, and you can install the lot or
+            take one bucket at a time.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
             {buckets.map((bucket) => (
