@@ -38,10 +38,11 @@ export default async function WaystoneMonadsPage() {
             Waystone.Monads
           </h1>
           <p className="text-lg md:text-xl text-foreground leading-relaxed">
-            Make impossible states impossible at the type level. Idiomatic .NET
-            implementations of <Code>{"Option<T>"}</Code> and{" "}
-            <Code>{"Result<T, E>"}</Code> inspired by Rust&apos;s standard
-            library.
+            Idiomatic .NET implementations of <Code>{"Option<T>"}</Code> and{" "}
+            <Code>{"Result<T, E>"}</Code>, inspired by Rust&apos;s standard
+            library. Absence and failure live in the return type, so you
+            can&apos;t read a value without saying what happens when it
+            isn&apos;t there.
           </p>
           <div className="flex items-center gap-3 flex-wrap">
             <FrameworkBadge version="netstandard2.0" />
@@ -77,15 +78,16 @@ export default async function WaystoneMonadsPage() {
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
               Null reference exceptions were costing my team production
-              incidents. The root cause was always the same: a value that should
-              have been treated as optional was accessed unconditionally, and
-              nothing in the type system pushed back.
+              incidents, and it was the same bug every time - somebody read a
+              value that might not have been there, and nothing in the type
+              system pushed back.
             </p>
             <p>
-              Rust&apos;s <Code>Option</Code> and <Code>Result</Code> types
-              solve this elegantly: you cannot access the inner value without
-              handling both cases. Waystone.Monads brings that discipline to
-              .NET, without requiring F# or abandoning idiomatic C# patterns.
+              Rust&apos;s <Code>Option</Code> and <Code>Result</Code> won&apos;t
+              give you the inner value until you&apos;ve handled both cases, so
+              the check isn&apos;t something anyone has to remember.
+              Waystone.Monads brings that discipline to .NET without requiring
+              F# and without giving up idiomatic C#.
             </p>
           </div>
         </section>
@@ -95,9 +97,9 @@ export default async function WaystoneMonadsPage() {
             <div>
               <ProjectSectionHeading>Option&lt;T&gt;</ProjectSectionHeading>
               <p className="text-muted-foreground max-w-prose">
-                Represents a value that may or may not be present. Forces the
-                caller to handle both the <Code>Some</Code> and{" "}
-                <Code>None</Code> cases.
+                A value that may or may not be present. You can&apos;t read it
+                without handling both the <Code>Some</Code> case and the{" "}
+                <Code>None</Code> case.
               </p>
             </div>
             <div className="space-y-6 max-w-3xl">
@@ -136,9 +138,9 @@ Option<Address> address = repository
             <div>
               <ProjectSectionHeading>Result&lt;T, E&gt;</ProjectSectionHeading>
               <p className="text-muted-foreground max-w-prose">
-                Represents either a successful value (<Code>Ok</Code>) or a
-                typed error (<Code>Err</Code>). Eliminates untyped exceptions
-                from your domain logic.
+                Either a successful value (<Code>Ok</Code>) or a typed error (
+                <Code>Err</Code>). A method that can fail says so in its return
+                type instead of throwing.
               </p>
             </div>
             <div className="space-y-6 max-w-3xl">
