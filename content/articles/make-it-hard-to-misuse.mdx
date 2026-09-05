@@ -5,7 +5,7 @@ date: "2026-08-19"
 tags: ["dotnet", "developer-experience", "ai", "llm", "roslyn"]
 versions:
   - date: "2026-09-05"
-    description: "Rewrote the prose against the house voice, replaced the opening example with one carrying two misuses at two severity tiers, then cut the article back to one audience and one purpose: choosing how to enforce a behaviour. Added a signpost, moved the triage ahead of the severity argument, and stripped the material about my own library."
+    description: "Rewrote the prose against the house voice, replaced the opening example with one carrying two misuses, then cut the article back to one audience and one purpose: telling which of your agent instructions could run instead of being read. Removed the severity argument and the cost of building an analyzer as separate topics, and moved the examples ahead of the prose they support."
 ---
 
 An agent wrote this against a library of mine, a .NET port of Rust's <Define term="waystone-monads">`Option` and `Result`</Define>. An `Option<T>` holds a value or holds nothing, and it won't let you read the value until you have said what happens when it's missing. A `Result` is either a success or an error, so a method that can fail says so in its return type instead of throwing.
@@ -34,64 +34,61 @@ The second one is worse, and you probably read straight past it, because it look
 
 The agent kept writing both, and it's a good model. C# developers check before they access, they have done it for twenty years, and the training data is full of it. Logging an error and carrying on is just as well attested. So the agent wrote what a competent C# developer writes, and nothing in my library told it otherwise.
 
-I moved both rules out of prose and into the compiler. Three things had to be settled first, and they come in this order: why a written instruction doesn't hold, which of your instructions could run instead of being read, and how hard each one should push once it does.
+I moved both rules out of prose and into the compiler. Two things had to be settled first: why a written instruction doesn't hold, and which of your instructions could run instead of being read.
 
 ## Why I stopped adding rules to AGENTS.md
 
-My first thought was to write it down. Add two lines to <Define term="agents-md" code>AGENTS.md</Define> - *prefer `Match` over a guarded unwrap*, *never leave a `Result` unused* - and move on. That's what everyone does, and it follows from how we've been taught to work with agents, which is that you curate what the model reads and the behaviour follows.
+My first thought was to write it down:
 
-I've <ArticleLink slug="skills-that-teach">spent a long time on instructions that teach rather than dictate</ArticleLink>, and I still think that's the right way to write them. But writing one well doesn't make it run. The model reads it, weighs it against everything else in the <Define term="context-window">context window</Define>, and decides whether to follow it - again, on every turn. The turns it doesn't, nothing warns you, so you find out by reading the diff. And each rule you add makes the others weaker, because ten guidelines is ten things the model holds in mind while also solving the problem you actually gave it.
+```markdown
+# AGENTS.md
+
+- Prefer `Match` over a guarded `Unwrap`.
+- Never leave a `Result` unused.
+```
+
+That's what everyone does, and it follows from how we've been taught to work with agents, which is that you curate what the model reads and the behaviour follows. I've <ArticleLink slug="skills-that-teach">spent a long time on instructions that teach rather than dictate</ArticleLink>, and I still think that's the right way to write them.
+
+But writing one well doesn't make it run. The model reads it, weighs it against everything else in the <Define term="context-window">context window</Define>, and decides whether to follow it - again, on every turn. The turns it doesn't, nothing warns you, so you find out by reading the diff. And each rule you add makes the others weaker, because ten guidelines is ten things the model holds in mind while also solving the problem you actually gave it.
 
 Nobody would ship a type system that worked like that. We put up with it in agent instructions because prose is cheap to write and it feels like doing something.
 
-So put the rule where it runs instead. Written that way it isn't advice the model weighs any more, and re-checking it costs nothing, because checking is what the build is already doing.
+My `AGENTS.md` now has one line where it used to have a list:
 
-My `AGENTS.md` now has one general instruction where it used to have a list: leave the build clean. Any warning in the output is either a real problem or something I suppressed deliberately. The rules themselves live in the compiler, so nothing has to remember them. I still keep prose in my repositories, but I've stopped adding to it.
+```markdown
+# AGENTS.md
+
+Leave the build clean.
+```
+
+Any warning in the output is either a real problem or something I suppressed deliberately. The rules themselves live in the compiler, so nothing has to remember them.
 
 ## Which of your instructions could run instead
 
-.NET gave me a <Define term="roslyn-analyzer">Roslyn analyzer</Define>, which the compiler loads and runs over your code on every build. Its other half is a <Define term="code-fix-provider">code fix provider</Define>, which offers the correction in your editor. Your language will offer something else. A type that makes the bad state unrepresentable does the same job, and so does a lint rule with an autofix, a schema that rejects a malformed payload, a test that fails on the regression, or a CI check that won't merge. All of them run on their own, cost nothing to run again, fail where you can see it, and say the same thing to a developer and a model. A markdown file does none of that.
+Go down your own file and mark each line with what could enforce it:
 
-Whether one of your rules can move comes down to a single question: can you say exactly what is wrong with the pattern, in terms of something in the code that a machine could be pointed at? If you can write that sentence, the rule can run. If you can't, it stays prose and gets re-weighed every turn.
+```markdown
+# AGENTS.md
 
-Plenty of your lines can't, and that's fine. Mine tells an agent to change only what it must and leave adjacent code alone. No build step will ever tell an edit I asked for from one I didn't, any more than it can compile taste.
-
-Scott Meyers put it in one line in <LinkNote href="https://www.aristeia.com/Papers/IEEE_Software_JulAug_2004_revised.htm" note="Scott Meyers, 'The Most Important Design Guideline?', IEEE Software, July/August 2004. Argues that interface design is where most avoidable defects are prevented or created.">IEEE Software in 2004</LinkNote>: make interfaces easy to use correctly and hard to use incorrectly. I've agreed with it for most of my career without ever doing much about it, because writing the enforcement cost more than the misuse did. An analyzer reads a <Define term="syntax-tree">syntax tree</Define> rather than text. Every time it wants to know what a name in that tree refers to, it has to ask the <Define term="semantic-model">semantic model</Define>. Then each rule needs tests proving it fires on exactly the right span and nowhere else. Several days per handful of rules, against a problem the documentation already covered in plain English.
-
-Agents moved both halves of that sum. They misuse a library faster than any team of people can, so the misuse costs more, and the rules I'd been putting off took two days to build with Claude Code. The model wrote the tree-walking quickly. It couldn't tell me which spans a rule must never touch. So I wrote the assertion that the rule stays quiet on code that only looks like a violation, watched it fail, and narrowed the rule until it passed. A third of the tests that shipped are that kind, and they are what the two days actually went on. Budget an afternoon a rule and expect to spend it there.
-
-I chose every rule myself, because knowing which patterns a library was built to remove, which ones are harmless, and which mistakes are bugs rather than habits comes from watching people use it. None of that is written down anywhere in the source.
-
-## How hard the rule should push
-
-Every rule that runs has a strength, and picking it is the part a markdown file can't do at all. A line in `AGENTS.md` is either read or not read. A rule that runs can inform, warn, or fail the build outright, and each of those does something different to somebody else's afternoon.
-
-Mine ship in three tiers. Rules that catch bugs warn, so they turn up in build output where CI will see them. Rules about idiom only inform, so they surface in an editor and never reach the build. Migration rules ship switched off entirely, because turning every nullable return in a codebase into an `Option` is a project somebody has to schedule. Nothing ships as an error.
-
-A new error is a breaking change, and nobody ships a breaking change in a minor version. But warning is not as safe as it looks. Plenty of consumers build with <Define term="treat-warnings-as-errors" code>TreatWarningsAsErrors</Define> on, and for them a rule I mark warning fails the build just as hard as an error would. They made that version bump for some entirely unrelated reason.
-
-Work out how far the rule travels before you pick a tier. Rules ride along with the code that carries them: an analyzer ships inside a <Define term="nuget">NuGet</Define> package, a lint rule ships in a shared config, a CI check applies to every branch at once. Anyone bumping a patch version inherits every rule I have added since their last update. They never opted in, and nothing in a red build tells them that turning it all off is one attribute on a package reference. If a rule of mine fires on code that compiled yesterday, I have broken a build nobody asked me to touch.
-
-So warning is reserved for code that is wrong on its own terms, where I can name the bug rather than just the preference, and everything I merely disagree with informs instead. Some people want ordinary C# with a couple of <Define term="monad">monads</Define> in it and others want every function in the codebase returning one, and I'm not going to referee that. That is the <Define term="diagnostic-severity">severity</Define> line I would want somebody else to hold if I were the one taking the upgrade.
-
-Then make it cheap to get out of a rule in either direction. Half of mine carry a fix the editor applies for you, and silencing any of them takes one severity line and no code change at all. The two mistakes I opened with land on opposite sides of the line, which is why I picked them. The dropped `Result` is a bug I can name without knowing anything about how you write C#, so it warns and it turns up in build output. The guarded unwrap is a preference of mine, so it only informs: it never reaches build output, `TreatWarningsAsErrors` never sees it, and an agent working from a build log never finds out it exists. Anyone who wants that one enforced says so in one <Define term="editorconfig" code>.editorconfig</Define> line:
-
-```ini
-dotnet_diagnostic.WM2004.severity = warning
+- Never leave a Result unused.               -> analyzer, lint rule
+- Every response body carries a requestId.   -> schema
+- Money is never a float.                    -> type
+- Don't reintroduce the N+1 in OrderService. -> test
+- No merge without a changelog entry.        -> CI check
+- Change only what you must.                 -> stays prose
+- Match the naming style around you.         -> stays prose
 ```
 
-Whatever strength a rule ships at, it does the same thing for a developer as it does for a model. A developer sees a squiggle under the mistake before any build runs, without reading a word of documentation. For half the rules the editor offers the fix as well. So write the message inside the rule for a person to read, instead of compressing it into a code and a stub sentence. One of mine explains itself like this:
+The mechanism differs by ecosystem and it barely matters which one you reach for. .NET gave me a <Define term="roslyn-analyzer">Roslyn analyzer</Define>, which the compiler loads and runs over your code on every build, with a <Define term="code-fix-provider">code fix provider</Define> offering the correction in the editor. A lint rule with an autofix does the same job somewhere else, and so does a type that makes the bad state unrepresentable. All of them run on their own, cost nothing to run again, fail where you can see it, and say the same thing to a developer and a model. A markdown file does none of that.
 
-> A discarded Result throws nothing and reports nothing. Match on it, or propagate it to a caller that will.
+Which line goes where comes down to one question: can you say exactly what is wrong, in terms of something in the code that a machine could be pointed at? *Money is never a float* passes, because a machine can find a `float` holding money. *Match the naming style around you* doesn't, because "the style around you" isn't a thing in the file, it's a judgement about the file.
 
-That sentence tells a developer why the pattern is wrong, and it gives a model enough to produce the correct fix instead of the nearest one. A rule in `AGENTS.md` reaches exactly one of those two readers, and only when it happens to be read.
+The lines that fail the question stay prose, and that's fine. Mine tells an agent to change only what it must and leave adjacent code alone. No build step will ever tell an edit I asked for from one I didn't, any more than it can compile taste. Those lines also get weighed better once the mechanical rules are out of the context window and no longer competing for the same attention.
+
+Watch for the lines that half-pass, because they're where the work is. *Never leave a `Result` unused* passes cleanly: an unused return value is right there in the syntax. *Prefer `Match` over a guarded `Unwrap`* is closer to the line, because a guard followed by an unwrap is a real pattern a machine can match, but calling it wrong is a preference of mine rather than a bug I can name. Both can run. Only one of them should be loud about it, which is a decision worth its own afternoon.
 
 ## Go down your own list
 
-Open your instruction file and read it line by line, asking of each one whether you could say what is wrong in terms a machine could be pointed at. The lines that can't move stay prose, and they get weighed better once the mechanical rules are out of the context window and no longer competing for the same attention. The ones that can move are worth an afternoon each. You'll learn something about your own design while you write them, because you can't describe a pattern to a compiler without first stating what is wrong with it. More than once my honest answer was that I'd made the wrong thing too easy.
+Open your instruction file and read it line by line, asking of each one whether you could say what is wrong in terms a machine could be pointed at. The ones that can move are worth an afternoon each. You'll learn something about your own design while you write them, because you can't describe a pattern to a compiler without first stating what is wrong with it. More than once my honest answer was that I'd made the wrong thing too easy.
 
-Both mistakes I opened with are now things the compiler finds on its own, every time, without me. The dropped `Result` shows up in the build. The guarded unwrap waits in the editor for anyone who wants it. Each carries a strength I chose on purpose and a sentence that explains itself to whoever meets it next. The paragraph in `AGENTS.md` that they replaced had to be read, understood, and agreed with on every single turn, and now it doesn't have to be read at all.
-
-<SourceCallout external href="https://github.com/draekien-industries/waystone-dotnet" title="draekien-industries/waystone-dotnet">
-  The rules the examples come from, and the design notes arguing with a future maintainer about why each one ships at the strength it does.
-</SourceCallout>
+Both mistakes I opened with are now things the compiler finds on its own, every time, without me. The paragraph in `AGENTS.md` that they replaced had to be read, understood, and agreed with on every single turn, and now it doesn't have to be read at all.
