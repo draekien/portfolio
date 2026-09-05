@@ -147,14 +147,14 @@ export default function ParasolPage() {
             <ProjectSectionHeading>Problem</ProjectSectionHeading>
             <div className="space-y-4 text-muted-foreground leading-relaxed max-w-prose">
               <p>
-                Every FIRE calculator I found required connecting to my bank
-                accounts via open banking. I didn&apos;t want a third-party app
-                holding read access to my financial data just to run projections
-                I could compute myself.
+                Every FIRE calculator I found wanted open banking access to my
+                bank accounts, and I wasn&apos;t handing a third-party app read
+                access to my financial data just to run projections I could
+                compute myself.
               </p>
               <p>
-                I wanted something I owned end-to-end: my data in my database,
-                behind my auth, accessible only to me.
+                So I built something I own end-to-end - my data in my database,
+                behind my auth, reachable only by me.
               </p>
             </div>
           </section>
@@ -163,14 +163,14 @@ export default function ParasolPage() {
             <ProjectSectionHeading>Solution</ProjectSectionHeading>
             <div className="space-y-4 text-muted-foreground leading-relaxed max-w-prose">
               <p>
-                Parasol is a manual-entry FIRE tracker. You input your portfolio
-                values, income, expenses, and target. It projects your path to
-                financial independence using the 4% rule and tracks your
+                Parasol is a manual-entry FIRE tracker. You enter your portfolio
+                values, income, expenses, and target, and it projects your path
+                to financial independence using the 4% rule and tracks your
                 progress over time.
               </p>
               <p>
                 The infrastructure scales to zero when you&apos;re not using it,
-                no idle costs, no maintenance overhead.
+                so there are no idle costs and no maintenance to keep up with.
               </p>
             </div>
           </section>
@@ -183,22 +183,22 @@ export default function ParasolPage() {
               {
                 badge: "tanstack-start" as const,
                 rationale:
-                  "Type-safe full-stack routing with SSR and server functions. Every API boundary is typed end-to-end, no client/server mental split.",
+                  "Type-safe full-stack routing with SSR and server functions, so every API boundary is typed end-to-end and I never have to hold a client/server split in my head.",
               },
               {
                 badge: "neon" as const,
                 rationale:
-                  "Serverless Postgres that scales to zero between sessions. No idle costs for a personal project with sparse usage.",
+                  "Serverless Postgres that scales to zero between sessions, so a personal project with sparse usage costs nothing while it sits idle.",
               },
               {
                 badge: "clerk" as const,
                 rationale:
-                  "Sessions, JWTs, OAuth: handled. I focused on the FIRE logic, not the security plumbing.",
+                  "Sessions, JWTs and OAuth all come handled, so I spent my time on the FIRE logic instead of the security plumbing.",
               },
               {
                 badge: "typescript" as const,
                 rationale:
-                  "Strict mode throughout. Type-safe from DB schema to UI: schema changes surface as build errors.",
+                  "Strict mode throughout, and types run from the database schema to the UI, so changing the schema surfaces as a build error rather than a broken page.",
               },
             ].map(({ badge, rationale }) => (
               <div key={badge} className="space-y-2">
@@ -223,12 +223,12 @@ export default function ParasolPage() {
                   Effect Schema, not Zod
                 </h3>
                 <p className="text-muted-foreground leading-relaxed max-w-prose mb-6">
-                  The project uses Effect for services and error handling
-                  throughout. Introducing Zod alongside it created dual
-                  dependency for overlapping concerns: parsing, error types,
-                  pipeline integration. Effect Schema maps{" "}
-                  <Code>ParseError</Code> directly into Effect&apos;s typed
-                  error channel; Zod errors required manual bridging outside it.
+                  Parasol uses Effect for services and error handling
+                  throughout, so putting Zod alongside it meant two dependencies
+                  covering the same ground - parsing, error types, pipeline
+                  integration. Effect Schema maps <Code>ParseError</Code>{" "}
+                  straight into Effect&apos;s typed error channel, where Zod
+                  errors had to be bridged by hand outside it.
                 </p>
                 <div className="max-w-2xl">
                   <CodeBlock
@@ -257,13 +257,14 @@ yield* Schema.decodeUnknown(InputSchema)(input).pipe(
                   Explicit save for financial settings
                 </h3>
                 <p className="text-muted-foreground leading-relaxed max-w-prose">
-                  Preferences (currency, locale) use debounced auto-save. Plan
-                  settings (withdrawal rate, expected return, inflation) use an
-                  explicit save button. Numeric fields pass through intermediate
-                  invalid states while typing: <Code>&quot;4.&quot;</Code>{" "}
-                  mid-entry of <Code>&quot;4.5%&quot;</Code>. Auto-saving at
-                  that moment would silently corrupt every downstream FIRE
-                  projection. Stale-but-complete beats live-but-partial.
+                  Preferences (currency, locale) use debounced auto-save, but
+                  plan settings (withdrawal rate, expected return, inflation)
+                  wait for an explicit save button, because a numeric field
+                  passes through invalid states while you type it -{" "}
+                  <Code>&quot;4.&quot;</Code> on the way to{" "}
+                  <Code>&quot;4.5%&quot;</Code>. Auto-saving at that moment
+                  would quietly corrupt every downstream FIRE projection, so a
+                  stale-but-complete value beats a live-but-partial one.
                 </p>
               </div>
             </div>
@@ -278,12 +279,12 @@ yield* Schema.decodeUnknown(InputSchema)(input).pipe(
                 </h3>
                 <p className="text-muted-foreground leading-relaxed max-w-prose mb-6">
                   Dense transaction and portfolio lists need one element to
-                  respond when a sibling is hovered: row highlight when an
-                  action button is hovered, for example. Tracking this with{" "}
+                  respond when a sibling is hovered - a row highlighting when
+                  its action button is hovered, for example. Track that with{" "}
                   <Code>useState</Code> and <Code>onMouseEnter</Code>/
-                  <Code>onMouseLeave</Code> triggers re-renders on every hover
-                  event across every row. The CSS approach is zero JS overhead
-                  and works with React Compiler optimisations.
+                  <Code>onMouseLeave</Code> and every hover event re-renders
+                  every row, so the rule lives in CSS instead, where it costs no
+                  JS at all and works with React Compiler optimisations.
                 </p>
                 <div className="max-w-2xl">
                   <CodeBlock
@@ -311,16 +312,16 @@ yield* Schema.decodeUnknown(InputSchema)(input).pipe(
                   Transaction price is a snapshot, not a reference
                 </h3>
                 <p className="text-muted-foreground leading-relaxed max-w-prose">
-                  In a trading context there are two distinct prices: what you
-                  paid (cost basis) and what it&apos;s worth now (market close).
-                  Conflating them silently corrupts unrealised gain
-                  calculations. <Code>transaction.pricePerUnit</Code> is the
-                  price the user paid at trade time; it never changes after
-                  recording. <Code>security_prices.adjustedClose</Code> is
-                  nightly market close data from Yahoo Finance. These serve
-                  different purposes and are never substituted: P&L uses cost
-                  basis from <Code>pricePerUnit</Code>; current portfolio value
-                  uses <Code>adjustedClose</Code>.
+                  A holding carries two prices - what you paid for it (cost
+                  basis) and what it&apos;s worth now (market close) - and
+                  conflating them quietly corrupts every unrealised gain
+                  calculation. <Code>transaction.pricePerUnit</Code> is the
+                  price you paid at trade time and it never changes once
+                  recorded, while <Code>security_prices.adjustedClose</Code> is
+                  nightly market close data from Yahoo Finance. Neither ever
+                  stands in for the other, so P&L takes its cost basis from{" "}
+                  <Code>pricePerUnit</Code> and current portfolio value comes
+                  from <Code>adjustedClose</Code>.
                 </p>
               </div>
             </div>
