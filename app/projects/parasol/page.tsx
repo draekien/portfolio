@@ -47,7 +47,7 @@ export default function ParasolPage() {
             Parasol
           </h1>
           <p className="text-lg md:text-xl text-foreground leading-relaxed">
-            A private FIRE calculator that keeps your data yours, no open
+            A private FIRE calculator that keeps your data yours - no open
             banking access required.
           </p>
           <div className="flex items-center gap-3 flex-wrap">
@@ -220,7 +220,7 @@ export default function ParasolPage() {
               </p>
               <div>
                 <h3 className="text-lg font-semibold mb-3">
-                  Effect Schema, not Zod
+                  Effect Schema over Zod
                 </h3>
                 <p className="text-muted-foreground leading-relaxed max-w-prose mb-6">
                   Parasol uses Effect for services and error handling
@@ -309,7 +309,7 @@ yield* Schema.decodeUnknown(InputSchema)(input).pipe(
               </p>
               <div>
                 <h3 className="text-lg font-semibold mb-3">
-                  Transaction price is a snapshot, not a reference
+                  Transaction price is a snapshot
                 </h3>
                 <p className="text-muted-foreground leading-relaxed max-w-prose">
                   A holding carries two prices - what you paid for it (cost

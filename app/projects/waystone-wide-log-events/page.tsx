@@ -236,10 +236,10 @@ builder.Host.UseSerilog((context, config) => config
         <div className="mt-20">
           <Colophon>
             <p>
-              I wrote and open-sourced Waystone.WideLogEvents myself. The case
-              study that follows was co-written with Claude. Wherever I describe
-              how the code works, that account is mine, and I confirmed it
-              against the source.
+              I wrote and open-sourced Waystone.WideLogEvents myself. Claude
+              helped me draft this case study, but wherever I describe how the
+              code works, that account is mine and I confirmed it against the
+              source.
             </p>
           </Colophon>
         </div>
