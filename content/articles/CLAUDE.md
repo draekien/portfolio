@@ -24,7 +24,6 @@ When drafting a new article, follow these steps in order:
 4. With a first draft in hand, use `/refine-prose` to tighten the prose concern by concern, then apply and verify the edits.
 5. Use `/stop-slop` to strip predictable AI writing tells, then apply and verify the edits.
 6. Use `/article-review` to perform an independent review of the draft and present findings.
-7. Run `pnpm lint:prose` before committing. It fails on the mechanics below and prints a readability table for the whole corpus.
 
 - `<Define term="...">` — the `term` must be a key in the typed glossary at `lib/glossary.ts`. An unregistered term is a TypeScript error, not a runtime fallback. To add a new term: add the entry to `lib/glossary.ts` first, then use the component in the MDX. Remove any inline parenthetical definition the MDX was carrying — it belongs in the glossary now.
 - **All definitions go in `<Define>`, never inline.** If an article explains a term in parentheses or an em-dash aside, move that explanation to the glossary and replace it with `<Define>`.
@@ -75,6 +74,6 @@ Approved example — before and after:
 > BEFORE: "Unwrap is the escape hatch, and it reaches in for the value and throws if there isn't one."
 > AFTER: "Unwrap bypasses that. It returns the value, and throws if there isn't one."
 
-Two fixed mechanics, not preferences: Australian English spelling (behaviour, prioritise, optimisation), and the hyphen ` - ` as the only inline aside marker. Em dashes are banned - no article in this corpus contains one. Both are checked by `pnpm lint:prose`, along with inline parenthetical definitions, "not A, it's B", and superlative up-play.
+Two fixed mechanics, not preferences: Australian English spelling (behaviour, prioritise, optimisation), and the hyphen ` - ` as the only inline aside marker. Em dashes are banned - no article in this corpus contains one. Both are checked by `tests/prose.test.ts`, along with inline parenthetical definitions, "not A, it's B", and superlative up-play. Lefthook runs that suite on commit whenever an article or a case study is staged, so there is no separate step to remember.
 
 The specific ways this voice still goes wrong are a review-pass concern, not a drafting one, and they live with the pass that hunts them: the concern list in [.claude/skills/refine-prose/SKILL.md](../../.claude/skills/refine-prose/SKILL.md). Don't work through it while drafting. Chasing eleven tics mid-sentence produces the airless, asyndetic prose habit 4 exists to prevent.

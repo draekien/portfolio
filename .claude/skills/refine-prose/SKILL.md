@@ -78,7 +78,7 @@ Apply selectively. The measure of the pass is targeted improvement, not the numb
 
 After editing, search the text again for each concern's signature - the connectors, the colons, the repeated phrasings. For every match still standing, say why it stays. A clean pass is one where every survivor is justified, not one where the count dropped. Paragraph cohesion and unresolved reference have no search signature - re-read the seams between paragraphs instead, checking each demonstrative and each elided object resolves to something close behind it.
 
-Then run `pnpm lint:prose`. It enforces the mechanics (em dash, en dash, US spelling, inline parenthetical definitions, "not A, it's B", superlatives) and prints a readability table for every article in the corpus.
+Then run `pnpm test`. It enforces the mechanics (em dash, en dash, US spelling, inline parenthetical definitions, "not A, it's B", superlatives) across every article and case study, and prints a readability table for the whole corpus. Lefthook runs the same suite on commit, so this is for reading the table rather than for catching a failure late.
 
 Read that table by comparison, not against a threshold. When a piece reads as hard work, the tell is `over35` - the count of sentences past 35 words - and not `commas`. The article that prompted this rule had the second-lowest comma density in the corpus at the moment its commas were complained about; what it actually had was a tail of long sentences. Fixing that meant breaking the tail, not deleting commas. If the piece you just edited tops the `over35` column by a clear margin, that is the thing to work on.
 
