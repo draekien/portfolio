@@ -50,6 +50,8 @@ Approved example — before and after:
 > BEFORE: "Unwrap is the escape hatch, and it reaches in for the value and throws if there isn't one."
 > AFTER: "Unwrap bypasses that. It returns the value, and throws if there isn't one."
 
+Two fixed mechanics, not preferences: Australian English spelling (behaviour, prioritise, optimisation), and the hyphen ` - ` as the only inline aside marker. Em dashes are banned - no article in this corpus contains one.
+
 The tics below are the specific ways the voice above still goes wrong. Watch for them on a pass, but don't let avoiding them produce asyndetic prose — that's the mistake this rewrite exists to undo.
 
 - No self-referential narration ("the article would be optimistic") — state the point flat.
