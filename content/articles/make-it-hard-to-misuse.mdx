@@ -5,7 +5,7 @@ date: "2026-09-05"
 tags: ["ai", "llm", "prompt-engineering", "developer-experience", "static-analysis", "dotnet"]
 ---
 
-<Signpost about="Which of your agent instructions could run in the build instead of being read on every turn.">
+<Signpost about="A rule in AGENTS.md gets re-weighed on every turn, and nothing tells you when the model decides against it.">
 
 1. Two mistakes an agent kept writing, and why a good model kept writing them
 2. Why a written instruction doesn't hold
@@ -66,7 +66,7 @@ My `AGENTS.md` now has one line where it used to have a list:
 Leave the build clean.
 ```
 
-Any warning in the output is either a real problem or something I suppressed deliberately. The rules themselves live in the compiler, so nothing has to remember them.
+Any warning in the output is either a real problem or something I suppressed deliberately.
 
 ## Which of your instructions could run instead
 
@@ -88,12 +88,12 @@ The mechanism differs by ecosystem and it barely matters which one you reach for
 
 Which line goes where comes down to one question: can you say exactly what is wrong, in terms of something in the code that a machine could be pointed at? *Money is never a float* passes, because a machine can find a `float` holding money. *Match the naming style around you* doesn't, because "the style around you" isn't a thing in the file, it's a judgement about the file.
 
-The lines that fail the question stay prose, and that's fine. Mine tells an agent to change only what it must and leave adjacent code alone. No build step will ever tell an edit I asked for from one I didn't, any more than it can compile taste. Those lines also get weighed better once the mechanical rules are out of the context window and no longer competing for the same attention.
+The lines that fail the question stay prose, and that's fine. Mine tells an agent to change only what it must and leave adjacent code alone. No build step will ever tell an edit I asked for from one I didn't. Those lines also get weighed better once the mechanical rules are out of the context window and no longer competing for the same attention.
 
 Watch for the lines that half-pass, because they're where the work is. *Never leave a `Result` unused* passes cleanly: an unused return value is right there in the syntax. *Prefer `Match` over a guarded `Unwrap`* is closer to the line, because a guard followed by an unwrap is a real pattern a machine can match, but calling it wrong is a preference of mine rather than a bug I can name. Both can run. Only one of them should be loud about it, which is a decision worth its own afternoon.
 
 ## Go down your own list
 
-Open your instruction file and read it line by line, asking of each one whether you could say what is wrong in terms a machine could be pointed at. The ones that can move are worth an afternoon each. You'll learn something about your own design while you write them, because you can't describe a pattern to a compiler without first stating what is wrong with it. More than once my honest answer was that I'd made the wrong thing too easy.
+You'll learn something about your own design writing these, because you can't describe a pattern to a compiler without first stating what is wrong with it. More than once my honest answer was that I'd made the wrong thing too easy.
 
 Both mistakes I opened with are now things the compiler finds on its own, every time, without me. The paragraph in `AGENTS.md` that they replaced had to be read, understood, and agreed with on every single turn, and now it doesn't have to be read at all.
