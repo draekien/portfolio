@@ -5,7 +5,7 @@ date: "2026-06-02"
 tags: ["dotnet", "functional-programming", "rust", "type-safety"]
 versions:
   - date: "2026-09-05"
-    description: "Rewrote the prose against the house voice, and moved the inline monad explainer into the glossary."
+    description: "Rewrote the prose against the house voice, moved the inline monad explainer into the glossary, named Unwrap as the escape hatch Match doesn't close, and added Result as Option's sibling."
 ---
 
 <Define term="tony-hoare">Tony Hoare</Define> invented the null reference in 1965 and later called it his "billion-dollar mistake." Decades on, most codebases still handle a missing value by remembering to check for it, rather than by saying in the type that it might not be there.
@@ -78,6 +78,8 @@ return result.Match(
 
 Both branches are required, because `Match` takes two callbacks and there's no overload that accepts one, so the version that skips the empty case isn't something you can write. Rust gets that guarantee from the compiler's `match` checker and C# gets it from a method signature.
 
+There's an escape hatch, and you should know about it before you meet it in somebody's code. <Define term="unwrap-method" code>Unwrap</Define> returns the inner value and throws when there isn't one, which is the exact behaviour `Option` exists to remove. It earns its place where you can already show the value is there, like a literal you wrapped a line earlier. Reach for it in ordinary calling code and you've written a null reference exception with extra steps.
+
 ## Composition without the nesting
 
 Handling absence at every step would be exhausting if you had to unwrap and rewrap the value by hand each time, and you don't, because `Option<T>` is a <Define term="monad">monad</Define>. You transform what's inside it with `Map`, you chain further work onto it with `FlatMap`, and you never reach in for the raw value yourself.
@@ -107,6 +109,8 @@ Each step either produces a value or short-circuits to `None`. Without `FlatMap`
 Not everywhere. Nullable reference types are fine for small internal details, where a glance at the surrounding code tells you the value might be missing.
 
 `Option<T>` earns its place at boundaries - repository lookups, external service calls, anywhere absence is a legitimate outcome rather than an edge case. Ask whether the method can honestly return nothing, and when it can, make the return type say so.
+
+`Option` says a value might be missing, and its sibling <Define term="result-type" code>Result</Define> says a call might fail, carrying either a success value or a typed error so the method never has to throw. Ask it the same question - whether failure is a legitimate outcome or a bug - and put failure in the return type when it's the former. <ArticleLink slug="make-it-hard-to-misuse">Both turned out to be easy to misuse in ways a compiler can catch</ArticleLink>.
 
 You do pay for it. You write `.Match()` where you'd have written an `if`, and it's more to type. But a missing `if` still compiles and a missing `Match` branch doesn't, and I'll take the extra typing for that.
 
