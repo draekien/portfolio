@@ -229,6 +229,11 @@ export const glossary = {
     summary:
       "Reaches straight into an Option or Result for the value and throws if there isn't one. It is the escape hatch out of the type, and using it puts back the exception the type existed to remove.",
   },
+  "inspect-err-method": {
+    label: "Method",
+    summary:
+      "Runs a side effect against the error case of a Result and hands the same Result back so a chain can carry on. It looks at the error, it does not deal with it, and the return value is where the error still lives.",
+  },
   "implicit-conversion": {
     label: "C# language",
     summary:
