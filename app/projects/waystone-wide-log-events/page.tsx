@@ -214,8 +214,7 @@ builder.Host.UseSerilog((context, config) => config
               },
               {
                 badge: "net8.0" as const,
-                targets:
-                  "Full .NET 8 API surface with performance improvements",
+                targets: "Full .NET 8 API surface",
               },
               {
                 badge: "net10.0" as const,
