@@ -4,7 +4,7 @@ import { ButtonLink } from "@/components/button-link";
 import { cn } from "@/lib/utils";
 
 type ColophonProps = {
-  /** Override the mono `@`-kicker. Defaults to `@colophon`. */
+  /** Override the mono kicker. Defaults to `Colophon`. */
   label?: string;
   /**
    * The method note. Defaults to the article phrasing; case studies and other
@@ -15,7 +15,7 @@ type ColophonProps = {
 };
 
 export function Colophon({
-  label = "@colophon",
+  label = "Colophon",
   children,
   className,
 }: ColophonProps) {
