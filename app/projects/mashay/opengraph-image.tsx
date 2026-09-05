@@ -63,7 +63,7 @@ export default async function Image() {
             maxWidth: 760,
           }}
         >
-          Convert Markdown into a single, self-contained HTML document — every
+          Convert Markdown into a single, self-contained HTML document - every
           style, logo, and image inlined into one file.
         </span>
       </div>
