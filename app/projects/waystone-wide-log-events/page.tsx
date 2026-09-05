@@ -97,18 +97,18 @@ export default async function WaystoneWideLogEventsPage() {
           <ProjectSectionHeading>Why this exists</ProjectSectionHeading>
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              Debugging distributed systems meant correlating dozens of
+              Debugging a distributed system meant correlating dozens of
               fragmented log entries per request. A single user action could
-              scatter context across 30+ log lines (different timestamps,
-              different log levels, different services) and you had to mentally
-              stitch them together.
+              scatter context across 30+ log lines - different timestamps,
+              different log levels, different services - so you had to stitch
+              them back together in your head before you could read what
+              happened.
             </p>
             <p>
-              The wide event pattern solves this. Instead of emitting a log
-              entry every time something happens, you accumulate properties into
-              a context bag and flush the whole thing as one rich, structured
-              event at the end of the operation. One line per request. Trivially
-              queryable.
+              A wide event replaces that. Instead of emitting a log entry every
+              time something happens, you accumulate properties into a context
+              bag and flush the whole thing as one structured event at the end
+              of the operation, so a request is one line you can query directly.
             </p>
           </div>
         </section>
@@ -119,9 +119,9 @@ export default async function WaystoneWideLogEventsPage() {
               <ProjectSectionHeading>Setup</ProjectSectionHeading>
               <p className="text-muted-foreground max-w-prose">
                 Configure Serilog with the <Code>WideLogEventsContext</Code>{" "}
-                enricher and middleware. The library integrates with{" "}
-                <Code>Serilog.AspNetCore</Code>; your existing request logging
-                pipeline stays intact.
+                enricher and middleware. It integrates with{" "}
+                <Code>Serilog.AspNetCore</Code>, so your existing request
+                logging pipeline stays intact.
               </p>
             </div>
             <div className="max-w-3xl">
@@ -210,16 +210,16 @@ builder.Host.UseSerilog((context, config) => config
             {[
               {
                 badge: "netstandard2.0" as const,
-                targets: ".NET Core 2.0+, .NET Framework 4.6.1+, .NET 5+",
+                targets:
+                  "Core library and Serilog enricher. .NET Core 2.0+, .NET Framework 4.6.1+, .NET 5+",
               },
               {
                 badge: "net8.0" as const,
-                targets:
-                  "Full .NET 8 API surface with performance improvements",
+                targets: "ASP.NET Core integration package",
               },
               {
                 badge: "net10.0" as const,
-                targets: "Full .NET 10 API surface",
+                targets: "ASP.NET Core integration package",
               },
             ].map(({ badge, targets }) => (
               <div
@@ -236,10 +236,10 @@ builder.Host.UseSerilog((context, config) => config
         <div className="mt-20">
           <Colophon>
             <p>
-              I wrote and open-sourced Waystone.WideLogEvents myself. The case
-              study that follows was co-written with Claude. Wherever I describe
-              how the code works, that account is mine, and I confirmed it
-              against the source.
+              I wrote and open-sourced Waystone.WideLogEvents myself. Claude
+              helped me draft this case study, but wherever I describe how the
+              code works, that account is mine and I confirmed it against the
+              source.
             </p>
           </Colophon>
         </div>

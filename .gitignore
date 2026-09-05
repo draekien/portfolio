@@ -48,6 +48,7 @@ next-env.d.ts
 .copilot
 .playwright-mcp/
 .impeccable/critique/
+.impeccable/hook.cache.json
 
 # Worktrees
 .worktrees

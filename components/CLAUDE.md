@@ -1,5 +1,7 @@
 # components/ — all components
 
+**Never pair `<BrandMark />` with an `@tag`.** The two are alternative kickers, not a pair. `BrandMark` prefixes a plain-language label (`\\ In this article`, `\\ Project`, `\\ Colophon`); an `@tag` stands alone with no mark (`@published`, `@updated`, `@skills`).
+
 - `project-summary.tsx` — compound components for project cards on the home page
 - `project-section.tsx` — `<ProjectSectionHeading>` / `<ProjectSectionDivider>` for case study pages
 - `code-block.tsx` — **async Server Component** using Shiki for SSR syntax highlighting (catppuccin-latte/mocha themes)

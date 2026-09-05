@@ -4,7 +4,7 @@ import { BrandMark } from "@/components/brand-mark";
 import { ButtonLink } from "@/components/button-link";
 
 type SourceCalloutBase = {
-  /** Override the mono `@`-kicker. Defaults to `@project` / `@source`. */
+  /** Override the mono kicker. Defaults to `Project` / `Source`. */
   label?: string;
   /** Name of the project or source, rendered as the callout title. */
   title: string;
@@ -20,7 +20,7 @@ type SourceCalloutProps =
 
 export function SourceCallout(props: SourceCalloutProps) {
   const { title, children } = props;
-  const label = props.label ?? (props.internal ? "@project" : "@source");
+  const label = props.label ?? (props.internal ? "Project" : "Source");
   const cta =
     props.cta ?? (props.internal ? "Read the case study →" : "View source →");
 

@@ -4,3 +4,8 @@ pre-commit:
       glob: "*.{js,ts,jsx,tsx,json,css}"
       run: pnpm exec biome check --write {staged_files}
       stage_fixed: true
+    prose:
+      glob:
+        - "content/articles/*.mdx"
+        - "app/projects/*/page.tsx"
+      run: pnpm exec vitest run tests/prose.test.ts

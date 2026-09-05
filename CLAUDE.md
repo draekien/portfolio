@@ -11,9 +11,12 @@ pnpm lint         # Biome check (lints + format check)
 pnpm lint:fix     # Biome check with auto-fix
 pnpm format       # Biome format only
 pnpm typegen      # regenerate Next.js typed routes
+pnpm test         # Vitest: house-voice mechanics + readability report
 ```
 
-No test suite — this is a portfolio site. Use `pnpm`, never `npm`.
+Use `pnpm`, never `npm`.
+
+The only tests are the prose suite in `tests/prose.test.ts`, which checks every article and case study against the house-voice mechanics and prints the readability table. Lefthook runs it pre-commit when a `content/articles/*.mdx` or `app/projects/*/page.tsx` file is staged.
 
 ## Stack
 
