@@ -50,8 +50,8 @@ export default function NorthShoreMeditationPage() {
             North Shore Meditation
           </h1>
           <p className="text-lg md:text-xl text-foreground leading-relaxed">
-            A site the client can actually maintain: events, articles, and page
-            content managed entirely from their dashboard.
+            A site the client can actually maintain - they publish events,
+            articles, and page content from their own dashboard.
           </p>
           <div className="flex items-center gap-3 flex-wrap">
             <FrameworkBadge version="nextjs" />
@@ -152,12 +152,13 @@ export default function NorthShoreMeditationPage() {
               <p>
                 The centre ran events regularly and published practitioner
                 notes, but updating the site meant filing a request with a
-                developer. Every content change was a bottleneck.
+                developer, so every date change and every new article waited on
+                somebody else&apos;s queue.
               </p>
               <p>
-                The client needed to own their content: publish events on their
-                schedule, write articles when the moment was right, and update
-                page copy without friction.
+                They needed to publish events on their own schedule, write
+                articles when they wanted to, and change page copy without
+                asking anyone first.
               </p>
             </div>
           </section>
@@ -166,15 +167,14 @@ export default function NorthShoreMeditationPage() {
             <ProjectSectionHeading>Solution</ProjectSectionHeading>
             <div className="space-y-4 text-muted-foreground leading-relaxed max-w-prose">
               <p>
-                A headless CMS architecture where Contentful handles all content
-                authoring and Next.js renders it. The client works entirely in
-                Contentful&apos;s dashboard: no code, no deployments, no
-                tickets.
+                Contentful holds all the content and Next.js renders it, so the
+                client works entirely in Contentful&apos;s dashboard and never
+                touches code, a deployment, or a ticket.
               </p>
               <p>
-                ISR keeps the site fast without sacrificing freshness. New
-                Contentful publishes trigger revalidation; stale content is
-                never served for long.
+                Pages are served statically through ISR, and a publish in
+                Contentful triggers revalidation, so the site stays fast and
+                nothing stale sits on it for long.
               </p>
             </div>
           </section>
@@ -187,22 +187,22 @@ export default function NorthShoreMeditationPage() {
               {
                 badge: "nextjs" as const,
                 rationale:
-                  "App Router with ISR. Static for performance, revalidated on each Contentful publish. Fast initial load, always fresh content.",
+                  "App Router with ISR, so pages ship static and revalidate on each Contentful publish. The first load is fast and the content is still current.",
               },
               {
                 badge: "contentful" as const,
                 rationale:
-                  "Headless CMS with a typed content model. Events, articles, and page sections are all structured entries the client manages independently.",
+                  "Headless CMS with a typed content model, so events, articles, and page sections are all structured entries the client manages without me.",
               },
               {
                 badge: "resend" as const,
                 rationale:
-                  "Reliable transactional email for contact form submissions. Simple API with strong deliverability, no SMTP configuration.",
+                  "Sends the transactional email behind contact form submissions. Its API is a few lines, it delivers, and there's no SMTP configuration to keep working.",
               },
               {
                 badge: "typescript" as const,
                 rationale:
-                  "Typed Contentful content models. Schema changes surface as build errors before they can cause runtime surprises in production.",
+                  "Typed Contentful content models, so a schema change surfaces as a build error rather than as something breaking in production.",
               },
             ].map(({ badge, rationale }) => (
               <div key={badge} className="space-y-2">
@@ -224,18 +224,18 @@ export default function NorthShoreMeditationPage() {
               </p>
               <div>
                 <h3 className="text-lg font-semibold mb-3">
-                  React Compiler over manual memoization
+                  React Compiler over manual memoisation
                 </h3>
                 <p className="text-muted-foreground leading-relaxed max-w-prose">
-                  The app enables React Compiler via{" "}
+                  The app turns on React Compiler with{" "}
                   <Code>reactCompiler: true</Code> in{" "}
                   <Code>next.config.mjs</Code> rather than scattering{" "}
                   <Code>React.memo</Code>, <Code>useMemo</Code>, and{" "}
                   <Code>useCallback</Code> through component files. The compiler
-                  analyses the component tree at build time and memoizes only
-                  where it determines re-renders would be redundant: no manual
-                  decisions, no annotation drift, no incorrect dependency
-                  arrays.
+                  analyses the component tree at build time and memoises only
+                  where it works out a re-render would be redundant, so nobody
+                  has to make that call by hand, and there are no annotations to
+                  drift out of date and no dependency arrays to get wrong.
                 </p>
               </div>
             </div>
@@ -251,12 +251,12 @@ export default function NorthShoreMeditationPage() {
                 <p className="text-muted-foreground leading-relaxed max-w-prose mb-6">
                   Every Contentful fetcher wraps its{" "}
                   <Code>queryClient.fetchQuery()</Code> call in React&apos;s{" "}
-                  <Code>cache()</Code>. TanStack Query deduplicates client-side;{" "}
-                  <Code>cache()</Code> handles the server side: two Server
-                  Components requesting the same article during a single render
-                  cycle share one Contentful response. Without it, each
-                  component tree branch that reads the same entry makes its own
-                  network call.
+                  <Code>cache()</Code>. TanStack Query deduplicates on the
+                  client, and <Code>cache()</Code> covers the server, so two
+                  Server Components asking for the same article during one
+                  render cycle share a single Contentful response. Without it,
+                  every branch of the tree that reads the same entry makes its
+                  own network call.
                 </p>
                 <div className="max-w-2xl">
                   <CodeBlock
@@ -282,13 +282,14 @@ export const getArticles = cache(async (options) => {
                   Server-only JSON dictionaries instead of an i18n library
                 </h3>
                 <p className="text-muted-foreground leading-relaxed max-w-prose mb-6">
-                  UI strings (navigation, buttons, labels) are served from
+                  UI strings - navigation, buttons, labels - come from
                   statically-imported JSON files behind a{" "}
-                  <Code>server-only</Code> directive. This ships zero i18n
-                  runtime to the client. Libraries like <Code>next-intl</Code>{" "}
-                  or <Code>i18next</Code> add bundle weight and require
-                  hydration; the JSON approach simply can&apos;t be imported in
-                  a client component; TypeScript will reject it at build time.
+                  <Code>server-only</Code> directive, so no i18n runtime reaches
+                  the client at all. Libraries like <Code>next-intl</Code> or{" "}
+                  <Code>i18next</Code> add bundle weight and want hydration,
+                  whereas these dictionaries can&apos;t be imported into a
+                  client component in the first place - TypeScript rejects it at
+                  build time.
                 </p>
                 <div className="max-w-2xl">
                   <CodeBlock
@@ -316,12 +317,13 @@ export async function getDictionary(locale: Locale) {
                 </h3>
                 <p className="text-muted-foreground leading-relaxed max-w-prose mb-6">
                   GraphQL Code Generator reads the Contentful schema and emits
-                  fully-typed React Query hooks. No manual wrapper writing. A
-                  custom fetcher function is injected into every generated hook,
-                  so authentication tokens, cache tags, and draft-mode flags
-                  flow through automatically. Contentful schema changes
-                  regenerate types; mismatches become build errors before they
-                  reach production.
+                  fully-typed React Query hooks, so there are no wrappers to
+                  write by hand. A custom fetcher is injected into every
+                  generated hook, and authentication tokens, cache tags, and
+                  draft-mode flags flow through it automatically. Change the
+                  Contentful schema and the types regenerate, and anything that
+                  no longer lines up is a build error before it reaches
+                  production.
                 </p>
                 <div className="max-w-2xl">
                   <CodeBlock
