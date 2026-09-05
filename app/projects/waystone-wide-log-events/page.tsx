@@ -210,15 +210,16 @@ builder.Host.UseSerilog((context, config) => config
             {[
               {
                 badge: "netstandard2.0" as const,
-                targets: ".NET Core 2.0+, .NET Framework 4.6.1+, .NET 5+",
+                targets:
+                  "Core library and Serilog enricher. .NET Core 2.0+, .NET Framework 4.6.1+, .NET 5+",
               },
               {
                 badge: "net8.0" as const,
-                targets: "Full .NET 8 API surface",
+                targets: "ASP.NET Core integration package",
               },
               {
                 badge: "net10.0" as const,
-                targets: "Full .NET 10 API surface",
+                targets: "ASP.NET Core integration package",
               },
             ].map(({ badge, targets }) => (
               <div
