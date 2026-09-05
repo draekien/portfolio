@@ -1,11 +1,11 @@
 ---
 title: "Making null impossible: the Option type in .NET"
-description: "Rust deleted null from the language. This is how I ported its Option type to .NET, and what it teaches about designing absence into the type system itself."
+description: "Rust has no null. I ported its Option type to .NET, so a value that might be missing says so in its own type and you can't read it without handling both cases."
 date: "2026-06-02"
 tags: ["dotnet", "functional-programming", "rust", "type-safety"]
 versions:
   - date: "2026-09-05"
-    description: "Rewrote the prose against the house voice, moved the inline monad explainer into the glossary, named Unwrap as the escape hatch Match doesn't close, and added Result as Option's sibling."
+    description: "Rewrote the prose against the house voice, moved the inline monad explainer into the glossary, named Unwrap as the escape hatch Match doesn't close, added Result as Option's sibling, and rewrote the description to state what the type does."
 ---
 
 <Define term="tony-hoare">Tony Hoare</Define> invented the null reference in 1965 and later called it his "billion-dollar mistake." Decades on, most codebases still handle a missing value by remembering to check for it, rather than by saying in the type that it might not be there.
