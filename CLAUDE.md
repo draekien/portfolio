@@ -9,6 +9,7 @@ pnpm dev          # start Next.js dev server
 pnpm build        # production build
 pnpm lint         # Biome check (lints + format check)
 pnpm lint:fix     # Biome check with auto-fix
+pnpm lint:prose   # house-voice mechanics + readability report for content/articles
 pnpm format       # Biome format only
 pnpm typegen      # regenerate Next.js typed routes
 ```
